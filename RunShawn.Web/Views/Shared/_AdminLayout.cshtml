@@ -1,0 +1,130 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <header class="dashboard-header">
+        <nav class="dashboard-nav">
+            <ul class="navigation-menu">
+                @if(User.IsInRole("Admin"))
+                {
+                    <li><a href="#">Administrator</a></li>
+                }
+               @if(User.Identity.IsAuthenticated)
+               {
+                <li><a href="#">@User.Identity.Name</a></li>
+               }
+            </ul>
+        </nav>
+        <section class="user-panel">
+            <i class="far fa-bell" id="notification-button"></i>
+            <div class="user-image">
+                <img src="@Url.Content("~/Content/images/user.png")" alt="user">
+            </div>
+            <div class="dropdown_list-user">
+                <div class="account-info">
+                    <img src="@Url.Content("~/Content/images/user.png")" alt="user">
+                    <ul>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="name"><a href="#">Administrator</a></li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="group"><a href="#">@User.Identity.Name</a></li>
+                        }
+                        <li class="button"><a href="@Url.Action(MVC.Manage.Index())">Ustawienia Konta</a></li>
+                    </ul>
+                </div>
+                <div class="logout">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm(MVC.Account.LogOff()))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button class="button">
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj się</a>
+                            </button>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="dropdown_list-notifications">
+                <header class="dropdown_list-header">
+                    Powiadomienia
+                </header>
+                <section class="notifications">
+                    <ul>
+                        <li>
+                            <div class="message">Rozważ zmianę hasła do panelu administratora</div>
+                            <div class="date">16 gru 2018</div>
+                        </li>
+                        <li>
+                            <div class="message">Zbliża się termin opłacenia hostingu</div>
+                            <div class="date">16 lis 2018</div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+    </header>
+    <main id="dashboard-main">
+        <aside id="side-bar" class="side-bar">
+            <ul class="category-button">
+                <li class="category-header" id="_1"><i class="fas fa-users"></i>User type</li>
+                <ol>
+                    <li>Admin</li>
+                    <li>Reception</li>
+                    <li>Accountant</li>
+                    <li>Stylist</li>
+                </ol>
+            </ul>
+            <ul>
+                <li class="category-header" id="_2"><i class="fas fa-archive"></i>Appointments</li>
+                <ol>
+                    <li>Admin</li>
+                    <li>Reception</li>
+                    <li>Accountant</li>
+                    <li>Stylist</li>
+                </ol>
+            </ul>
+            <ul>
+                <li class="category-header" id="_3"><i class="fas fa-dollar-sign"></i>Payments</li>
+                <ol>
+                    <li>Admin</li>
+                    <li>Reception</li>
+                    <li>Accountant</li>
+                    <li>Stylist</li>
+                </ol>
+            </ul>
+            <ul>
+                <li class="category-header" id="_4"><i class="fas fa-heart"></i>Customers</li>
+                <ol>
+                    <li>Admin</li>
+                    <li>Reception</li>
+                    <li>Accountant</li>
+                    <li>Stylist</li>
+                </ol>
+            </ul>
+        </aside>
+        <section id="page-container">
+            @RenderBody()
+        </section>
+    </main>
+    <footer class="main-footer">© @DateTime.Now.Year Wszelkie prawa zastrzeżone RunShawn.</footer>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</html>
+
