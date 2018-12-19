@@ -1,0 +1,61 @@
+input {
+  outline: 0;
+  padding: 10px !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.form-horizontal .form-group {
+  margin: 10px;
+}
+
+.form-horizontal .form-group .btn-login {
+  width: 100%;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+#loginForm {
+  margin-top: 20%;
+  width: 400px;
+}
+
+#loginForm header h1 {
+  font-size: 45px;
+  text-align: center;
+  margin: 35px;
+}
+
+.checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkbox input {
+  margin: 0 !important;
+}
+
+.checkbox label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+/*# sourceMappingURL=login_form.css.map */

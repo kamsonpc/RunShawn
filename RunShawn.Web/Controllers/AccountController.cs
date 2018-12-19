@@ -46,7 +46,7 @@ namespace RunShawn.Web.Controllers
         public virtual ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return PartialView(MVC.Account.Views._Login);
         }
 
         //
@@ -75,7 +75,7 @@ namespace RunShawn.Web.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return PartialView(MVC.Account.Views._Login, model);
             }
         }
 
