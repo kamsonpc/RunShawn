@@ -9,6 +9,7 @@ using RunShawn.Web.Extentions.Icons;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [MenuItem(Action = "", CssIcon = AwesomeHelper.users, Title = "Użytkownicy")]
+    [Authorize]
     public partial class UsersController : Controller
     {
 
