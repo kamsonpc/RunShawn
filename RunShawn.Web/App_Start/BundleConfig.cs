@@ -26,8 +26,11 @@ namespace RunShawn.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css",
-                      "~/Content/dashboard/dashboard.css"
-                      ));
+                      "~/Content/dashboard/dashboard.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/login").Include(
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/login/login_form.css"));
 
         }
     }

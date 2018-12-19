@@ -132,6 +132,16 @@ namespace Links
             public static readonly string user_png = Url("user.png");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class login {
+            public const string UrlPath = "~/Content/login";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string login_form_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/login_form.min.css") ? Url("login_form.min.css") : Url("login_form.css");
+            public static readonly string login_form_css_map = Url("login_form.css.map");
+            public static readonly string login_form_scss = Url("login_form.scss");
+        }
+    
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
     }
 
@@ -171,6 +181,13 @@ namespace Links
             {
                 public static class Assets
                 {
+                }
+            }
+            public static partial class login 
+            {
+                public static class Assets
+                {
+                    public static readonly string login_form_css = T4MVCHelpers.ProcessAssetPath("~/Content/login/login_form.css");
                 }
             }
             public static class Assets

@@ -1,0 +1,51 @@
+
+input{
+    outline: 0;
+    padding: 10px!important;
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus, 
+    &:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+}
+.form-horizontal .form-group
+{
+    margin: 10px;
+    .btn-login
+    {
+        width: 100%;
+    }
+}
+.container
+{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+#loginForm
+{
+    margin-top: 20%;
+    width: 400px;
+    header h1
+    {
+        font-size: 45px;
+        text-align: center;
+        margin: 35px;
+    }
+}
+
+.checkbox 
+{
+    display: flex;
+    input
+    {
+        margin: 0!important;
+    }
+    label
+    {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       padding: 0;
+    }
+}
