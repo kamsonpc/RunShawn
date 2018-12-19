@@ -1,4 +1,7 @@
-$( document ).ready(function() {
+$(document).ready(function () {
+    var defaultActivedMenu = $(".category-header .active")
+    defaultActivedMenu.siblings("ol").slideDown('fast', 'linear');
+
     function ResetMenu()
     {
         var activedMenu = $(".category-header.active");

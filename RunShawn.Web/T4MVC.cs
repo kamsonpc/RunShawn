@@ -32,6 +32,7 @@ public static partial class MVC
     public static RunShawn.Web.Controllers.AccountController Account = new RunShawn.Web.Controllers.T4MVC_AccountController();
     public static RunShawn.Web.Controllers.HomeController Home = new RunShawn.Web.Controllers.T4MVC_HomeController();
     public static RunShawn.Web.Controllers.ManageController Manage = new RunShawn.Web.Controllers.T4MVC_ManageController();
+    public static RunShawn.Web.Controllers.MenusController Menus = new RunShawn.Web.Controllers.T4MVC_MenusController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

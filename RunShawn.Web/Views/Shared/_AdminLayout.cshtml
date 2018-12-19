@@ -80,42 +80,7 @@
     </header>
     <main id="dashboard-main">
         <aside id="side-bar" class="side-bar">
-            <ul class="category-button">
-                <li class="category-header" id="_1"><i class="fas fa-users"></i>User type</li>
-                <ol>
-                    <li>Admin</li>
-                    <li>Reception</li>
-                    <li>Accountant</li>
-                    <li>Stylist</li>
-                </ol>
-            </ul>
-            <ul>
-                <li class="category-header" id="_2"><i class="fas fa-archive"></i>Appointments</li>
-                <ol>
-                    <li>Admin</li>
-                    <li>Reception</li>
-                    <li>Accountant</li>
-                    <li>Stylist</li>
-                </ol>
-            </ul>
-            <ul>
-                <li class="category-header" id="_3"><i class="fas fa-dollar-sign"></i>Payments</li>
-                <ol>
-                    <li>Admin</li>
-                    <li>Reception</li>
-                    <li>Accountant</li>
-                    <li>Stylist</li>
-                </ol>
-            </ul>
-            <ul>
-                <li class="category-header" id="_4"><i class="fas fa-heart"></i>Customers</li>
-                <ol>
-                    <li>Admin</li>
-                    <li>Reception</li>
-                    <li>Accountant</li>
-                    <li>Stylist</li>
-                </ol>
-            </ul>
+            @Html.Action(MVC.Menus.Index())
         </aside>
         <section id="page-container">
             @RenderBody()

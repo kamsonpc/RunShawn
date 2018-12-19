@@ -1,0 +1,52 @@
+﻿
+@using RunShawn.Web.Models
+@model List<Menu>
+
+    @foreach (Menu menu in Model)
+    {
+<ul>
+    <li class="category-header @{
+        var currentController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+
+        if(currentController == menu.Name)
+        {
+         <text>active</text>   
+        }
+    } ">
+
+        @if (string.IsNullOrWhiteSpace(menu.Url))
+        {
+        <a href="#">
+            <i class="@menu.CssIcon" aria-hidden="true"></i>
+            @menu.Name
+        </a>
+        }
+        else
+        {
+        <a href="@menu.Url">
+            <i class="@menu.CssIcon" aria-hidden="true"></i>
+
+            @menu.Name
+        </a>
+        }
+    </li>
+    @if (menu.SubMenus.Any())
+    {
+        <ol>
+
+            @foreach (SubMenu subMenu in menu.SubMenus)
+            {
+                <li> 
+                    <a href="@Url.Content(subMenu.Url)">
+                        @subMenu.Name
+                    </a>
+                </li>
+            }
+
+        </ol>
+
+
+    }
+
+</ul>
+    }
