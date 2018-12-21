@@ -7,11 +7,6 @@ body {
   font-family: "Montserrat";
 }
 
-a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
 button {
   background-color: #00000000;
   border: 0;
@@ -33,6 +28,13 @@ button {
           align-items: center;
   padding-right: 68px;
   height: 63px;
+}
+
+.dashboard-header .page-logo {
+  position: absolute;
+  left: 25px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .dashboard-header .dashboard-nav .navigation-menu {
@@ -127,12 +129,27 @@ button {
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.dashboard-header .user-panel .dropdown_list-user a {
+  color: #000000;
+}
+
 .dashboard-header .user-panel .dropdown_list-user .button {
   background: #1254e0;
   border-radius: 3px;
+  text-align: center;
   padding: 5px 10px 5px 10px;
   color: #ffffff;
   margin-top: 5px;
+}
+
+.dashboard-header .user-panel .dropdown_list-user .button a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dashboard-header .user-panel .dropdown_list-user .button a:hover {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .dashboard-header .user-panel .dropdown_list-user .button:hover {
@@ -229,6 +246,16 @@ button {
   background: #3b4653;
 }
 
+.side-bar a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.side-bar a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .side-bar ul {
   list-style-type: none;
   margin: 0;
@@ -286,6 +313,6 @@ button {
 }
 
 #page-container {
-  padding: 10px;
+  padding: 20px;
 }
 /*# sourceMappingURL=dashboard.css.map */

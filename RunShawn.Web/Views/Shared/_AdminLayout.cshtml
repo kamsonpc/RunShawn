@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-
+@using RunShawn.Web.Extentions
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +9,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/dashboard")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <header class="dashboard-header">
+        <div class="page-logo">@Html.Bootstrap().Icon(Icon.Cog) RunShawn</div>
         <nav class="dashboard-nav">
             <ul class="navigation-menu">
-                @if(User.IsInRole("Admin"))
-                {
-                    <li><a href="#">Administrator</a></li>
-                }
                @if(User.Identity.IsAuthenticated)
                {
                 <li><a href="#">@User.Identity.Name</a></li>
@@ -35,9 +33,9 @@
                 <div class="account-info">
                     <img src="@Url.Content("~/Content/images/user.png")" alt="user">
                     <ul>
-                        @if (User.IsInRole("Admin"))
+                        @if (User.IsInRole(RoleTypes.Administrator.ToString()))
                         {
-                            <li class="name"><a href="#">Administrator</a></li>
+                            <li class="name"><a href="#">@RoleTypes.Administrator.GetDescription()</a></li>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {

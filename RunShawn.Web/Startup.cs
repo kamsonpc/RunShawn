@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using RunShawn.Web.Extentions;
 using RunShawn.Web.Models;
 
 [assembly: OwinStartupAttribute(typeof(RunShawn.Web.Startup))]
@@ -9,6 +10,9 @@ namespace RunShawn.Web
 {
     public partial class Startup
     {
+        private string _email = "admin@runshawn.com";
+        private string _password = "zaq1@WSX";
+
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
@@ -23,29 +27,29 @@ namespace RunShawn.Web
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
 
-            if (!roleManager.RoleExists("Admin"))
+            if (!roleManager.RoleExists(RoleTypes.Administrator.ToString()))
             {
 
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
                 {
-                    Name = "Admin"
+                    Name = RoleTypes.Administrator.ToString()
                 };
                 roleManager.Create(role);
 
 
                 var user = new ApplicationUser
                 {
-                    UserName = "admin@runshawn.com",
-                    Email = "admin@runshawn.com"
+                    UserName = _email,
+                    Email = _email
                 };
 
-                string userPWD = "zaq1@WSX";
+                string userPWD = _password;
 
                 var chkUser = UserManager.Create(user, userPWD);
 
                 if (chkUser.Succeeded)
                 {
-                    var result = UserManager.AddToRole(user.Id, "Admin");
+                    var result = UserManager.AddToRole(user.Id, RoleTypes.Administrator.ToString());
 
                 }
             }

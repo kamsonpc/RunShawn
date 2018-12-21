@@ -8,21 +8,24 @@ using RunShawn.Web.Extentions.Icons;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [MenuItem(Action = "", CssIcon = AwesomeHelper.users, Title = "Użytkownicy")]
     [Authorize]
     public partial class UsersController : Controller
     {
-
-        [MenuItem(Action = "Index", CssIcon = "fa fa-users fa-lg fa-fw", Title = "Dodaj")]
+        #region Index()
+        [MenuItem(Action = "Index", CssIcon = AwesomeHelper.adjust, Title = "Użytkownicy")]
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Admin.Users.List());
         }
+        #endregion
 
-        [MenuItem(Action = "List", CssIcon = "fa fa-users fa-lg fa-fw", Title = "Lista")]
+        #region List()
+        [MenuItem(Title = "Lista")]
         public virtual ActionResult List()
         {
+
             return View();
         }
+        #endregion
     }
 }
