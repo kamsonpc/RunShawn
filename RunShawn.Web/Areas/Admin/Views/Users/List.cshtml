@@ -5,5 +5,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2> <i class="@AwesomeHelper.adjust"></i>List</h2>
+@using RunShawn.Web.Areas.Admin.Models.Users
+@model IEnumerable<UserListViewModel>
 
+@(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add(model => model.UserName).Titled("Login");
+            columns.Add(model => model.Email).Titled("Name");
+            columns.Add().RenderedAs(model => Html.ActionLink("Dodaj", MVC.Admin.Users.List()));
+            columns.Add().RenderedAs(model => Html.Bootstrap().LinkButton("test", MVC.Admin.Users.List()));
+
+        })
+
+        .Empty("Brak Wyników")
+        .Filterable()
+        .Sortable()
+        .Pageable()
+)

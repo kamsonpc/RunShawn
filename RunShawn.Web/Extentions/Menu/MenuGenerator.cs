@@ -1,17 +1,17 @@
-﻿using System;
+﻿using RunShawn.Web.Attributes;
+using RunShawn.Web.Models;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Models;
 
 namespace RunShawn.Web.Extentions
 {
     public static class MenuGenerator
     {
+        #region  CreateMenu()
         public static List<Menu> CreateMenu()
         {
             var menus = new List<Menu>();
@@ -72,9 +72,9 @@ namespace RunShawn.Web.Extentions
             });
             return menus.OrderBy(m => m.Order).ToList();
         }
+        #endregion
 
-
-
+        #region CreateAreaMenuItemFromController()
         private static Menu CreateAreaMenuItemFromController(Type controller, MenuItemAttribute menuItemAttribute)
         {
             string area = GetAreaNameForController(controller);
@@ -122,27 +122,34 @@ namespace RunShawn.Web.Extentions
             menu.SubMenus = submenus.OrderBy(m => m.Order).ToList();
             return menu;
         }
+        #endregion
 
+        #region UserHasAccess
         private static bool UserHasAccess(AuthorizedRoleAttribute authorizedRoleAttribute)
         {
             if (authorizedRoleAttribute == null)
             {
                 return true;
             }
-            //write the right logic here. you may call a backend service to verify
-            return authorizedRoleAttribute.Role == "Admin";
+            return authorizedRoleAttribute.Role == RoleTypes.Administrator.ToString();
         }
+        #endregion
 
+        #region CreateActionPath()
         private static string CreateActionPath(string area, string controller, string action)
         {
+
+            var baseUrl = UrlUtil.GetBaseUrl();
             if (string.IsNullOrWhiteSpace(area))
             {
-                return $"~/{controller}/{action}";
+                return $"{baseUrl}/{controller}/{action}";
             }
 
-            return $"~/{area}/{controller}/{action}";
+            return $"{baseUrl}/{area}/{controller}/{action}";
         }
+        #endregion
 
+        #region CreateAreaMenuItemFromAction()
         private static Menu CreateAreaMenuItemFromAction(Type controller, MethodInfo method, MenuItemAttribute menuItemAttribute)
         {
 
@@ -161,7 +168,9 @@ namespace RunShawn.Web.Extentions
             }
             return menu;
         }
+        #endregion
 
+        #region  GetAreaNameForController()
         private static string GetAreaNameForController(Type controller)
         {
             var area = "";
@@ -177,6 +186,6 @@ namespace RunShawn.Web.Extentions
             }
             return area;
         }
-
+        #endregion
     }
 }

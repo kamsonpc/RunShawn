@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 
 namespace RunShawn.Web.Extentions
 {
     public static class EnumHelper
     {
+        #region GetDescription()
         public static string GetDescription<T>(this T enumerationValue)
-    where T : struct
+        where T : struct
         {
             Type type = enumerationValue.GetType();
             if (!type.IsEnum)
@@ -30,5 +28,6 @@ namespace RunShawn.Web.Extentions
             }
             return enumerationValue.ToString();
         }
+        #endregion
     }
 }

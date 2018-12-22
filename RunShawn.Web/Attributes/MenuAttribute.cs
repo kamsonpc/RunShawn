@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace RunShawn.Web.Attributes
 {
+    #region MenuItemAttribute
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class MenuItemAttribute : Attribute
     {
@@ -19,4 +17,5 @@ namespace RunShawn.Web.Attributes
         public int Order { get; set; }
         public Type ParentController { get; set; }
     }
+    #endregion
 }

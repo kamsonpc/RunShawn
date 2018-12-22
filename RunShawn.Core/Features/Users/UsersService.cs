@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using RunShawn.Core.Features.Users.Model;
+﻿using RunShawn.Core.Features.Users.Model;
 using Simple.Data;
+using System.Collections.Generic;
 
 namespace RunShawn.Core.Features.Users
 {
@@ -9,7 +9,7 @@ namespace RunShawn.Core.Features.Users
         #region GetAll()
         public static List<User> GetAll()
         {
-            return Database.Open().AspNetUsers.ToList();
+            return Database.Open().AspNetUsers.All();
         }
         #endregion
     }

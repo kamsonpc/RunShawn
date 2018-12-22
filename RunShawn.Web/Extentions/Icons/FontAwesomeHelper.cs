@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace RunShawn.Web.Extentions.Icons
+﻿namespace RunShawn.Web.Extentions.Icons
 {
     public class AwesomeHelper
     {
-        #region icon constants
+        #region FontAwesome
         public const string adjust = "fa fa-fw fa-adjust";
         public const string adn = "fa fa-fw fa-adn";
         public const string align_center = "fa fa-fw fa-align-center";

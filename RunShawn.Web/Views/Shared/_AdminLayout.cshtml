@@ -8,10 +8,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/dashboard")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <header class="dashboard-header">
@@ -88,6 +88,12 @@
 </body>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+<script>
+    [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+        new MvcGrid(element);
+    });
+</script>
 @RenderSection("scripts", required: false)
 </html>
 
