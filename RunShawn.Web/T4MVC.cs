@@ -42,6 +42,7 @@ namespace T4MVC
     public class AdminClass
     {
         public readonly string Name = "Admin";
+        public RunShawn.Web.Areas.Admin.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_DashboardController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }

@@ -25,10 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    public partial class UsersController
+    public partial class DashboardController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected UsersController(Dummy d) { }
+        public DashboardController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected DashboardController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -58,13 +61,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UsersController Actions { get { return MVC.Admin.Users; } }
+        public DashboardController Actions { get { return MVC.Admin.Dashboard; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "Admin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Users";
+        public readonly string Name = "Dashboard";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Users";
+        public const string NameConst = "Dashboard";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -73,27 +76,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string List = "List";
-            public readonly string Create = "Create";
+            public readonly string Dashboard = "Dashboard";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string List = "List";
-            public const string Create = "Create";
+            public const string Dashboard = "Dashboard";
         }
 
 
-        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Create
-        {
-            public readonly string model = "model";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -104,18 +97,16 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Create = "Create";
-                public readonly string List = "List";
+                public readonly string Dashboard = "Dashboard";
             }
-            public readonly string Create = "~/Areas/Admin/Views/Users/Create.cshtml";
-            public readonly string List = "~/Areas/Admin/Views/Users/List.cshtml";
+            public readonly string Dashboard = "~/Areas/Admin/Views/Dashboard/Dashboard.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_UsersController : RunShawn.Web.Areas.Admin.Controllers.UsersController
+    public partial class T4MVC_DashboardController : RunShawn.Web.Areas.Admin.Controllers.DashboardController
     {
-        public T4MVC_UsersController() : base(Dummy.Instance) { }
+        public T4MVC_DashboardController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -129,37 +120,14 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void DashboardOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List()
+        public override System.Web.Mvc.ActionResult Dashboard()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-            ListOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Dashboard);
+            DashboardOverride(callInfo);
             return callInfo;
-        }
-
-        [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Users.UserViewModel model);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(RunShawn.Web.Areas.Admin.Models.Users.UserViewModel model)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            CreateOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
     }

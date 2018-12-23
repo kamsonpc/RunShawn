@@ -28,6 +28,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         #region Ctor
+        public UsersController()
+        {
+                
+        }
+
         public UsersController(ApplicationUserManager userManager)
         {
             _userManager = userManager;
