@@ -70,6 +70,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     })
                                     .ToList();
 
+
             var model = new UserViewModel
             {
                 Roles = roles

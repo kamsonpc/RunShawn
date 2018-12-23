@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Ed";
 }
 
 @using RunShawn.Web.Areas.Admin.Models.Users
@@ -13,7 +13,7 @@
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
-    <text>Dodaj Użytkownika</text>
+    <text>Edytuj Użytkownika</text>
 }
 
 @using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Create()).Begin())
@@ -24,7 +24,6 @@
     @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
     @form.InputFor(x => x.UserName).SetControlLabel("Login")
     @form.InputFor(x => x.Email).SetControlLabel("Email")
-    @form.PasswordFor(x => x.Password).SetControlLabel("Hasło")
     @form.InputFor(x => x.PhoneNumber).SetControlLabel("Numer Telefonu")
     @Html.CheckBoxFor(x => x.LockoutEnabled)
     <div class="form-group">
@@ -34,7 +33,7 @@
     <hr />
     <h4>Role</h4>
     <div class="form-group">
-    @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
+    @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null))
     </div>
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }

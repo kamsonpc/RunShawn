@@ -14,9 +14,7 @@
     @Styles.Render("~/Content/datepicker")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/datepicker")
-    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <header class="dashboard-header">
@@ -86,11 +84,14 @@
             @Html.Action(MVC.Menus.Index())
         </aside>
         <section id="page-container">
-            @if(TempData["Alert"] != null)
+            @if (TempData["Alert"] != null)
             {
                 var alert = TempData["Alert"] as Alert;
                 @Html.Bootstrap().Alert(alert.AlertState, alert.Text)
             }
+            <div class="breadcrumbs-container">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
             @RenderBody()
         </section>
     </main>
@@ -104,5 +105,11 @@
         new MvcGrid(element);
     });
 </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datepicker")
+
+
 </html>
 

@@ -305,7 +305,7 @@
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Mvc.sitemap" />
-    <Content Include="Areas\Admin\Admin.sitemap" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

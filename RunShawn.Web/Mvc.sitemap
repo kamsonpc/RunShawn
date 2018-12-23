@@ -3,6 +3,12 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-    <mvcSiteMapNode title="Admin" key="Admin" area="Admin" controller="Dashboard" action="Index" siteMapFile="~/Areas/Admin/Admin.sitemap"></mvcSiteMapNode>
+        <mvcSiteMapNode title="Panel administracyjny" area="Admin" controller="Dashboard" action="Dashboard">
+          <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List">
+                  <mvcSiteMapNode title="Dodaj Użytkownika" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
+          </mvcSiteMapNode>
+          
+        </mvcSiteMapNode>
+
 
 </mvcSiteMap>
