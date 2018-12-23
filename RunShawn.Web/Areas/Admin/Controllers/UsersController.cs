@@ -5,6 +5,7 @@ using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
+using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
     [MenuItem(CssIcon = AwesomeHelper.users, Title = "Użytkownicy", Action = "#", IsClickable = false)]
-    public partial class UsersController : Controller
+    public partial class UsersController : BaseController
     {
         private ApplicationUserManager _userManager;
 
@@ -30,7 +31,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #region Ctor
         public UsersController()
         {
-                
+
         }
 
         public UsersController(ApplicationUserManager userManager)
@@ -99,11 +100,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
                 await UserManager.CreateAsync(user, model.Password);
 
-                if (model.RoleId != null)
+                if (model.RoleId != null && user.Id != null)
                 {
                     RolesService.SetRole(user.Id, model.RoleId);
                 }
-                TempData["Alert"] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
+                TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
             }
 
             var roles = RolesService.GetAll()
@@ -113,6 +114,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                        Text = x.Name
                                    })
                                    .ToList();
+
+            TempData[_alert] = new Alert($"Bład", AlertState.Danger);
+
 
             model.Roles = roles;
             return View(MVC.Admin.Users.Views.Create, model);

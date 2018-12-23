@@ -234,6 +234,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
+    <Compile Include="Extentions\Controller\BaseController.cs" />
     <Compile Include="Extentions\Alert\Alert.cs" />
     <Compile Include="Extentions\Boostrap\DatePickerFor.cs" />
     <Compile Include="Extentions\Boostrap\HelperMethods.cs" />

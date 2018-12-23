@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Core", "RunShawn.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Web", "RunShawn.Web\RunShawn.Web.csproj", "{0A5E4F07-BF8E-4B11-A79C-AED985966D44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Tests", "RunShawn.Tests\RunShawn.Tests.csproj", "{87C69AB7-EF36-4650-85D5-C5334ADE8B36}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{0A5E4F07-BF8E-4B11-A79C-AED985966D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5E4F07-BF8E-4B11-A79C-AED985966D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5E4F07-BF8E-4B11-A79C-AED985966D44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87C69AB7-EF36-4650-85D5-C5334ADE8B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87C69AB7-EF36-4650-85D5-C5334ADE8B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87C69AB7-EF36-4650-85D5-C5334ADE8B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87C69AB7-EF36-4650-85D5-C5334ADE8B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
