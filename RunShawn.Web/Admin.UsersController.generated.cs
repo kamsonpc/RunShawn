@@ -77,6 +77,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public readonly string Index = "Index";
             public readonly string List = "List";
+            public readonly string Create = "Create";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +85,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public const string Index = "Index";
             public const string List = "List";
+            public const string Create = "Create";
         }
 
 
@@ -97,8 +99,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Create = "Create";
                 public readonly string List = "List";
             }
+            public readonly string Create = "~/Areas/Admin/Views/Users/Create.cshtml";
             public readonly string List = "~/Areas/Admin/Views/Users/List.cshtml";
         }
     }
@@ -127,6 +131,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
             ListOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Create()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            CreateOverride(callInfo);
             return callInfo;
         }
 

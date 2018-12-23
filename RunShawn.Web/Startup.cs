@@ -61,6 +61,15 @@ namespace RunShawn.Web
                 }
             }
 
+            if (!roleManager.RoleExists(RoleTypes.SuperUser.ToString()))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = RoleTypes.SuperUser.ToString()
+                };
+                roleManager.Create(role);
+            }
+
         }
     }
 }

@@ -49,6 +49,21 @@ namespace T4MVC
             public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string Lockout = "~/Views/Shared/Lockout.cshtml";
+            static readonly _MvcGridClass s_MvcGrid = new _MvcGridClass();
+            public _MvcGridClass MvcGrid { get { return s_MvcGrid; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _MvcGridClass
+            {
+                static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                public class _ViewNamesClass
+                {
+                    public readonly string _Grid = "_Grid";
+                    public readonly string _Pager = "_Pager";
+                }
+                public readonly string _Grid = "~/Views/Shared/MvcGrid/_Grid.cshtml";
+                public readonly string _Pager = "~/Views/Shared/MvcGrid/_Pager.cshtml";
+            }
         }
     }
 

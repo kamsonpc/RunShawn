@@ -62,5 +62,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_001_init.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_002_Alter_Users.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

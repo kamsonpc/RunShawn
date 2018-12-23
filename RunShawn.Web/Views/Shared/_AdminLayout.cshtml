@@ -11,17 +11,22 @@
     <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/dashboard")
+    @Styles.Render("~/Content/datepicker")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datepicker")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <header class="dashboard-header">
         <div class="page-logo">@Html.Bootstrap().Icon(Icon.Cog) RunShawn</div>
         <nav class="dashboard-nav">
             <ul class="navigation-menu">
-               @if(User.Identity.IsAuthenticated)
-               {
-                <li><a href="#">@User.Identity.Name</a></li>
-               }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="#">@User.Identity.Name</a></li>
+                }
             </ul>
         </nav>
         <section class="user-panel">
@@ -81,19 +86,23 @@
             @Html.Action(MVC.Menus.Index())
         </aside>
         <section id="page-container">
+            @if(TempData["Alert"] != null)
+            {
+                var alert = TempData["Alert"] as Alert;
+                @Html.Bootstrap().Alert(alert.AlertState, alert.Text)
+            }
             @RenderBody()
         </section>
     </main>
     <footer class="main-footer">© @DateTime.Now.Year Wszelkie prawa zastrzeżone RunShawn.</footer>
 </body>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+
+
 <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
 <script>
     [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
         new MvcGrid(element);
     });
 </script>
-@RenderSection("scripts", required: false)
 </html>
 

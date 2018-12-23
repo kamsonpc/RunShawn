@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel;
 
 namespace RunShawn.Web.Extentions
 {
@@ -10,6 +6,9 @@ namespace RunShawn.Web.Extentions
     {
         [Description("Administrator")]
         Administrator = 10,
+
+        [Description("SuperUser")]
+        SuperUser = 30,
 
         [Description("Manager")]
         Manager = 20
