@@ -12,5 +12,12 @@ namespace RunShawn.Core.Features.Users
             return Database.Open().AspNetUsers.All();
         }
         #endregion
+
+        #region GetById()
+        public static User GetById(string id)
+        {
+            return Database.Open().AspNetUsers.FindById(id);
+        }
+        #endregion
     }
 }

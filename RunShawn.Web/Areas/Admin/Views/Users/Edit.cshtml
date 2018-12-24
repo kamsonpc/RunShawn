@@ -16,10 +16,11 @@
     <text>Edytuj Użytkownika</text>
 }
 
-@using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Create()).Begin())
+@using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Edit()).Begin())
 {
     @Html.AntiForgeryToken()
     <h4>Dane</h4>
+    @form.HiddenFor(x => x.Id)
     @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
     @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
     @form.InputFor(x => x.UserName).SetControlLabel("Login")
@@ -33,7 +34,7 @@
     <hr />
     <h4>Role</h4>
     <div class="form-group">
-    @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null))
+    @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
     </div>
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }

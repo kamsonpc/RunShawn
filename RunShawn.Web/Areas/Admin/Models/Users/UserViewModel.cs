@@ -44,6 +44,8 @@ namespace RunShawn.Web.Areas.Admin.Models.Users
         public bool LockoutEnabled { get; set; }
 
         [Display(Name = "Data Zakończenia Blokady")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? LockoutEndDateUtc { get; set; }
     }
 }

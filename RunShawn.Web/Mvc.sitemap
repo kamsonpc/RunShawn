@@ -6,6 +6,7 @@
         <mvcSiteMapNode title="Panel administracyjny" area="Admin" controller="Dashboard" action="Dashboard">
           <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List">
                   <mvcSiteMapNode title="Dodaj Użytkownika" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
+                  <mvcSiteMapNode title="Edytuj Użytkownika" area="Admin" controller="Users" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
           </mvcSiteMapNode>
           
         </mvcSiteMapNode>

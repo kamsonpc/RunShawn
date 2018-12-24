@@ -3,10 +3,15 @@
 @using System.Linq
 @using MvcSiteMapProvider.Web.Html.Models
 
-@foreach (var node in Model) { 
-    @Html.DisplayFor(m => node);
-    
-    if (node != Model.Last()) {
-        <text> &gt; </text>
+<ol class="breadcrumb">
+@foreach (var node in Model) {
+    var cssClass = "";
+    if (node == Model.Last())
+    {
+        cssClass = "active";
     }
+    <li class="@cssClass">
+    @Html.DisplayFor(m => node)
+    </li>
 }
+</ol>

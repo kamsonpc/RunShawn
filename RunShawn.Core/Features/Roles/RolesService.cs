@@ -12,6 +12,13 @@ namespace RunShawn.Core.Features.Roles.Model
         }
         #endregion
 
+        #region GetByUser()
+        public static string GetByUser(string userId)
+        {
+            return Database.Open().AspNetUserRoles.FindByUserId(userId)?.RoleId;
+        }
+        #endregion
+
         #region SetRole()
         public static void SetRole(string userId, string roleId)
         {

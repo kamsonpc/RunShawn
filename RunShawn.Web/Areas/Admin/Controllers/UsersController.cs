@@ -79,33 +79,21 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public virtual async Task<ActionResult> Create(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                #region MapUser
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    EmailConfirmed = true,
-                    PhoneNumber = model.PhoneNumber,
-                    LockoutEnabled = model.LockoutEnabled,
-                    LockoutEndDateUtc = model.LockoutEndDateUtc
-                };
-                #endregion
-
+                var user = model.MapTo<ApplicationUser>();
                 await UserManager.CreateAsync(user, model.Password);
 
-                if (model.RoleId != null && user.Id != null)
+                if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
                 {
                     RolesService.SetRole(user.Id, model.RoleId);
                 }
+
                 TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
+                return RedirectToAction(MVC.Admin.Users.List());
             }
 
             var roles = RolesService.GetAll()
@@ -116,10 +104,58 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                    })
                                    .ToList();
 
-            TempData[_alert] = new Alert($"Bład", AlertState.Danger);
+            model.Roles = roles;
+            TempData[_alert] = new Alert($"Niepoprawny formularz", AlertState.Danger);
+            return View(MVC.Admin.Users.Views.Create, model);
+        }
+        #endregion
 
+        #region Edit()
+        public virtual ActionResult Edit(string id)
+        {
+            var roles = RolesService.GetAll()
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.Id,
+                                        Text = x.Name
+                                    })
+                                    .ToList();
+
+            var model = UsersService.GetById(id)
+                                     .MapTo<UserViewModel>();
+
+            model.RoleId = RolesService.GetByUser(id);
+            model.Roles = roles;
+
+            return View(MVC.Admin.Users.Views.Edit, model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Edit(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = model.MapTo<ApplicationUser>();
+                if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
+                {
+                    RolesService.SetRole(user.Id, model.RoleId);
+                }
+
+                TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
+                return RedirectToAction(MVC.Admin.Users.List());
+            }
+
+            var roles = RolesService.GetAll()
+                                   .Select(x => new SelectListItem
+                                   {
+                                       Value = x.Id,
+                                       Text = x.Name
+                                   })
+                                   .ToList();
 
             model.Roles = roles;
+            TempData[_alert] = new Alert($"Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Create, model);
         }
         #endregion

@@ -56,6 +56,12 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Edit()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UsersController Actions { get { return MVC.Admin.Users; } }
@@ -75,6 +81,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string Index = "Index";
             public readonly string List = "List";
             public readonly string Create = "Create";
+            public readonly string Edit = "Edit";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -83,6 +90,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string Index = "Index";
             public const string List = "List";
             public const string Create = "Create";
+            public const string Edit = "Edit";
         }
 
 
@@ -92,6 +100,15 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Edit
+        {
+            public readonly string id = "id";
             public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
@@ -105,9 +122,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Create = "Create";
+                public readonly string Edit = "Edit";
                 public readonly string List = "List";
             }
             public readonly string Create = "~/Areas/Admin/Views/Users/Create.cshtml";
+            public readonly string Edit = "~/Areas/Admin/Views/Users/Edit.cshtml";
             public readonly string List = "~/Areas/Admin/Views/Users/List.cshtml";
         }
     }
@@ -160,6 +179,30 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             CreateOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Users.UserViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(RunShawn.Web.Areas.Admin.Models.Users.UserViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditOverride(callInfo, model);
+            return callInfo;
         }
 
     }
