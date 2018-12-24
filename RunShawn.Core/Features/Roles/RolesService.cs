@@ -35,13 +35,20 @@ namespace RunShawn.Core.Features.Roles.Model
         public static void ChangeRole(string userId, string roleId)
         {
             Database.Open().AspNetUserRoles.DeleteByUserId(userId);
-            var assign = new UserRoles
+            if (!string.IsNullOrEmpty(roleId))
             {
-                UserId = userId,
-                RoleId = roleId
-            };
-            Database.Open().AspNetUserRoles.Insert(assign);
+                var assign = new UserRoles
+                {
+                    UserId = userId,
+                    RoleId = roleId
+                };
+                Database.Open().AspNetUserRoles.Insert(assign);
+            }
         }
+        #endregion
+
+        #region DeleteById()
+
         #endregion
     }
 }

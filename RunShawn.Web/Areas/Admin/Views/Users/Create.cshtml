@@ -26,6 +26,7 @@
     @form.InputFor(x => x.Email).SetControlLabel("Email")
     @form.PasswordFor(x => x.Password).SetControlLabel("Hasło")
     @form.InputFor(x => x.PhoneNumber).SetControlLabel("Numer Telefonu")
+    @Html.LabelFor(x => x.LockoutEnabled)
     @Html.CheckBoxFor(x => x.LockoutEnabled)
     <div class="form-group">
         @Html.LabelFor(x => x.LockoutEndDateUtc)
@@ -34,7 +35,7 @@
     <hr />
     <h4>Role</h4>
     <div class="form-group">
-    @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
+        @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
     </div>
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }

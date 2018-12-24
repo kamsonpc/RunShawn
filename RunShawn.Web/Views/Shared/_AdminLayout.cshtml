@@ -87,7 +87,7 @@
             @if (TempData["Alert"] != null)
             {
                 var alert = TempData["Alert"] as Alert;
-                @Html.Bootstrap().Alert(alert.AlertState, alert.Text)
+                @Html.Bootstrap().Alert(alert.AlertState, alert.Text).SetDismissible(true)
             }
             <div class="breadcrumbs-container">
                 @Html.MvcSiteMap().SiteMapPath()

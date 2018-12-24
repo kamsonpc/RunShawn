@@ -2,12 +2,14 @@
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
 using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,10 +18,11 @@ using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize()]
     [MenuItem(CssIcon = AwesomeHelper.users, Title = "Użytkownicy", Action = "#", IsClickable = false)]
     public partial class UsersController : BaseController
     {
+        #region InjectUserManager
         private ApplicationUserManager _userManager;
 
         public ApplicationUserManager UserManager
@@ -27,6 +30,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             private set => _userManager = value;
         }
+        #endregion
 
         #region Ctor
         public UsersController()
@@ -77,7 +81,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             };
             return View(MVC.Admin.Users.Views.Create, model);
         }
+        #endregion
 
+        #region CreatePost()
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual async Task<ActionResult> Create(UserViewModel model)
@@ -85,15 +91,21 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = model.MapTo<ApplicationUser>();
-                await UserManager.CreateAsync(user, model.Password);
-
-                if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
+                try
                 {
-                    RolesService.SetRole(user.Id, model.RoleId);
-                }
+                    await UserManager.CreateAsync(user, model.Password);
+                    if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
+                    {
+                        RolesService.SetRole(user.Id, model.RoleId);
+                    }
 
-                TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
-                return RedirectToAction(MVC.Admin.Users.List());
+                    TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
+                    return RedirectToAction(MVC.Admin.Users.List());
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                }
             }
 
             var roles = RolesService.GetAll()
@@ -103,9 +115,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                        Text = x.Name
                                    })
                                    .ToList();
-
             model.Roles = roles;
-            TempData[_alert] = new Alert($"Niepoprawny formularz", AlertState.Danger);
+
+            TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Create, model);
         }
         #endregion
@@ -122,7 +134,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     .ToList();
 
             var model = UsersService.GetById(id)
-                                     .MapTo<UserViewModel>();
+                                     .MapTo<UserEditViewModel>();
 
             model.RoleId = RolesService.GetByUser(id);
             model.Roles = roles;
@@ -132,18 +144,27 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(UserViewModel model)
+        public virtual ActionResult Edit(UserEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = model.MapTo<ApplicationUser>();
-                if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
+                try
                 {
-                    RolesService.SetRole(user.Id, model.RoleId);
-                }
+                    var user = model.MapTo<User>();
+                    UsersService.Update(user);
 
-                TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
-                return RedirectToAction(MVC.Admin.Users.List());
+                    if (!string.IsNullOrEmpty(user.Id))
+                    {
+                        RolesService.ChangeRole(user.Id, model.RoleId);
+                    }
+
+                    TempData[_alert] = new Alert($"Zaktualizowano Użytkownika {user.UserName}", AlertState.Success);
+                    return RedirectToAction(MVC.Admin.Users.List());
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                }
             }
 
             var roles = RolesService.GetAll()
@@ -155,8 +176,26 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                    .ToList();
 
             model.Roles = roles;
-            TempData[_alert] = new Alert($"Niepoprawny formularz", AlertState.Danger);
-            return View(MVC.Admin.Users.Views.Create, model);
+            TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
+            return View(MVC.Admin.Users.Views.Edit, model);
+        }
+        #endregion
+
+        #region Delete()
+        public virtual ActionResult Delete(string id)
+        {
+            try
+            {
+                UsersService.Delete(id);
+
+                TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
+                return RedirectToAction(MVC.Admin.Users.List());
+            }
+            catch (Exception)
+            {
+                TempData[_alert] = new Alert("Wystąpił Błąd podczas usuwania", AlertState.Danger);
+                return RedirectToAction(MVC.Admin.Users.List());
+            }
         }
         #endregion
     }

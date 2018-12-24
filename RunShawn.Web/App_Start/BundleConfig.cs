@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace RunShawn.Web
 {
@@ -21,10 +20,14 @@ namespace RunShawn.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/tooltip/jquery.darktooltip.js",
+                      "~/Scripts/tooltip/tooltipCustom.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
+                      "~/Content/tooltip/darktooltip.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/dashboard").Include(
@@ -33,6 +36,7 @@ namespace RunShawn.Web
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/login/login_form.css"));
+
 
         }
     }

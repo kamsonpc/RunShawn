@@ -70,6 +70,9 @@
     <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.1\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
@@ -231,8 +234,10 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
+    <Compile Include="Attributes\AuthorizeCustom.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
     <Compile Include="Extentions\Controller\BaseController.cs" />
     <Compile Include="Extentions\Alert\Alert.cs" />
@@ -287,6 +292,7 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
+    <Content Include="Content\tooltip\darktooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -378,6 +384,8 @@
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Scripts\MvcGrid\mvc-grid.js" />
     <Content Include="Scripts\sidebar.js" />
+    <Content Include="Scripts\tooltip\jquery.darktooltip.js" />
+    <Content Include="Scripts\tooltip\tooltipCustom.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

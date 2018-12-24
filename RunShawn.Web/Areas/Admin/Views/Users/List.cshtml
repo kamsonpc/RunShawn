@@ -25,8 +25,18 @@
         columns.Add(model => model.Email).Titled("Email");
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
     (
-        Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Users.Edit(model.Id)).SetIcon(Icon.Edit).SetState(ButtonState.Warning).SetSize(ButtonSize.Sm).ToHtmlString() +
-        Html.Bootstrap().LinkButton("Usuń", MVC.Admin.Users.List()).SetIcon(Icon.Remove).SetState(ButtonState.Danger).SetSize(ButtonSize.Sm).ToHtmlString()
+        Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Users.Edit(model.Id))
+        .SetIcon(Icon.Edit)
+        .SetState(ButtonState.Warning)
+        .SetSize(ButtonSize.Sm)
+        .ToHtmlString() 
+        +
+        Html.Bootstrap().LinkButton("Usuń", MVC.Admin.Users.Delete(model.Id))
+        .AddCss("btn-remove")
+        .SetIcon(Icon.Remove)
+        .SetState(ButtonState.Danger)
+        .SetSize(ButtonSize.Sm)
+        .ToHtmlString()
     )
 
     );
