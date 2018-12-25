@@ -242,7 +242,7 @@ button {
   min-width: 250px;
   max-width: 300px;
   width: 20%;
-  height: calc(100vh - 108px);
+  min-height: calc(100vh - 108px);
   background: #3b4653;
 }
 
@@ -314,5 +314,23 @@ button {
 
 #page-container {
   padding: 20px;
+  width: 100%;
+}
+
+#page-container .btn-group {
+  padding: 10px 10px 10px 0;
+}
+
+#UserName:-webkit-autofill, #UserName:-webkit-autofill:hover, #UserName:-webkit-autofill:focus, #UserName:-webkit-autofill:active, #Password:-webkit-autofill, #Password:-webkit-autofill:hover, #Password:-webkit-autofill:focus, #Password:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+#LockoutEnabled {
+  padding-left: 10px;
+}
+
+.form-group select {
+  padding-right: 20px;
+  height: 37px;
 }
 /*# sourceMappingURL=dashboard.css.map */

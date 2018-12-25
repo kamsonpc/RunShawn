@@ -7,7 +7,6 @@ body{
     font-family: "Montserrat";
 }
 
-
 button
 {
     background-color: #00000000;
@@ -222,7 +221,7 @@ button
     min-width: 250px;
     max-width: 300px;
     width: 20%;
-    height: calc(100vh - 108px);
+    min-height: calc(100vh - 108px);
     background: #3b4653;
     a{
         color: #ffffff;  
@@ -294,4 +293,32 @@ button
 #page-container
 {
     padding: 20px;
+    width: 100%;
+    .btn-group
+    {
+        padding: 10px 10px 10px 0;
+    }
+}
+
+#UserName, #Password
+{
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus, 
+    &:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+}
+
+#LockoutEnabled
+{
+    padding-left:10px;
+}
+
+.form-group
+{
+    select{
+        padding-right: 20px;
+        height: 37px;
+    }
 }

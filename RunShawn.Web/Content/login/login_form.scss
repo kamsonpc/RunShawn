@@ -24,13 +24,18 @@ input{
 }
 #loginForm
 {
-    margin-top: 20%;
+    margin-top: 8%;
     width: 400px;
     header h1
     {
         font-size: 45px;
         text-align: center;
         margin: 35px;
+    }
+    .border
+    {
+        padding: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     }
 }
 
