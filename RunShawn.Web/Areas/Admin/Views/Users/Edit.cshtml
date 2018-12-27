@@ -19,10 +19,12 @@
 @using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Edit()).Begin())
 {
     @Html.AntiForgeryToken()
-    <h4>Dane</h4>
+    <h3>Dane</h3>
     @form.HiddenFor(x => x.Id)
-    @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
-    @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
+    <div class="form-group-twice">
+        @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
+        @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
+    </div>
     @form.InputFor(x => x.UserName).SetControlLabel("Login")
     @form.InputFor(x => x.Email).SetControlLabel("Email")
     @form.InputFor(x => x.PhoneNumber).SetControlLabel("Numer Telefonu")
@@ -33,7 +35,7 @@
         @Html.DatePickerFor(x => x.LockoutEndDateUtc)
     </div>
     <hr />
-    <h4>Role</h4>
+    <h3>Role</h3>
     <div class="form-group">
         @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
     </div>

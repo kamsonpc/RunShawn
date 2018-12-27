@@ -11,7 +11,7 @@
     @group.LinkButton("Powrót", MVC.Admin.Users.List()).SetIcon(Icon.ArrowLeft).SetState(ButtonState.Info)
 }
 
-@using (Html.Bootstrap().Heading3().Begin())
+@using (Html.Bootstrap().Heading2().Begin())
 {
     <text>Dodaj Użytkownika</text>
 }
@@ -19,7 +19,7 @@
 @using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Create()).Begin())
 {
     @Html.AntiForgeryToken()
-    <h4>Dane</h4>
+    <h3>Dane</h3>
     <div class="form-group-twice">
         @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
         @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
@@ -34,7 +34,7 @@
         @Html.LabelFor(x => x.LockoutEndDateUtc)
         @Html.DatePickerFor(x => x.LockoutEndDateUtc)
     </div>
-    <h4>Role</h4>
+    <h3>Role</h3>
     <div class="form-group">
         @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
     </div>
