@@ -11,7 +11,7 @@
     @group.LinkButton("Powrót", MVC.Admin.Users.List()).SetIcon(Icon.ArrowLeft).SetState(ButtonState.Info)
 }
 
-@using (Html.Bootstrap().Heading2().Begin())
+@using (Html.Bootstrap().Heading3().Begin())
 {
     <text>Dodaj Użytkownika</text>
 }
@@ -20,8 +20,10 @@
 {
     @Html.AntiForgeryToken()
     <h4>Dane</h4>
-    @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
-    @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
+    <div class="form-group-twice">
+        @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
+        @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
+    </div>
     @form.InputFor(x => x.UserName).SetControlLabel("Login")
     @form.InputFor(x => x.Email).SetControlLabel("Email")
     @form.PasswordFor(x => x.Password).SetControlLabel("Hasło")
@@ -32,7 +34,6 @@
         @Html.LabelFor(x => x.LockoutEndDateUtc)
         @Html.DatePickerFor(x => x.LockoutEndDateUtc)
     </div>
-    <hr />
     <h4>Role</h4>
     <div class="form-group">
         @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")

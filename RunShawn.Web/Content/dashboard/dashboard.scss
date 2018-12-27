@@ -109,28 +109,6 @@ button
             a{
                 color:#000000;
             }
-            .button
-            {
-                $background-color: #1254e0;
-                background: $background-color;
-                border-radius: 3px;
-                text-align: center;
-                padding: 5px 10px 5px 10px;
-                color: #ffffff;
-                margin-top: 5px;
-                a{
-                    color: #ffffff;  
-                    text-decoration: none;
-                    &:hover{
-                        text-decoration:none;
-                        color:#ffffff;
-                    }
-                }                
-                &:hover
-                {
-                    background: darken($background-color, 15%);
-                }
-            }
             .account-info
             {
                 display: flex;
@@ -292,7 +270,7 @@ button
 
 #page-container
 {
-    padding: 20px;
+    padding: 40px;
     width: 100%;
     .btn-group
     {
@@ -300,19 +278,9 @@ button
     }
 }
 
-#UserName, #Password
-{
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
-    &:-webkit-autofill:focus, 
-    &:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px white inset;
-    }
-}
-
 #LockoutEnabled
 {
-    padding-left:10px;
+    margin-left:10px;
 }
 
 .form-group

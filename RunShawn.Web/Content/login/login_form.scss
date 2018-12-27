@@ -2,11 +2,6 @@
 input{
     outline: 0;
     padding: 10px!important;
-    &:-webkit-autofill,
-    &:-webkit-autofill:focus, 
-    &:-webkit-autofill:active  {
-        -webkit-box-shadow: 0 0 0 30px white inset;
-    }
 }
 .form-horizontal .form-group
 {
@@ -30,11 +25,11 @@ input{
     {
         font-size: 45px;
         text-align: center;
-        margin: 35px;
+        margin: 35px 0 35px 0;
     }
     .border
     {
-        padding: 10px;
+        padding: 10px 35px 50px;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     }
 }

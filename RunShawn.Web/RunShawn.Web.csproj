@@ -292,6 +292,7 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
+    <Content Include="Content\site\site.css" />
     <Content Include="Content\tooltip\darktooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -311,6 +312,8 @@
     <Content Include="Areas\Admin\Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Mvc.sitemap" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Content\site\site.css.map" />
+    <Content Include="Content\site\site.scss" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -320,11 +323,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="Scripts\validate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\validate\jquery.validate.js" />
+    <Content Include="Scripts\validate\jquery.validate.min.js" />
+    <Content Include="Scripts\validate\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\validate\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.az.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.bg.js" />
@@ -386,6 +389,7 @@
     <Content Include="Scripts\sidebar.js" />
     <Content Include="Scripts\tooltip\jquery.darktooltip.js" />
     <Content Include="Scripts\tooltip\tooltipCustom.js" />
+    <Content Include="Scripts\validate\bootstrap-validate.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
