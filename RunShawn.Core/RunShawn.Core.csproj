@@ -74,8 +74,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\IAuditable.cs" />
     <Compile Include="Features\Competition\CompetitorsService.cs" />
     <Compile Include="Features\Competition\Models\Competitor.cs" />
+    <Compile Include="Features\News\Categories\CategoriesService.cs" />
+    <Compile Include="Features\News\Categories\Model\Category.cs" />
+    <Compile Include="Features\News\Categories\Model\CategoryAndSubcategory.cs" />
+    <Compile Include="Features\News\News\Model\News.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
     <Compile Include="Features\Roles\RolesService.cs" />
@@ -93,5 +98,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

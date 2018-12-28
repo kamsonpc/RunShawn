@@ -43,6 +43,7 @@ namespace T4MVC
     {
         public readonly string Name = "Admin";
         public RunShawn.Web.Areas.Admin.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_DashboardController();
+        public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
@@ -169,6 +170,15 @@ namespace Links
         }
     
         public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class tooltip {
+            public const string UrlPath = "~/Scripts/tooltip";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string jquery_darktooltip_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.darktooltip.min.js") ? Url("jquery.darktooltip.min.js") : Url("jquery.darktooltip.js");
+            public static readonly string tooltipCustom_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tooltipCustom.min.js") ? Url("tooltipCustom.min.js") : Url("tooltipCustom.js");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -231,6 +241,14 @@ namespace Links
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class tooltip {
+            public const string UrlPath = "~/Content/tooltip";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string darktooltip_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/darktooltip.min.css") ? Url("darktooltip.min.css") : Url("darktooltip.css");
+        }
+    
     }
 
     
@@ -303,6 +321,14 @@ namespace Links
                     public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js"); 
                 }
             }
+            public static partial class tooltip 
+            {
+                public static class Assets
+                {
+                    public static readonly string jquery_darktooltip_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/jquery.darktooltip.js"); 
+                    public static readonly string tooltipCustom_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/tooltipCustom.js"); 
+                }
+            }
             public static class Assets
             {
                 public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap-datepicker.js"); 
@@ -355,6 +381,13 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
+                }
+            }
+            public static partial class tooltip 
+            {
+                public static class Assets
+                {
+                    public static readonly string darktooltip_css = T4MVCHelpers.ProcessAssetPath("~/Content/tooltip/darktooltip.css");
                 }
             }
             public static class Assets
