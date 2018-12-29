@@ -14,7 +14,12 @@
     @Styles.Render("~/Content/datepicker")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-
+    <script>
+        $(document).ready(function () {
+            $('.input-validation-error').siblings('.form-group').addClass('has-error');
+            $('.field-validation-error').addClass('text-danger');
+        });
+    </script>
 </head>
 <body>
     <header class="dashboard-header">
@@ -44,7 +49,7 @@
                         {
                             <li class="group"><a href="#">@User.Identity.Name</a></li>
                         }
-                        <li class="button"><a href="@Url.Action(MVC.Manage.Index())">Ustawienia Konta</a></li>
+                        <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Manage.Index())">Ustawienia Konta</a></li>
                     </ul>
                 </div>
                 <div class="logout">
@@ -53,7 +58,7 @@
                         using (Html.BeginForm(MVC.Account.LogOff()))
                         {
                             @Html.AntiForgeryToken()
-                            <button class="button">
+                            <button class="rs-btn-default rs-btn-blue">
                                 <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj się</a>
                             </button>
                         }
@@ -61,9 +66,9 @@
                 </div>
             </div>
             <div class="dropdown_list-notifications">
-                <header class="dropdown_list-header">
+                <section class="dropdown_list-header">
                     Powiadomienia
-                </header>
+                </section>
                 <section class="notifications">
                     <ul>
                         <li>
@@ -105,11 +110,8 @@
         new MvcGrid(element);
     });
 </script>
-
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/validate")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/datepicker")
-
-
 </html>
 

@@ -1,0 +1,41 @@
+.rs-btn-default
+{
+    border-radius: 3px;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+    color: #ffffff!important;
+    border: 0;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.rs-btn-blue
+{
+    $background-color: #1254e0;
+    background: $background-color;
+    a{
+        color: #ffffff!important; 
+        text-decoration: none;
+        &:hover{
+            text-decoration:none;
+            color:#ffffff!important;
+        }
+    }                
+    &:hover
+    {
+        background: darken($background-color, 15%);
+    }
+}
+
+.form-group-twice
+{
+    display: flex;
+    .form-group
+    {
+        width: 50%;
+        &:first-child
+        {
+            padding-right: 10px;
+        }
+    }
+}

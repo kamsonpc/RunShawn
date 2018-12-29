@@ -133,29 +133,6 @@ button {
   color: #000000;
 }
 
-.dashboard-header .user-panel .dropdown_list-user .button {
-  background: #1254e0;
-  border-radius: 3px;
-  text-align: center;
-  padding: 5px 10px 5px 10px;
-  color: #ffffff;
-  margin-top: 5px;
-}
-
-.dashboard-header .user-panel .dropdown_list-user .button a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.dashboard-header .user-panel .dropdown_list-user .button a:hover {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.dashboard-header .user-panel .dropdown_list-user .button:hover {
-  background: #0c3999;
-}
-
 .dashboard-header .user-panel .dropdown_list-user .account-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -313,7 +290,7 @@ button {
 }
 
 #page-container {
-  padding: 20px;
+  padding: 40px;
   width: 100%;
 }
 
@@ -321,12 +298,8 @@ button {
   padding: 10px 10px 10px 0;
 }
 
-#UserName:-webkit-autofill, #UserName:-webkit-autofill:hover, #UserName:-webkit-autofill:focus, #UserName:-webkit-autofill:active, #Password:-webkit-autofill, #Password:-webkit-autofill:hover, #Password:-webkit-autofill:focus, #Password:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset;
-}
-
 #LockoutEnabled {
-  padding-left: 10px;
+  margin-left: 10px;
 }
 
 .form-group select {

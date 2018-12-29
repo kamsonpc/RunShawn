@@ -3,10 +3,6 @@ input {
   padding: 10px !important;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset;
-}
-
 .form-horizontal .form-group {
   margin: 10px;
 }
@@ -33,11 +29,11 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 #loginForm header h1 {
   font-size: 45px;
   text-align: center;
-  margin: 35px;
+  margin: 35px 0 35px 0;
 }
 
 #loginForm .border {
-  padding: 10px;
+  padding: 10px 35px 50px;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
