@@ -12,8 +12,9 @@
           <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List">
             <mvcSiteMapNode title="Dodaj Wpis" area="Admin" controller="News" action="Create"></mvcSiteMapNode>
             <mvcSiteMapNode title="Edytuj Wpis" area="Admin" controller="News" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
 
-          </mvcSiteMapNode>
+            </mvcSiteMapNode>
           
         </mvcSiteMapNode>
 

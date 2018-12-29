@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+@using RunShawn.Web.Areas.Admin.Models.News
+@model IEnumerable<CategoryListViewModel>
+
+@using (Html.Bootstrap().Heading2().Begin())
+{
+    <text>Kategorie</text>
+}
+@using (var group = Html.Bootstrap().ButtonGroup().Begin())
+{
+    @group.Button("Dodaj").SetId("btn-add").AddAttribute("data-toggle", "modal").AddAttribute("data-target", "#categories-modal").SetIcon(Icon.Plus).SetState(ButtonState.Success)
+}
+
+@(
+    Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Title).Titled("Tytuł");
+
+        columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
+ (
+     Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
+     .SetIcon(Icon.Edit)
+     .SetState(ButtonState.Warning)
+     .SetSize(ButtonSize.Sm)
+     .ToHtmlString()
+     +
+     Html.Bootstrap().LinkButton("Usuń", MVC.Admin.News.Delete(model.Id))
+     .AddCss("btn-remove")
+     .SetIcon(Icon.Remove)
+     .SetState(ButtonState.Danger)
+     .SetSize(ButtonSize.Sm)
+     .ToHtmlString()
+ )
+
+ );
+    })
+    .Empty("Brak Wyników")
+        .Filterable()
+        .Sortable()
+        .Pageable()
+)
+<div class="modal" id="categories-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dodaj Kategorie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body" id="form-container">
+                    @Html.Action(MVC.Admin.Categories.Create())
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $("#categories-modal").on("submit", "#categories-form", function (e)
+    {
+        e.preventDefault(); 
+
+        var form = $(this);
+        $.ajax({
+            url: form.attr("action"),
+            method: form.attr("method"),  
+            data: form.serialize(),
+            success: function (partialResult) {
+                $("#categories-form").html(partialResult);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,21 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using RunShawn.Web.Areas.Admin.Models.News
+@model CategoryViewModel
+
+@using (var form = Html.Bootstrap().Form(MVC.Admin.Categories.Create()).SetId("categories-form").Begin())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(x => x.ParentId)
+        @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Value", "Text"), "Kategoria Nadrzędna")
+    </div>
+    @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
+
+    @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+}
+

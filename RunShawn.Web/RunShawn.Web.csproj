@@ -243,6 +243,7 @@
     <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\News\CategoryListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
@@ -333,6 +334,8 @@
     <Content Include="Content\summernote\font\summernote.eot" />
     <Content Include="Content\summernote\font\summernote.ttf" />
     <Content Include="Content\summernote\font\summernote.woff" />
+    <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\_Create.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
