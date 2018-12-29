@@ -42,6 +42,7 @@ namespace T4MVC
     public class AdminClass
     {
         public readonly string Name = "Admin";
+        public RunShawn.Web.Areas.Admin.Controllers.CategoriesController Categories = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_CategoriesController();
         public RunShawn.Web.Areas.Admin.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_DashboardController();
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
@@ -97,11 +98,6 @@ namespace Links
         public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.slim.min.js") ? Url("jquery-3.3.1.slim.min.js") : Url("jquery-3.3.1.slim.js");
         public static readonly string jquery_3_3_1_slim_min_js = Url("jquery-3.3.1.slim.min.js");
         public static readonly string jquery_3_3_1_slim_min_map = Url("jquery-3.3.1.slim.min.map");
-        public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
-        public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
-        public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-        public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
-        public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class locales {
             public const string UrlPath = "~/Scripts/locales";
@@ -188,6 +184,19 @@ namespace Links
             public static readonly string tooltipCustom_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tooltipCustom.min.js") ? Url("tooltipCustom.min.js") : Url("tooltipCustom.js");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class validate {
+            public const string UrlPath = "~/Scripts/validate";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string bootstrap_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-validate.min.js") ? Url("bootstrap-validate.min.js") : Url("bootstrap-validate.js");
+            public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
+            public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
+            public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
+            public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
+            public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -249,12 +258,32 @@ namespace Links
             public static readonly string mvc_grid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.css") ? Url("mvc-grid.min.css") : Url("mvc-grid.css");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class site {
+            public const string UrlPath = "~/Content/site";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/site.min.css") ? Url("site.min.css") : Url("site.css");
+            public static readonly string site_css_map = Url("site.css.map");
+            public static readonly string site_scss = Url("site.scss");
+        }
+    
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class summernote {
             public const string UrlPath = "~/Content/summernote";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class font {
+                public const string UrlPath = "~/Content/summernote/font";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string summernote_eot = Url("summernote.eot");
+                public static readonly string summernote_ttf = Url("summernote.ttf");
+                public static readonly string summernote_woff = Url("summernote.woff");
+            }
+        
             public static readonly string summernote_lite_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-lite.min.css") ? Url("summernote-lite.min.css") : Url("summernote-lite.css");
         }
     
@@ -354,6 +383,17 @@ namespace Links
                     public static readonly string tooltipCustom_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/tooltipCustom.js"); 
                 }
             }
+            public static partial class validate 
+            {
+                public static class Assets
+                {
+                    public static readonly string bootstrap_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/bootstrap-validate.js"); 
+                    public static readonly string jquery_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.js"); 
+                    public static readonly string jquery_validate_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.min.js"); 
+                    public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.js"); 
+                    public static readonly string jquery_validate_unobtrusive_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.min.js"); 
+                }
+            }
             public static class Assets
             {
                 public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap-datepicker.js"); 
@@ -365,10 +405,6 @@ namespace Links
                 public static readonly string jquery_3_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.min.js"); 
                 public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.js"); 
                 public static readonly string jquery_3_3_1_slim_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.min.js"); 
-                public static readonly string jquery_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.validate.js"); 
-                public static readonly string jquery_validate_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.validate.min.js"); 
-                public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.validate.unobtrusive.js"); 
-                public static readonly string jquery_validate_unobtrusive_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.validate.unobtrusive.min.js"); 
                 public static readonly string modernizr_2_8_3_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/modernizr-2.8.3.js"); 
                 public static readonly string sidebar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/sidebar.js"); 
             }
@@ -408,8 +444,21 @@ namespace Links
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
                 }
             }
+            public static partial class site 
+            {
+                public static class Assets
+                {
+                    public static readonly string site_css = T4MVCHelpers.ProcessAssetPath("~/Content/site/site.css");
+                }
+            }
             public static partial class summernote 
             {
+                public static partial class font 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
                 public static class Assets
                 {
                     public static readonly string summernote_lite_css = T4MVCHelpers.ProcessAssetPath("~/Content/summernote/summernote-lite.css");

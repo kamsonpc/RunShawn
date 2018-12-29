@@ -13,6 +13,7 @@ namespace RunShawn.Web.Areas.Admin.Models.News
 
         [Required]
         [AllowHtml]
+        [Display(Name = "Treść")]
 
         public string Content { get; set; }
 
@@ -21,6 +22,7 @@ namespace RunShawn.Web.Areas.Admin.Models.News
         public int CategoryId { get; set; }
 
         [Required]
+        [Display(Name = "Data Publikacji")]
         public DateTime PublishDate { get; set; }
 
         public List<SelectListItem> Categories { get; set; }

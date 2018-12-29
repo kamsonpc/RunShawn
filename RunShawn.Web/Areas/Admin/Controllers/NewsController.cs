@@ -150,5 +150,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
         }
         #endregion
+
+        #region Categories
+        [MenuItem(Title = "Kategorie", Action = "Categories")]
+        public virtual ActionResult Categories()
+        {
+            return RedirectToAction(MVC.Admin.Categories.List());
+        }
+        #endregion
     }
 }

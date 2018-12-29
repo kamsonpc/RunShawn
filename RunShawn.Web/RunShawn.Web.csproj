@@ -214,7 +214,13 @@
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.CategoriesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.DashboardController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Admin.SharedController.generated.cs">
@@ -231,8 +237,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
+    <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
@@ -253,6 +264,7 @@
     <Compile Include="Extentions\Mapper\MapperExtentions.cs" />
     <Compile Include="Extentions\Menu\MenuGenerator.cs" />
     <Compile Include="Extentions\Roles\RoleTypes.cs" />
+    <Compile Include="Extentions\Summernote\SummerNoteHelper.cs" />
     <Compile Include="Extentions\Url\UrlHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +305,7 @@
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
     <Content Include="Content\site\site.css" />
+    <Content Include="Content\summernote\summernote-lite.css" />
     <Content Include="Content\tooltip\darktooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -314,6 +327,12 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Content\site\site.css.map" />
     <Content Include="Content\site\site.scss" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\List.cshtml" />
+    <Content Include="Content\summernote\font\summernote.eot" />
+    <Content Include="Content\summernote\font\summernote.ttf" />
+    <Content Include="Content\summernote\font\summernote.woff" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -324,6 +343,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\validate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\summernote\summernote-init.js" />
+    <Content Include="Scripts\summernote\summernote-lite.js" />
     <Content Include="Scripts\validate\jquery.validate.js" />
     <Content Include="Scripts\validate\jquery.validate.min.js" />
     <Content Include="Scripts\validate\jquery.validate.unobtrusive.js" />
