@@ -237,8 +237,9 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
+    <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\News\NewsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Extentions\Mapper\MapperExtentions.cs" />
     <Compile Include="Extentions\Menu\MenuGenerator.cs" />
     <Compile Include="Extentions\Roles\RoleTypes.cs" />
+    <Compile Include="Extentions\Summernote\SummerNoteHelper.cs" />
     <Compile Include="Extentions\Url\UrlHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,6 +300,7 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
+    <Content Include="Content\summernote\summernote-lite.css" />
     <Content Include="Content\tooltip\darktooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -393,6 +396,8 @@
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Scripts\MvcGrid\mvc-grid.js" />
     <Content Include="Scripts\sidebar.js" />
+    <Content Include="Scripts\summernote\summernote-init.js" />
+    <Content Include="Scripts\summernote\summernote-lite.js" />
     <Content Include="Scripts\tooltip\jquery.darktooltip.js" />
     <Content Include="Scripts\tooltip\tooltipCustom.js" />
     <Content Include="Web.config">

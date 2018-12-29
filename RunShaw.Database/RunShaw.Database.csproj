@@ -68,5 +68,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_003_News.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_004_NewsView.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,9 +46,5 @@ namespace RunShawn.Core.Features.Roles.Model
             }
         }
         #endregion
-
-        #region DeleteById()
-
-        #endregion
     }
 }

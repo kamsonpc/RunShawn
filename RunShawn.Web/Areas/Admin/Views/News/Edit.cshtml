@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Ed";
+    ViewBag.Title = "Edit";
 }
 
-@using RunShawn.Web.Areas.Admin.Models.Users
-@model UserEditViewModel
+@using RunShawn.Web.Areas.Admin.Models.News
+@model ArticleViewModel
 
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
@@ -13,54 +13,24 @@
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
-    <text>Edytuj Użytkownika</text>
+    <text>Edytuj Wpis</text>
 }
 
-@using (var form = Html.Bootstrap().Form(MVC.Admin.Users.Edit()).Begin())
+@using (var form = Html.Bootstrap().Form(MVC.Admin.News.Edit()).Begin())
 {
     @Html.AntiForgeryToken()
-    <h4>Dane</h4>
-    @form.HiddenFor(x => x.Id)
-    @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
-    @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
-    @form.InputFor(x => x.UserName).SetControlLabel("Login")
-    @form.InputFor(x => x.Email).SetControlLabel("Email")
-    @form.InputFor(x => x.PhoneNumber).SetControlLabel("Numer Telefonu")
-    @Html.LabelFor(x => x.LockoutEnabled)
-    @Html.CheckBoxFor(x => x.LockoutEnabled)
+    @Html.HiddenFor(x => x.Id)
     <div class="form-group">
-        @Html.LabelFor(x => x.LockoutEndDateUtc)
-        @Html.DatePickerFor(x => x.LockoutEndDateUtc)
+        @Html.LabelFor(x => x.CategoryId)
+        @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Categories, "Value", "Text"))
     </div>
-    <hr />
-    <h4>Role</h4>
+    @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
     <div class="form-group">
-        @Html.DropDownListFor(x => x.RoleId, new SelectList(Model.Roles, "Value", "Text", Model.Roles != null ? Model.RoleId : null), "Nie przypisana")
+        @Html.LabelFor(x => x.PublishDate)
+        @Html.DatePickerFor(x => x.PublishDate)
     </div>
+    @Html.SummerNote(x => x.Content)
+
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }
-<script>
-    $(document).ready(function () {
-        var flag = $("#LockoutEnabled")
-        var datepicker = $('#LockoutEndDateUtc');
 
-        if (flag[0].checked) {
-            datepicker.parent().show();
-            datepicker.removeAttr("disabled");
-        }
-        else {
-            datepicker.parent().hide();
-            datepicker.attr("disabled", "true");
-        }
-        flag.change(function () {
-            if (flag[0].checked) {
-                datepicker.parent().show();
-                datepicker.removeAttr("disabled");
-            }
-            else {
-                datepicker.parent().hide();
-                datepicker.attr("disabled", "true");
-            }
-        });
-    });
-</script>

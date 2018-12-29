@@ -171,6 +171,15 @@ namespace Links
     
         public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class summernote {
+            public const string UrlPath = "~/Scripts/summernote";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string summernote_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-init.min.js") ? Url("summernote-init.min.js") : Url("summernote-init.js");
+            public static readonly string summernote_lite_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-lite.min.js") ? Url("summernote-lite.min.js") : Url("summernote-lite.js");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class tooltip {
             public const string UrlPath = "~/Scripts/tooltip";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
@@ -241,6 +250,14 @@ namespace Links
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class summernote {
+            public const string UrlPath = "~/Content/summernote";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string summernote_lite_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-lite.min.css") ? Url("summernote-lite.min.css") : Url("summernote-lite.css");
+        }
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class tooltip {
             public const string UrlPath = "~/Content/tooltip";
@@ -321,6 +338,14 @@ namespace Links
                     public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js"); 
                 }
             }
+            public static partial class summernote 
+            {
+                public static class Assets
+                {
+                    public static readonly string summernote_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-init.js"); 
+                    public static readonly string summernote_lite_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-lite.js"); 
+                }
+            }
             public static partial class tooltip 
             {
                 public static class Assets
@@ -381,6 +406,13 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
+                }
+            }
+            public static partial class summernote 
+            {
+                public static class Assets
+                {
+                    public static readonly string summernote_lite_css = T4MVCHelpers.ProcessAssetPath("~/Content/summernote/summernote-lite.css");
                 }
             }
             public static partial class tooltip 

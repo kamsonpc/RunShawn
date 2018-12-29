@@ -80,7 +80,9 @@
     <Compile Include="Features\News\Categories\CategoriesService.cs" />
     <Compile Include="Features\News\Categories\Model\Category.cs" />
     <Compile Include="Features\News\Categories\Model\CategoryAndSubcategory.cs" />
-    <Compile Include="Features\News\News\Model\News.cs" />
+    <Compile Include="Features\News\News\Model\Article.cs" />
+    <Compile Include="Features\News\News\ArticleService.cs" />
+    <Compile Include="Features\News\News\Model\ArticleListView.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
     <Compile Include="Features\Roles\RolesService.cs" />

@@ -4,7 +4,7 @@
 }
 
 @using RunShawn.Web.Areas.Admin.Models.News
-@model NewsViewModel
+@model ArticleViewModel
 
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
@@ -19,15 +19,18 @@
 @using (var form = Html.Bootstrap().Form(MVC.Admin.News.Create()).Begin())
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(x => x.Id)
     <div class="form-group">
         @Html.LabelFor(x => x.CategoryId)
         @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Categories, "Value", "Text"))
     </div>
     @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
     <div class="form-group">
-        @Html.LabelFor(x => x.DatePublication)
-        @Html.DatePickerFor(x => x.DatePublication)
+        @Html.LabelFor(x => x.PublishDate)
+        @Html.DatePickerFor(x => x.PublishDate)
     </div>
+    @Html.SummerNote(x => x.Content)
+
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }
+

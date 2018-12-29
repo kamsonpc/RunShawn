@@ -2,16 +2,16 @@
     ViewBag.Title = "List";
 }
 
-@using RunShawn.Web.Areas.Admin.Models.Users
-@model IEnumerable<UserListViewModel>
+@using RunShawn.Web.Areas.Admin.Models.News
+@model IEnumerable<ArticleListViewModel>
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
-    <text>Użytkownicy</text>
+    <text>Wpisy</text>
 }
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
-    @group.LinkButton("Dodaj", MVC.Admin.Users.Create()).SetIcon(Icon.Plus).SetState(ButtonState.Success)
+    @group.LinkButton("Dodaj", MVC.Admin.News.Create()).SetIcon(Icon.Plus).SetState(ButtonState.Success)
 }
 
 @(
@@ -19,27 +19,35 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.UserName).Titled("Login");
-        columns.Add(model => model.FirstName).Titled("Imię");
-        columns.Add(model => model.LastName).Titled("Nazwisko");
-        columns.Add(model => model.Email).Titled("Email");
-        columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
-    (
-        Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Users.Edit(model.Id))
-        .SetIcon(Icon.Edit)
-        .SetState(ButtonState.Warning)
-        .SetSize(ButtonSize.Sm)
-        .ToHtmlString() 
-        +
-        Html.Bootstrap().LinkButton("Usuń", MVC.Admin.Users.Delete(model.Id))
-        .AddCss("btn-remove")
-        .SetIcon(Icon.Remove)
-        .SetState(ButtonState.Danger)
-        .SetSize(ButtonSize.Sm)
-        .ToHtmlString()
-    )
+        columns.Add(model => model.Title).Titled("Tytuł");
+        columns.Add(model => model.CategoryTitle).Titled("Kategoria");
+        columns.Add(model => model.CreatedByName).Titled("Autor");
+        columns.Add(model => model.PublishDate).Titled("Data Publikacji");
 
-    );
+        columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
+ (
+     Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
+     .SetIcon(Icon.Edit)
+     .SetState(ButtonState.Warning)
+     .SetSize(ButtonSize.Sm)
+     .ToHtmlString()
+     +
+     Html.Bootstrap().LinkButton("Podgląd", MVC.Admin.News.Delete(model.Id))
+     .AddCss("btn-details")
+     .SetIcon(Icon.Paperclip)
+     .SetState(ButtonState.Info)
+     .SetSize(ButtonSize.Sm)
+     .ToHtmlString()
+     +
+     Html.Bootstrap().LinkButton("Usuń", MVC.Admin.News.Delete(model.Id))
+     .AddCss("btn-remove")
+     .SetIcon(Icon.Remove)
+     .SetState(ButtonState.Danger)
+     .SetSize(ButtonSize.Sm)
+     .ToHtmlString()
+ )
+
+ );
     })
     .Empty("Brak Wyników")
         .Filterable()

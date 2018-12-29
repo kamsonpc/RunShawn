@@ -22,13 +22,18 @@ namespace RunShawn.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/tooltip/jquery.darktooltip.js",
-                      "~/Scripts/tooltip/tooltipCustom.js"
+                      "~/Scripts/tooltip/tooltipCustom.js",
+                      "~/Scripts/summernote/summernote-lite.js",
+                      "~/Scripts/summernote/summernote-init.js"
+
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/tooltip/darktooltip.css",
-                      "~/Content/site.css"));
+                      "~/Content/summernote/summernote-lite.css",
+                      "~/Content/site.css"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/dashboard").Include(
                       "~/Content/dashboard/dashboard.css"));
