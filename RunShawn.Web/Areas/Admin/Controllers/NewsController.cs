@@ -64,9 +64,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 var article = model.MapTo<Article>();
 
-                article.CreatedBy = User.Identity.GetUserId();
-                article.CreatedDate = DateTime.Now;
-
                 ArticlesService.Create(article, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert($"Dodano Artykuł {article.Title}", AlertState.Success);

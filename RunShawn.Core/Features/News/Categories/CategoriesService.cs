@@ -1,5 +1,7 @@
 ﻿using RunShawn.Core.Features.News.Categories.Model;
 using Simple.Data;
+using Simple.Data.RawSql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,23 +35,32 @@ namespace RunShawn.Core.Features.News.Categories
         }
         #endregion
 
-        #region GetSubTree()
-        private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items)
+        #region Create()
+        public static Category Create(Category category, string userId)
         {
-            var subCats = allCats.Where(c => c.ParentId == parent.Id).ToList();
-            foreach (var cat in subCats)
-            {
-                var deeplevel = CountDepth(cat, parent);
-                var depthstring = GenerateDepthString(deeplevel);
+            category.CreatedBy = userId;
+            category.CreatedDate = DateTime.Now;
 
-                items.Add(new Category
-                {
-                    Title = depthstring + cat.Title,
-                    Id = cat.Id
-                });
+            Database.Open().News.Categories.Insert(category);
+            return category;
+        }
+        #endregion
 
-                GetSubTree(allCats, cat, items);
-            }
+        #region Delete()
+        public static void Delete(long id)
+        {
+            Database db = Database.Open();
+            var sql = @"
+                       UPDATE
+                           News.Categories
+                       SET 
+                           ParentId = NULL 
+                       WHERE 
+                            ParentId = @id";
+
+            db.Execute(sql, id);
+
+            Database.Open().News.Categories.DeleteById(id);
         }
         #endregion
 
@@ -64,7 +75,6 @@ namespace RunShawn.Core.Features.News.Categories
                     depth++;
                 else
                     break;
-
             }
 
             if (depth == 0 && category.ParentId != null)
@@ -82,6 +92,26 @@ namespace RunShawn.Core.Features.News.Categories
                 sb.Append(specialChar);
             }
             return sb.ToString();
+        }
+        #endregion
+
+        #region GetSubTree()
+        private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items)
+        {
+            var subCats = allCats.Where(c => c.ParentId == parent.Id).ToList();
+            foreach (var cat in subCats)
+            {
+                var deeplevel = CountDepth(cat, parent);
+                var depthstring = GenerateDepthString(deeplevel);
+
+                items.Add(new Category
+                {
+                    Title = depthstring + cat.Title,
+                    Id = cat.Id
+                });
+
+                GetSubTree(allCats, cat, items);
+            }
         }
         #endregion
     }

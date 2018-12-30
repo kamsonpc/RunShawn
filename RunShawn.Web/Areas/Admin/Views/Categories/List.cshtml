@@ -2,8 +2,7 @@
     ViewBag.Title = "List";
 }
 
-@using RunShawn.Web.Areas.Admin.Models.News
-@model IEnumerable<CategoryListViewModel>
+
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
@@ -13,37 +12,10 @@
 {
     @group.Button("Dodaj").SetId("btn-add").AddAttribute("data-toggle", "modal").AddAttribute("data-target", "#categories-modal").SetIcon(Icon.Plus).SetState(ButtonState.Success)
 }
+<div id="categories-list">
+    @Html.Action(MVC.Admin.Categories.GenerateList())
+</div>
 
-@(
-    Html
-    .Grid(Model)
-    .Build(columns =>
-    {
-        columns.Add(model => model.Title).Titled("Tytuł");
-
-        columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
- (
-     Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
-     .SetIcon(Icon.Edit)
-     .SetState(ButtonState.Warning)
-     .SetSize(ButtonSize.Sm)
-     .ToHtmlString()
-     +
-     Html.Bootstrap().LinkButton("Usuń", MVC.Admin.News.Delete(model.Id))
-     .AddCss("btn-remove")
-     .SetIcon(Icon.Remove)
-     .SetState(ButtonState.Danger)
-     .SetSize(ButtonSize.Sm)
-     .ToHtmlString()
- )
-
- );
-    })
-    .Empty("Brak Wyników")
-        .Filterable()
-        .Sortable()
-        .Pageable()
-)
 <div class="modal" id="categories-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -65,6 +37,8 @@
 
 
 <script>
+
+
     $("#categories-modal").on("submit", "#categories-form", function (e)
     {
         e.preventDefault(); 
@@ -75,7 +49,15 @@
             method: form.attr("method"),  
             data: form.serialize(),
             success: function (partialResult) {
-                $("#categories-form").html(partialResult);
+                $("#categories-list").html(partialResult);
+                $.ajax({
+                    url: "@Url.Action(MVC.Admin.Categories.Create())",
+                    method: "get",
+                    success: function (partialForm)
+                    {
+                        $("#form-container").html(partialForm);
+                    }
+                });
             }
         });
     });

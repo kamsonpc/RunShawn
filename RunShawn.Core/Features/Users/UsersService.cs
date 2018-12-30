@@ -50,6 +50,7 @@ namespace RunShawn.Core.Features.Users
                     lockoutEnabled = model.LockoutEnabled,
                     lockoutEndDateUtc = model.LockoutEndDateUtc
                 });
+
             return model;
         }
         #endregion

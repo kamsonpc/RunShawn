@@ -248,6 +248,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Attributes\AjaxOnlyAttribute.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Attributes\AuthorizeCustom.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
@@ -336,6 +337,7 @@
     <Content Include="Content\summernote\font\summernote.woff" />
     <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\_List.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

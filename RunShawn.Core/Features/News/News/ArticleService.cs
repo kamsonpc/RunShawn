@@ -1,5 +1,6 @@
 ﻿using RunShawn.Core.Features.News.News.Model;
 using Simple.Data;
+using Simple.Data.RawSql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,18 @@ namespace RunShawn.Core.Features.News.News
 {
     public class ArticlesService
     {
-
         #region GetById()
         public static Article GetById(long id)
         {
             return (Article)Database.Open().News.News.FindById(id);
 
+        }
+        #endregion
+
+        #region GetByCategory()
+        public static Article GetByCategory(long id)
+        {
+            return (Article)Database.Open().News.News.FindByCategoryId(id);
         }
         #endregion
 
@@ -53,6 +60,26 @@ namespace RunShawn.Core.Features.News.News
             db.News.News.UpdateById(article);
 
             return article;
+        }
+        #endregion
+
+        #region MoveArticles()
+        public static void Update(long currentCategoryId, long newCategoryId)
+        {
+            Database db = Database.Open();
+            var sql = @"
+                       UPDATE
+                           News.News
+                       SET 
+                           CategoryId = @NewCategoryId 
+                       WHERE 
+                            CategoryId = @CurrentCategoryId";
+
+            db.Execute(sql, new
+            {
+                CurrentCategoryId = currentCategoryId,
+                NewCategoryId = newCategoryId
+            });
         }
         #endregion
 

@@ -77,6 +77,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public readonly string Index = "Index";
             public readonly string List = "List";
+            public readonly string GenerateList = "GenerateList";
             public readonly string Create = "Create";
         }
 
@@ -85,10 +86,19 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public const string Index = "Index";
             public const string List = "List";
+            public const string GenerateList = "GenerateList";
             public const string Create = "Create";
         }
 
 
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Create
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -100,9 +110,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _Create = "_Create";
+                public readonly string _List = "_List";
                 public readonly string List = "List";
             }
             public readonly string _Create = "~/Areas/Admin/Views/Categories/_Create.cshtml";
+            public readonly string _List = "~/Areas/Admin/Views/Categories/_List.cshtml";
             public readonly string List = "~/Areas/Admin/Views/Categories/List.cshtml";
         }
     }
@@ -135,6 +147,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         [NonAction]
+        partial void GenerateListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GenerateList()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GenerateList);
+            GenerateListOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
@@ -142,6 +165,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             CreateOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.News.CategoryViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Create(RunShawn.Web.Areas.Admin.Models.News.CategoryViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CreateOverride(callInfo, model);
             return callInfo;
         }
 
