@@ -29,8 +29,8 @@
         @Html.LabelFor(x => x.PublishDate)
         @Html.DatePickerFor(x => x.PublishDate)
     </div>
-    @Html.SummerNote(x => x.Content)
-
+    <div class="form-group">
+        @Html.SummerNote(x => x.Content)
+    </div>
     @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }
-

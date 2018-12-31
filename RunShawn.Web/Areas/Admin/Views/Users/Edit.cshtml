@@ -21,10 +21,8 @@
     @Html.AntiForgeryToken()
     <h3>Dane</h3>
     @form.HiddenFor(x => x.Id)
-    <div class="form-group-twice">
-        @form.InputFor(x => x.FirstName).SetControlLabel("Imię")
-        @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko")
-    </div>
+    @form.InputFor(x => x.FirstName).SetControlLabel("Imię").SetMd(6);
+    @form.InputFor(x => x.LastName).SetControlLabel("Nazwisko").SetMd(6);
     @form.InputFor(x => x.UserName).SetControlLabel("Login")
     @form.InputFor(x => x.Email).SetControlLabel("Email")
     @form.InputFor(x => x.PhoneNumber).SetControlLabel("Numer Telefonu")
