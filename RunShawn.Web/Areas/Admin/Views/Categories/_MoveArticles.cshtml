@@ -1,0 +1,33 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using RunShawn.Web.Areas.Admin.Models.News
+@model   ArticlesMoveViewModel
+
+<p>
+    Do kategorii są przypisane artykuły wybierz dla nich nową kategorię
+</p>
+
+@using (var form = Html.Bootstrap().Form(MVC.Admin.Categories.ChangeArticlesCategory()).SetFormMethod(FormMethod.Post).SetId("categories-move-form").Begin())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.CurrentCategoryId)
+    <div class="form-group">
+        <div>
+        @Html.LabelFor(x => x.NewCategoryId)
+        </div>
+
+        <div>
+            @Html.DropDownListFor(x => x.NewCategoryId, new SelectList(Model.Categories, "Value", "Text"))
+        </div>
+    </div>
+
+    @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

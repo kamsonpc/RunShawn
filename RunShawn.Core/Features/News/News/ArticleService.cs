@@ -18,9 +18,10 @@ namespace RunShawn.Core.Features.News.News
         #endregion
 
         #region GetByCategory()
-        public static Article GetByCategory(long id)
+        public static List<Article> GetByCategory(long id)
         {
-            return (Article)Database.Open().News.News.FindByCategoryId(id);
+            List<Article> articles = Database.Open().News.News.FindByCategoryId(id);
+            return articles;
         }
         #endregion
 
@@ -64,7 +65,7 @@ namespace RunShawn.Core.Features.News.News
         #endregion
 
         #region MoveArticles()
-        public static void Update(long currentCategoryId, long newCategoryId)
+        public static void Move(long currentCategoryId, long newCategoryId)
         {
             Database db = Database.Open();
             var sql = @"

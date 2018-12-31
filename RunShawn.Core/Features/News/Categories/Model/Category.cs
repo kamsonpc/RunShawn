@@ -14,4 +14,10 @@ namespace RunShawn.Core.Features.News.Categories.Model
         public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
     }
+
+    public enum CategoryDeleteErrors
+    {
+        HasArticles = 20,
+        NoError = 10
+    }
 }

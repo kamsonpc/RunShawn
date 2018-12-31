@@ -11,7 +11,7 @@ namespace RunShawn.Core.Features.News.Categories
     public class CategoriesService
     {
         #region GetCategoriesAndSubcategories()
-        public static List<Category> GetCategoriesAndSubcategories()
+        public static List<Category> GetCategoriesAndSubcategories(long? exceptId = null)
         {
             var db = Database.Open();
 
@@ -29,6 +29,11 @@ namespace RunShawn.Core.Features.News.Categories
                     Title = cat.Title
                 });
                 GetSubTree(allCategories, cat, categoriesAndSubcategories);
+            }
+
+            if (exceptId.HasValue)
+            {
+                categoriesAndSubcategories = categoriesAndSubcategories.Where(x => x.Id != exceptId).ToList();
             }
 
             return categoriesAndSubcategories;
@@ -56,9 +61,9 @@ namespace RunShawn.Core.Features.News.Categories
                        SET 
                            ParentId = NULL 
                        WHERE 
-                            ParentId = @id";
+                            ParentId = @Id";
 
-            db.Execute(sql, id);
+            db.Execute(sql, new { Id = id });
 
             Database.Open().News.Categories.DeleteById(id);
         }

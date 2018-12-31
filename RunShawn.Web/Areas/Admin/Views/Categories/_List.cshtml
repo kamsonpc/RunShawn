@@ -1,33 +1,35 @@
 ﻿
 @using RunShawn.Web.Areas.Admin.Models.News
+
 @model IEnumerable<CategoryListViewModel>
 @(
-            Html
-            .Grid(Model)
-            .Build(columns =>
-            {
-                columns.Add(model => model.Title).Titled("Tytuł");
+                Html
+                .Grid(Model)
+                .Build(columns =>
+                {
+                    columns.Add(model => model.Title).Titled("Tytuł");
 
-                columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
-         (
-             Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
-             .SetIcon(Icon.Edit)
-             .SetState(ButtonState.Warning)
-             .SetSize(ButtonSize.Sm)
-             .ToHtmlString()
-             +
-             Html.Bootstrap().LinkButton("Usuń", MVC.Admin.News.Delete(model.Id))
-             .AddCss("btn-remove")
-             .SetIcon(Icon.Remove)
-             .SetState(ButtonState.Danger)
-             .SetSize(ButtonSize.Sm)
-             .ToHtmlString()
-         )
+                    columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
+             (
+                 Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
+                 .SetIcon(Icon.Edit)
+                 .SetState(ButtonState.Warning)
+                 .SetSize(ButtonSize.Sm)
+                 .ToHtmlString()
+                 +
+                 Html.Bootstrap().Button("Usuń")
+                 .AddCss("btn-remove")
+                 .SetValue(model.Id)
+                 .SetIcon(Icon.Remove)
+                 .SetState(ButtonState.Danger)
+                 .SetSize(ButtonSize.Sm)
+                 .ToHtmlString()
+             )
 
-         );
-            })
-            .Empty("Brak Wyników")
-                .Filterable()
-                .Sortable()
-                .Pageable()
+             );
+                })
+                .Empty("Brak Wyników")
+                    .Filterable()
+                    .Sortable()
+                    .Pageable()
 )

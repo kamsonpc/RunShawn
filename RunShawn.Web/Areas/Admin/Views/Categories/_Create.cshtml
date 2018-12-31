@@ -11,8 +11,12 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
-        @Html.LabelFor(x => x.ParentId)
-        @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Value", "Text"), "Kategoria Nadrzędna")
+        <div>
+            @Html.LabelFor(x => x.ParentId)
+        </div>
+        <div>
+            @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Value", "Text"), "Brak")
+        </div>
     </div>
     @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
 

@@ -59,6 +59,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult Delete()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Delete);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ChangeArticlesCategory()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangeArticlesCategory);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CategoriesController Actions { get { return MVC.Admin.Categories; } }
@@ -79,6 +91,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string List = "List";
             public readonly string GenerateList = "GenerateList";
             public readonly string Create = "Create";
+            public readonly string Delete = "Delete";
+            public readonly string ChangeArticlesCategory = "ChangeArticlesCategory";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -88,6 +102,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string List = "List";
             public const string GenerateList = "GenerateList";
             public const string Create = "Create";
+            public const string Delete = "Delete";
+            public const string ChangeArticlesCategory = "ChangeArticlesCategory";
         }
 
 
@@ -97,6 +113,23 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_ChangeArticlesCategory s_params_ChangeArticlesCategory = new ActionParamsClass_ChangeArticlesCategory();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ChangeArticlesCategory ChangeArticlesCategoryParams { get { return s_params_ChangeArticlesCategory; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ChangeArticlesCategory
+        {
+            public readonly string categoryId = "categoryId";
             public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
@@ -111,10 +144,12 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 public readonly string _Create = "_Create";
                 public readonly string _List = "_List";
+                public readonly string _MoveArticles = "_MoveArticles";
                 public readonly string List = "List";
             }
             public readonly string _Create = "~/Areas/Admin/Views/Categories/_Create.cshtml";
             public readonly string _List = "~/Areas/Admin/Views/Categories/_List.cshtml";
+            public readonly string _MoveArticles = "~/Areas/Admin/Views/Categories/_MoveArticles.cshtml";
             public readonly string List = "~/Areas/Admin/Views/Categories/List.cshtml";
         }
     }
@@ -177,6 +212,42 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             CreateOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult Delete(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ChangeArticlesCategoryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long categoryId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ChangeArticlesCategory(long categoryId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangeArticlesCategory);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "categoryId", categoryId);
+            ChangeArticlesCategoryOverride(callInfo, categoryId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ChangeArticlesCategoryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.News.ArticlesMoveViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ChangeArticlesCategory(RunShawn.Web.Areas.Admin.Models.News.ArticlesMoveViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangeArticlesCategory);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            ChangeArticlesCategoryOverride(callInfo, model);
             return callInfo;
         }
 

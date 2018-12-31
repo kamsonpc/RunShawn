@@ -4,12 +4,14 @@ using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Models.News
 {
-    public class CategoryViewModel
+    public class ArticlesMoveViewModel
     {
-        public string Title { get; set; }
+        [Required]
+        public long CurrentCategoryId { get; set; }
 
-        [Display(Name = "Kategoria Nadrzędna")]
-        public long? ParentId { get; set; }
+        [Display(Name = "Nowa Kategoria")]
+        [Required]
+        public long NewCategoryId { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
     }

@@ -242,6 +242,7 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\News\ArticlesMoveViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
@@ -338,6 +339,7 @@
     <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\_Create.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\_MoveArticles.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

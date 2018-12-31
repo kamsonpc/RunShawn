@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.Categories.Model;
+using RunShawn.Core.Features.News.News;
 using RunShawn.Web.Areas.Admin.Models.News;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
@@ -42,7 +43,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public virtual ActionResult Create()
         {
             var categories = CategoriesService.GetCategoriesAndSubcategories()
-                                              .MapTo<List<CategoryListViewModel>>()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -92,8 +92,59 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [AjaxOnly]
         public virtual JsonResult Delete(long id)
         {
+            var articles = ArticlesService.GetByCategory(id);
+            if (articles != null)
+            {
+                return Json(new
+                {
+                    status = CategoryDeleteErrors.HasArticles
+                }, JsonRequestBehavior.AllowGet);
+            }
+
             CategoriesService.Delete(id);
-            return Json(true);
+
+            return Json(new
+            {
+                status = CategoryDeleteErrors.NoError
+            }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region ChangeArticlesCategory()
+        [HttpGet]
+        [AjaxOnly]
+        public virtual ActionResult ChangeArticlesCategory(long categoryId)
+        {
+            var categories = CategoriesService.GetCategoriesAndSubcategories(categoryId)
+                                              .Select(x => new SelectListItem
+                                              {
+                                                  Value = x.Id.ToString(),
+                                                  Text = x.Title
+                                              })
+                                              .ToList();
+
+            var model = new ArticlesMoveViewModel
+            {
+                CurrentCategoryId = categoryId,
+                Categories = categories
+            };
+
+            return PartialView(MVC.Admin.Categories.Views._MoveArticles, model);
+        }
+        #endregion
+
+        #region ChangeArticlesCategory()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ChangeArticlesCategory(ArticlesMoveViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ArticlesService.Move(model.CurrentCategoryId, model.NewCategoryId);
+                CategoriesService.Delete(model.CurrentCategoryId);
+            }
+
+            return RedirectToAction(MVC.Admin.Categories.GenerateList());
         }
         #endregion
     }
