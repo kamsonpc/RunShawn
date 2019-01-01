@@ -1,0 +1,20 @@
+.modal-header {
+  background: #3b4653;
+  padding: 15px 15px 15px 25px !important;
+}
+
+.modal-header .close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: #fff !important;
+}
+
+.modal-header .close:hover, .modal-header .close:focus {
+  color: #eee;
+}
+
+.modal-header .modal-title {
+  color: #fff;
+}
+/*# sourceMappingURL=modal.css.map */

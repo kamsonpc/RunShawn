@@ -33,7 +33,8 @@ namespace RunShawn.Web
                       "~/Content/site/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/dashboard").Include(
-                      "~/Content/dashboard/dashboard.css"));
+                      "~/Content/dashboard/dashboard.css",
+                      "~/Contant/modal-style/modal.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
                       "~/Content/login/login_form.css"));
