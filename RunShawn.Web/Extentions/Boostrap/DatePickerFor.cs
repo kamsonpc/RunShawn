@@ -47,9 +47,10 @@ namespace System.Web.Mvc.Html
             input.Attributes.Add("onkeypress", "format('##/##/####', this); function format(mascara, documento) { var i = documento.value.length; var saida = mascara.substring(0, 1); var texto = mascara.substring(i); if (texto.substring(0, 1) != saida) { documento.value += texto.substring(0, 1); } }");
 
             // Script to allow the user input only numbers. Will be loaded when DOM is ready.
-            var allowOnlyNumbersScript = new TagBuilder("script");
-
-            allowOnlyNumbersScript.InnerHtml = "$(document).ready(function() { onlyNumbers($('#" + metadata.PropertyName + "') ) }); function onlyNumbers(e) { e.keydown(function (e) { if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 || e.keyCode == 65 && e.ctrlKey === true || e.keyCode >= 35 && e.keyCode <= 39) { return } if ((e.shiftKey || e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) { e.preventDefault() } }) }";
+            var allowOnlyNumbersScript = new TagBuilder("script")
+            {
+                InnerHtml = "$(document).ready(function() { onlyNumbers($('#" + metadata.PropertyName + "') ) }); function onlyNumbers(e) { e.keydown(function (e) { if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 || e.keyCode == 65 && e.ctrlKey === true || e.keyCode >= 35 && e.keyCode <= 39) { return } if ((e.shiftKey || e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) { e.preventDefault() } }) }"
+            };
 
             // If the current Model's value is not null, set the input's value to correspond the call. If it is, set to the current date.
             if (metadata.Model != null)

@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using RunShawn.Web.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using RunShawn.Web.Models;
 
 namespace RunShawn.Web.Controllers
 {
@@ -55,7 +55,7 @@ namespace RunShawn.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return PartialView(MVC.Account.Views._Login, model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -64,7 +64,7 @@ namespace RunShawn.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction(MVC.Admin.Dashboard.Index());
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

@@ -25,7 +25,7 @@ namespace RunShawn.Web
                       "~/Scripts/tooltip/jquery.darktooltip.js",
                       "~/Scripts/summernote/summernote-lite.js",
                       "~/Scripts/summernote/summernote-init.js"));
-
+            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/tooltip/darktooltip.css",

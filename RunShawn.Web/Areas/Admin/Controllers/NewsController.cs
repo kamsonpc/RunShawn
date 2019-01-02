@@ -1,4 +1,8 @@
-﻿using FluentBootstrap;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.News;
@@ -8,10 +12,6 @@ using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
@@ -50,7 +50,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               .ToList();
             var model = new ArticleViewModel
             {
-                Categories = categories
+                Categories = categories,
+                PublishDate = DateTime.Now
             };
 
             return View(MVC.Admin.News.Views.Create, model);

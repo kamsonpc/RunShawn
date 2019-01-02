@@ -1,0 +1,2 @@
+﻿ALTER TABLE [News].[News] 
+ALTER COLUMN Content NVARCHAR(MAX) NULL

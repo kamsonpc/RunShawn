@@ -24,7 +24,10 @@
         @Html.LabelFor(x => x.CategoryId)
         @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Categories, "Value", "Text"))
     </div>
-    @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
+    <div class="form-group">
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title)
+    </div>
     <div class="form-group">
         @Html.LabelFor(x => x.PublishDate)
         @Html.DatePickerFor(x => x.PublishDate)
