@@ -4,7 +4,6 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -15,10 +14,12 @@
     @Styles.Render("~/Content/datepicker")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/js")
     <script>
+        
         $(document).ready(function () {
             $('.input-validation-error').siblings('.form-group').addClass('has-error');
-            $('.field-validation-error').addClass('text-danger');
+            $('.field-validation-error').addClass('text-danger');   
         });
     </script>
 </head>
@@ -101,7 +102,7 @@
             @RenderBody()
         </section>
     </main>
-    <footer class="main-footer">@DateTime.Now.Year © Wszelkie prawa zastrzeżone RunShawn.</footer>
+    <footer class="main-footer">RunShawn © @DateTime.Now.Year Wszelkie prawa zastrzeżone.</footer>
 </body>
 
 

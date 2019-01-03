@@ -1,3 +1,9 @@
+body {
+  background: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
 input {
   outline: 0;
   padding: 10px !important;
@@ -36,6 +42,8 @@ input {
   padding: 10px 35px 50px;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  border-radius: 3px;
 }
 
 .checkbox {
@@ -60,4 +68,4 @@ input {
           align-items: center;
   padding: 0;
 }
-/*# sourceMappingURL=login_form.css.map */
+/*# sourceMappingURL=login.css.map */

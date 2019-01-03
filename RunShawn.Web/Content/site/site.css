@@ -26,22 +26,24 @@
   background: #0c3999;
 }
 
-.form-group-twice {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.form-group.col-md-6 {
+  padding-left: 0;
 }
 
-.form-group-twice .form-group {
-  width: 50%;
-}
-
-.form-group-twice .form-group:first-child {
-  padding-right: 10px;
-}
-
-.form-group input, select {
+.form-group input, .form-group select {
   width: 100%;
   height: 37px;
+}
+
+.form-group input[type="checkbox"], .form-group select[type="checkbox"] {
+  width: auto;
+}
+
+.form-group input[type="submit"], .form-group select[type="submit"] {
+  height: auto;
+}
+
+input[type="checkbox"]:after, .checkbox input[type="checkbox"]:after, .checkbox-inline input[type="checkbox"]:after {
+  margin-top: 0;
 }
 /*# sourceMappingURL=site.css.map */

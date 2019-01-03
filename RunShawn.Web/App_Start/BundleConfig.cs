@@ -15,6 +15,9 @@ namespace RunShawn.Web
                         "~/Scripts/validate/jquery.validate*",
                         "~/Scripts/validate/bootstrap-validate.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                        "~/Scripts/nprogress/nprogress.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -27,6 +30,7 @@ namespace RunShawn.Web
                       "~/Scripts/summernote/summernote-init.js"));
             
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/nprogress/nprogress.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/tooltip/darktooltip.css",
                       "~/Content/summernote/summernote-lite.css",
@@ -37,7 +41,7 @@ namespace RunShawn.Web
                       "~/Contant/modal-style/modal.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
-                      "~/Content/login/login_form.css"));
+                      "~/Content/login/login.css"));
         }
     }
 }
