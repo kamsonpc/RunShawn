@@ -478,3 +478,26 @@
 
   return NProgress;
 });
+
+
+NProgress.configure({
+    easing: 'ease',
+    speed: 500,
+    trickle: true,
+    minimum: 0.4,
+    showSpinner: false
+});
+
+
+$(function () {
+
+    $(document).bind('ajaxSend', function (event, xhr, settings) {
+        NProgress.start();
+    });
+
+    $(document).bind('ajaxComplete', function (event, xhr, settings) {
+        NProgress.done();
+    });
+
+    NProgress.done(true);
+});

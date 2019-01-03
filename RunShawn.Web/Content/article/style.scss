@@ -1,0 +1,201 @@
+body{
+    color: #ffffff;
+    background: #303030;
+    margin: 0;
+    padding: 0;
+}
+
+.p0
+{
+    padding: 0;
+}
+
+h1{
+    margin: 0;
+}
+.container
+{
+    max-width: 1202px;
+    margin: 0 auto;
+    padding: 0;
+    background: #ffffff;
+    .row
+    {
+        margin: 0 20px;
+    }
+}
+
+.huge-box
+{
+    text-align: center;
+    padding: 20px 0;
+    margin: 10px 10px;
+    font-family: 'Maven Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .box-header
+    {
+        padding: 120px 0;
+        height: 400px;
+        .text
+        {
+            position: relative;
+            z-index: 10;
+            top: 25%;
+            width: 100%;
+        }
+    }
+    .box-footer
+    {
+        position: relative;
+        z-index: 10;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        .article-category
+        {
+            font-size: 18px;
+            padding: 10px 5px;
+            font-family: 'PT Sans', sans-serif;
+            font-weight: bold;
+            width: 100px;
+        }
+        .article-info
+        {
+            font-family: 'PT Sans', sans-serif;
+            text-align: right;
+            padding: 0 25px;
+            .break
+            {
+                padding: 0 20px;
+            }
+            .autor-name
+            {
+                color: #1a54e7;
+                text-decoration: underline;
+                &:hover
+                {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.medium-box
+{
+    text-align: center;
+    padding: 20px 10px;
+    font-family: 'Maven Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    .box-header
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 20px; 
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 253px;
+        .article-category
+        {
+            font-size: 18px;
+            padding: 10px 5px;
+            font-family: 'PT Sans', sans-serif;
+            font-weight: bold;
+            width: 100px;
+        }
+    }
+    .box-footer
+    {
+        display: flex;
+        justify-content: space-between;
+        .article-info
+        {
+            font-family: 'PT Sans', sans-serif;
+            text-align: left;
+            color: #000000;
+            font-size: 14px;
+            h1
+            {
+                font-size: 18px;
+                line-height: 1.7;
+            }
+            .data
+            {
+                color: #b0b0b0;
+            }
+            .break
+            {
+                padding: 0 10px;
+                color: #b0b0b0;
+            }
+            .autor-name
+            {
+                color: #1a54e7;
+                text-decoration: underline;
+                &:hover
+                {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+
+
+.nature
+{
+    .article-category
+    {
+        background: #58b600;
+        &:hover
+        {
+            background: #47a600;
+        }
+    }
+}
+
+.people
+{
+
+    .article-category
+    {
+        background: #1a54e7;
+        &:hover
+        {
+            background: #0943d6;
+        }
+    }
+}
+
+.tech 
+{   
+    .article-category
+    {
+        background: #000000;
+        &:hover
+        {
+            background: #000000;
+        }
+    }
+}
+
+.trips
+{   
+    .article-category
+    {
+        background: #d90445;
+        &:hover
+        {
+            background: #c80334;
+        }
+    }
+}

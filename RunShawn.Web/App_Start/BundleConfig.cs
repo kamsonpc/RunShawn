@@ -36,6 +36,9 @@ namespace RunShawn.Web
                       "~/Content/summernote/summernote-lite.css",
                       "~/Content/site/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/article").Include(
+                      "~/Content/article/style.css"));
+
             bundles.Add(new StyleBundle("~/Content/dashboard").Include(
                       "~/Content/dashboard/dashboard.css",
                       "~/Contant/modal-style/modal.css"));

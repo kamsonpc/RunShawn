@@ -297,6 +297,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\article\style.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -305,10 +306,21 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard\dashboard.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\article-images\article-background1.png" />
+    <Content Include="Content\images\article-images\article-background2.png" />
+    <Content Include="Content\images\article-images\article-background3.png" />
+    <Content Include="Content\images\article-images\article-background4.png" />
+    <Content Include="Content\images\article-images\article-background5.png" />
+    <Content Include="Content\images\article-images\article-background6.png" />
+    <Content Include="Content\images\article-images\article-background7.png" />
+    <Content Include="Content\images\article-images\article-background8.png" />
+    <Content Include="Content\images\article-images\article-background9.png" />
+    <Content Include="Content\images\background.png" />
     <Content Include="Content\images\user.png" />
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\modal\modal.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
+    <Content Include="Content\nprogress\nprogress.css" />
     <Content Include="Content\site\site.css" />
     <Content Include="Content\summernote\summernote-lite.css" />
     <Content Include="Content\tooltip\darktooltip.css" />
@@ -348,6 +360,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\article\style.css.map" />
+    <Content Include="Content\article\style.scss" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -358,6 +372,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\validate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\nprogress\nprogress.js" />
     <Content Include="Scripts\summernote\summernote-init.js" />
     <Content Include="Scripts\summernote\summernote-lite.js" />
     <Content Include="Scripts\validate\jquery.validate.js" />
