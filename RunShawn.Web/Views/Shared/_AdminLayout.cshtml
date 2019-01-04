@@ -58,7 +58,7 @@
                 <div class="logout">
                     @if (Request.IsAuthenticated)
                     {
-                        using (Html.BeginForm(MVC.Account.LogOff()))
+                        using (Html.BeginForm(MVC.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
                         {
                             @Html.AntiForgeryToken()
                             <button class="rs-btn-default rs-btn-blue">
