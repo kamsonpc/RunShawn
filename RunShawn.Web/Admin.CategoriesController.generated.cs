@@ -61,6 +61,12 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Edit()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.JsonResult Delete()
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Delete);
@@ -91,6 +97,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string List = "List";
             public readonly string GenerateList = "GenerateList";
             public readonly string Create = "Create";
+            public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string ChangeArticlesCategory = "ChangeArticlesCategory";
         }
@@ -102,6 +109,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string List = "List";
             public const string GenerateList = "GenerateList";
             public const string Create = "Create";
+            public const string Edit = "Edit";
             public const string Delete = "Delete";
             public const string ChangeArticlesCategory = "ChangeArticlesCategory";
         }
@@ -113,6 +121,15 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Edit
+        {
+            public readonly string id = "id";
             public readonly string model = "model";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
@@ -143,11 +160,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _Create = "_Create";
+                public readonly string _Edit = "_Edit";
                 public readonly string _List = "_List";
                 public readonly string _MoveArticles = "_MoveArticles";
                 public readonly string List = "List";
             }
             public readonly string _Create = "~/Areas/Admin/Views/Categories/_Create.cshtml";
+            public readonly string _Edit = "~/Areas/Admin/Views/Categories/_Edit.cshtml";
             public readonly string _List = "~/Areas/Admin/Views/Categories/_List.cshtml";
             public readonly string _MoveArticles = "~/Areas/Admin/Views/Categories/_MoveArticles.cshtml";
             public readonly string List = "~/Areas/Admin/Views/Categories/List.cshtml";
@@ -212,6 +231,30 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             CreateOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.News.CategoryViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(RunShawn.Web.Areas.Admin.Models.News.CategoryViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditOverride(callInfo, model);
             return callInfo;
         }
 

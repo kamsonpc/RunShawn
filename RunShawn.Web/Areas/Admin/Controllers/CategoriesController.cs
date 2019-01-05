@@ -88,6 +88,56 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
+
+        #region Edit()
+        [HttpGet]
+        public virtual ActionResult Edit(long id)
+        {
+            var categories = CategoriesService.GetCategoriesAndSubcategories()
+                                              .Select(x => new SelectListItem
+                                              {
+                                                  Value = x.Id.ToString(),
+                                                  Text = x.Title
+                                              })
+                                              .ToList();
+
+            var model = CategoriesService.GetById(id)
+                                         .MapTo<CategoryViewModel>();
+
+            model.Categories = categories;
+
+            return PartialView(MVC.Admin.Categories.Views._Edit, model);
+        }
+        #endregion
+
+        #region Edit()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Edit(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var category = model.MapTo<Category>();
+
+                CategoriesService.Update(category, User.Identity.GetUserId());
+
+                return RedirectToAction(MVC.Admin.Categories.GenerateList());
+            }
+
+            TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
+            var categories = CategoriesService.GetCategoriesAndSubcategories()
+                                              .Select(x => new SelectListItem
+                                              {
+                                                  Value = x.Id.ToString(),
+                                                  Text = x.Title
+                                              })
+                                              .ToList();
+            model.Categories = categories;
+
+            return PartialView(MVC.Admin.Categories.Views._Edit, model);
+        }
+        #endregion
+
         #region Delete()
         [AjaxOnly]
         public virtual JsonResult Delete(long id)

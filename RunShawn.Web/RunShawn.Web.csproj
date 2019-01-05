@@ -362,6 +362,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\article\style.css.map" />
     <Content Include="Content\article\style.scss" />
+    <Content Include="Areas\Admin\Views\Categories\_Edit.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

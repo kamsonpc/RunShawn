@@ -10,6 +10,14 @@ namespace RunShawn.Core.Features.News.Categories
 {
     public class CategoriesService
     {
+        #region GetById()
+        public static Category GetById(long id)
+        {
+            return (Category)Database.Open().News.Categories.FindById(id);
+
+        }
+        #endregion
+
         #region GetCategoriesAndSubcategories()
         public static List<Category> GetCategoriesAndSubcategories(long? exceptId = null)
         {
@@ -47,6 +55,21 @@ namespace RunShawn.Core.Features.News.Categories
             category.CreatedDate = DateTime.Now;
 
             Database.Open().News.Categories.Insert(category);
+            return category;
+        }
+        #endregion
+
+        #region Update()
+        public static Category Update(Category category, string userId)
+        {
+            var entity = GetById(category.Id);
+
+            category.CreatedDate = entity.CreatedDate;
+            category.CreatedBy = entity.CreatedBy;
+            category.ModifiedBy = userId;
+            category.ModifiedDate = DateTime.Now;
+
+            Database.Open().News.Categories.UpdateById(category);
             return category;
         }
         #endregion

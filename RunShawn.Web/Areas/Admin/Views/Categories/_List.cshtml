@@ -11,8 +11,10 @@
 
                     columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
              (
-                 Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
+                 Html.Bootstrap().Button("Edytuj")
                  .SetIcon(Icon.Edit)
+                 .SetValue(model.Id)
+                 .AddCss("btn-edit")
                  .SetState(ButtonState.Warning)
                  .SetSize(ButtonSize.Sm)
                  .ToHtmlString()

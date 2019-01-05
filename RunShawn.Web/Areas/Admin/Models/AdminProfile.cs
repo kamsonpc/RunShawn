@@ -36,6 +36,8 @@ namespace RunShawn.Web.Areas.Admin.Models
 
             CreateMap<Category, CategoryListViewModel>();
             CreateMap<CategoryViewModel, Category>();
+            CreateMap<Category, CategoryViewModel>();
+
 
             CreateMap<ArticleViewModel, Article>();
             CreateMap<Article, ArticleViewModel>();

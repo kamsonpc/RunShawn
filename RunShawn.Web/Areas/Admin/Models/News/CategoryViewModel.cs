@@ -6,6 +6,7 @@ namespace RunShawn.Web.Areas.Admin.Models.News
 {
     public class CategoryViewModel
     {
+        public long Id { get; set; }
         public string Title { get; set; }
 
         [Display(Name = "Kategoria Nadrzędna")]

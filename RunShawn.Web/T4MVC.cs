@@ -178,6 +178,14 @@ namespace Links
             public static readonly string mvc_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.js") ? Url("mvc-grid.min.js") : Url("mvc-grid.js");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class nprogress {
+            public const string UrlPath = "~/Scripts/nprogress";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string nprogress_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.js") ? Url("nprogress.min.js") : Url("nprogress.js");
+        }
+    
         public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class summernote {
@@ -217,6 +225,16 @@ namespace Links
         public const string UrlPath = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class article {
+            public const string UrlPath = "~/Content/article";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/style.min.css") ? Url("style.min.css") : Url("style.css");
+            public static readonly string style_css_map = Url("style.css.map");
+            public static readonly string style_scss = Url("style.scss");
+        }
+    
         public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
         public static readonly string bootstrap_datepicker3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker3.min.css") ? Url("bootstrap-datepicker3.min.css") : Url("bootstrap-datepicker3.css");
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
@@ -238,10 +256,39 @@ namespace Links
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class fonts {
+            public const string UrlPath = "~/Content/fonts";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string glyphicons_halflings_regular_eot = Url("glyphicons-halflings-regular.eot");
+            public static readonly string glyphicons_halflings_regular_svg = Url("glyphicons-halflings-regular.svg");
+            public static readonly string glyphicons_halflings_regular_ttf = Url("glyphicons-halflings-regular.ttf");
+            public static readonly string glyphicons_halflings_regular_woff = Url("glyphicons-halflings-regular.woff");
+            public static readonly string glyphicons_halflings_regular_woff2 = Url("glyphicons-halflings-regular.woff2");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class images {
             public const string UrlPath = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class article_images {
+                public const string UrlPath = "~/Content/images/article-images";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string article_background1_png = Url("article-background1.png");
+                public static readonly string article_background2_png = Url("article-background2.png");
+                public static readonly string article_background3_png = Url("article-background3.png");
+                public static readonly string article_background4_png = Url("article-background4.png");
+                public static readonly string article_background5_png = Url("article-background5.png");
+                public static readonly string article_background6_png = Url("article-background6.png");
+                public static readonly string article_background7_png = Url("article-background7.png");
+                public static readonly string article_background8_png = Url("article-background8.png");
+                public static readonly string article_background9_png = Url("article-background9.png");
+            }
+        
+            public static readonly string background_png = Url("background.png");
             public static readonly string user_png = Url("user.png");
         }
     
@@ -253,6 +300,16 @@ namespace Links
             public static readonly string login_form_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/login_form.min.css") ? Url("login_form.min.css") : Url("login_form.css");
             public static readonly string login_form_css_map = Url("login_form.css.map");
             public static readonly string login_form_scss = Url("login_form.scss");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class modal {
+            public const string UrlPath = "~/Content/modal";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string modal_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modal.min.css") ? Url("modal.min.css") : Url("modal.css");
+            public static readonly string modal_css_map = Url("modal.css.map");
+            public static readonly string modal_scss = Url("modal.scss");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -269,6 +326,14 @@ namespace Links
             }
         
             public static readonly string mvc_grid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.css") ? Url("mvc-grid.min.css") : Url("mvc-grid.css");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class nprogress {
+            public const string UrlPath = "~/Content/nprogress";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string nprogress_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.css") ? Url("nprogress.min.css") : Url("nprogress.css");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -380,6 +445,13 @@ namespace Links
                     public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js"); 
                 }
             }
+            public static partial class nprogress 
+            {
+                public static class Assets
+                {
+                    public static readonly string nprogress_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress.js"); 
+                }
+            }
             public static partial class summernote 
             {
                 public static class Assets
@@ -424,6 +496,13 @@ namespace Links
         }
         public static partial class Content 
         {
+            public static partial class article 
+            {
+                public static class Assets
+                {
+                    public static readonly string style_css = T4MVCHelpers.ProcessAssetPath("~/Content/article/style.css");
+                }
+            }
             public static partial class dashboard 
             {
                 public static class Assets
@@ -431,8 +510,20 @@ namespace Links
                     public static readonly string dashboard_css = T4MVCHelpers.ProcessAssetPath("~/Content/dashboard/dashboard.css");
                 }
             }
+            public static partial class fonts 
+            {
+                public static class Assets
+                {
+                }
+            }
             public static partial class images 
             {
+                public static partial class article_images 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
                 public static class Assets
                 {
                 }
@@ -442,6 +533,13 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string login_form_css = T4MVCHelpers.ProcessAssetPath("~/Content/login/login_form.css");
+                }
+            }
+            public static partial class modal 
+            {
+                public static class Assets
+                {
+                    public static readonly string modal_css = T4MVCHelpers.ProcessAssetPath("~/Content/modal/modal.css");
                 }
             }
             public static partial class MvcGrid 
@@ -455,6 +553,13 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
+                }
+            }
+            public static partial class nprogress 
+            {
+                public static class Assets
+                {
+                    public static readonly string nprogress_css = T4MVCHelpers.ProcessAssetPath("~/Content/nprogress/nprogress.css");
                 }
             }
             public static partial class site 
