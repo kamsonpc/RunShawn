@@ -5,11 +5,6 @@ body{
     padding: 0;
 }
 
-.p0
-{
-    padding: 0;
-}
-
 h1{
     margin: 0;
 }
@@ -22,6 +17,10 @@ h1{
     .row
     {
         margin: 0 20px;
+        div
+        {
+            padding: 0;
+        }
     }
 }
 
