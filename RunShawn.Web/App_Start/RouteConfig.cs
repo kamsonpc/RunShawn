@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace RunShawn.Web
@@ -13,11 +9,12 @@ namespace RunShawn.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            AreaRegistration.RegisterAllAreas();
             routes.MapRoute(
-                name: "Default",
+                name: "Client",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "RunShawn.Web.Controllers" }
+                namespaces: new[] { "RunShawn.Web.Controllers", "RunShawn.Web.Areas.Default.Controllers" }
             );
         }
     }

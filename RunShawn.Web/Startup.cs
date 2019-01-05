@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using RunShawn.Web.Areas.Admin.Models;
+using RunShawn.Web.Areas.Default.Models;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Models;
 
@@ -22,7 +23,8 @@ namespace RunShawn.Web
 
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile<AdminProfile>();
+                cfg.AddProfile<AdminMapProfile>();
+                cfg.AddProfile<DefaultMapProfile>();
             });
         }
 

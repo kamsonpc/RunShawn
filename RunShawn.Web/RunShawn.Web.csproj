@@ -240,7 +240,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
-    <Compile Include="Areas\Admin\Models\AdminProfile.cs" />
+    <Compile Include="Areas\Admin\Models\AdminMapProfile.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticlesMoveViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
@@ -249,10 +249,20 @@
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Default\Models\DefaultMapProfile.cs" />
+    <Compile Include="Areas\Default\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Default\Models\News\ArticleListViewModel.cs" />
+    <Compile Include="Areas\Default\Models\News\ArticleViewModel.cs" />
     <Compile Include="Attributes\AjaxOnlyAttribute.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Attributes\AuthorizeCustom.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
+    <Compile Include="Default.NewsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Extentions\Controller\BaseController.cs" />
     <Compile Include="Extentions\Alert\Alert.cs" />
     <Compile Include="Extentions\Boostrap\DatePickerFor.cs" />
@@ -363,6 +373,9 @@
     <Content Include="Content\article\style.css.map" />
     <Content Include="Content\article\style.scss" />
     <Content Include="Areas\Admin\Views\Categories\_Edit.cshtml" />
+    <Content Include="Areas\Default\Views\web.config" />
+    <Content Include="Areas\Default\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Default\Views\News\List.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -495,6 +508,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Default\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

@@ -9,9 +9,9 @@ using RunShawn.Web.Models;
 
 namespace RunShawn.Web.Areas.Admin.Models
 {
-    public class AdminProfile : Profile
+    public class AdminMapProfile : Profile
     {
-        public AdminProfile()
+        public AdminMapProfile()
         {
             CreateMap<User, UserListViewModel>();
             CreateMap<User, UserViewModel>()

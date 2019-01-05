@@ -29,6 +29,8 @@ public static partial class MVC
 {
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
+    static readonly DefaultClass s_Default = new DefaultClass();
+    public static DefaultClass Default { get { return s_Default; } }
     public static RunShawn.Web.Controllers.AccountController Account = new RunShawn.Web.Controllers.T4MVC_AccountController();
     public static RunShawn.Web.Controllers.HomeController Home = new RunShawn.Web.Controllers.T4MVC_HomeController();
     public static RunShawn.Web.Controllers.ManageController Manage = new RunShawn.Web.Controllers.T4MVC_ManageController();
@@ -47,6 +49,13 @@ namespace T4MVC
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class DefaultClass
+    {
+        public readonly string Name = "Default";
+        public RunShawn.Web.Areas.Default.Controllers.NewsController News = new RunShawn.Web.Areas.Default.Controllers.T4MVC_NewsController();
+        public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
     }
 }
 
