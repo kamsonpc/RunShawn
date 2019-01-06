@@ -8,14 +8,13 @@
         {
             <div class="col-sm-4 p0">
                
+                                    <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                     <div class="huge-box trips" style="background-image: url('@item.FeaturedImage');">
                         <header class="box-header">
                             <section class="text">
                                 <h1></h1>
                                 <p>
-                                    <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                                         @item.Title
-                                     </a>
                                 </p>
                             </section>
                         </header>
@@ -28,7 +27,11 @@
                             </div>
                         </footer>
                     </div>
+                                     </a>
             </div>
         }
     </div>
     </div>
+<div class="pager">
+    @Html.Pager(Model.PageSize, Model.PageIndex, Model.PageCount)
+</div>
