@@ -1,159 +1,32 @@
 ﻿
+@using RunShawn.Web.Areas.Default.Models.News
+@using MvcPaging
+@model IPagedList<ArticleListViewModel>
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 p0">
-            <div class="huge-box trips" style="background-image: url('@Url.Content("~/Co")');">
-                <header class="box-header">
-                    <section class="text">
-                        <h1>Proin congue elit fringilla</h1>
-                        <p>
-                            sodales tellus interdum fermentum nulla. Aliquam vitae arcu condimentum, consectetur diam
-                            sed,
-                            ultrices urna.
-                        </p>
-                    </section>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-category">Trips</div>
-                    <div class="article-info">
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12 p0">
+                    <div class="huge-box trips" style="background-image: url('@item.FeaturedImage');">
+                        <header class="box-header">
+                            <section class="text">
+                                <h1></h1>
+                                <p>
+                                    @item.Title
+                                </p>
+                            </section>
+                        </header>
+                        <footer class="box-footer">
+                            <div class="article-category">@item.CategoryTitle</div>
+                            <div class="article-info">
+                                <span class="data">@item.PublishDate.ToLongDateString()</span>
+                                <span class="break">|</span>
+                                <span class="autor-name">@item.CreatedByName</span>
+                            </div>
+                        </footer>
                     </div>
-                </footer>
-            </div>
+                </div>
+            }
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-4 p0">
-            <div class="medium-box nature">
-
-                <header class="box-header" style="background-image: url('image/article-background2.png');">
-                    <div class="article-category">Nature</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <div class="col-sm-4 p0">
-            <div class="medium-box people">
-                <header class="box-header" style="background-image: url('image/article-background3.png');">
-                    <div class="article-category">People</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <div class="col-sm-4 p0">
-            <div class="medium-box tech">
-                <header class="box-header" style="background-image: url('image/article-background4.png');">
-                    <div class="article-category">Tech</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 p0">
-            <div class="medium-box nature">
-
-                <header class="box-header" style="background-image: url('image/article-background2.png');">
-                    <div class="article-category">Nature</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <div class="col-sm-4 p0">
-            <div class="medium-box people">
-
-                <header class="box-header" style="background-image: url('image/article-background3.png');">
-                    <div class="article-category">People</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <div class="col-sm-4 p0">
-            <div class="medium-box tech">
-
-                <header class="box-header" style="background-image: url('image/article-background4.png');">
-                    <div class="article-category">Tech</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 p0">
-            <div class="medium-box trips">
-
-                <header class="box-header" style="background-image: url('image/article-background6.png');">
-                    <div class="article-category">Trips</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Donec elementum dui semper, pretium dui quis, pretium nisl. Nunc quis ornare odio.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <div class="col-sm-6 p0">
-            <div class="medium-box tech">
-
-                <header class="box-header" style="background-image: url('image/article-background5.png');">
-                    <div class="article-category">Tech</div>
-                </header>
-                <footer class="box-footer">
-                    <div class="article-info">
-                        <h1>Maecenas quis lobortis nunc. Nullam sit amet augue vel odio congue vulputate a ut nisi.</h1>
-                        <span class="data">11 septemvber 2016</span>
-                        <span class="break">|</span>
-                        <span class="autor-name">John Doe</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-</div>

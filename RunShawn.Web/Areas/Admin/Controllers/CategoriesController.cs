@@ -40,6 +40,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         #region Create()
         [HttpGet]
+        [AjaxOnly]
         public virtual ActionResult Create()
         {
             var categories = CategoriesService.GetCategoriesAndSubcategories()
@@ -93,7 +94,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [HttpGet]
         public virtual ActionResult Edit(long id)
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            var categories = CategoriesService.GetCategoriesAndSubcategories(id)
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),

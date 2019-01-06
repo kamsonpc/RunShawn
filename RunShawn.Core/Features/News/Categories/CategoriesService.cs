@@ -4,7 +4,6 @@ using Simple.Data.RawSql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RunShawn.Core.Features.News.Categories
 {
@@ -31,12 +30,13 @@ namespace RunShawn.Core.Features.News.Categories
 
             foreach (var cat in parentCategories)
             {
+                string depthstring = string.Empty;
                 categoriesAndSubcategories.Add(new Category
                 {
                     Id = cat.Id,
                     Title = cat.Title
                 });
-                GetSubTree(allCategories, cat, categoriesAndSubcategories);
+                GetSubTree(allCategories, cat, categoriesAndSubcategories, depthstring);
             }
 
             if (exceptId.HasValue)
@@ -92,53 +92,20 @@ namespace RunShawn.Core.Features.News.Categories
         }
         #endregion
 
-        #region CountDepth()
-        private static int CountDepth(Category category, Category parent, char specialChar = '-')
-        {
-
-            int depth = 0;
-            for (int i = 0; i < parent.Title.Length; i++)
-            {
-                if (parent.Title[i] == specialChar)
-                    depth++;
-                else
-                    break;
-            }
-
-            if (depth == 0 && category.ParentId != null)
-                return 1;
-            return depth;
-        }
-        #endregion
-
-        #region GenerateDepthString()
-        private static string GenerateDepthString(int count, char specialChar = '-')
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < count; i++)
-            {
-                sb.Append(specialChar);
-            }
-            return sb.ToString();
-        }
-        #endregion
-
         #region GetSubTree()
-        private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items)
+        private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items, string depthstring)
         {
+            depthstring = $"-{depthstring}";
             var subCats = allCats.Where(c => c.ParentId == parent.Id).ToList();
             foreach (var cat in subCats)
             {
-                var deeplevel = CountDepth(cat, parent);
-                var depthstring = GenerateDepthString(deeplevel);
-
                 items.Add(new Category
                 {
-                    Title = depthstring + cat.Title,
+                    Title = $"{depthstring} {cat.Title}",
                     Id = cat.Id
                 });
 
-                GetSubTree(allCats, cat, items);
+                GetSubTree(allCats, cat, items, depthstring);
             }
         }
         #endregion

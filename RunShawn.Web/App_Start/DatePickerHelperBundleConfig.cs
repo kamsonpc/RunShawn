@@ -9,11 +9,13 @@ namespace RunShawn.Web.App_Start
         public static void RegisterBundles()
         {
             BundleTable.Bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
-            "~/Scripts/bootstrap-datepicker.js",
-            "~/Scripts/locales/bootstrap-datepicker.pl.js"));
+            "~/Scripts/datepicker/bootstrap-datepicker.js",
+            "~/Scripts/datepicker/locales/bootstrap-datepicker.pl.js",
+            "~/Scripts/datepicker/bootstrap-datepicker-init.js"
+            ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/Content/datepicker").Include(
-            "~/Content/bootstrap-datepicker.css"));
+            "~/Content/datepicker/bootstrap-datepicker.min.css"));
         }
     }
 }

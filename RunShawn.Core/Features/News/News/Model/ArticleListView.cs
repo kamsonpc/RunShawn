@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace RunShawn.Core.Features.News.News.Model
 {
@@ -8,6 +9,7 @@ namespace RunShawn.Core.Features.News.News.Model
         public string Title { get; set; }
         public long CategoryId { get; set; }
         public string CategoryTitle { get; set; }
+        public string Content { get; set; }
         public DateTime PublishDate { get; set; }
         public string CreatedByName { get; set; }
         public string CreatedBy { get; set; }
@@ -16,5 +18,15 @@ namespace RunShawn.Core.Features.News.News.Model
         public DateTime? ModifiedDate { get; set; }
         public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
+
+        #region FeaturedImage
+        public string FeaturedImage
+        {
+            get
+            {
+                return Regex.Match(this.Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1].Value;
+            }
+        }
+        #endregion
     }
 }

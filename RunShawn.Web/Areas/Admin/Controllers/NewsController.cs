@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using FluentBootstrap;
+﻿using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.News;
@@ -12,6 +8,10 @@ using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
@@ -97,6 +97,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                                   Text = x.Title
                                               })
                                               .ToList();
+
             var model = ArticlesService.GetById(id).MapTo<ArticleViewModel>();
             model.Categories = categories;
 

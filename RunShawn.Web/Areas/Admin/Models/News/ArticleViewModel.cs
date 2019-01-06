@@ -24,6 +24,7 @@ namespace RunShawn.Web.Areas.Admin.Models.News
         public int CategoryId { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Data Publikacji")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PublishDate { get; set; }
 

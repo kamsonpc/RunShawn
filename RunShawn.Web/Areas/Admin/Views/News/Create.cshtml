@@ -15,7 +15,6 @@
 {
     <text>Dodaj Wpis</text>
 }
-
 @using (var form = Html.Bootstrap().Form(MVC.Admin.News.Create()).Begin())
 {
     @Html.AntiForgeryToken()
@@ -30,7 +29,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.PublishDate)
-        @Html.DatePickerFor(x => x.PublishDate)
+        @Html.TextBoxFor(x => x.PublishDate, "{0:dd/MM/yyyy}" ,new { @class = "datepicker" })
     </div>
     <div class="form-group">
         @Html.SummerNote(x => x.Content)

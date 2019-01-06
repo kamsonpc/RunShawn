@@ -10,7 +10,7 @@
 }
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
-    @group.Button("Dodaj").SetId("btn-add").AddAttribute("data-toggle", "modal").AddAttribute("data-target", "#categories-modal").SetIcon(Icon.Plus).SetState(ButtonState.Success)
+    @group.Button("Dodaj").SetId("btn-add").SetIcon(Icon.Plus).SetState(ButtonState.Success)
 }
 <div id="categories-list">
     @Html.Action(MVC.Admin.Categories.GenerateList())
@@ -27,7 +27,6 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body" id="form-container">
-                    @Html.Action(MVC.Admin.Categories.Create())
                 </div>
             </div>
         </div>
@@ -112,6 +111,16 @@
         });
     });
 
+    $("#btn-add").on("click", function (e) {
+        $.ajax({
+            url: "@Url.Action(MVC.Admin.Categories.Create())",
+            method: "Get",
+            success: function (partialForm) {
+                $("#form-container").html(partialForm);
+                $('#categories-modal').modal('show');
+            }
+        });
+    });
 
     $("#categories-edit-modal").on("submit", "#categories-edit-form", function (e) {
 
