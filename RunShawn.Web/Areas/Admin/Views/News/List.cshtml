@@ -32,7 +32,7 @@
      .SetSize(ButtonSize.Sm)
      .ToHtmlString()
      +
-     Html.Bootstrap().LinkButton("Podgląd", MVC.Admin.News.List())
+     Html.Bootstrap().LinkButton("Podgląd", MVC.Default.News.Details(model.Id))
      .AddCss("btn-details")
      .SetIcon(Icon.Paperclip)
      .SetState(ButtonState.Info)

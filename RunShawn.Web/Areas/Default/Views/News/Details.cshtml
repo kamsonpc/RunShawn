@@ -1,0 +1,11 @@
+﻿
+@using RunShawn.Web.Areas.Default.Models.News
+@model ArticleViewModel
+
+<div class="container">
+<h2>@Model.Title</h2>
+<h3>@Model.CreatedByName - @Model.PublishDate</h3>
+<div class="content">
+    @Html.Raw(Model.Content)
+</div>
+</div>

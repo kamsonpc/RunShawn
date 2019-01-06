@@ -1,19 +1,21 @@
 ﻿
 @using RunShawn.Web.Areas.Default.Models.News
-@using MvcPaging
 @model IPagedList<ArticleListViewModel>
 
 <div class="container">
     <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-12 p0">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 p0">
+               
                     <div class="huge-box trips" style="background-image: url('@item.FeaturedImage');">
                         <header class="box-header">
                             <section class="text">
                                 <h1></h1>
                                 <p>
-                                    @item.Title
+                                    <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
+                                        @item.Title
+                                     </a>
                                 </p>
                             </section>
                         </header>
@@ -26,7 +28,7 @@
                             </div>
                         </footer>
                     </div>
-                </div>
-            }
-        </div>
+            </div>
+        }
+    </div>
     </div>

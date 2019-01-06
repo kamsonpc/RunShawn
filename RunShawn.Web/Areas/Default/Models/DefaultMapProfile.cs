@@ -8,6 +8,7 @@ namespace RunShawn.Web.Areas.Default.Models
     {
         public DefaultMapProfile()
         {
+            CreateMap<Article, ArticleViewModel>();
             CreateMap<ArticleViewModel, Article>();
             CreateMap<ArticleListViewModel, Article>();
         }

@@ -12,8 +12,31 @@ namespace RunShawn.Core.Features.News.News
         #region GetById()
         public static Article GetById(long id)
         {
-            return (Article)Database.Open().News.News.FindById(id);
+            var db = Database.Open();
+            Article entity = db.News.News.Where(db.News.News.DeletedDate == null)
+                                         .Where(db.News.News.Id == id);
+            return entity;
 
+        }
+        #endregion
+
+        #region GetByIdForDetails()
+        public static Article GetByIdForDetails(long id, bool onlyPublished = false)
+        {
+            var db = Database.Open();
+            var query = db.News.News.All()
+                                .Where(db.News.News.DeletedDate == null)
+                                .Where(db.News.News.Id == id);
+
+
+            if (onlyPublished)
+            {
+                query = query.Where(db.News.News.PublishDate <= DateTime.Now);
+            }
+
+            Article article = query.SingleOrDefault();
+
+            return article;
         }
         #endregion
 
@@ -37,12 +60,15 @@ namespace RunShawn.Core.Features.News.News
         #endregion
 
         #region GetAll()
-        public static List<ArticleListView> GetAll()
+        public static List<ArticleListView> GetAll(bool onlyPublished = false)
         {
-            List<ArticleListView> articles = Database.Open().News.NewsListView.All();
+            var db = Database.Open();
+            List<ArticleListView> articles = db.News.NewsListView.FindAll(db.News.NewsListView.DeletedDate == null);
+
+            if (onlyPublished)
+                articles.Where(x => x.PublishDate <= DateTime.Now);
 
             return articles
-                           .Where(x => x.DeletedDate == null)
                            .ToList();
         }
         #endregion
@@ -51,7 +77,7 @@ namespace RunShawn.Core.Features.News.News
         public static Article Update(Article article, string userId)
         {
             var db = Database.Open();
-            var articleInDb = GetById(article.Id);
+            Article articleInDb = db.News.News.FindById(article.Id);
 
             article.CreatedBy = articleInDb.CreatedBy;
             article.CreatedDate = articleInDb.CreatedDate;
