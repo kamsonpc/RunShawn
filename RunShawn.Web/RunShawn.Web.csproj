@@ -252,6 +252,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Default\DefaultAreaRegistration.cs" />
     <Compile Include="Areas\Default\Models\DefaultMapProfile.cs" />
     <Compile Include="Areas\Default\Controllers\NewsController.cs" />
     <Compile Include="Areas\Default\Models\News\ArticleListViewModel.cs" />
