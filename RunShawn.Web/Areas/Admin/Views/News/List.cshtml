@@ -19,11 +19,15 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.Title).Titled("Tytuł");
-        columns.Add(model => model.CategoryTitle).Titled("Kategoria");
-        columns.Add(model => model.CreatedByName).Titled("Autor");
-        columns.Add(model => model.PublishDate).Titled("Data Publikacji");
+    columns.Add(model => model.Title).Titled("Tytuł");
+    columns.Add(model => model.CategoryTitle).Titled("Kategoria");
+    columns.Add(model => model.CreatedByName).Titled("Autor");
+    columns.Add(model => model.PublishDate).Titled("Data Publikacji");
+    columns.Add().Titled("Wyróżniony").Encoded(false).RenderedAs(model => (
 
+           $"<a href='{MVC.Admin.News.Feature(model.Id)}'><i class='{model.FeatureIcon}'></a>"
+        )
+        );
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
  (
      Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))

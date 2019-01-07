@@ -29,8 +29,6 @@ public static partial class MVC
 {
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
-    static readonly DefaultClass s_Default = new DefaultClass();
-    public static DefaultClass Default { get { return s_Default; } }
     public static RunShawn.Web.Controllers.AccountController Account = new RunShawn.Web.Controllers.T4MVC_AccountController();
     public static RunShawn.Web.Controllers.HomeController Home = new RunShawn.Web.Controllers.T4MVC_HomeController();
     public static RunShawn.Web.Controllers.ManageController Manage = new RunShawn.Web.Controllers.T4MVC_ManageController();
@@ -49,13 +47,6 @@ namespace T4MVC
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class DefaultClass
-    {
-        public readonly string Name = "Default";
-        public RunShawn.Web.Areas.Default.Controllers.NewsController News = new RunShawn.Web.Areas.Default.Controllers.T4MVC_NewsController();
-        public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
     }
 }
 
@@ -109,106 +100,9 @@ namespace Links
         public const string UrlPath = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class datepicker {
-            public const string UrlPath = "~/Scripts/datepicker";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string bootstrap_datepicker_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker-init.min.js") ? Url("bootstrap-datepicker-init.min.js") : Url("bootstrap-datepicker-init.js");
-            public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
-            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class locales {
-                public const string UrlPath = "~/Scripts/datepicker/locales";
-                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                public static readonly string bootstrap_datepicker_en_CA_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker-en-CA.min.js") ? Url("bootstrap-datepicker-en-CA.min.js") : Url("bootstrap-datepicker-en-CA.js");
-                public static readonly string bootstrap_datepicker_ar_tn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ar-tn.min.js") ? Url("bootstrap-datepicker.ar-tn.min.js") : Url("bootstrap-datepicker.ar-tn.js");
-                public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ar.min.js") ? Url("bootstrap-datepicker.ar.min.js") : Url("bootstrap-datepicker.ar.js");
-                public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.az.min.js") ? Url("bootstrap-datepicker.az.min.js") : Url("bootstrap-datepicker.az.js");
-                public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.bg.min.js") ? Url("bootstrap-datepicker.bg.min.js") : Url("bootstrap-datepicker.bg.js");
-                public static readonly string bootstrap_datepicker_bn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.bn.min.js") ? Url("bootstrap-datepicker.bn.min.js") : Url("bootstrap-datepicker.bn.js");
-                public static readonly string bootstrap_datepicker_br_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.br.min.js") ? Url("bootstrap-datepicker.br.min.js") : Url("bootstrap-datepicker.br.js");
-                public static readonly string bootstrap_datepicker_bs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.bs.min.js") ? Url("bootstrap-datepicker.bs.min.js") : Url("bootstrap-datepicker.bs.js");
-                public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ca.min.js") ? Url("bootstrap-datepicker.ca.min.js") : Url("bootstrap-datepicker.ca.js");
-                public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.cs.min.js") ? Url("bootstrap-datepicker.cs.min.js") : Url("bootstrap-datepicker.cs.js");
-                public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.cy.min.js") ? Url("bootstrap-datepicker.cy.min.js") : Url("bootstrap-datepicker.cy.js");
-                public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.da.min.js") ? Url("bootstrap-datepicker.da.min.js") : Url("bootstrap-datepicker.da.js");
-                public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.de.min.js") ? Url("bootstrap-datepicker.de.min.js") : Url("bootstrap-datepicker.de.js");
-                public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.el.min.js") ? Url("bootstrap-datepicker.el.min.js") : Url("bootstrap-datepicker.el.js");
-                public static readonly string bootstrap_datepicker_en_AU_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-AU.min.js") ? Url("bootstrap-datepicker.en-AU.min.js") : Url("bootstrap-datepicker.en-AU.js");
-                public static readonly string bootstrap_datepicker_en_CA_js_ = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-CA.min.js") ? Url("bootstrap-datepicker.en-CA.min.js") : Url("bootstrap-datepicker.en-CA.js");
-                public static readonly string bootstrap_datepicker_en_GB_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-GB.min.js") ? Url("bootstrap-datepicker.en-GB.min.js") : Url("bootstrap-datepicker.en-GB.js");
-                public static readonly string bootstrap_datepicker_en_IE_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-IE.min.js") ? Url("bootstrap-datepicker.en-IE.min.js") : Url("bootstrap-datepicker.en-IE.js");
-                public static readonly string bootstrap_datepicker_en_NZ_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-NZ.min.js") ? Url("bootstrap-datepicker.en-NZ.min.js") : Url("bootstrap-datepicker.en-NZ.js");
-                public static readonly string bootstrap_datepicker_en_ZA_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.en-ZA.min.js") ? Url("bootstrap-datepicker.en-ZA.min.js") : Url("bootstrap-datepicker.en-ZA.js");
-                public static readonly string bootstrap_datepicker_eo_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.eo.min.js") ? Url("bootstrap-datepicker.eo.min.js") : Url("bootstrap-datepicker.eo.js");
-                public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.es.min.js") ? Url("bootstrap-datepicker.es.min.js") : Url("bootstrap-datepicker.es.js");
-                public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.et.min.js") ? Url("bootstrap-datepicker.et.min.js") : Url("bootstrap-datepicker.et.js");
-                public static readonly string bootstrap_datepicker_eu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.eu.min.js") ? Url("bootstrap-datepicker.eu.min.js") : Url("bootstrap-datepicker.eu.js");
-                public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fa.min.js") ? Url("bootstrap-datepicker.fa.min.js") : Url("bootstrap-datepicker.fa.js");
-                public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fi.min.js") ? Url("bootstrap-datepicker.fi.min.js") : Url("bootstrap-datepicker.fi.js");
-                public static readonly string bootstrap_datepicker_fo_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fo.min.js") ? Url("bootstrap-datepicker.fo.min.js") : Url("bootstrap-datepicker.fo.js");
-                public static readonly string bootstrap_datepicker_fr_CH_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fr-CH.min.js") ? Url("bootstrap-datepicker.fr-CH.min.js") : Url("bootstrap-datepicker.fr-CH.js");
-                public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fr.min.js") ? Url("bootstrap-datepicker.fr.min.js") : Url("bootstrap-datepicker.fr.js");
-                public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.gl.min.js") ? Url("bootstrap-datepicker.gl.min.js") : Url("bootstrap-datepicker.gl.js");
-                public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.he.min.js") ? Url("bootstrap-datepicker.he.min.js") : Url("bootstrap-datepicker.he.js");
-                public static readonly string bootstrap_datepicker_hi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hi.min.js") ? Url("bootstrap-datepicker.hi.min.js") : Url("bootstrap-datepicker.hi.js");
-                public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hr.min.js") ? Url("bootstrap-datepicker.hr.min.js") : Url("bootstrap-datepicker.hr.js");
-                public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hu.min.js") ? Url("bootstrap-datepicker.hu.min.js") : Url("bootstrap-datepicker.hu.js");
-                public static readonly string bootstrap_datepicker_hy_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hy.min.js") ? Url("bootstrap-datepicker.hy.min.js") : Url("bootstrap-datepicker.hy.js");
-                public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.id.min.js") ? Url("bootstrap-datepicker.id.min.js") : Url("bootstrap-datepicker.id.js");
-                public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.is.min.js") ? Url("bootstrap-datepicker.is.min.js") : Url("bootstrap-datepicker.is.js");
-                public static readonly string bootstrap_datepicker_it_CH_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.it-CH.min.js") ? Url("bootstrap-datepicker.it-CH.min.js") : Url("bootstrap-datepicker.it-CH.js");
-                public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.it.min.js") ? Url("bootstrap-datepicker.it.min.js") : Url("bootstrap-datepicker.it.js");
-                public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ja.min.js") ? Url("bootstrap-datepicker.ja.min.js") : Url("bootstrap-datepicker.ja.js");
-                public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ka.min.js") ? Url("bootstrap-datepicker.ka.min.js") : Url("bootstrap-datepicker.ka.js");
-                public static readonly string bootstrap_datepicker_kh_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.kh.min.js") ? Url("bootstrap-datepicker.kh.min.js") : Url("bootstrap-datepicker.kh.js");
-                public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.kk.min.js") ? Url("bootstrap-datepicker.kk.min.js") : Url("bootstrap-datepicker.kk.js");
-                public static readonly string bootstrap_datepicker_km_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.km.min.js") ? Url("bootstrap-datepicker.km.min.js") : Url("bootstrap-datepicker.km.js");
-                public static readonly string bootstrap_datepicker_ko_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ko.min.js") ? Url("bootstrap-datepicker.ko.min.js") : Url("bootstrap-datepicker.ko.js");
-                public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.kr.min.js") ? Url("bootstrap-datepicker.kr.min.js") : Url("bootstrap-datepicker.kr.js");
-                public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.lt.min.js") ? Url("bootstrap-datepicker.lt.min.js") : Url("bootstrap-datepicker.lt.js");
-                public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.lv.min.js") ? Url("bootstrap-datepicker.lv.min.js") : Url("bootstrap-datepicker.lv.js");
-                public static readonly string bootstrap_datepicker_me_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.me.min.js") ? Url("bootstrap-datepicker.me.min.js") : Url("bootstrap-datepicker.me.js");
-                public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.mk.min.js") ? Url("bootstrap-datepicker.mk.min.js") : Url("bootstrap-datepicker.mk.js");
-                public static readonly string bootstrap_datepicker_mn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.mn.min.js") ? Url("bootstrap-datepicker.mn.min.js") : Url("bootstrap-datepicker.mn.js");
-                public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ms.min.js") ? Url("bootstrap-datepicker.ms.min.js") : Url("bootstrap-datepicker.ms.js");
-                public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.nl-BE.min.js") ? Url("bootstrap-datepicker.nl-BE.min.js") : Url("bootstrap-datepicker.nl-BE.js");
-                public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.nl.min.js") ? Url("bootstrap-datepicker.nl.min.js") : Url("bootstrap-datepicker.nl.js");
-                public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.no.min.js") ? Url("bootstrap-datepicker.no.min.js") : Url("bootstrap-datepicker.no.js");
-                public static readonly string bootstrap_datepicker_oc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.oc.min.js") ? Url("bootstrap-datepicker.oc.min.js") : Url("bootstrap-datepicker.oc.js");
-                public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pl.min.js") ? Url("bootstrap-datepicker.pl.min.js") : Url("bootstrap-datepicker.pl.js");
-                public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pt-BR.min.js") ? Url("bootstrap-datepicker.pt-BR.min.js") : Url("bootstrap-datepicker.pt-BR.js");
-                public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pt.min.js") ? Url("bootstrap-datepicker.pt.min.js") : Url("bootstrap-datepicker.pt.js");
-                public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ro.min.js") ? Url("bootstrap-datepicker.ro.min.js") : Url("bootstrap-datepicker.ro.js");
-                public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.rs-latin.min.js") ? Url("bootstrap-datepicker.rs-latin.min.js") : Url("bootstrap-datepicker.rs-latin.js");
-                public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.rs.min.js") ? Url("bootstrap-datepicker.rs.min.js") : Url("bootstrap-datepicker.rs.js");
-                public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ru.min.js") ? Url("bootstrap-datepicker.ru.min.js") : Url("bootstrap-datepicker.ru.js");
-                public static readonly string bootstrap_datepicker_si_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.si.min.js") ? Url("bootstrap-datepicker.si.min.js") : Url("bootstrap-datepicker.si.js");
-                public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sk.min.js") ? Url("bootstrap-datepicker.sk.min.js") : Url("bootstrap-datepicker.sk.js");
-                public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sl.min.js") ? Url("bootstrap-datepicker.sl.min.js") : Url("bootstrap-datepicker.sl.js");
-                public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sq.min.js") ? Url("bootstrap-datepicker.sq.min.js") : Url("bootstrap-datepicker.sq.js");
-                public static readonly string bootstrap_datepicker_sr_latin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sr-latin.min.js") ? Url("bootstrap-datepicker.sr-latin.min.js") : Url("bootstrap-datepicker.sr-latin.js");
-                public static readonly string bootstrap_datepicker_sr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sr.min.js") ? Url("bootstrap-datepicker.sr.min.js") : Url("bootstrap-datepicker.sr.js");
-                public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sv.min.js") ? Url("bootstrap-datepicker.sv.min.js") : Url("bootstrap-datepicker.sv.js");
-                public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sw.min.js") ? Url("bootstrap-datepicker.sw.min.js") : Url("bootstrap-datepicker.sw.js");
-                public static readonly string bootstrap_datepicker_ta_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ta.min.js") ? Url("bootstrap-datepicker.ta.min.js") : Url("bootstrap-datepicker.ta.js");
-                public static readonly string bootstrap_datepicker_tg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.tg.min.js") ? Url("bootstrap-datepicker.tg.min.js") : Url("bootstrap-datepicker.tg.js");
-                public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.th.min.js") ? Url("bootstrap-datepicker.th.min.js") : Url("bootstrap-datepicker.th.js");
-                public static readonly string bootstrap_datepicker_tk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.tk.min.js") ? Url("bootstrap-datepicker.tk.min.js") : Url("bootstrap-datepicker.tk.js");
-                public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.tr.min.js") ? Url("bootstrap-datepicker.tr.min.js") : Url("bootstrap-datepicker.tr.js");
-                public static readonly string bootstrap_datepicker_uk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.uk.min.js") ? Url("bootstrap-datepicker.uk.min.js") : Url("bootstrap-datepicker.uk.js");
-                public static readonly string bootstrap_datepicker_uz_cyrl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.uz-cyrl.min.js") ? Url("bootstrap-datepicker.uz-cyrl.min.js") : Url("bootstrap-datepicker.uz-cyrl.js");
-                public static readonly string bootstrap_datepicker_uz_latn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.uz-latn.min.js") ? Url("bootstrap-datepicker.uz-latn.min.js") : Url("bootstrap-datepicker.uz-latn.js");
-                public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.vi.min.js") ? Url("bootstrap-datepicker.vi.min.js") : Url("bootstrap-datepicker.vi.js");
-                public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-CN.min.js") ? Url("bootstrap-datepicker.zh-CN.min.js") : Url("bootstrap-datepicker.zh-CN.js");
-                public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-TW.min.js") ? Url("bootstrap-datepicker.zh-TW.min.js") : Url("bootstrap-datepicker.zh-TW.js");
-            }
-        
-        }
-    
         public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-2.1.3.intellisense.min.js") ? Url("jquery-2.1.3.intellisense.min.js") : Url("jquery-2.1.3.intellisense.js");
         public static readonly string jquery_3_3_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.intellisense.min.js") ? Url("jquery-3.3.1.intellisense.min.js") : Url("jquery-3.3.1.intellisense.js");
         public static readonly string jquery_3_3_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.min.js") ? Url("jquery-3.3.1.min.js") : Url("jquery-3.3.1.js");
@@ -217,6 +111,64 @@ namespace Links
         public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.slim.min.js") ? Url("jquery-3.3.1.slim.min.js") : Url("jquery-3.3.1.slim.js");
         public static readonly string jquery_3_3_1_slim_min_js = Url("jquery-3.3.1.slim.min.js");
         public static readonly string jquery_3_3_1_slim_min_map = Url("jquery-3.3.1.slim.min.map");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class locales {
+            public const string UrlPath = "~/Scripts/locales";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ar.min.js") ? Url("bootstrap-datepicker.ar.min.js") : Url("bootstrap-datepicker.ar.js");
+            public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.az.min.js") ? Url("bootstrap-datepicker.az.min.js") : Url("bootstrap-datepicker.az.js");
+            public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.bg.min.js") ? Url("bootstrap-datepicker.bg.min.js") : Url("bootstrap-datepicker.bg.js");
+            public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ca.min.js") ? Url("bootstrap-datepicker.ca.min.js") : Url("bootstrap-datepicker.ca.js");
+            public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.cs.min.js") ? Url("bootstrap-datepicker.cs.min.js") : Url("bootstrap-datepicker.cs.js");
+            public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.cy.min.js") ? Url("bootstrap-datepicker.cy.min.js") : Url("bootstrap-datepicker.cy.js");
+            public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.da.min.js") ? Url("bootstrap-datepicker.da.min.js") : Url("bootstrap-datepicker.da.js");
+            public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.de.min.js") ? Url("bootstrap-datepicker.de.min.js") : Url("bootstrap-datepicker.de.js");
+            public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.el.min.js") ? Url("bootstrap-datepicker.el.min.js") : Url("bootstrap-datepicker.el.js");
+            public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.es.min.js") ? Url("bootstrap-datepicker.es.min.js") : Url("bootstrap-datepicker.es.js");
+            public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.et.min.js") ? Url("bootstrap-datepicker.et.min.js") : Url("bootstrap-datepicker.et.js");
+            public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fa.min.js") ? Url("bootstrap-datepicker.fa.min.js") : Url("bootstrap-datepicker.fa.js");
+            public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fi.min.js") ? Url("bootstrap-datepicker.fi.min.js") : Url("bootstrap-datepicker.fi.js");
+            public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.fr.min.js") ? Url("bootstrap-datepicker.fr.min.js") : Url("bootstrap-datepicker.fr.js");
+            public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.gl.min.js") ? Url("bootstrap-datepicker.gl.min.js") : Url("bootstrap-datepicker.gl.js");
+            public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.he.min.js") ? Url("bootstrap-datepicker.he.min.js") : Url("bootstrap-datepicker.he.js");
+            public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hr.min.js") ? Url("bootstrap-datepicker.hr.min.js") : Url("bootstrap-datepicker.hr.js");
+            public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.hu.min.js") ? Url("bootstrap-datepicker.hu.min.js") : Url("bootstrap-datepicker.hu.js");
+            public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.id.min.js") ? Url("bootstrap-datepicker.id.min.js") : Url("bootstrap-datepicker.id.js");
+            public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.is.min.js") ? Url("bootstrap-datepicker.is.min.js") : Url("bootstrap-datepicker.is.js");
+            public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.it.min.js") ? Url("bootstrap-datepicker.it.min.js") : Url("bootstrap-datepicker.it.js");
+            public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ja.min.js") ? Url("bootstrap-datepicker.ja.min.js") : Url("bootstrap-datepicker.ja.js");
+            public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ka.min.js") ? Url("bootstrap-datepicker.ka.min.js") : Url("bootstrap-datepicker.ka.js");
+            public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.kk.min.js") ? Url("bootstrap-datepicker.kk.min.js") : Url("bootstrap-datepicker.kk.js");
+            public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.kr.min.js") ? Url("bootstrap-datepicker.kr.min.js") : Url("bootstrap-datepicker.kr.js");
+            public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.lt.min.js") ? Url("bootstrap-datepicker.lt.min.js") : Url("bootstrap-datepicker.lt.js");
+            public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.lv.min.js") ? Url("bootstrap-datepicker.lv.min.js") : Url("bootstrap-datepicker.lv.js");
+            public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.mk.min.js") ? Url("bootstrap-datepicker.mk.min.js") : Url("bootstrap-datepicker.mk.js");
+            public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ms.min.js") ? Url("bootstrap-datepicker.ms.min.js") : Url("bootstrap-datepicker.ms.js");
+            public static readonly string bootstrap_datepicker_nb_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.nb.min.js") ? Url("bootstrap-datepicker.nb.min.js") : Url("bootstrap-datepicker.nb.js");
+            public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.nl-BE.min.js") ? Url("bootstrap-datepicker.nl-BE.min.js") : Url("bootstrap-datepicker.nl-BE.js");
+            public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.nl.min.js") ? Url("bootstrap-datepicker.nl.min.js") : Url("bootstrap-datepicker.nl.js");
+            public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.no.min.js") ? Url("bootstrap-datepicker.no.min.js") : Url("bootstrap-datepicker.no.js");
+            public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pl.min.js") ? Url("bootstrap-datepicker.pl.min.js") : Url("bootstrap-datepicker.pl.js");
+            public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pt-BR.min.js") ? Url("bootstrap-datepicker.pt-BR.min.js") : Url("bootstrap-datepicker.pt-BR.js");
+            public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.pt.min.js") ? Url("bootstrap-datepicker.pt.min.js") : Url("bootstrap-datepicker.pt.js");
+            public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ro.min.js") ? Url("bootstrap-datepicker.ro.min.js") : Url("bootstrap-datepicker.ro.js");
+            public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.rs-latin.min.js") ? Url("bootstrap-datepicker.rs-latin.min.js") : Url("bootstrap-datepicker.rs-latin.js");
+            public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.rs.min.js") ? Url("bootstrap-datepicker.rs.min.js") : Url("bootstrap-datepicker.rs.js");
+            public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ru.min.js") ? Url("bootstrap-datepicker.ru.min.js") : Url("bootstrap-datepicker.ru.js");
+            public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sk.min.js") ? Url("bootstrap-datepicker.sk.min.js") : Url("bootstrap-datepicker.sk.js");
+            public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sl.min.js") ? Url("bootstrap-datepicker.sl.min.js") : Url("bootstrap-datepicker.sl.js");
+            public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sq.min.js") ? Url("bootstrap-datepicker.sq.min.js") : Url("bootstrap-datepicker.sq.js");
+            public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sv.min.js") ? Url("bootstrap-datepicker.sv.min.js") : Url("bootstrap-datepicker.sv.js");
+            public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.sw.min.js") ? Url("bootstrap-datepicker.sw.min.js") : Url("bootstrap-datepicker.sw.js");
+            public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.th.min.js") ? Url("bootstrap-datepicker.th.min.js") : Url("bootstrap-datepicker.th.js");
+            public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.tr.min.js") ? Url("bootstrap-datepicker.tr.min.js") : Url("bootstrap-datepicker.tr.js");
+            public static readonly string bootstrap_datepicker_ua_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.ua.min.js") ? Url("bootstrap-datepicker.ua.min.js") : Url("bootstrap-datepicker.ua.js");
+            public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.vi.min.js") ? Url("bootstrap-datepicker.vi.min.js") : Url("bootstrap-datepicker.vi.js");
+            public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-CN.min.js") ? Url("bootstrap-datepicker.zh-CN.min.js") : Url("bootstrap-datepicker.zh-CN.js");
+            public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-TW.min.js") ? Url("bootstrap-datepicker.zh-TW.min.js") : Url("bootstrap-datepicker.zh-TW.js");
+        }
+    
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class MvcGrid {
@@ -224,14 +176,6 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string mvc_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.js") ? Url("mvc-grid.min.js") : Url("mvc-grid.js");
-        }
-    
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class nprogress {
-            public const string UrlPath = "~/Scripts/nprogress";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string nprogress_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.js") ? Url("nprogress.min.js") : Url("nprogress.js");
         }
     
         public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
@@ -273,16 +217,6 @@ namespace Links
         public const string UrlPath = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class article {
-            public const string UrlPath = "~/Content/article";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/style.min.css") ? Url("style.min.css") : Url("style.css");
-            public static readonly string style_css_map = Url("style.css.map");
-            public static readonly string style_scss = Url("style.scss");
-        }
-    
         public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
         public static readonly string bootstrap_datepicker3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker3.min.css") ? Url("bootstrap-datepicker3.min.css") : Url("bootstrap-datepicker3.css");
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
@@ -304,16 +238,6 @@ namespace Links
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class datepicker {
-            public const string UrlPath = "~/Content/datepicker";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
-            public static readonly string bootstrap_datepicker_min_css = Url("bootstrap-datepicker.min.css");
-            public static readonly string datepicker_less = Url("datepicker.less");
-        }
-    
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class fonts {
             public const string UrlPath = "~/Content/fonts";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
@@ -330,23 +254,6 @@ namespace Links
             public const string UrlPath = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class article_images {
-                public const string UrlPath = "~/Content/images/article-images";
-                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                public static readonly string article_background1_png = Url("article-background1.png");
-                public static readonly string article_background2_png = Url("article-background2.png");
-                public static readonly string article_background3_png = Url("article-background3.png");
-                public static readonly string article_background4_png = Url("article-background4.png");
-                public static readonly string article_background5_png = Url("article-background5.png");
-                public static readonly string article_background6_png = Url("article-background6.png");
-                public static readonly string article_background7_png = Url("article-background7.png");
-                public static readonly string article_background8_png = Url("article-background8.png");
-                public static readonly string article_background9_png = Url("article-background9.png");
-            }
-        
-            public static readonly string background_png = Url("background.png");
             public static readonly string user_png = Url("user.png");
         }
     
@@ -384,14 +291,6 @@ namespace Links
             }
         
             public static readonly string mvc_grid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.css") ? Url("mvc-grid.min.css") : Url("mvc-grid.css");
-        }
-    
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class nprogress {
-            public const string UrlPath = "~/Content/nprogress";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string nprogress_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.css") ? Url("nprogress.min.css") : Url("nprogress.css");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -439,100 +338,61 @@ namespace Links
     {
         public static partial class Scripts 
         {
-            public static partial class datepicker 
+            public static partial class locales 
             {
-                public static partial class locales 
-                {
-                    public static class Assets
-                    {
-                        public static readonly string bootstrap_datepicker_en_CA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker-en-CA.js"); 
-                        public static readonly string bootstrap_datepicker_ar_tn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar-tn.js"); 
-                        public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar.js"); 
-                        public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.az.js"); 
-                        public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bg.js"); 
-                        public static readonly string bootstrap_datepicker_bn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bn.js"); 
-                        public static readonly string bootstrap_datepicker_br_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.br.js"); 
-                        public static readonly string bootstrap_datepicker_bs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bs.js"); 
-                        public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ca.js"); 
-                        public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cs.js"); 
-                        public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cy.js"); 
-                        public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.da.js"); 
-                        public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.de.js"); 
-                        public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.el.js"); 
-                        public static readonly string bootstrap_datepicker_en_AU_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-AU.js"); 
-                        public static readonly string bootstrap_datepicker_en_CA_js_ = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-CA.js"); 
-                        public static readonly string bootstrap_datepicker_en_GB_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-GB.js"); 
-                        public static readonly string bootstrap_datepicker_en_IE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-IE.js"); 
-                        public static readonly string bootstrap_datepicker_en_NZ_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-NZ.js"); 
-                        public static readonly string bootstrap_datepicker_en_ZA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-ZA.js"); 
-                        public static readonly string bootstrap_datepicker_eo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eo.js"); 
-                        public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.es.js"); 
-                        public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.et.js"); 
-                        public static readonly string bootstrap_datepicker_eu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eu.js"); 
-                        public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fa.js"); 
-                        public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fi.js"); 
-                        public static readonly string bootstrap_datepicker_fo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fo.js"); 
-                        public static readonly string bootstrap_datepicker_fr_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr-CH.js"); 
-                        public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr.js"); 
-                        public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.gl.js"); 
-                        public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.he.js"); 
-                        public static readonly string bootstrap_datepicker_hi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hi.js"); 
-                        public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hr.js"); 
-                        public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hu.js"); 
-                        public static readonly string bootstrap_datepicker_hy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hy.js"); 
-                        public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.id.js"); 
-                        public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.is.js"); 
-                        public static readonly string bootstrap_datepicker_it_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it-CH.js"); 
-                        public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it.js"); 
-                        public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ja.js"); 
-                        public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ka.js"); 
-                        public static readonly string bootstrap_datepicker_kh_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kh.js"); 
-                        public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kk.js"); 
-                        public static readonly string bootstrap_datepicker_km_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.km.js"); 
-                        public static readonly string bootstrap_datepicker_ko_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ko.js"); 
-                        public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kr.js"); 
-                        public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lt.js"); 
-                        public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lv.js"); 
-                        public static readonly string bootstrap_datepicker_me_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.me.js"); 
-                        public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mk.js"); 
-                        public static readonly string bootstrap_datepicker_mn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mn.js"); 
-                        public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ms.js"); 
-                        public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl-BE.js"); 
-                        public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl.js"); 
-                        public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.no.js"); 
-                        public static readonly string bootstrap_datepicker_oc_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.oc.js"); 
-                        public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pl.js"); 
-                        public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt-BR.js"); 
-                        public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt.js"); 
-                        public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ro.js"); 
-                        public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs-latin.js"); 
-                        public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs.js"); 
-                        public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ru.js"); 
-                        public static readonly string bootstrap_datepicker_si_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.si.js"); 
-                        public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sk.js"); 
-                        public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sl.js"); 
-                        public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sq.js"); 
-                        public static readonly string bootstrap_datepicker_sr_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr-latin.js"); 
-                        public static readonly string bootstrap_datepicker_sr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr.js"); 
-                        public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sv.js"); 
-                        public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sw.js"); 
-                        public static readonly string bootstrap_datepicker_ta_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ta.js"); 
-                        public static readonly string bootstrap_datepicker_tg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tg.js"); 
-                        public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.th.js"); 
-                        public static readonly string bootstrap_datepicker_tk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tk.js"); 
-                        public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tr.js"); 
-                        public static readonly string bootstrap_datepicker_uk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uk.js"); 
-                        public static readonly string bootstrap_datepicker_uz_cyrl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-cyrl.js"); 
-                        public static readonly string bootstrap_datepicker_uz_latn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-latn.js"); 
-                        public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.vi.js"); 
-                        public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-CN.js"); 
-                        public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-TW.js"); 
-                    }
-                }
                 public static class Assets
                 {
-                    public static readonly string bootstrap_datepicker_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker-init.js"); 
-                    public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker.js"); 
+                    public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ar.js"); 
+                    public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.az.js"); 
+                    public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.bg.js"); 
+                    public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ca.js"); 
+                    public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.cs.js"); 
+                    public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.cy.js"); 
+                    public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.da.js"); 
+                    public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.de.js"); 
+                    public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.el.js"); 
+                    public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.es.js"); 
+                    public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.et.js"); 
+                    public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.fa.js"); 
+                    public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.fi.js"); 
+                    public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.fr.js"); 
+                    public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.gl.js"); 
+                    public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.he.js"); 
+                    public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.hr.js"); 
+                    public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.hu.js"); 
+                    public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.id.js"); 
+                    public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.is.js"); 
+                    public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.it.js"); 
+                    public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ja.js"); 
+                    public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ka.js"); 
+                    public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.kk.js"); 
+                    public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.kr.js"); 
+                    public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.lt.js"); 
+                    public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.lv.js"); 
+                    public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.mk.js"); 
+                    public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ms.js"); 
+                    public static readonly string bootstrap_datepicker_nb_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.nb.js"); 
+                    public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.nl-BE.js"); 
+                    public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.nl.js"); 
+                    public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.no.js"); 
+                    public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.pl.js"); 
+                    public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.pt-BR.js"); 
+                    public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.pt.js"); 
+                    public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ro.js"); 
+                    public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.rs-latin.js"); 
+                    public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.rs.js"); 
+                    public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ru.js"); 
+                    public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.sk.js"); 
+                    public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.sl.js"); 
+                    public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.sq.js"); 
+                    public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.sv.js"); 
+                    public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.sw.js"); 
+                    public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.th.js"); 
+                    public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.tr.js"); 
+                    public static readonly string bootstrap_datepicker_ua_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.ua.js"); 
+                    public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.vi.js"); 
+                    public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.zh-CN.js"); 
+                    public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/locales/bootstrap-datepicker.zh-TW.js"); 
                 }
             }
             public static partial class MvcGrid 
@@ -540,13 +400,6 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js"); 
-                }
-            }
-            public static partial class nprogress 
-            {
-                public static class Assets
-                {
-                    public static readonly string nprogress_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress.js"); 
                 }
             }
             public static partial class summernote 
@@ -578,6 +431,7 @@ namespace Links
             }
             public static class Assets
             {
+                public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap-datepicker.js"); 
                 public static readonly string bootstrap_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.js"); 
                 public static readonly string bootstrap_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.min.js"); 
                 public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-2.1.3.intellisense.js"); 
@@ -592,26 +446,11 @@ namespace Links
         }
         public static partial class Content 
         {
-            public static partial class article 
-            {
-                public static class Assets
-                {
-                    public static readonly string style_css = T4MVCHelpers.ProcessAssetPath("~/Content/article/style.css");
-                }
-            }
             public static partial class dashboard 
             {
                 public static class Assets
                 {
                     public static readonly string dashboard_css = T4MVCHelpers.ProcessAssetPath("~/Content/dashboard/dashboard.css");
-                }
-            }
-            public static partial class datepicker 
-            {
-                public static class Assets
-                {
-                    public static readonly string bootstrap_datepicker_css = T4MVCHelpers.ProcessAssetPath("~/Content/datepicker/bootstrap-datepicker.css");
-                    public static readonly string bootstrap_datepicker_min_css = T4MVCHelpers.ProcessAssetPath("~/Content/datepicker/bootstrap-datepicker.min.css");
                 }
             }
             public static partial class fonts 
@@ -622,12 +461,6 @@ namespace Links
             }
             public static partial class images 
             {
-                public static partial class article_images 
-                {
-                    public static class Assets
-                    {
-                    }
-                }
                 public static class Assets
                 {
                 }
@@ -657,13 +490,6 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
-                }
-            }
-            public static partial class nprogress 
-            {
-                public static class Assets
-                {
-                    public static readonly string nprogress_css = T4MVCHelpers.ProcessAssetPath("~/Content/nprogress/nprogress.css");
                 }
             }
             public static partial class site 

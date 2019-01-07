@@ -150,6 +150,14 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Feature()
+        public virtual ActionResult Feature(long id)
+        {
+            ArticlesService.Feature(id);
+            return RedirectToAction(MVC.Admin.News.List());
+        }
+        #endregion
+
         #region Categories
         [MenuItem(Title = "Kategorie", Action = "Categories")]
         public virtual ActionResult Categories()

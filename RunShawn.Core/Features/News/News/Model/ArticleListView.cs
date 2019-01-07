@@ -12,6 +12,7 @@ namespace RunShawn.Core.Features.News.News.Model
         public string Content { get; set; }
         public DateTime PublishDate { get; set; }
         public string CreatedByName { get; set; }
+        public bool Featured { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }

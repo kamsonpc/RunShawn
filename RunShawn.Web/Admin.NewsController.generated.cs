@@ -71,6 +71,12 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Feature()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Feature);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public NewsController Actions { get { return MVC.Admin.News; } }
@@ -92,6 +98,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
+            public readonly string Feature = "Feature";
             public readonly string Categories = "Categories";
         }
 
@@ -103,6 +110,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
+            public const string Feature = "Feature";
             public const string Categories = "Categories";
         }
 
@@ -129,6 +137,14 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_Feature s_params_Feature = new ActionParamsClass_Feature();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Feature FeatureParams { get { return s_params_Feature; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Feature
         {
             public readonly string id = "id";
         }
@@ -235,6 +251,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FeatureOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Feature(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Feature);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            FeatureOverride(callInfo, id);
             return callInfo;
         }
 

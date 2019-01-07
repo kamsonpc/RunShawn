@@ -1,9 +1,9 @@
-﻿using RunShawn.Core.Features.News.News.Model;
-using Simple.Data;
-using Simple.Data.RawSql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RunShawn.Core.Features.News.News.Model;
+using Simple.Data;
+using Simple.Data.RawSql;
 
 namespace RunShawn.Core.Features.News.News
 {
@@ -53,6 +53,7 @@ namespace RunShawn.Core.Features.News.News
         {
             article.CreatedBy = userId;
             article.CreatedDate = DateTime.Now;
+            article.Featured = false;
 
             Database.Open().News.News.Insert(article);
             return article;
@@ -79,6 +80,7 @@ namespace RunShawn.Core.Features.News.News
             var db = Database.Open();
             Article articleInDb = db.News.News.FindById(article.Id);
 
+            article.Featured = articleInDb.Featured;
             article.CreatedBy = articleInDb.CreatedBy;
             article.CreatedDate = articleInDb.CreatedDate;
             article.ModifiedDate = DateTime.Now;
@@ -87,6 +89,23 @@ namespace RunShawn.Core.Features.News.News
             db.News.News.UpdateById(article);
 
             return article;
+        }
+        #endregion
+
+        #region Feature()
+        public static void Feature(long id)
+        {
+            var db = Database.Open();
+            Article articleToFeature = db.News.News.FindById(id);
+            if (articleToFeature.Featured)
+            {
+                articleToFeature.Featured = false;
+            }
+            else
+            {
+                articleToFeature.Featured = true;
+            }
+            db.News.News.UpdateById(articleToFeature);
         }
         #endregion
 
