@@ -1,10 +1,11 @@
+$font-color: #ffffff;
 .container 
 {
     background: #ffffff;
     .row
     {
         margin: 0 20px;
-        div
+        >div
         {
             padding: 0;
         }
@@ -13,7 +14,7 @@
 
 .huge-box
 {
-    color: #ffffff;
+    color: $font-color;
     text-align: center;
     padding: 20px 0;
     margin: 10px 10px;
@@ -33,6 +34,11 @@
             z-index: 10;
             top: 25%;
             width: 100%;
+            h1
+            {
+                color: $font-color; 
+                font-size: 40px;
+            }
         }
     }
     .box-footer
@@ -54,7 +60,13 @@
         {
             font-family: 'PT Sans', sans-serif;
             text-align: right;
-            padding: 0 25px;
+            padding: 10px 25px;
+            div
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
             .break
             {
                 padding: 0 20px;
@@ -90,8 +102,14 @@
         background-size: cover;
         background-repeat: no-repeat;
         height: 253px;
+        &.empty
+        {
+            background-size: contain;
+            background-position: center;
+        }
         .article-category
         {
+            color: #ffffff;
             font-size: 18px;
             padding: 10px 5px;
             font-family: 'PT Sans', sans-serif;
