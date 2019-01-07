@@ -320,6 +320,7 @@
     <Content Include="Content\dashboard\dashboard.css" />
     <Content Include="Content\datepicker\bootstrap-datepicker.css" />
     <Content Include="Content\datepicker\bootstrap-datepicker.min.css" />
+    <Content Include="Content\default\default.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\article-images\article-background1.png" />
     <Content Include="Content\images\article-images\article-background2.png" />
@@ -382,6 +383,8 @@
     <Content Include="Areas\Default\Views\News\List.cshtml" />
     <Content Include="Content\datepicker\datepicker.less" />
     <Content Include="Areas\Default\Views\News\Details.cshtml" />
+    <Content Include="Content\default\default.css.map" />
+    <Content Include="Content\default\default.scss" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -607,4 +610,11 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+    <ItemGroup>
+      <RoslynFiles Include="$(CscToolPath)\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
+    <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
+  </Target>
 </Project>

@@ -24,7 +24,11 @@ namespace RunShawn.Core.Features.News.News.Model
         {
             get
             {
-                return Regex.Match(this.Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1].Value;
+                if(string.IsNullOrEmpty(this.Content))
+                {
+                    return string.Empty;
+                }
+                return Regex.Match(this.Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1]?.Value;
             }
         }
         #endregion

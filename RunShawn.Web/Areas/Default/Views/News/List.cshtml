@@ -4,33 +4,43 @@
 
 <div class="container">
     <div class="row">
-        @foreach (var item in Model)
+
+        <div class="col-sm-12">
+            @{
+                var hugeArticle = Model.First();
+            <a href="@Url.Action(MVC.Default.News.Details(Model.First.Id))">
+                <div class="huge-box trips" style="background-image: url(@{
+                        if(!string.IsNullOrEmpty(Model.First.FeaturedImage))
+                        {
+                            <text>@Model.First.FeaturedImage</text>
+                        }
+                        else
+                        {
+                            <text>'@Url.Content("#")'</text>
+                        }
+                    });">
+                    <header class="box-header">
+                        <section class="text">
+                            <h1>@Model.First.Title</h1>
+                            <p></p>
+                        </section>
+                    </header>
+                    <footer class="box-footer">
+                        <div class="article-category">@Model.First.CategoryTitle</div>
+                        <div class="article-info">
+                            <span class="data">@Model.First.PublishDate.ToLongDateString()</span>
+                            <span class="break">|</span>
+                            <span class="autor-name">@Model.First.CreatedByName</span>
+                        </div>
+                    </footer>
+                </div>
+            </a>
+        </div>
+            }
+        @for (int i = 1; i < Model.Count; i++)
         {
-            <div class="col-sm-4 p0">
-               
-                                    <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
-                    <div class="huge-box trips" style="background-image: url('@item.FeaturedImage');">
-                        <header class="box-header">
-                            <section class="text">
-                                <h1></h1>
-                                <p>
-                                        @item.Title
-                                </p>
-                            </section>
-                        </header>
-                        <footer class="box-footer">
-                            <div class="article-category">@item.CategoryTitle</div>
-                            <div class="article-info">
-                                <span class="data">@item.PublishDate.ToLongDateString()</span>
-                                <span class="break">|</span>
-                                <span class="autor-name">@item.CreatedByName</span>
-                            </div>
-                        </footer>
-                    </div>
-                                     </a>
-            </div>
         }
-    </div>
+        </div>
     </div>
 <div class="pager">
     @Html.Pager(Model.PageSize, Model.PageIndex, Model.PageCount)

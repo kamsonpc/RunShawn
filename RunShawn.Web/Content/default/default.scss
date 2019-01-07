@@ -1,0 +1,134 @@
+body{
+    color: #ffffff;
+}
+
+h1{
+    margin: 0;
+}
+
+.page-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    color: #000000;
+    .page-logo {
+        padding: 20px 0 20px 0;
+        span {
+            color: #434142;
+            font-size: 32px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Maison Neue', sans-serif;
+            font-weight: bold;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+        }
+        a {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    nav {
+        ul {
+            display: none;
+            line-height: 2.5;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+            li {
+                a {
+                    color: #737373;
+                    position: relative;
+                    padding-bottom: 10px;
+                    &,
+                    &:after,
+                    &:before {
+                        transition: all .4s;
+                    }
+                    &:after {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        width: 0%;
+                        content: '.';
+                        color: transparent;
+                        background: #000;
+                        height: 1px;
+                    }
+                    &:hover:after {
+                        width: 100%;
+                    }
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .hamburger {
+            position: absolute;
+            top: 30px;
+            left: 25px;
+            border: 0;
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 20px;
+        }
+    }
+}
+
+footer{
+    padding: 30px 20px 30px 20px;
+    text-align: center;
+}
+@media (min-width: 769px) {
+    .page-header {
+        margin: auto;
+        left: 0;
+        right: 0;
+        border-bottom: none;
+        background: #f5f5f5;
+        .page-logo {
+            a {
+                justify-content: flex-start;
+            }
+            span {
+                text-align: left;
+            }
+            img {
+                margin-left: 15px;
+            }
+        }
+        nav {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            .hamburger {
+                display: none;
+            }
+            ul {
+                display: block;
+                padding: 0;
+                margin: 0;
+                li {
+                    display: inline-block;
+                    border: 0;
+                    margin-right: 48px;
+                    &:last-child a {
+                        border-width: 0;
+                    }
+                    a {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

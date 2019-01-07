@@ -45,6 +45,9 @@ namespace RunShawn.Web
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
                       "~/Content/login/login.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/default").Include(
+          "~/Content/default/default.css"));
         }
     }
 }
