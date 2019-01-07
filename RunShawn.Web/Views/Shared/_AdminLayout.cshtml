@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
     <link href="~/Content/modal/modal.css" rel="stylesheet">
@@ -52,13 +51,13 @@
                         {
                             <li class="group"><a href="#">@User.Identity.Name</a></li>
                         }
-                        <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Manage.Index())">Ustawienia Konta</a></li>
+                        <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Default.Manage.Index())">Ustawienia Konta</a></li>
                     </ul>
                 </div>
                 <div class="logout">
                     @if (Request.IsAuthenticated)
                     {
-                        using (Html.BeginForm(MVC.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
+                        using (Html.BeginForm(MVC.Default.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
                         {
                             @Html.AntiForgeryToken()
                             <button class="rs-btn-default rs-btn-blue">

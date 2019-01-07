@@ -67,7 +67,9 @@ namespace RunShawn.Core.Features.News.News
             List<ArticleListView> articles = db.News.NewsListView.FindAll(db.News.NewsListView.DeletedDate == null);
 
             if (onlyPublished)
+            {
                 articles.Where(x => x.PublishDate <= DateTime.Now);
+            }
 
             return articles
                            .ToList();

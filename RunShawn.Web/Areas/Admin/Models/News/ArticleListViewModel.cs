@@ -7,17 +7,17 @@ namespace RunShawn.Web.Areas.Admin.Models.News
     {
         public long Id { get; set; }
         public string Title { get; set; }
-        public bool Feature { get; set; }
+        public bool Featured { get; set; }
         public string CategoryTitle { get; set; }
         public DateTime PublishDate { get; set; }
         public string CreatedByName { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        public string FeatureIcon
+        public string FeaturedIcon
         {
             get
             {
-                if (Feature)
+                if (Featured)
                 {
                     return AwesomeHelper.star;
                 }

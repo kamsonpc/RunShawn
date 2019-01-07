@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Controllers
+namespace RunShawn.Web.Areas.Default.Controllers
 {
     public partial class ManageController
     {
@@ -92,9 +92,9 @@ namespace RunShawn.Web.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ManageController Actions { get { return MVC.Manage; } }
+        public ManageController Actions { get { return MVC.Default.Manage; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
+        public readonly string Area = "Default";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "Manage";
         [GeneratedCode("T4MVC", "2.0")]
@@ -221,25 +221,25 @@ namespace RunShawn.Web.Controllers
                 public readonly string SetPassword = "SetPassword";
                 public readonly string VerifyPhoneNumber = "VerifyPhoneNumber";
             }
-            public readonly string AddPhoneNumber = "~/Views/Manage/AddPhoneNumber.cshtml";
-            public readonly string ChangePassword = "~/Views/Manage/ChangePassword.cshtml";
-            public readonly string Index = "~/Views/Manage/Index.cshtml";
-            public readonly string ManageLogins = "~/Views/Manage/ManageLogins.cshtml";
-            public readonly string SetPassword = "~/Views/Manage/SetPassword.cshtml";
-            public readonly string VerifyPhoneNumber = "~/Views/Manage/VerifyPhoneNumber.cshtml";
+            public readonly string AddPhoneNumber = "~/Areas/Default/Views/Manage/AddPhoneNumber.cshtml";
+            public readonly string ChangePassword = "~/Areas/Default/Views/Manage/ChangePassword.cshtml";
+            public readonly string Index = "~/Areas/Default/Views/Manage/Index.cshtml";
+            public readonly string ManageLogins = "~/Areas/Default/Views/Manage/ManageLogins.cshtml";
+            public readonly string SetPassword = "~/Areas/Default/Views/Manage/SetPassword.cshtml";
+            public readonly string VerifyPhoneNumber = "~/Areas/Default/Views/Manage/VerifyPhoneNumber.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_ManageController : RunShawn.Web.Controllers.ManageController
+    public partial class T4MVC_ManageController : RunShawn.Web.Areas.Default.Controllers.ManageController
     {
         public T4MVC_ManageController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Controllers.ManageController.ManageMessageId? message);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Default.Controllers.ManageController.ManageMessageId? message);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(RunShawn.Web.Controllers.ManageController.ManageMessageId? message)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(RunShawn.Web.Areas.Default.Controllers.ManageController.ManageMessageId? message)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "message", message);
@@ -387,10 +387,10 @@ namespace RunShawn.Web.Controllers
         }
 
         [NonAction]
-        partial void ManageLoginsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Controllers.ManageController.ManageMessageId? message);
+        partial void ManageLoginsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Default.Controllers.ManageController.ManageMessageId? message);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins(RunShawn.Web.Controllers.ManageController.ManageMessageId? message)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins(RunShawn.Web.Areas.Default.Controllers.ManageController.ManageMessageId? message)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ManageLogins);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "message", message);

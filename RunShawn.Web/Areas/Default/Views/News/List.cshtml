@@ -1,9 +1,12 @@
 ﻿
 @using RunShawn.Web.Areas.Default.Models.News
-@model IPagedList<ArticleListViewModel>
+@model  ArticleList
 
 <div class="container">
-    @*<div class="row">
+    @foreach (var item in Model.FeaturedArticles)
+    {
+
+    <div class="row">
         <div class="col-sm-12">
             <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                 <div class="huge-box trips" style="background-image: url(@{
@@ -33,9 +36,10 @@
                 </div>
             </a>
         </div>
-    </div>*@
+    </div>
+    }
     <div class="row">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Articles)
         {
             <div class="col-sm-4">
                 <a href="@Url.Action(MVC.Default.News.Details(item.Id))">

@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Controllers
+namespace RunShawn.Web.Areas.Default.Controllers
 {
     public partial class AccountController
     {
@@ -111,9 +111,9 @@ namespace RunShawn.Web.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AccountController Actions { get { return MVC.Account; } }
+        public AccountController Actions { get { return MVC.Default.Account; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
+        public readonly string Area = "Default";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "Account";
         [GeneratedCode("T4MVC", "2.0")]
@@ -274,23 +274,23 @@ namespace RunShawn.Web.Controllers
                 public readonly string SendCode = "SendCode";
                 public readonly string VerifyCode = "VerifyCode";
             }
-            public readonly string _ExternalLoginsListPartial = "~/Views/Account/_ExternalLoginsListPartial.cshtml";
-            public readonly string _Login = "~/Views/Account/_Login.cshtml";
-            public readonly string ConfirmEmail = "~/Views/Account/ConfirmEmail.cshtml";
-            public readonly string ExternalLoginConfirmation = "~/Views/Account/ExternalLoginConfirmation.cshtml";
-            public readonly string ExternalLoginFailure = "~/Views/Account/ExternalLoginFailure.cshtml";
-            public readonly string ForgotPassword = "~/Views/Account/ForgotPassword.cshtml";
-            public readonly string ForgotPasswordConfirmation = "~/Views/Account/ForgotPasswordConfirmation.cshtml";
-            public readonly string Register = "~/Views/Account/Register.cshtml";
-            public readonly string ResetPassword = "~/Views/Account/ResetPassword.cshtml";
-            public readonly string ResetPasswordConfirmation = "~/Views/Account/ResetPasswordConfirmation.cshtml";
-            public readonly string SendCode = "~/Views/Account/SendCode.cshtml";
-            public readonly string VerifyCode = "~/Views/Account/VerifyCode.cshtml";
+            public readonly string _ExternalLoginsListPartial = "~/Areas/Default/Views/Account/_ExternalLoginsListPartial.cshtml";
+            public readonly string _Login = "~/Areas/Default/Views/Account/_Login.cshtml";
+            public readonly string ConfirmEmail = "~/Areas/Default/Views/Account/ConfirmEmail.cshtml";
+            public readonly string ExternalLoginConfirmation = "~/Areas/Default/Views/Account/ExternalLoginConfirmation.cshtml";
+            public readonly string ExternalLoginFailure = "~/Areas/Default/Views/Account/ExternalLoginFailure.cshtml";
+            public readonly string ForgotPassword = "~/Areas/Default/Views/Account/ForgotPassword.cshtml";
+            public readonly string ForgotPasswordConfirmation = "~/Areas/Default/Views/Account/ForgotPasswordConfirmation.cshtml";
+            public readonly string Register = "~/Areas/Default/Views/Account/Register.cshtml";
+            public readonly string ResetPassword = "~/Areas/Default/Views/Account/ResetPassword.cshtml";
+            public readonly string ResetPasswordConfirmation = "~/Areas/Default/Views/Account/ResetPasswordConfirmation.cshtml";
+            public readonly string SendCode = "~/Areas/Default/Views/Account/SendCode.cshtml";
+            public readonly string VerifyCode = "~/Areas/Default/Views/Account/VerifyCode.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AccountController : RunShawn.Web.Controllers.AccountController
+    public partial class T4MVC_AccountController : RunShawn.Web.Areas.Default.Controllers.AccountController
     {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 

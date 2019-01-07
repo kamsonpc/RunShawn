@@ -1,12 +1,13 @@
-﻿using MvcPaging;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MvcPaging;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Default.Models.News;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Default.Controllers
 {
@@ -26,9 +27,18 @@ namespace RunShawn.Web.Areas.Default.Controllers
         public virtual ActionResult List(int? pageIndex)
         {
             pageIndex = pageIndex.HasValue ? pageIndex.Value - 1 : 0;
-            var model = ArticlesService.GetAll(true)
-                                       .MapTo<List<ArticleListViewModel>>()
-                                       .ToPagedList(pageIndex.Value, _defaultPageSize);
+            var allArticles = ArticlesService.GetAll(true)
+                                       .MapTo<List<ArticleListItemViewModel>>();
+
+            var featuredArticles = allArticles.Where(x => x.Featured == true).ToList();
+            var articles = allArticles.Where(x => x.Featured == false)
+                                      .ToPagedList(pageIndex.Value, _defaultPageSize);
+
+            var model = new ArticleList
+            {
+                Articles = articles,
+                FeaturedArticles = featuredArticles
+            };
 
             return View(MVC.Default.News.Views.List, model);
         }

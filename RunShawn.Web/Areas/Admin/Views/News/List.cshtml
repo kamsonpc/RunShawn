@@ -25,7 +25,7 @@
     columns.Add(model => model.PublishDate).Titled("Data Publikacji");
     columns.Add().Titled("Wyróżniony").Encoded(false).RenderedAs(model => (
 
-           $"<a href='{MVC.Admin.News.Feature(model.Id)}'><i class='{model.FeatureIcon}'></a>"
+           $"<a href='{Url.Action(MVC.Admin.News.Feature(model.Id))}'><i class='{model.FeaturedIcon}'></a>"
         )
         );
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>

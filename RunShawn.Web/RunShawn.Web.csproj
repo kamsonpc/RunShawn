@@ -214,9 +214,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Admin.CategoriesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -255,12 +252,22 @@
     <Compile Include="Areas\Default\DefaultAreaRegistration.cs" />
     <Compile Include="Areas\Default\Models\DefaultMapProfile.cs" />
     <Compile Include="Areas\Default\Controllers\NewsController.cs" />
-    <Compile Include="Areas\Default\Models\News\ArticleListViewModel.cs" />
+    <Compile Include="Areas\Default\Models\News\ArticleList.cs" />
+    <Compile Include="Areas\Default\Models\News\ArticleListItemViewModel.cs" />
     <Compile Include="Areas\Default\Models\News\ArticleViewModel.cs" />
     <Compile Include="Attributes\AjaxOnlyAttribute.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Attributes\AuthorizeCustom.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
+    <Compile Include="Default.AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.ManageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Default.NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -270,9 +277,9 @@
     <Compile Include="Extentions\Controller\BaseController.cs" />
     <Compile Include="Extentions\Alert\Alert.cs" />
     <Compile Include="Extentions\Boostrap\HelperMethods.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\Default\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Default\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Default\Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Extentions\Enum\EnumHelper.cs" />
     <Compile Include="Extentions\Grid\GridExtentions.cs" />
@@ -286,9 +293,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HomeController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="MenusController.generated.cs">
@@ -514,28 +518,28 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\Default\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Default\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\Default\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Default\Views\Account\SendCode.cshtml" />
+    <Content Include="Areas\Default\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\Default\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Account\_Login.cshtml" />
+    <Content Include="Areas\Default\Views\Account\_Login.cshtml" />
     <Content Include="Views\Menus\_SidebarMenu.cshtml" />
     <Content Include="Views\Shared\MvcGrid\_Pager.cshtml" />
     <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />

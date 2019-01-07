@@ -451,12 +451,12 @@
         public const string square_o = "fa fa-fw fa-square-o";
         public const string stack_exchange = "fa fa-fw fa-stack-exchange";
         public const string stack_overflow = "fa fa-fw fa-stack-overflow";
-        public const string star = "fa fa-fw fa-star";
+        public const string star = "fas fa-star";
         public const string star_half = "fa fa-fw fa-star-half";
         public const string star_half_empty = "fa fa-fw fa-star-half-empty";
         public const string star_half_full = "fa fa-fw fa-star-half-full";
         public const string star_half_o = "fa fa-fw fa-star-half-o";
-        public const string star_o = "fa fa-fw fa-star-o";
+        public const string star_o = "far fa-star";
         public const string steam = "fa fa-fw fa-steam";
         public const string steam_square = "fa fa-fw fa-steam-square";
         public const string step_backward = "fa fa-fw fa-step-backward";

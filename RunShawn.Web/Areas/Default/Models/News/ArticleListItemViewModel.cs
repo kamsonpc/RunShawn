@@ -2,7 +2,7 @@
 
 namespace RunShawn.Web.Areas.Default.Models.News
 {
-    public class ArticleListViewModel
+    public class ArticleListItemViewModel
     {
         public long Id { get; set; }
         public string Title { get; set; }
@@ -13,6 +13,7 @@ namespace RunShawn.Web.Areas.Default.Models.News
         public string CreatedBy { get; set; }
         public string CreatedByName { get; set; }
         public string FeaturedImage { get; set; }
+        public bool Featured { get; set; }
 
     }
 }

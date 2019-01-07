@@ -10,7 +10,7 @@ namespace RunShawn.Web.Areas.Default.Models
         {
             CreateMap<Article, ArticleViewModel>();
             CreateMap<ArticleViewModel, Article>();
-            CreateMap<ArticleListViewModel, Article>();
+            CreateMap<ArticleListItemViewModel, Article>();
         }
     }
 }

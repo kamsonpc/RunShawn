@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RunShawn.Web.Models;
 
-namespace RunShawn.Web.Controllers
+namespace RunShawn.Web.Areas.Default.Controllers
 {
     [Authorize]
     public partial class AccountController : Controller
@@ -43,7 +43,7 @@ namespace RunShawn.Web.Controllers
         public virtual ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return PartialView(MVC.Account.Views._Login);
+            return PartialView(MVC.Default.Account.Views._Login);
         }
 
         //
@@ -55,7 +55,7 @@ namespace RunShawn.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return PartialView(MVC.Account.Views._Login, model);
+                return PartialView(MVC.Default.Account.Views._Login, model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -72,7 +72,7 @@ namespace RunShawn.Web.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return PartialView(MVC.Account.Views._Login, model);
+                    return PartialView(MVC.Default.Account.Views._Login, model);
             }
         }
 
