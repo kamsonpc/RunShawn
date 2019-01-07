@@ -332,6 +332,7 @@
     <Content Include="Content\images\article-images\article-background8.png" />
     <Content Include="Content\images\article-images\article-background9.png" />
     <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\empty-photo.png" />
     <Content Include="Content\images\user.png" />
     <Content Include="Content\login\login_form.css" />
     <Content Include="Content\modal\modal.css" />

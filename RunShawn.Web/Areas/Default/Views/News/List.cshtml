@@ -3,45 +3,69 @@
 @model IPagedList<ArticleListViewModel>
 
 <div class="container">
-    <div class="row">
-
+    @*<div class="row">
         <div class="col-sm-12">
-            @{
-                var hugeArticle = Model.First();
-            <a href="@Url.Action(MVC.Default.News.Details(Model.First.Id))">
+            <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                 <div class="huge-box trips" style="background-image: url(@{
-                        if(!string.IsNullOrEmpty(Model.First.FeaturedImage))
+                        if(!string.IsNullOrEmpty(item.FeaturedImage))
                         {
-                            <text>@Model.First.FeaturedImage</text>
+                            <text>@item.FeaturedImage</text>
                         }
                         else
                         {
-                            <text>'@Url.Content("#")'</text>
+                            <text>@Url.Content("#")</text>
                         }
                     });">
                     <header class="box-header">
                         <section class="text">
-                            <h1>@Model.First.Title</h1>
+                            <h1>@item.Title</h1>
                             <p></p>
                         </section>
                     </header>
                     <footer class="box-footer">
-                        <div class="article-category">@Model.First.CategoryTitle</div>
+                        <div class="article-category">@item.CategoryTitle</div>
                         <div class="article-info">
-                            <span class="data">@Model.First.PublishDate.ToLongDateString()</span>
+                            <span class="data">@item.PublishDate.ToString("dd MMMM yyyy")</span>
                             <span class="break">|</span>
-                            <span class="autor-name">@Model.First.CreatedByName</span>
+                            <span class="autor-name">@item.CreatedByName</span>
                         </div>
                     </footer>
                 </div>
             </a>
         </div>
-            }
-        @for (int i = 1; i < Model.Count; i++)
+    </div>*@
+    <div class="row">
+        @foreach (var item in Model)
         {
+            <div class="col-sm-4">
+                <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
+                    <div class="medium-box nature">
+                        <header class="box-header" style="background-image: url(@{
+                            if(!string.IsNullOrEmpty(item.FeaturedImage))
+                            {
+                                <text>@item.FeaturedImage</text>
+                            }
+                            else
+                            {
+                                <text>@Url.Content("~/Content/images/empty-photo.png")</text>
+                            }
+                            });">
+                            <div class="article-category">@item.CategoryTitle</div>
+                        </header>
+                        <footer class="box-footer">
+                            <div class="article-info">
+                                <h1>@item.Title</h1>
+                                <span class="data">@item.PublishDate.ToString("dd MMMM yyyy")</span>
+                                <span class="break">|</span>
+                                <span class="autor-name">@item.CreatedByName</span>
+                            </div>
+                        </footer>
+                    </div>
+                </a>
+            </div>
         }
-        </div>
     </div>
+</div>
 <div class="pager">
     @Html.Pager(Model.PageSize, Model.PageIndex, Model.PageCount)
 </div>

@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
 body {
   color: #ffffff;
 }
 
 h1 {
   margin: 0;
+}
+
+a:hover, a:focus {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .page-header {
@@ -94,7 +100,11 @@ h1 {
   font-size: 20px;
 }
 
-footer {
+main {
+  margin-top: 99px;
+}
+
+.main-footer {
   padding: 30px 20px 30px 20px;
   text-align: center;
 }
@@ -143,4 +153,4 @@ footer {
     font-size: 15px;
   }
 }
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=default.css.map */
