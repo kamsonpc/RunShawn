@@ -6,7 +6,7 @@
     bool active = true;
     foreach (var item in Model)
     {
-        <div class="carousel-item @(active ? "active" : String.Empty)">
+        <div class=" @((Model.Count() > 1) ? "item" : String.Empty) @((active && Model.Count() > 1) ? "active" : String.Empty)">
             <div class="col-sm-12">
                 <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                     <div class="huge-box trips @(string.IsNullOrEmpty(item.FeaturedImage) ? "empty" : String.Empty)" style="background-image: url(@(string.IsNullOrEmpty(item.FeaturedImage) ? $"'{Url.Content("~/Content/images/empty-photo.png")}'" : item.FeaturedImage));">
