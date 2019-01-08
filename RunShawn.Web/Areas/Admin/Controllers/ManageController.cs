@@ -343,7 +343,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
 
 
-            return RedirectToAction(MVC.Admin.Manage.Index());
+            return RedirectToAction(MVC.Admin.Manage.SetAvatar());
         }
 
 
