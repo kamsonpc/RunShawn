@@ -390,6 +390,7 @@
     <Content Include="Areas\Default\Views\News\Details.cshtml" />
     <Content Include="Content\default\default.css.map" />
     <Content Include="Content\default\default.scss" />
+    <Content Include="Areas\Default\Views\News\_FeaturedList.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -30,6 +30,12 @@
   background-repeat: no-repeat;
 }
 
+.huge-box.empty {
+  background-size: contain;
+  background-position: center;
+  background-color: #ffffff;
+}
+
 .huge-box .box-header {
   padding: 120px 0;
   height: 400px;
@@ -135,6 +141,7 @@
 .medium-box .box-header.empty {
   background-size: contain;
   background-position: center;
+  background-color: #ffffff;
 }
 
 .medium-box .box-header .article-category {

@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+}
+
 body {
   color: #ffffff;
 }

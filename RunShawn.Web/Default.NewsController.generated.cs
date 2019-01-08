@@ -127,9 +127,11 @@ namespace RunShawn.Web.Areas.Default.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _FeaturedList = "_FeaturedList";
                 public readonly string Details = "Details";
                 public readonly string List = "List";
             }
+            public readonly string _FeaturedList = "~/Areas/Default/Views/News/_FeaturedList.cshtml";
             public readonly string Details = "~/Areas/Default/Views/News/Details.cshtml";
             public readonly string List = "~/Areas/Default/Views/News/List.cshtml";
         }

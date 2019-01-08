@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro");
 $font-color: #ffffff;
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
 body{
     color: $font-color;
 }

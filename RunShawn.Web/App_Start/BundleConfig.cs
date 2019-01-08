@@ -24,7 +24,7 @@ namespace RunShawn.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/tooltip/jquery.darktooltip.js",
                       "~/Scripts/summernote/summernote-lite.js",
                       "~/Scripts/summernote/summernote-init.js"));

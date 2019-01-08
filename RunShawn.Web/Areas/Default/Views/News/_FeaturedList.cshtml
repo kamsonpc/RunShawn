@@ -1,0 +1,33 @@
+﻿
+@using RunShawn.Web.Areas.Default.Models.News
+@model  List<ArticleListItemViewModel>
+
+@{ 
+    bool active = true;
+    foreach (var item in Model)
+    {
+        <div class="carousel-item @(active ? "active" : String.Empty)">
+            <div class="col-sm-12">
+                <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
+                    <div class="huge-box trips @(string.IsNullOrEmpty(item.FeaturedImage) ? "empty" : String.Empty)" style="background-image: url(@(string.IsNullOrEmpty(item.FeaturedImage) ? $"'{Url.Content("~/Content/images/empty-photo.png")}'" : item.FeaturedImage));">
+                        <header class="box-header">
+                            <section class="text">
+                                <h1>@item.Title</h1>
+                                <p></p>
+                            </section>
+                        </header>
+                        <footer class="box-footer">
+                            <div class="article-category">@item.CategoryTitle</div>
+                            <div class="article-info">
+                                <span class="data">@item.PublishDate.ToString("dd MMMM yyyy")</span>
+                                <span class="break">|</span>
+                                <span class="autor-name">@item.CreatedByName</span>
+                            </div>
+                        </footer>
+                    </div>
+                </a>
+            </div>
+        </div>
+        active = false;
+    }
+}

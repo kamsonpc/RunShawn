@@ -24,6 +24,12 @@ $font-color: #ffffff;
     justify-content: flex-end;
     background-size: cover;
     background-repeat: no-repeat;
+    &.empty
+    {
+        background-size: contain;
+        background-position: center;
+        background-color: #ffffff;  
+    }
     .box-header
     {
         padding: 120px 0;
@@ -106,6 +112,7 @@ $font-color: #ffffff;
         {
             background-size: contain;
             background-position: center;
+            background-color: #ffffff; 
         }
         .article-category
         {

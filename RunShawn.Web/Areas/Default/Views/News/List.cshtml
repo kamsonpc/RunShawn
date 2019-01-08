@@ -3,57 +3,38 @@
 @model  ArticleList
 
 <div class="container">
-    @foreach (var item in Model.FeaturedArticles)
-    {
 
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
-                <div class="huge-box trips" style="background-image: url(@{
-                        if(!string.IsNullOrEmpty(item.FeaturedImage))
-                        {
-                            <text>@item.FeaturedImage</text>
-                        }
-                        else
-                        {
-                            <text>@Url.Content("#")</text>
-                        }
-                    });">
-                    <header class="box-header">
-                        <section class="text">
-                            <h1>@item.Title</h1>
-                            <p></p>
-                        </section>
-                    </header>
-                    <footer class="box-footer">
-                        <div class="article-category">@item.CategoryTitle</div>
-                        <div class="article-info">
-                            <span class="data">@item.PublishDate.ToString("dd MMMM yyyy")</span>
-                            <span class="break">|</span>
-                            <span class="autor-name">@item.CreatedByName</span>
-                        </div>
-                    </footer>
-                </div>
+
+    @if (Model.FeaturedArticles.Count() == 1)
+    {
+        Html.RenderPartial(MVC.Default.News.Views._FeaturedList, Model.FeaturedArticles);
+    }
+    else if (Model.FeaturedArticles.Count() > 1)
+    {
+        <div id="FeaturedArticles" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" id="">
+                @{
+                    Html.RenderPartial(MVC.Default.News.Views._FeaturedList, Model.FeaturedArticles);
+                }
+            </div>
+            <a class="carousel-control-prev" href="#FeaturedArticles" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#FeaturedArticles" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
     }
+
     <div class="row">
         @foreach (var item in Model.Articles)
         {
             <div class="col-sm-4">
                 <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                     <div class="medium-box nature">
-                        <header class="box-header" style="background-image: url(@{
-                            if(!string.IsNullOrEmpty(item.FeaturedImage))
-                            {
-                                <text>@item.FeaturedImage</text>
-                            }
-                            else
-                            {
-                                <text>@Url.Content("~/Content/images/empty-photo.png")</text>
-                            }
-                            });">
+                        <header class="box-header @(string.IsNullOrEmpty(item.FeaturedImage) ? "empty" : String.Empty)" style="background-image: url(@(string.IsNullOrEmpty(item.FeaturedImage) ? $"'{Url.Content("~/Content/images/empty-photo.png")}'" : item.FeaturedImage));">
                             <div class="article-category">@item.CategoryTitle</div>
                         </header>
                         <footer class="box-footer">
@@ -70,6 +51,6 @@
         }
     </div>
 </div>
-<div class="pager">
-    @Html.Pager(Model.PageSize, Model.PageIndex, Model.PageCount)
-</div>
+    <div class="pager">
+        @Html.Pager(Model.Articles.PageSize, Model.Articles.PageIndex, Model.Articles.PageCount)
+    </div>
