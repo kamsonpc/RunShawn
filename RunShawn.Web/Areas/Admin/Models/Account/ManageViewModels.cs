@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace RunShawn.Web.Models
+namespace RunShawn.Web.Areas.Admin.Models.Account
 {
     public class IndexViewModel
     {
@@ -76,6 +76,12 @@ namespace RunShawn.Web.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+    }
+
+    public class SetAvatarViewModel
+    {
+        [Display(Name = "Zdjęcie profilowe")]
+        public byte[] Avatar { get; set; }
     }
 
     public class ConfigureTwoFactorViewModel

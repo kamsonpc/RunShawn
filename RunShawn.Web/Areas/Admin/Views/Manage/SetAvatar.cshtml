@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Ustawienia Avatara";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using RunShawn.Web.Areas.Admin.Models.Account
+@model SetAvatarViewModel
+
+
+@using (var form = Html.Bootstrap().Form((MVC.Admin.Manage.SetAvatar())).AddAttributes(new { enctype = "multipart/form-data" }).Begin())
+{
+    @Html.AntiForgeryToken()
+    <img class="img-circle" src="@Url.Action(MVC.Admin.Users.GetAvatar())" />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Avatar)
+        <input type="file" name="Avatar" id="Avatar" accept=".png,.jpg,.jpeg,.gif,.tif" />
+    </div>
+   
+    @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+}

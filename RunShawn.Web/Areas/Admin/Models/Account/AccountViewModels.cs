@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace RunShawn.Web.Models
+namespace RunShawn.Web.Areas.Admin.Models.Account
 {
     public class ExternalLoginConfirmationViewModel
     {

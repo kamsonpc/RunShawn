@@ -37,11 +37,11 @@
         <section class="user-panel">
             <i class="far fa-bell" id="notification-button"></i>
             <div class="user-image">
-                <img src="@Url.Content("~/Content/images/user.png")" alt="user">
+                <img src="@Url.Action(MVC.Admin.Users.GetAvatar())" alt="user">
             </div>
             <div class="dropdown_list-user">
                 <div class="account-info">
-                    <img src="@Url.Content("~/Content/images/user.png")" alt="user">
+                    <img src="@Url.Action(MVC.Admin.Users.GetAvatar())" alt="user">
                     <ul>
                         @if (User.IsInRole(RoleTypes.Administrator.ToString()))
                         {
@@ -51,13 +51,13 @@
                         {
                             <li class="group"><a href="#">@User.Identity.Name</a></li>
                         }
-                        <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Default.Manage.Index())">Ustawienia Konta</a></li>
+                        <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Admin.Manage.Index())">Ustawienia Konta</a></li>
                     </ul>
                 </div>
                 <div class="logout">
                     @if (Request.IsAuthenticated)
                     {
-                        using (Html.BeginForm(MVC.Default.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
+                        using (Html.BeginForm(MVC.Admin.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
                         {
                             @Html.AntiForgeryToken()
                             <button class="rs-btn-default rs-btn-blue">

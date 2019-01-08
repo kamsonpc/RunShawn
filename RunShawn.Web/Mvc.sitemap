@@ -8,6 +8,10 @@
                   <mvcSiteMapNode title="Dodaj Użytkownika" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
                   <mvcSiteMapNode title="Edytuj Użytkownika" area="Admin" controller="Users" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
           </mvcSiteMapNode>
+			<mvcSiteMapNode title="Ustawienia Konta" area="Admin" controller="Manage" action="Index">
+				<mvcSiteMapNode title="Avatar" area="Admin" controller="Manage" action="SetAvatar"></mvcSiteMapNode>
+
+				</mvcSiteMapNode>
 
           <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List">
             <mvcSiteMapNode title="Dodaj Wpis" area="Admin" controller="News" action="Create"></mvcSiteMapNode>

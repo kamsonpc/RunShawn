@@ -42,8 +42,10 @@ namespace T4MVC
     public class AdminClass
     {
         public readonly string Name = "Admin";
+        public RunShawn.Web.Area.Admin.Controllers.AccountController Account = new RunShawn.Web.Area.Admin.Controllers.T4MVC_AccountController();
         public RunShawn.Web.Areas.Admin.Controllers.CategoriesController Categories = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_CategoriesController();
         public RunShawn.Web.Areas.Admin.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_DashboardController();
+        public RunShawn.Web.Areas.Admin.Controllers.ManageController Manage = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_ManageController();
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
@@ -52,9 +54,7 @@ namespace T4MVC
     public class DefaultClass
     {
         public readonly string Name = "Default";
-        public RunShawn.Web.Areas.Default.Controllers.AccountController Account = new RunShawn.Web.Areas.Default.Controllers.T4MVC_AccountController();
         public RunShawn.Web.Controllers.HomeController Home = new RunShawn.Web.Controllers.T4MVC_HomeController();
-        public RunShawn.Web.Areas.Default.Controllers.ManageController Manage = new RunShawn.Web.Areas.Default.Controllers.T4MVC_ManageController();
         public RunShawn.Web.Areas.Default.Controllers.NewsController News = new RunShawn.Web.Areas.Default.Controllers.T4MVC_NewsController();
         public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
     }
@@ -91,6 +91,19 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
 internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }

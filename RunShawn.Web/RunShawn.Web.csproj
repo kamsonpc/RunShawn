@@ -214,10 +214,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.CategoriesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Admin.DashboardController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Admin.NewsController.generated.cs">
@@ -259,13 +265,7 @@
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Attributes\AuthorizeCustom.cs" />
     <Compile Include="Attributes\MenuAttribute.cs" />
-    <Compile Include="Default.AccountController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Default.HomeController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Default.ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.NewsController.generated.cs">
@@ -277,9 +277,9 @@
     <Compile Include="Extentions\Controller\BaseController.cs" />
     <Compile Include="Extentions\Alert\Alert.cs" />
     <Compile Include="Extentions\Boostrap\HelperMethods.cs" />
-    <Compile Include="Areas\Default\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Default\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Default\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Extentions\Enum\EnumHelper.cs" />
     <Compile Include="Extentions\Grid\GridExtentions.cs" />
@@ -298,9 +298,9 @@
     <Compile Include="MenusController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\Account\ManageViewModels.cs" />
     <Compile Include="Models\Menu\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
@@ -390,6 +390,7 @@
     <Content Include="Areas\Default\Views\News\Details.cshtml" />
     <Content Include="Content\default\default.css.map" />
     <Content Include="Content\default\default.scss" />
+    <Content Include="Areas\Admin\Views\Manage\SetAvatar.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -518,28 +519,28 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Default\Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Areas\Default\Views\Account\Register.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ResetPassword.cshtml" />
-    <Content Include="Areas\Default\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Areas\Default\Views\Account\SendCode.cshtml" />
-    <Content Include="Areas\Default\Views\Account\VerifyCode.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\Index.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\SetPassword.cshtml" />
-    <Content Include="Areas\Default\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\SendCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Areas\Default\Views\Account\_Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_Login.cshtml" />
     <Content Include="Views\Menus\_SidebarMenu.cshtml" />
     <Content Include="Views\Shared\MvcGrid\_Pager.cshtml" />
     <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />

@@ -89,6 +89,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
+            public readonly string GetAvatar = "GetAvatar";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -99,6 +100,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
+            public const string GetAvatar = "GetAvatar";
         }
 
 
@@ -230,6 +232,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetAvatarOverride(T4MVC_System_Web_Mvc_FileContentResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.FileContentResult GetAvatar()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetAvatar);
+            GetAvatarOverride(callInfo);
             return callInfo;
         }
 

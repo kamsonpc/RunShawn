@@ -1,13 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using RunShawn.Core.Features.Users;
+using RunShawn.Web.Areas.Admin.Models.Account;
 using RunShawn.Web.Models;
 
-namespace RunShawn.Web.Areas.Default.Controllers
+namespace RunShawn.Web.Area.Admin.Controllers
 {
     [Authorize]
     public partial class AccountController : Controller
@@ -43,7 +47,7 @@ namespace RunShawn.Web.Areas.Default.Controllers
         public virtual ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return PartialView(MVC.Default.Account.Views._Login);
+            return PartialView(MVC.Admin.Account.Views._Login);
         }
 
         //
@@ -55,7 +59,7 @@ namespace RunShawn.Web.Areas.Default.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return PartialView(MVC.Default.Account.Views._Login, model);
+                return PartialView(MVC.Admin.Account.Views._Login, model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -72,7 +76,7 @@ namespace RunShawn.Web.Areas.Default.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return PartialView(MVC.Default.Account.Views._Login, model);
+                    return PartialView(MVC.Admin.Account.Views._Login, model);
             }
         }
 
@@ -89,7 +93,6 @@ namespace RunShawn.Web.Areas.Default.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]

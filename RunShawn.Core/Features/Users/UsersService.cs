@@ -1,7 +1,7 @@
-﻿using RunShawn.Core.Features.Users.Model;
+﻿using System.Collections.Generic;
+using RunShawn.Core.Features.Users.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
-using System.Collections.Generic;
 
 namespace RunShawn.Core.Features.Users
 {
@@ -53,6 +53,28 @@ namespace RunShawn.Core.Features.Users
 
             return model;
         }
+        #endregion
+
+        #region SetAvatar
+        public static void SetAvatar(string id, byte[] avatar)
+        {
+            Database db = Database.Open();
+            var sql = @"
+                       UPDATE  AspNetUsers 
+                       SET 
+                            Avatar = @avatar
+                       WHERE 
+                            Id = @id";
+
+            var rows = db.Execute(sql,
+                new
+                {
+                    id,
+                    avatar
+                });
+
+        }
+
         #endregion
 
         #region Delete()

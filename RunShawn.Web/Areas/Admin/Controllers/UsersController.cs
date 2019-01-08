@@ -1,4 +1,12 @@
-﻿using FluentBootstrap;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using FluentBootstrap;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
 using RunShawn.Core.Features.Users;
@@ -9,12 +17,6 @@ using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
@@ -198,5 +200,47 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
         }
         #endregion
+
+        #region GetAvatar()
+        public virtual FileContentResult GetAvatar()
+        {
+
+            String userId = User.Identity.GetUserId();
+
+            var user = UsersService.GetById(userId);
+
+            var avatar = user.Avatar;
+            if (avatar != null && avatar.Length > 0)
+            {
+                return new FileContentResult(user.Avatar, "image/jpeg");
+            }
+            else
+            {
+                try
+                {
+                    string fileName = HttpContext.Server.MapPath(@"~/Content/images/user.png");
+
+                    byte[] imageData = null;
+                    FileInfo fileInfo = new FileInfo(fileName);
+
+                    long imageFileLength = fileInfo.Length;
+
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    imageData = br.ReadBytes((int)imageFileLength);
+
+                    return new FileContentResult(imageData, "image/jpeg");
+
+                }
+                catch (FileNotFoundException)
+                {
+                    return new FileContentResult(new byte[1], "image/jpeg");
+                }
+
+            }
+
+        }
+        #endregion
+
     }
 }

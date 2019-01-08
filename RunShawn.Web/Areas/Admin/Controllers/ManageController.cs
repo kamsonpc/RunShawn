@@ -1,18 +1,25 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using RunShawn.Core.Features.Users;
+using RunShawn.Web.Area.Admin.Controllers;
+using RunShawn.Web.Areas.Admin.Models.Account;
+using RunShawn.Web.Attributes;
 using RunShawn.Web.Models;
 
-namespace RunShawn.Web.Areas.Default.Controllers
+namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public partial class ManageController : Controller
     {
+        private const string _avatar = "Avatar";
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -309,6 +316,36 @@ namespace RunShawn.Web.Areas.Default.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+
+        public virtual ActionResult SetAvatar()
+        {
+            return View(MVC.Admin.Manage.Views.SetAvatar);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult SetAvatar([Bind(Exclude = _avatar)]SetAvatarViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files[_avatar];
+
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+                UsersService.SetAvatar(User.Identity.GetUserId(), imageData);
+            }
+
+
+            return RedirectToAction(MVC.Admin.Manage.Index());
+        }
+
 
         protected override void Dispose(bool disposing)
         {

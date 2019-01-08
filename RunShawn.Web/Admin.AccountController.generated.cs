@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Areas.Default.Controllers
+namespace RunShawn.Web.Area.Admin.Controllers
 {
     public partial class AccountController
     {
@@ -111,9 +111,9 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AccountController Actions { get { return MVC.Default.Account; } }
+        public AccountController Actions { get { return MVC.Admin.Account; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Default";
+        public readonly string Area = "Admin";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "Account";
         [GeneratedCode("T4MVC", "2.0")]
@@ -274,23 +274,23 @@ namespace RunShawn.Web.Areas.Default.Controllers
                 public readonly string SendCode = "SendCode";
                 public readonly string VerifyCode = "VerifyCode";
             }
-            public readonly string _ExternalLoginsListPartial = "~/Areas/Default/Views/Account/_ExternalLoginsListPartial.cshtml";
-            public readonly string _Login = "~/Areas/Default/Views/Account/_Login.cshtml";
-            public readonly string ConfirmEmail = "~/Areas/Default/Views/Account/ConfirmEmail.cshtml";
-            public readonly string ExternalLoginConfirmation = "~/Areas/Default/Views/Account/ExternalLoginConfirmation.cshtml";
-            public readonly string ExternalLoginFailure = "~/Areas/Default/Views/Account/ExternalLoginFailure.cshtml";
-            public readonly string ForgotPassword = "~/Areas/Default/Views/Account/ForgotPassword.cshtml";
-            public readonly string ForgotPasswordConfirmation = "~/Areas/Default/Views/Account/ForgotPasswordConfirmation.cshtml";
-            public readonly string Register = "~/Areas/Default/Views/Account/Register.cshtml";
-            public readonly string ResetPassword = "~/Areas/Default/Views/Account/ResetPassword.cshtml";
-            public readonly string ResetPasswordConfirmation = "~/Areas/Default/Views/Account/ResetPasswordConfirmation.cshtml";
-            public readonly string SendCode = "~/Areas/Default/Views/Account/SendCode.cshtml";
-            public readonly string VerifyCode = "~/Areas/Default/Views/Account/VerifyCode.cshtml";
+            public readonly string _ExternalLoginsListPartial = "~/Areas/Admin/Views/Account/_ExternalLoginsListPartial.cshtml";
+            public readonly string _Login = "~/Areas/Admin/Views/Account/_Login.cshtml";
+            public readonly string ConfirmEmail = "~/Areas/Admin/Views/Account/ConfirmEmail.cshtml";
+            public readonly string ExternalLoginConfirmation = "~/Areas/Admin/Views/Account/ExternalLoginConfirmation.cshtml";
+            public readonly string ExternalLoginFailure = "~/Areas/Admin/Views/Account/ExternalLoginFailure.cshtml";
+            public readonly string ForgotPassword = "~/Areas/Admin/Views/Account/ForgotPassword.cshtml";
+            public readonly string ForgotPasswordConfirmation = "~/Areas/Admin/Views/Account/ForgotPasswordConfirmation.cshtml";
+            public readonly string Register = "~/Areas/Admin/Views/Account/Register.cshtml";
+            public readonly string ResetPassword = "~/Areas/Admin/Views/Account/ResetPassword.cshtml";
+            public readonly string ResetPasswordConfirmation = "~/Areas/Admin/Views/Account/ResetPasswordConfirmation.cshtml";
+            public readonly string SendCode = "~/Areas/Admin/Views/Account/SendCode.cshtml";
+            public readonly string VerifyCode = "~/Areas/Admin/Views/Account/VerifyCode.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AccountController : RunShawn.Web.Areas.Default.Controllers.AccountController
+    public partial class T4MVC_AccountController : RunShawn.Web.Area.Admin.Controllers.AccountController
     {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 
@@ -307,10 +307,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.LoginViewModel model, string returnUrl);
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.LoginViewModel model, string returnUrl);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Login(RunShawn.Web.Models.LoginViewModel model, string returnUrl)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Login(RunShawn.Web.Areas.Admin.Models.Account.LoginViewModel model, string returnUrl)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -334,10 +334,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void VerifyCodeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.VerifyCodeViewModel model);
+        partial void VerifyCodeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.VerifyCodeViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyCode(RunShawn.Web.Models.VerifyCodeViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyCode(RunShawn.Web.Areas.Admin.Models.Account.VerifyCodeViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -357,10 +357,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.RegisterViewModel model);
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.RegisterViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Register(RunShawn.Web.Models.RegisterViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Register(RunShawn.Web.Areas.Admin.Models.Account.RegisterViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -393,10 +393,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void ForgotPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.ForgotPasswordViewModel model);
+        partial void ForgotPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.ForgotPasswordViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ForgotPassword(RunShawn.Web.Models.ForgotPasswordViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ForgotPassword(RunShawn.Web.Areas.Admin.Models.Account.ForgotPasswordViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ForgotPassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -428,10 +428,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.ResetPasswordViewModel model);
+        partial void ResetPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.ResetPasswordViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ResetPassword(RunShawn.Web.Models.ResetPasswordViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ResetPassword(RunShawn.Web.Areas.Admin.Models.Account.ResetPasswordViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ResetPassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -477,10 +477,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void SendCodeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.SendCodeViewModel model);
+        partial void SendCodeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.SendCodeViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> SendCode(RunShawn.Web.Models.SendCodeViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> SendCode(RunShawn.Web.Areas.Admin.Models.Account.SendCodeViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -501,10 +501,10 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void ExternalLoginConfirmationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Models.ExternalLoginConfirmationViewModel model, string returnUrl);
+        partial void ExternalLoginConfirmationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, RunShawn.Web.Areas.Admin.Models.Account.ExternalLoginConfirmationViewModel model, string returnUrl);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ExternalLoginConfirmation(RunShawn.Web.Models.ExternalLoginConfirmationViewModel model, string returnUrl)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ExternalLoginConfirmation(RunShawn.Web.Areas.Admin.Models.Account.ExternalLoginConfirmationViewModel model, string returnUrl)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginConfirmation);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);

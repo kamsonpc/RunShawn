@@ -16,6 +16,7 @@ namespace RunShawn.Core.Features.Users.Model
         public bool PhoneNumberConfirmed { get; set; }
         public DateTime? LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
+        public byte[] Avatar { get; set; }
         public int AccessFailedCount { get; set; }
 
     }
