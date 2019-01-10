@@ -2,9 +2,7 @@
 @using RunShawn.Web.Areas.Default.Models.News
 @model  ArticleList
 
-<div class="container">
-
-
+<div class="container slider-container">
     @if (Model.FeaturedArticles.Count() == 1)
     {
         Html.RenderPartial(MVC.Default.News.Views._FeaturedList, Model.FeaturedArticles);
@@ -27,7 +25,8 @@
             </a>
         </div>
     }
-
+</div>
+<div class="container">
     <div class="row">
         @foreach (var item in Model.Articles)
         {
@@ -51,6 +50,13 @@
         }
     </div>
 </div>
-    <div class="pager">
-        @Html.Pager(Model.Articles.PageSize, Model.Articles.PageIndex, Model.Articles.PageCount)
+<div class="pager">
+    @Html.Pager(Model.Articles.PageSize, Model.Articles.PageIndex, Model.Articles.PageCount)
+</div>
+<div class="countdown-bar">
+    <div class="countdown-caption">
+        <h6>Startujemy za </h6>
+        <p class="countdown-text">00<span class="time-letter">dni</span> 00<span class="time-letter">godz.</span>00<span class="time-letter">min.</span>00<span class="time-letter">sekund</span></p>
+
     </div>
+</div>

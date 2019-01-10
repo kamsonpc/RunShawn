@@ -1,15 +1,13 @@
 $font-color: #ffffff;
-.container 
+.slider-container
 {
-    background: #ffffff;
-    .row
-    {
-        margin: 0 20px;
-        >div
-        {
-            padding: 0;
-        }
-    }
+    padding-left: 10px;
+    padding-right: 10px; 
+}
+
+.huge-box-container
+{
+    width: 100%; 
 }
 
 .huge-box
@@ -17,7 +15,6 @@ $font-color: #ffffff;
     color: $font-color;
     text-align: center;
     padding: 20px 0;
-    margin: 10px 10px;
     font-family: 'Maven Pro', sans-serif;
     display: flex;
     flex-direction: column;
@@ -32,8 +29,8 @@ $font-color: #ffffff;
     }
     .box-header
     {
-        padding: 120px 0;
-        height: 400px;
+        padding: 0;
+        height: 147px;
         .text
         {
             position: relative;
@@ -44,6 +41,9 @@ $font-color: #ffffff;
             {
                 color: $font-color; 
                 font-size: 40px;
+            }
+            p{
+                display: none;
             }
         }
     }
@@ -67,6 +67,7 @@ $font-color: #ffffff;
             font-family: 'PT Sans', sans-serif;
             text-align: right;
             padding: 10px 25px;
+            display: none;
             div
             {
                 display: flex;
@@ -208,6 +209,22 @@ $font-color: #ffffff;
         &:hover
         {
             background: #c80334;
+        }
+    }
+}
+@media (min-width: 769px) {
+    .huge-box 
+    {       
+        .box-header{
+            padding: 120px 0;
+            height: 400px;
+            .text p{
+                display: block;
+            }
+        }
+        .box-footer .article-info
+        {
+            display: block; 
         }
     }
 }

@@ -1,5 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro|Signika");
 $font-color: #ffffff;
+$theme-bc-color:#292b2c;
+$theme-font-color:#ffffff;
 
 .carousel-control.left, .carousel-control.right {
     background-image: none
@@ -12,40 +14,84 @@ body{
 h1{
     margin: 0;
 }
+
+.container 
+{
+    position: relative;
+    .row
+    {
+        >div
+        {
+            padding: 0;
+        }
+    }
+}
+.countdown-bar {
+    background: #383838;
+    color: $theme-font-color;
+    text-align: center;
+    padding: 25px;
+    font-family: 'Signika', sans-serif;
+    .countdown-caption {
+        p {
+            letter-spacing: 2px;
+            margin: 0px;
+            padding: 0px;
+            font-size: 30px;
+        }
+        h6 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 20px;
+            color: $theme-font-color;
+        }
+        .time-letter {
+            font-size: 0.4em;
+        } 
+    }
+}
+
 a:hover, a:focus {
     color: $font-color;
     text-decoration: none;
 }
+.page-header-container
+{
+    padding: 0;
+}
 .page-header {
-    position: absolute;
+    position: absolute; 
     width: 100%;
     top: 0;
     padding: 0;
     margin: 0;
     border: 0;
-    background-color: #ffffff;
+    background-color: $theme-bc-color;
     z-index: 1000;
-    color: #000000;
+    height: 85px;
+    color: $theme-font-color;
     .page-logo {
-        padding: 20px 0 20px 0;
-        span {
-            color: #434142;
-            font-size: 32px;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: 'Maison Neue', sans-serif;
-            font-weight: bold;
+        padding: 13px 0;
+        font-size: 32px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Maison Neue', sans-serif;
+        font-weight: bold;
+        a{
+            color: $theme-font-color;
         }
-        img {
+        /*img {
             width: 40px;
             height: 40px;
         }
         a {
             display: flex;
             justify-content: center;
-        }
+        }*/
     }
-    nav {
+    .page-nav{
+        background: $theme-bc-color;
+        border-radius: 0 3px 3px;
         ul {
             display: none;
             line-height: 2.5;
@@ -53,10 +99,12 @@ a:hover, a:focus {
             list-style-type: none;
             text-align: center;
             li {
+                $border-color:#343434;
+                border-top: 1px solid $border-color;
                 a {
-                    color: #737373;
+                    color: $theme-font-color;
                     position: relative;
-                    padding-bottom: 10px;
+                    padding-bottom: 10px; 
                     &,
                     &:after,
                     &:before {
@@ -71,25 +119,100 @@ a:hover, a:focus {
                         width: 0%;
                         content: '.';
                         color: transparent;
-                        background: #000;
+                        background: darken($theme-font-color, 20%);
                         height: 1px;
                     }
                     &:hover:after {
                         width: 100%;
                     }
                     &:hover {
-                        color: #000;
+                        color: darken($theme-font-color, 20%);
                     }
                 }
             }
         }
-        .hamburger {
+        .hamburger{
             position: absolute;
-            top: 30px;
-            left: 25px;
+            top: 35px;
+            left: 35px;
             border: 0;
             background-color: rgba(0, 0, 0, 0);
-            font-size: 20px;
+            #hamburger{
+                & {
+                    width: 17px;
+                    height: 17px;
+                    position: relative; 
+                    -webkit-transform: rotate(0deg);
+                    -moz-transform: rotate(0deg);
+                    -o-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                    -webkit-transition: .5s ease-in-out;
+                    -moz-transition: .5s ease-in-out;
+                    -o-transition: .5s ease-in-out;
+                    transition: .5s ease-in-out;
+                    cursor: pointer;
+                }
+                & span {
+                    display: block;
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    background: $theme-font-color;
+                    border-radius: 9px;
+                    opacity: 1;
+                    left: 0;
+                    -webkit-transform: rotate(0deg);
+                    -moz-transform: rotate(0deg);
+                    -o-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                    -webkit-transition: .25s ease-in-out;
+                    -moz-transition: .25s ease-in-out;
+                    -o-transition: .25s ease-in-out;
+                    transition: .25s ease-in-out;
+                }
+                & span:nth-child(1) {
+                top: 0px;
+                -webkit-transform-origin: left center;
+                -moz-transform-origin: left center;
+                -o-transform-origin: left center;
+                transform-origin: left center;
+                }
+                
+                & span:nth-child(2) {
+                top: 6px;
+                -webkit-transform-origin: left center;
+                -moz-transform-origin: left center;
+                -o-transform-origin: left center;
+                transform-origin: left center;
+                }
+                
+                & span:nth-child(3) {
+                top: 12px;
+                -webkit-transform-origin: left center;
+                -moz-transform-origin: left center;
+                -o-transform-origin: left center;
+                transform-origin: left center;
+                }
+                
+                &.open span:nth-child(1) {
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+                }
+                
+                &.open span:nth-child(2) {
+                width: 0%;
+                opacity: 0;
+                }
+                
+                &.open span:nth-child(3) {
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                }
+            }
         }
     }
 }
@@ -97,28 +220,38 @@ main{
     margin-top: 99px;
 }
 .main-footer{
-    padding: 30px 20px 30px 20px;
+    padding: 20px 10px;
     text-align: center;
+    font-size: 15px;
+    background:$theme-bc-color;
 }
 @media (min-width: 769px) {
+    .countdown-bar {
+        .countdown-caption {
+            p {
+                font-size: 55px;
+            }
+            h6 {
+                font-size: 35px;
+            }
+        }
+    }
     .page-header {
         margin: auto;
         left: 0;
         right: 0;
         border-bottom: none;
-        background: #f5f5f5;
-        .page-logo {
-            a {
-                justify-content: flex-start;
-            }
-            span {
-                text-align: left;
-            }
+        .page-logo { 
+            margin-left: 10px;
+            text-align: left;
             img {
                 margin-left: 15px;
             }
+            a {
+                justify-content: flex-start;
+            }
         }
-        nav {
+        .page-nav {
             position: absolute;
             top: 25px;
             right: 20px;
@@ -126,7 +259,7 @@ main{
                 display: none;
             }
             ul {
-                display: block;
+                display: block!important;
                 padding: 0;
                 margin: 0;
                 li {
