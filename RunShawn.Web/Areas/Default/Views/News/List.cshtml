@@ -34,7 +34,7 @@
                 <a href="@Url.Action(MVC.Default.News.Details(item.Id))">
                     <div class="medium-box nature">
                         <header class="box-header @(string.IsNullOrEmpty(item.FeaturedImage) ? "empty" : String.Empty)" style="background-image: url(@(string.IsNullOrEmpty(item.FeaturedImage) ? $"'{Url.Content("~/Content/images/empty-photo.png")}'" : item.FeaturedImage));">
-                            <div class="article-category">@item.CategoryTitle</div>
+                            <div class="article-category" style="background-color:@item.CategoryColor;">@item.CategoryTitle</div>
                         </header>
                         <footer class="box-footer">
                             <div class="article-info">

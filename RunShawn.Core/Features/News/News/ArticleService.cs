@@ -13,8 +13,9 @@ namespace RunShawn.Core.Features.News.News
         public static Article GetById(long id)
         {
             var db = Database.Open();
-            Article entity = db.News.News.Where(db.News.News.DeletedDate == null)
-                                         .Where(db.News.News.Id == id);
+            Article entity = db.News.News.All().Where(db.News.News.DeletedDate == null)
+                                         .Where(db.News.News.Id == id)
+                                         .SingleOrDefault();
             return entity;
 
         }

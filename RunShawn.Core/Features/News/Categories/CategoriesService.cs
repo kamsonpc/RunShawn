@@ -54,8 +54,8 @@ namespace RunShawn.Core.Features.News.Categories
 
 
             var random = new Random();
-            category.Color = string.Format("#{0:x6}", random.Next(0x1000000) & 0x7F7F7F);
-
+            category.Color = string.Format("#{0:x6}", random.Next(0x1000000));
+            
             category.CreatedBy = userId;
             category.CreatedDate = DateTime.Now;
 
