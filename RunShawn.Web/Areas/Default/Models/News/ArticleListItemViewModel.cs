@@ -8,6 +8,7 @@ namespace RunShawn.Web.Areas.Default.Models.News
         public string Title { get; set; }
         public long CategoryId { get; set; }
         public string CategoryTitle { get; set; }
+        public string CategoryColor { get; set; }
         public string Content { get; set; }
         public DateTime PublishDate { get; set; }
         public string CreatedBy { get; set; }

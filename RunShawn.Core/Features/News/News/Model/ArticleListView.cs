@@ -9,6 +9,8 @@ namespace RunShawn.Core.Features.News.News.Model
         public string Title { get; set; }
         public long CategoryId { get; set; }
         public string CategoryTitle { get; set; }
+        public string CategoryColor { get; set; }
+
         public string Content { get; set; }
         public DateTime PublishDate { get; set; }
         public string CreatedByName { get; set; }
@@ -25,11 +27,11 @@ namespace RunShawn.Core.Features.News.News.Model
         {
             get
             {
-                if(string.IsNullOrEmpty(this.Content))
+                if (string.IsNullOrEmpty(Content))
                 {
                     return string.Empty;
                 }
-                return Regex.Match(this.Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1]?.Value;
+                return Regex.Match(Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1]?.Value;
             }
         }
         #endregion

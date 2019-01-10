@@ -7,6 +7,7 @@ namespace RunShawn.Core.Features.News.Categories.Model
         public long Id { get; set; }
         public long? ParentId { get; set; }
         public string Title { get; set; }
+        public string Color { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }

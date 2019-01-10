@@ -51,6 +51,11 @@ namespace RunShawn.Core.Features.News.Categories
         #region Create()
         public static Category Create(Category category, string userId)
         {
+
+
+            var random = new Random();
+            category.Color = string.Format("#{0:x6}", random.Next(0x1000000) & 0x7F7F7F);
+
             category.CreatedBy = userId;
             category.CreatedDate = DateTime.Now;
 

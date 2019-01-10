@@ -80,5 +80,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_007_AlterUsers.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_009_Alter_NewsView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_008_Alter_Categories.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
