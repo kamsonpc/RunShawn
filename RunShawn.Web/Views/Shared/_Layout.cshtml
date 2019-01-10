@@ -12,23 +12,25 @@
 </head>
 <body>
     <header class="page-header">
-        <div class="page-logo">
-            <a href="#">
-                <span>RunShaw</span>
-            </a>
+        <div class="container page-header-container">
+            <div class="page-logo">
+                <a href="#">RunShaw</a>
+            </div>
+            <nav class="page-nav">
+                <ul class="navigation-menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <div class="hamburger">
+                    <div id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <nav class="page-nav">
-            <ul class="navigation-menu">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-            <button type="button" title="Open menu" class="hamburger">
-                <span class="hamburger-icon">
-                    <i class="fas fa-bars" id="hamburger-icon"></i>
-                </span>
-            </button>
-        </nav>
     </header>
     <main>
         @RenderBody()
@@ -37,6 +39,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/default")
     @RenderSection("scripts", required: false)
 </body>
 </html>

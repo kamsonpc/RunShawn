@@ -8,46 +8,50 @@ namespace RunShawn.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/sidebar.js"));
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/sidebar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/validate").Include(
-                        "~/Scripts/validate/jquery.validate*",
-                        "~/Scripts/validate/bootstrap-validate.js"));
+                "~/Scripts/validate/jquery.validate*",
+                "~/Scripts/validate/bootstrap-validate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                        "~/Scripts/nprogress/nprogress.js"));
+                "~/Scripts/nprogress/nprogress.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.min.js",
-                      "~/Scripts/tooltip/jquery.darktooltip.js",
-                      "~/Scripts/summernote/summernote-lite.js",
-                      "~/Scripts/summernote/summernote-init.js"));
+                "~/Scripts/bootstrap.min.js",
+                "~/Scripts/tooltip/jquery.darktooltip.js",
+                "~/Scripts/summernote/summernote-lite.js",
+                "~/Scripts/summernote/summernote-init.js"));
             
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/nprogress/nprogress.css",
-                      "~/Content/bootstrap.min.css",
-                      "~/Content/tooltip/darktooltip.css",
-                      "~/Content/summernote/summernote-lite.css",
-                      "~/Content/site/site.css"));
+                "~/Content/nprogress/nprogress.css",
+                "~/Content/bootstrap.min.css",
+                "~/Content/tooltip/darktooltip.css",
+                "~/Content/summernote/summernote-lite.css",
+                "~/Content/site/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/article").Include(
-                      "~/Content/article/style.css"));
+                "~/Content/article/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/dashboard").Include(
-                      "~/Content/dashboard/dashboard.css",
-                      "~/Contant/modal-style/modal.css"));
+                "~/Content/dashboard/dashboard.css",
+                "~/Contant/modal-style/modal.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
-                      "~/Content/login/login.css"));
+                "~/Content/login/login.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/default").Include(
-          "~/Content/default/default.css"));
+                "~/Content/default/default.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/default").Include(
+                "~/Scripts/menu.js"));
         }
     }
 }

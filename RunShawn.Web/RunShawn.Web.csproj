@@ -486,6 +486,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\validate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\nprogress\nprogress.js" />
     <Content Include="Scripts\summernote\summernote-init.js" />
     <Content Include="Scripts\summernote\summernote-lite.js" />
