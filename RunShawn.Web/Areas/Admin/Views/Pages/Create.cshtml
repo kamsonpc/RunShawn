@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+@using RunShawn.Web.Areas.Admin.Models.Pages
+@model PageViewModel
+
+@using (var group = Html.Bootstrap().ButtonGroup().Begin())
+{
+    @group.LinkButton("Powrót", MVC.Admin.Pages.List()).SetIcon(Icon.ArrowLeft).SetState(ButtonState.Info)
+}
+
+@using (Html.Bootstrap().Heading2().Begin())
+{
+    <text>Dodaj Stronę</text>
+}
+@using (var form = Html.Bootstrap().Form(MVC.Admin.Pages.Create()).Begin())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title)
+    </div>
+
+    <div class="form-check">
+        @Html.CheckBoxFor(x => x.Active)
+        @Html.LabelFor(x => x.Active)
+    </div>
+
+    <div class="form-group">
+       @Html.SummerNote(x => x.Content)
+    </div>
+        @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+        }

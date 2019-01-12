@@ -482,12 +482,10 @@
 
 NProgress.configure({
     easing: 'ease',
-    speed: 500,
-    trickle: true,
-    minimum: 0.4,
-    showSpinner: false
+    minimum: 0.6,
+    showSpinner: false,
+    parent: "nprogress-spinner"
 });
-
 
 $(function () {
 

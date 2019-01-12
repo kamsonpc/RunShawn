@@ -16,7 +16,6 @@ namespace RunShawn.Web.Areas.Admin.Models.News
 
         [AllowHtml]
         [Display(Name = "Treść")]
-
         public string Content { get; set; }
 
         [Required]

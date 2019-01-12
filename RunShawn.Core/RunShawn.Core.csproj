@@ -83,6 +83,9 @@
     <Compile Include="Features\News\News\Model\Article.cs" />
     <Compile Include="Features\News\News\ArticleService.cs" />
     <Compile Include="Features\News\News\Model\ArticleListView.cs" />
+    <Compile Include="Features\Pages\Model\PageListView.cs" />
+    <Compile Include="Features\Pages\PagesService.cs" />
+    <Compile Include="Features\Pages\Model\Page.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
     <Compile Include="Features\Roles\RolesService.cs" />

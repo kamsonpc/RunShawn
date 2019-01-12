@@ -20,6 +20,12 @@
 
             </mvcSiteMapNode>
           
+            <mvcSiteMapNode title="Strony" area="Admin" controller="Pages" action="List">
+            <mvcSiteMapNode title="Dodaj Stronę" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Edytuj Edytuj" area="Admin" controller="Pages" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+
+            </mvcSiteMapNode>
+          
         </mvcSiteMapNode>
 
 

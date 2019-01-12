@@ -1,17 +1,17 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Account;
 using RunShawn.Web.Models;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
-namespace RunShawn.Web.Area.Admin.Controllers
+namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public partial class AccountController : Controller
@@ -380,7 +380,7 @@ namespace RunShawn.Web.Area.Admin.Controllers
         public virtual ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(MVC.Default.News.Index());
         }
 
         //
@@ -431,7 +431,7 @@ namespace RunShawn.Web.Area.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(MVC.Default.News.Index());
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

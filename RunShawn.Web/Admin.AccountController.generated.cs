@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Area.Admin.Controllers
+namespace RunShawn.Web.Areas.Admin.Controllers
 {
     public partial class AccountController
     {
@@ -290,7 +290,7 @@ namespace RunShawn.Web.Area.Admin.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AccountController : RunShawn.Web.Area.Admin.Controllers.AccountController
+    public partial class T4MVC_AccountController : RunShawn.Web.Areas.Admin.Controllers.AccountController
     {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 

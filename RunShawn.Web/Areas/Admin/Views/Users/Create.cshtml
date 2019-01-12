@@ -31,8 +31,8 @@
     @Html.LabelFor(x => x.LockoutEnabled)
     @Html.CheckBoxFor(x => x.LockoutEnabled)
     <div class="form-group">
-        @Html.LabelFor(x => x.LockoutEndDateUtc)
-        @Html.DatePickerFor(x => x.LockoutEndDateUtc)
+            @Html.LabelFor(x => x.LockoutEndDateUtc)
+            @Html.TextBoxFor(x => x.LockoutEndDateUtc, "{0:dd/MM/yyyy}", new { @class = "datepicker" })
     </div>
     <h3>Role</h3>
     <div class="form-group">

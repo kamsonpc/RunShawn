@@ -1,4 +1,4 @@
-﻿@using RunShawn.Web.Models
+﻿@using RunShawn.Web.Areas.Admin.Models.Account
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <section id="loginForm">
+        <section id="loginForm">T
             <div class="border">
                 <header><h1>Zaloguj się</h1></header>
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

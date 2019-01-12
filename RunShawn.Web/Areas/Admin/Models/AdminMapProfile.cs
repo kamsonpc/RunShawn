@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using RunShawn.Core.Features.News.Categories.Model;
 using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.Pages.Model;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.News;
+using RunShawn.Web.Areas.Admin.Models.Pages;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Models;
@@ -43,6 +45,12 @@ namespace RunShawn.Web.Areas.Admin.Models
             CreateMap<Article, ArticleViewModel>();
 
             CreateMap<ArticleListView, ArticleListViewModel>();
+
+            CreateMap<PageListView, PageListViewModel>();
+            CreateMap<Page, PageViewModel>();
+            CreateMap<PageViewModel, Page>();
+
+
         }
     }
 }

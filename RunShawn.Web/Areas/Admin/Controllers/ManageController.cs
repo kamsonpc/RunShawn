@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using RunShawn.Core.Features.Users;
+using RunShawn.Web.Areas.Admin.Models.Account;
+using RunShawn.Web.Attributes;
+using RunShawn.Web.Models;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using RunShawn.Core.Features.Users;
-using RunShawn.Web.Area.Admin.Controllers;
-using RunShawn.Web.Areas.Admin.Models.Account;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Models;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {

@@ -42,11 +42,12 @@ namespace T4MVC
     public class AdminClass
     {
         public readonly string Name = "Admin";
-        public RunShawn.Web.Area.Admin.Controllers.AccountController Account = new RunShawn.Web.Area.Admin.Controllers.T4MVC_AccountController();
+        public RunShawn.Web.Areas.Admin.Controllers.AccountController Account = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_AccountController();
         public RunShawn.Web.Areas.Admin.Controllers.CategoriesController Categories = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_CategoriesController();
         public RunShawn.Web.Areas.Admin.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_DashboardController();
         public RunShawn.Web.Areas.Admin.Controllers.ManageController Manage = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_ManageController();
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
+        public RunShawn.Web.Areas.Admin.Controllers.PagesController Pages = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_PagesController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
@@ -56,6 +57,7 @@ namespace T4MVC
         public readonly string Name = "Default";
         public RunShawn.Web.Controllers.HomeController Home = new RunShawn.Web.Controllers.T4MVC_HomeController();
         public RunShawn.Web.Areas.Default.Controllers.NewsController News = new RunShawn.Web.Areas.Default.Controllers.T4MVC_NewsController();
+        public RunShawn.Web.Controllers.PagesController Pages = new RunShawn.Web.Controllers.T4MVC_PagesController();
         public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
     }
 }
@@ -231,6 +233,7 @@ namespace Links
         public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.slim.min.js") ? Url("jquery-3.3.1.slim.min.js") : Url("jquery-3.3.1.slim.js");
         public static readonly string jquery_3_3_1_slim_min_js = Url("jquery-3.3.1.slim.min.js");
         public static readonly string jquery_3_3_1_slim_min_map = Url("jquery-3.3.1.slim.min.map");
+        public static readonly string menu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/menu.min.js") ? Url("menu.min.js") : Url("menu.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class MvcGrid {
@@ -245,6 +248,7 @@ namespace Links
             public const string UrlPath = "~/Scripts/nprogress";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string nprogress_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress-init.min.js") ? Url("nprogress-init.min.js") : Url("nprogress-init.js");
             public static readonly string nprogress_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.js") ? Url("nprogress.min.js") : Url("nprogress.js");
         }
     
@@ -571,6 +575,7 @@ namespace Links
             {
                 public static class Assets
                 {
+                    public static readonly string nprogress_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress-init.js"); 
                     public static readonly string nprogress_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress.js"); 
                 }
             }
@@ -611,6 +616,7 @@ namespace Links
                 public static readonly string jquery_3_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.min.js"); 
                 public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.js"); 
                 public static readonly string jquery_3_3_1_slim_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.min.js"); 
+                public static readonly string menu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/menu.js"); 
                 public static readonly string modernizr_2_8_3_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/modernizr-2.8.3.js"); 
                 public static readonly string sidebar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/sidebar.js"); 
             }

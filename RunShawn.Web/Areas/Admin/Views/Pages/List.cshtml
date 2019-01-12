@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+@using RunShawn.Web.Areas.Admin.Models.Pages
+@model IEnumerable<PageListViewModel>
+
+@using (Html.Bootstrap().Heading2().Begin())
+{
+    <text>Strony</text>
+}
+@using (var group = Html.Bootstrap().ButtonGroup().Begin())
+{
+    @group.LinkButton("Dodaj", MVC.Admin.Pages.Create()).SetIcon(Icon.Plus).SetState(ButtonState.Success)
+}
+
+@(
+    Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Title).Titled("Nazwa");
+        columns.Add(model => model.CreatedByName).Titled("Utworzona Przez");
+        columns.Add(model => model.ActiveText).Titled("Aktywna");
+        columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model => (
+         Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Pages.Edit(model.Id))
+         .SetIcon(Icon.Edit)
+         .SetState(ButtonState.Warning)
+         .SetSize(ButtonSize.Sm)
+         .ToHtmlString()
+         +
+         //Html.Bootstrap().LinkButton("Podgląd", MVC.Default.News.Details(model.Id))
+         //.AddCss("btn-details")
+         //.SetIcon(Icon.Paperclip)
+         //.SetState(ButtonState.Info)
+         //.SetSize(ButtonSize.Sm)
+         //.ToHtmlString()
+         //+
+         Html.Bootstrap().LinkButton("Usuń", MVC.Admin.Pages.Delete(model.Id))
+         .AddCss("btn-remove")
+         .SetIcon(Icon.Remove)
+         .SetState(ButtonState.Danger)
+         .SetSize(ButtonSize.Sm)
+         .ToHtmlString()
+     )
+
+     );
+    })
+    .Empty("Brak Wyników")
+        .Filterable()
+        .Sortable()
+        .Pageable()
+)

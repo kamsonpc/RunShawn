@@ -229,6 +229,9 @@
     <Compile Include="Admin.NewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.PagesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -244,6 +247,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminMapProfile.cs" />
@@ -252,9 +256,12 @@
     <Compile Include="Areas\Admin\Models\News\ArticleViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Pages\PageListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Pages\PageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Default\Controllers\PageController.cs" />
     <Compile Include="Areas\Default\DefaultAreaRegistration.cs" />
     <Compile Include="Areas\Default\Models\DefaultMapProfile.cs" />
     <Compile Include="Areas\Default\Controllers\NewsController.cs" />
@@ -269,6 +276,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.NewsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.PagesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.SharedController.generated.cs">
@@ -392,6 +402,9 @@
     <Content Include="Content\default\default.scss" />
     <Content Include="Areas\Admin\Views\Manage\SetAvatar.cshtml" />
     <Content Include="Areas\Default\Views\News\_FeaturedList.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\List.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -487,6 +500,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\validate\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\menu.js" />
+    <Content Include="Scripts\nprogress\nprogress-init.js" />
     <Content Include="Scripts\nprogress\nprogress.js" />
     <Content Include="Scripts\summernote\summernote-init.js" />
     <Content Include="Scripts\summernote\summernote-lite.js" />
