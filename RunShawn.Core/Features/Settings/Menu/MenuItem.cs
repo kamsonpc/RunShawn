@@ -10,6 +10,7 @@ namespace RunShawn.Core.Features.Settings.Menu
     {
         public long Id { get; set; }
         public long? ParentId { get; set; }
+        public int Order { get; set; }
         public long PageId { get; set; }
         public string Icon { get; set; }
     }

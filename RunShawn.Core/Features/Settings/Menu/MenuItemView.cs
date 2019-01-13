@@ -13,5 +13,7 @@ namespace RunShawn.Core.Features.Settings.Menu
         public long UrlSlug { get; set; }
         public string Icon { get; set; }
         public string Name { get; set; }
+        public int Order { get; set; }
+
     }
 }

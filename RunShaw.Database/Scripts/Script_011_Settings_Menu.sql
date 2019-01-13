@@ -6,6 +6,7 @@ CREATE TABLE [Settings].[Menu] (
 	[ParentId] [bigint]  NULL,
     [Name] [nvarchar](256) NOT NULL,
     [Icon] [nvarchar](80) NOT NULL,
+	[Order] [INT] NOT NULL,
 	[PageId] [BIGINT] NOT NULL
 
     CONSTRAINT [PK_Settings.Menu] PRIMARY KEY ([Id])
@@ -22,10 +23,12 @@ ALTER TABLE
 		[Pages].[Pages] ([Id])
 GO
 
+
 CREATE VIEW Settings.MenuPagesView
 AS
 SELECT  
 	Settings.Menu.Id,
+	Settings.Menu.[Order],
 	Settings.Menu.ParentId,
 	Settings.Menu.[Name],
 	Settings.Menu.Icon,
