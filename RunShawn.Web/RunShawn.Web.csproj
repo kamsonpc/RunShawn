@@ -668,4 +668,7 @@
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)..\RunShaw.Database\bin\Debug\RunShaw.Database.exe"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
