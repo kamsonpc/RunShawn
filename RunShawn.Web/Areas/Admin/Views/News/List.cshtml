@@ -19,15 +19,15 @@
     .Grid(Model)
     .Build(columns =>
     {
-    columns.Add(model => model.Title).Titled("Tytuł");
-    columns.Add(model => model.CategoryTitle).Titled("Kategoria");
-    columns.Add(model => model.CreatedByName).Titled("Autor");
-    columns.Add(model => model.PublishDate).Titled("Data Publikacji");
-    columns.Add().Titled("Wyróżniony").Encoded(false).RenderedAs(model => (
+        columns.Add(model => model.Title).Titled("Tytuł");
+        columns.Add(model => model.CategoryTitle).Titled("Kategoria");
+        columns.Add(model => model.CreatedByName).Titled("Autor");
+        columns.Add(model => model.PublishDate).Titled("Data Publikacji");
+        columns.Add().Titled("Wyróżniony").Encoded(false).RenderedAs(model => (
 
-           $"<a href='{Url.Action(MVC.Admin.News.Feature(model.Id))}'><i class='{model.FeaturedIcon}'></a>"
-        )
-        );
+               $"<a href='{Url.Action(MVC.Admin.News.Feature(model.Id))}'><i class='{model.FeaturedIcon}'></a>"
+            )
+            );
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
  (
      Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.News.Edit(model.Id))
@@ -38,6 +38,7 @@
      +
      Html.Bootstrap().LinkButton("Podgląd", MVC.Default.News.Details(model.Id))
      .AddCss("btn-details")
+     .AddAttribute("target", "blank")
      .SetIcon(Icon.Paperclip)
      .SetState(ButtonState.Info)
      .SetSize(ButtonSize.Sm)

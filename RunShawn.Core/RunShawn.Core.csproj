@@ -89,6 +89,9 @@
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
     <Compile Include="Features\Roles\RolesService.cs" />
+    <Compile Include="Features\Settings\Menu\MenuItem.cs" />
+    <Compile Include="Features\Settings\Menu\MenuItemView.cs" />
+    <Compile Include="Features\Settings\Menu\MenuTree.cs" />
     <Compile Include="Features\Users\Model\ApplicationUser.cs" />
     <Compile Include="Features\Users\UsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

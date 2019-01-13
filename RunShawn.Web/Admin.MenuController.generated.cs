@@ -23,15 +23,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Controllers
+namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    public partial class PagesController
+    public partial class MenuController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public PagesController() { }
+        public MenuController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected PagesController(Dummy d) { }
+        protected MenuController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,21 +59,15 @@ namespace RunShawn.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Page()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Page);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public PagesController Actions { get { return MVC.Default.Pages; } }
+        public MenuController Actions { get { return MVC.Admin.Menu; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Default";
+        public readonly string Area = "Admin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Pages";
+        public readonly string Name = "Menu";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Pages";
+        public const string NameConst = "Menu";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,24 +75,18 @@ namespace RunShawn.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Page = "Page";
+            public readonly string Index = "Index";
+            public readonly string Edit = "Edit";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Page = "Page";
+            public const string Index = "Index";
+            public const string Edit = "Edit";
         }
 
 
-        static readonly ActionParamsClass_Page s_params_Page = new ActionParamsClass_Page();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Page PageParams { get { return s_params_Page; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Page
-        {
-            public readonly string slug = "slug";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -109,26 +97,34 @@ namespace RunShawn.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Page = "Page";
             }
-            public readonly string Page = "~/Areas/Default/Views/Pages/Page.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_PagesController : RunShawn.Web.Controllers.PagesController
+    public partial class T4MVC_MenuController : RunShawn.Web.Areas.Admin.Controllers.MenuController
     {
-        public T4MVC_PagesController() : base(Dummy.Instance) { }
+        public T4MVC_MenuController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void PageOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string slug);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Page(string slug)
+        public override System.Web.Mvc.ActionResult Index()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Page);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "slug", slug);
-            PageOverride(callInfo, slug);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            EditOverride(callInfo);
             return callInfo;
         }
 

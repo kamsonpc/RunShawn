@@ -14,18 +14,23 @@
 				</mvcSiteMapNode>
 
           <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List">
-            <mvcSiteMapNode title="Dodaj Wpis" area="Admin" controller="News" action="Create"></mvcSiteMapNode>
-            <mvcSiteMapNode title="Edytuj Wpis" area="Admin" controller="News" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Dodaj" area="Admin" controller="News" action="Create"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Edytuj" area="Admin" controller="News" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
             <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
 
             </mvcSiteMapNode>
           
             <mvcSiteMapNode title="Strony" area="Admin" controller="Pages" action="List">
-            <mvcSiteMapNode title="Dodaj Stronę" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
-            <mvcSiteMapNode title="Edytuj Edytuj" area="Admin" controller="Pages" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Dodaj" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Edytuj" area="Admin" controller="Pages" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
 
             </mvcSiteMapNode>
-          
+
+
+          <mvcSiteMapNode title="Ustawienia" area="Admin" controller="Settings" action="Index">
+            <mvcSiteMapNode title="Menu" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+          </mvcSiteMapNode>
+
         </mvcSiteMapNode>
 
 

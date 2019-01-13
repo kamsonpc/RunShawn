@@ -8,6 +8,7 @@ namespace RunShawn.Web.Areas.Admin.Models.Pages
     public class PageListViewModel
     {
         public long Id { get; set; }
+        public string UrlSlug { get; set; }
         public string Title { get; set; }
         public bool Active { get; set; }
         public string Content { get; set; }

@@ -48,6 +48,8 @@ namespace T4MVC
         public RunShawn.Web.Areas.Admin.Controllers.ManageController Manage = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_ManageController();
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.PagesController Pages = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_PagesController();
+        public RunShawn.Web.Areas.Admin.Controllers.MenuController Menu = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_MenuController();
+        public RunShawn.Web.Areas.Admin.Controllers.SettingsController Settings = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_SettingsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
@@ -125,6 +127,30 @@ namespace Links
         public const string UrlPath = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class boostrap_icon_picker {
+            public const string UrlPath = "~/Scripts/boostrap_icon_picker";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string bootstrap_iconpicker_iconset_all_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-iconpicker-iconset-all.min.js") ? Url("bootstrap-iconpicker-iconset-all.min.js") : Url("bootstrap-iconpicker-iconset-all.js");
+            public static readonly string bootstrap_iconpicker_iconset_all_min_js = Url("bootstrap-iconpicker-iconset-all.min.js");
+            public static readonly string bootstrap_iconpicker_bundle_min_js = Url("bootstrap-iconpicker.bundle.min.js");
+            public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-iconpicker.min.js") ? Url("bootstrap-iconpicker.min.js") : Url("bootstrap-iconpicker.js");
+            public static readonly string bootstrap_iconpicker_min_js = Url("bootstrap-iconpicker.min.js");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class iconset {
+                public const string UrlPath = "~/Scripts/boostrap_icon_picker/iconset";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string fontawesome5_3_1_pro_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/fontawesome5-3-1-pro.min.js") ? Url("fontawesome5-3-1-pro.min.js") : Url("fontawesome5-3-1-pro.js");
+                public static readonly string fontawesome5_3_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/fontawesome5-3-1.min.js") ? Url("fontawesome5-3-1.min.js") : Url("fontawesome5-3-1.js");
+                public static readonly string fontawesome5_3_1_min_js = Url("fontawesome5-3-1.min.js");
+                public static readonly string ionicon2_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ionicon2-0-1.min.js") ? Url("ionicon2-0-1.min.js") : Url("ionicon2-0-1.js");
+                public static readonly string materialdesign2_2_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/materialdesign2-2-0.min.js") ? Url("materialdesign2-2-0.min.js") : Url("materialdesign2-2-0.js");
+            }
+        
+        }
+    
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -233,6 +259,15 @@ namespace Links
         public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.slim.min.js") ? Url("jquery-3.3.1.slim.min.js") : Url("jquery-3.3.1.slim.js");
         public static readonly string jquery_3_3_1_slim_min_js = Url("jquery-3.3.1.slim.min.js");
         public static readonly string jquery_3_3_1_slim_min_map = Url("jquery-3.3.1.slim.min.map");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class jquery_menu_editor {
+            public const string UrlPath = "~/Scripts/jquery_menu_editor";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string jquery_menu_editor_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-menu-editor.min.js") ? Url("jquery-menu-editor.min.js") : Url("jquery-menu-editor.js");
+            public static readonly string jquery_menu_editor_min_js = Url("jquery-menu-editor.min.js");
+        }
+    
         public static readonly string menu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/menu.min.js") ? Url("menu.min.js") : Url("menu.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -299,6 +334,15 @@ namespace Links
             public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/style.min.css") ? Url("style.min.css") : Url("style.css");
             public static readonly string style_css_map = Url("style.css.map");
             public static readonly string style_scss = Url("style.scss");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class boostrap_icon_picker {
+            public const string UrlPath = "~/Content/boostrap_icon_picker";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string bootstrap_iconpicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-iconpicker.min.css") ? Url("bootstrap-iconpicker.min.css") : Url("bootstrap-iconpicker.css");
+            public static readonly string bootstrap_iconpicker_min_css = Url("bootstrap-iconpicker.min.css");
         }
     
         public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
@@ -468,6 +512,28 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class boostrap_icon_picker 
+            {
+                public static partial class iconset 
+                {
+                    public static class Assets
+                    {
+                        public static readonly string fontawesome5_3_1_pro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1-pro.js"); 
+                        public static readonly string fontawesome5_3_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.js"); 
+                        public static readonly string fontawesome5_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.min.js"); 
+                        public static readonly string ionicon2_0_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/ionicon2-0-1.js"); 
+                        public static readonly string materialdesign2_2_0_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/materialdesign2-2-0.js"); 
+                    }
+                }
+                public static class Assets
+                {
+                    public static readonly string bootstrap_iconpicker_iconset_all_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.js"); 
+                    public static readonly string bootstrap_iconpicker_iconset_all_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.min.js"); 
+                    public static readonly string bootstrap_iconpicker_bundle_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.bundle.min.js"); 
+                    public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.js"); 
+                    public static readonly string bootstrap_iconpicker_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.min.js"); 
+                }
+            }
             public static partial class datepicker 
             {
                 public static partial class locales 
@@ -564,6 +630,14 @@ namespace Links
                     public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker.js"); 
                 }
             }
+            public static partial class jquery_menu_editor 
+            {
+                public static class Assets
+                {
+                    public static readonly string jquery_menu_editor_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.js"); 
+                    public static readonly string jquery_menu_editor_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.min.js"); 
+                }
+            }
             public static partial class MvcGrid 
             {
                 public static class Assets
@@ -628,6 +702,14 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string style_css = T4MVCHelpers.ProcessAssetPath("~/Content/article/style.css");
+                }
+            }
+            public static partial class boostrap_icon_picker 
+            {
+                public static class Assets
+                {
+                    public static readonly string bootstrap_iconpicker_css = T4MVCHelpers.ProcessAssetPath("~/Content/boostrap_icon_picker/bootstrap-iconpicker.css");
+                    public static readonly string bootstrap_iconpicker_min_css = T4MVCHelpers.ProcessAssetPath("~/Content/boostrap_icon_picker/bootstrap-iconpicker.min.css");
                 }
             }
             public static partial class dashboard 

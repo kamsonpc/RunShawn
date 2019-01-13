@@ -26,14 +26,18 @@ namespace RunShawn.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.min.js",
+                "~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.js",
+                "~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.min.js",
+                "~/Scripts/jquery_menu_editor/jquery-menu-editor.js",
                 "~/Scripts/tooltip/jquery.darktooltip.js",
                 "~/Scripts/summernote/summernote-lite.js",
                 "~/Scripts/summernote/summernote-init.js"));
-            
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/nprogress/nprogress.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/tooltip/darktooltip.css",
+                "~/Content/boostrap_icon_picker/bootstrap-iconpicker.css",
                 "~/Content/summernote/summernote-lite.css",
                 "~/Content/site/site.css"));
 

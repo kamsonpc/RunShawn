@@ -10,6 +10,7 @@ namespace RunShawn.Web.Areas.Admin.Models.Pages
     public class PageViewModel
     {
         public long Id { get; set; }
+
         [Required]
         [Display(Name = "Nazwa")]
         public string Title { get; set; }

@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.Extentions
 {
@@ -16,6 +18,14 @@ namespace RunShawn.Web.Extentions
                                         appUrl);
 
             return baseUrl;
+        }
+        #endregion
+
+        #region GetPageUrl()
+        public static string GetPageUrl(string slug)
+        {
+            var baseUrl = GetBaseUrl();
+            return $"{baseUrl}/Pages/{slug}";
         }
         #endregion
     }

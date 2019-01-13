@@ -1,17 +1,31 @@
-﻿using System.Web.Mvc;
+﻿using RunShawn.Core.Features.Pages;
+using RunShawn.Web.Areas.Default.Models.Pages;
+using RunShawn.Web.Extentions;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.Controllers
 {
     [RoutePrefix("Pages")]
     public partial class PagesController : Controller
     {
-        [Route("{name}")]
-        public virtual ActionResult Page(string name)
+        [Route("{slug}")]
+        public virtual ActionResult Page(string slug)
         {
+            slug = slug.ToLower();
 
-            return View();
+            var page = PagesService.GetBySlug(slug);
+            if (page == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (!page.Active && User.IsInRole(RoleTypes.Administrator.ToString()))
+            {
+                return HttpNotFound();
+            }
+
+            var model = page.MapTo<PageViewModel>();
+            return View(MVC.Default.Pages.Views.Page, model);
         }
-
-
     }
 }

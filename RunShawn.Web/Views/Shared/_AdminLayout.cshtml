@@ -25,7 +25,7 @@
 </head>
 <body>
     <header class="dashboard-header">
-        <div class="page-logo">@Html.Bootstrap().Icon(Icon.Cog) RunShawn</div>
+        <div class="page-logo"><a href="@Url.Action(MVC.Admin.Dashboard.Index())"> @Html.Bootstrap().Icon(Icon.Cog) RunShawn</a></div>
         <nav class="dashboard-nav">
             <ul class="navigation-menu">
                 @if (User.Identity.IsAuthenticated)

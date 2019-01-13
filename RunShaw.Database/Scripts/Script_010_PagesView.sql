@@ -5,6 +5,7 @@ SELECT
 	Pages.Pages.Title,
 	Pages.Pages.Active,
 	Pages.Pages.[Content],
+	Pages.Pages.UrlSlug,
 	Pages.Pages.CreatedBy,
 	Pages.Pages.CreatedDate,
 	Pages.Pages.ModifiedBy,

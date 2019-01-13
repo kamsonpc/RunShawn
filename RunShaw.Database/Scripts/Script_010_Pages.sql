@@ -6,6 +6,7 @@ CREATE TABLE [Pages].[Pages] (
     [Title] [nvarchar](256) NOT NULL,
 	[Active] [tinyint] NOT NULL,
 	[Content] [nvarchar](max) NOT NULL,
+	[UrlSlug] [nvarchar](256) NOT NULL,
 	[CreatedBy] [nvarchar](128) NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[ModifiedBy] [nvarchar](128)  NULL,
