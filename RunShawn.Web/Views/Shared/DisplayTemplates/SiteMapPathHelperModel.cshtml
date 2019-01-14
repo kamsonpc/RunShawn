@@ -5,13 +5,18 @@
 
 <ol class="breadcrumb">
 @foreach (var node in Model) {
-    var cssClass = "";
-    if (node == Model.Last())
-    {
-        cssClass = "active";
-    }
-    <li class="breadcrumb-item  @cssClass">
-    @Html.DisplayFor(m => node)
+    bool active = (node == Model.Last() ? true : false);
+
+    <li class="@(active ? "active" : String.Empty)">
+        @if (active)
+        {
+            @node.Title
+        }
+        else
+        {
+            <a href="@node.Url" title="@node.Title">@node.Title</a>
+
+        }
     </li>
 }
 </ol>

@@ -2,12 +2,26 @@
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
 
-<ul id="menu">
-    @foreach (var node in Model.Nodes) { 
-        <li>@Html.DisplayFor(m => node) 
-            @if (node.Children.Any()) {
-                @Html.DisplayFor(m => node.Children)
+<aside id="side-bar" class="side-bar">
+    @foreach (var node in Model.Nodes)
+                {
+                    var icon = node.Attributes.SingleOrDefault(x => x.Key == "icon").Value;
+                    var hasChild = node.Attributes.SingleOrDefault(x => x.Key == "hasChild").Value as bool?;
+
+
+                    <ul>
+                        <li class="category-header @(Request.Url.AbsoluteUri.Contains($"{node.Area}/{node.Controller}") ? "active" : string.Empty)">
+                <a href="@(hasChild != null && hasChild.Value ? "#" : node.Url)"><i class="@icon"></i> @node.Title </a>
+            </li>
+            @if (node.Children.Any())
+            {
+                <ol>
+                    @foreach (var child in node.Children)
+                    {
+                        <li><a href="@child.Url"> @child.Title</a></li>
+                    }
+                </ol>
             }
-        </li>
+        </ul>
     }
-</ul>
+</aside>

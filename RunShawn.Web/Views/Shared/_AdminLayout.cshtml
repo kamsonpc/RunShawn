@@ -24,6 +24,7 @@
     </script>
 </head>
 <body>
+
     <header class="dashboard-header">
         <div class="page-logo"><a href="@Url.Action(MVC.Admin.Dashboard.Index())"> @Html.Bootstrap().Icon(Icon.Cog) RunShawn</a></div>
         <nav class="dashboard-nav">
@@ -87,9 +88,7 @@
         </section>
     </header>
     <main id="dashboard-main">
-        <aside id="side-bar" class="side-bar">
-            @Html.Action(MVC.Menus.Index())
-        </aside>
+            @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
         <section id="page-container">
             @if (TempData["Alert"] != null)
             {
