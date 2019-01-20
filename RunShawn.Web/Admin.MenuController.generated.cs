@@ -77,6 +77,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Edit = "Edit";
+            public readonly string Save = "Save";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +85,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public const string Index = "Index";
             public const string Edit = "Edit";
+            public const string Save = "Save";
         }
 
 
@@ -125,6 +127,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             EditOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SaveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Save()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Save);
+            SaveOverride(callInfo);
             return callInfo;
         }
 

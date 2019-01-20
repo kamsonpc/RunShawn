@@ -7,7 +7,6 @@ using RunShawn.Web.Areas.Admin.Models.News;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
-using RunShawn.Web.Extentions.Icons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,6 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    [MenuItem(CssIcon = AwesomeHelper.globe, Title = "Aktualności", Action = "List", IsClickable = false)]
     public partial class NewsController : BaseController
     {
         #region Index()
@@ -139,7 +137,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 ArticlesService.Delete(id, User.Identity.GetUserId());
 
-                TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
+                TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success, Url.Action(MVC.Admin.News.Restore(id)));
                 return RedirectToAction(MVC.Admin.News.List());
             }
             catch (Exception)
@@ -157,6 +155,26 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             return RedirectToAction(MVC.Admin.News.List());
         }
         #endregion
+
+        #region Restore()
+        public virtual ActionResult Restore(long id)
+        {
+            try
+            {
+                ArticlesService.Restore(id);
+
+                TempData[_alert] = new Alert("Pomyślnie Przywrócono", AlertState.Success);
+                return RedirectToAction(MVC.Admin.News.List());
+            }
+            catch (Exception ex)
+            {
+                TempData[_alert] = new Alert("Wystąpił Błąd podczas przywracania", AlertState.Danger);
+                logger.Error(ex);
+                return RedirectToAction(MVC.Admin.News.List());
+            }
+        }
+        #endregion
+
 
         #region Categories
         [MenuItem(Title = "Kategorie", Action = "Categories")]

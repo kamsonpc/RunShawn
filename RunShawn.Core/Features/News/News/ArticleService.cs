@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using RunShawn.Core.Features.News.News.Model;
+﻿using RunShawn.Core.Features.News.News.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RunShawn.Core.Features.News.News
 {
@@ -81,15 +81,15 @@ namespace RunShawn.Core.Features.News.News
         public static Article Update(Article article, string userId)
         {
             var db = Database.Open();
-            Article articleInDb = db.News.News.FindById(article.Id);
-
-            article.Featured = articleInDb.Featured;
-            article.CreatedBy = articleInDb.CreatedBy;
-            article.CreatedDate = articleInDb.CreatedDate;
-            article.ModifiedDate = DateTime.Now;
-            article.ModifiedBy = userId;
-
-            db.News.News.UpdateById(article);
+            db.News.News.UpdateById(
+                Id: article.Id,
+                Title: article.Title,
+                Content: article.Content,
+                PublishDate: article.PublishDate,
+                CategoryId: article.CategoryId,
+                ModifiedDate: DateTime.Now,
+                ModifiedBy: userId
+                );
 
             return article;
         }
@@ -132,15 +132,27 @@ namespace RunShawn.Core.Features.News.News
         }
         #endregion
 
+        #region Restore()
+        public static void Restore(long id)
+        {
+            Database.Open().News.News.UpdateById
+            (
+                Id: id,
+                DeletedBy: null,
+                DeletedDate: null
+            );
+        }
+        #endregion
+
         #region Delete()
         public static void Delete(long id, string userId)
         {
-            var db = Database.Open();
-            Article articleToDelete = db.News.News.FindById(id);
-            articleToDelete.DeletedDate = DateTime.Now;
-            articleToDelete.DeletedBy = userId;
-
-            db.News.News.UpdateById(articleToDelete);
+            Database.Open().News.News.UpdateById
+            (
+                Id: id,
+                DeletedBy: userId,
+                DeletedDate: DateTime.Now
+            );
         }
         #endregion
     }

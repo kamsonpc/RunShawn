@@ -1,0 +1,13 @@
+﻿@model Alert
+
+@if (!string.IsNullOrEmpty(Model.RestoreLink))
+{
+    var linkHtml = Html.Raw(Html.Bootstrap().LinkButton("Przywróć", Model.RestoreLink).SetSize(ButtonSize.Sm).SetState(ButtonState.Warning));
+    @Html.Bootstrap().Alert(Model.AlertState, Model.Text).SetDismissible(true).AddContentAtEnd(linkHtml)
+}
+else
+{
+    @Html.Bootstrap().Alert(Model.AlertState, Model.Text).SetDismissible(true)
+}
+
+
