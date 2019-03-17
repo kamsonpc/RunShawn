@@ -59,6 +59,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult SaveMenuSettings()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveMenuSettings);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult Create()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Create);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MenuController Actions { get { return MVC.Admin.Menu; } }
@@ -77,6 +89,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Edit = "Edit";
+            public readonly string SaveMenuSettings = "SaveMenuSettings";
+            public readonly string GetMenuTree = "GetMenuTree";
+            public readonly string Create = "Create";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,9 +99,28 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             public const string Index = "Index";
             public const string Edit = "Edit";
+            public const string SaveMenuSettings = "SaveMenuSettings";
+            public const string GetMenuTree = "GetMenuTree";
+            public const string Create = "Create";
         }
 
 
+        static readonly ActionParamsClass_SaveMenuSettings s_params_SaveMenuSettings = new ActionParamsClass_SaveMenuSettings();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SaveMenuSettings SaveMenuSettingsParams { get { return s_params_SaveMenuSettings; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SaveMenuSettings
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Create
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -125,6 +159,41 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             EditOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SaveMenuSettingsOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, System.Collections.Generic.List<RunShawn.Web.Areas.Admin.Models.Settings.Menu.MenuNestedItem> model);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult SaveMenuSettings(System.Collections.Generic.List<RunShawn.Web.Areas.Admin.Models.Settings.Menu.MenuNestedItem> model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveMenuSettings);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SaveMenuSettingsOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetMenuTreeOverride(T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult callInfo);
+
+        [NonAction]
+        public override RunShawn.Web.Actions.Results.JsonNetActionResult GetMenuTree()
+        {
+            var callInfo = new T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult(Area, Name, ActionNames.GetMenuTree);
+            GetMenuTreeOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, RunShawn.Web.Areas.Admin.Models.Settings.Menu.MenuItemCreateModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult Create(RunShawn.Web.Areas.Admin.Models.Settings.Menu.MenuItemCreateModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CreateOverride(callInfo, model);
             return callInfo;
         }
 

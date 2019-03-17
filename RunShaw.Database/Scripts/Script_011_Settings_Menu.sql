@@ -4,9 +4,8 @@ GO
 CREATE TABLE [Settings].[Menu] (
     [Id] [bigint]  IDENTITY NOT NULL,
 	[ParentId] [bigint]  NULL,
-    [Name] [nvarchar](256) NOT NULL,
+    [Text] [nvarchar](256) NOT NULL,
     [Icon] [nvarchar](80) NOT NULL,
-	[Order] [INT] NOT NULL,
 	[PageId] [BIGINT] NOT NULL
 
     CONSTRAINT [PK_Settings.Menu] PRIMARY KEY ([Id])
@@ -30,7 +29,7 @@ SELECT
 	Settings.Menu.Id,
 	Settings.Menu.[Order],
 	Settings.Menu.ParentId,
-	Settings.Menu.[Name],
+	Settings.Menu.[Text],
 	Settings.Menu.Icon,
 	Pages.Pages.UrlSlug
 FROM	

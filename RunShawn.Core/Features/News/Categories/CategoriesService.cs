@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RunShawn.Core.Features.News.Categories
 {
-    public class CategoriesService
+    public class CategoriesService : IService
     {
         #region GetById()
         public static Category GetById(long id)
@@ -55,7 +55,7 @@ namespace RunShawn.Core.Features.News.Categories
 
             var random = new Random();
             category.Color = string.Format("#{0:x6}", random.Next(0x1000000));
-            
+
             category.CreatedBy = userId;
             category.CreatedDate = DateTime.Now;
 

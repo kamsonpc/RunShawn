@@ -105,8 +105,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
                 public class _ViewNamesClass
                 {
+                    public readonly string _CreateForm = "_CreateForm";
                     public readonly string Edit = "Edit";
                 }
+                public readonly string _CreateForm = "~/Areas/Admin/Views/Settings/Menu/_CreateForm.cshtml";
                 public readonly string Edit = "~/Areas/Admin/Views/Settings/Menu/Edit.cshtml";
             }
         }

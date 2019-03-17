@@ -5,9 +5,11 @@ using RunShawn.Core.Features.Pages.Model;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.News;
 using RunShawn.Web.Areas.Admin.Models.Pages;
+using RunShawn.Web.Areas.Admin.Models.Settings.Menu;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Models;
+using System.Web.UI.WebControls;
 
 namespace RunShawn.Web.Areas.Admin.Models
 {
@@ -50,6 +52,11 @@ namespace RunShawn.Web.Areas.Admin.Models
             CreateMap<Page, PageViewModel>();
             CreateMap<PageViewModel, Page>();
 
+            CreateMap<MenuItem, MenuItemViewModel>();
+            CreateMap<MenuItemCreateModel, MenuItem>();
+
+
+            CreateMap<MenuItemViewModel, MenuItem>();
 
         }
     }

@@ -31,7 +31,8 @@ namespace RunShawn.Web
                 "~/Scripts/jquery_menu_editor/jquery-menu-editor.js",
                 "~/Scripts/tooltip/jquery.darktooltip.js",
                 "~/Scripts/summernote/summernote-lite.js",
-                "~/Scripts/summernote/summernote-init.js"));
+                "~/Scripts/summernote/summernote-init.js",
+                "~/Scripts/Controllers/*Controller.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/nprogress/nprogress.css",

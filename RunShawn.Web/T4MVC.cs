@@ -31,8 +31,8 @@ public static partial class MVC
     public static AdminClass Admin { get { return s_Admin; } }
     static readonly DefaultClass s_Default = new DefaultClass();
     public static DefaultClass Default { get { return s_Default; } }
-    public static RunShawn.Web.Controllers.MenusController Menus = new RunShawn.Web.Controllers.T4MVC_MenusController();
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
+    public static T4MVC.MenusController Menus = new T4MVC.MenusController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -105,6 +105,19 @@ internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResu
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult : RunShawn.Web.Actions.Results.JsonNetActionResult, IT4MVCActionResult
+{
+    public T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult(string area, string controller, string action, string protocol = null): base(default(object))
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
@@ -153,6 +166,14 @@ namespace Links
     
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class controllers {
+            public const string UrlPath = "~/Scripts/controllers";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string MenuSettingsController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/MenuSettingsController.min.js") ? Url("MenuSettingsController.min.js") : Url("MenuSettingsController.js");
+        }
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class datepicker {
             public const string UrlPath = "~/Scripts/datepicker";
@@ -532,6 +553,13 @@ namespace Links
                     public static readonly string bootstrap_iconpicker_bundle_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.bundle.min.js"); 
                     public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.js"); 
                     public static readonly string bootstrap_iconpicker_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.min.js"); 
+                }
+            }
+            public static partial class controllers 
+            {
+                public static class Assets
+                {
+                    public static readonly string MenuSettingsController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/MenuSettingsController.js"); 
                 }
             }
             public static partial class datepicker 

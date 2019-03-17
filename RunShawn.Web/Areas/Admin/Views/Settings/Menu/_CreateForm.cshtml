@@ -1,0 +1,26 @@
+﻿@using RunShawn.Web.Areas.Admin.Models.Settings.Menu
+@model MenuItemCreateModel
+
+<div class="col-md-4">
+    @using (var form = Html.Bootstrap().Form(MVC.Admin.Menu.Create()).SetId("add-menu-item").Begin())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(x => x.Text)
+            @Html.TextBoxFor(x => x.Text)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Url)
+            @Html.TextBoxFor(x => x.Url)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Icon)
+            @Html.TextBoxFor(x => x.Icon)
+        </div>
+
+
+        @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+    }
+</div>
+<script>
+</script>
