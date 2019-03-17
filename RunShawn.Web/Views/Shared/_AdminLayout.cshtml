@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Runshawn</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
     <link href="~/Content/modal/modal.css" rel="stylesheet">
@@ -90,11 +90,13 @@
     <main id="dashboard-main">
             @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
         <section id="page-container">
-            @if (TempData["Alert"] != null)
-            {
-                var alert = TempData["Alert"] as Alert;
-                @Html.Bootstrap().Alert(alert.AlertState, alert.Text).SetDismissible(true)
-            }
+             @{ 
+                 var alert = TempData["Alert"] as Alert;
+                 if(alert != null)
+                 {
+                    Html.RenderPartial(MVC.Shared.Views._Alert, alert);
+                 }
+             }
             <div class="breadcrumbs-container">
                 @Html.MvcSiteMap().SiteMapPath()
             </div>

@@ -4,10 +4,8 @@ using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Admin.Models.News;
-using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
-using RunShawn.Web.Extentions.Icons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +14,6 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    [MenuItem(CssIcon = AwesomeHelper.globe, Title = "Aktualności", Action = "List", IsClickable = false)]
     public partial class NewsController : BaseController
     {
         #region Index()
@@ -27,7 +24,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region List()
-        [MenuItem(Title = "Lista", Action = "List")]
         public virtual ActionResult List()
         {
             var model = ArticlesService.GetAll()
@@ -38,7 +34,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region Create()
-        [MenuItem(Title = "Dodaj Wpis", Action = "Create")]
         public virtual ActionResult Create()
         {
             var categories = CategoriesService.GetCategoriesAndSubcategories()
@@ -63,13 +58,22 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var article = model.MapTo<Article>();
+                try
+                {
+                    var article = model.MapTo<Article>();
 
-                ArticlesService.Create(article, User.Identity.GetUserId());
+                    ArticlesService.Create(article, User.Identity.GetUserId());
 
-                TempData[_alert] = new Alert($"Dodano Artykuł {article.Title}", AlertState.Success);
-                return RedirectToAction(MVC.Admin.News.List());
+                    TempData[_alert] = new Alert($"Dodano Artykuł {article.Title}", AlertState.Success);
+                    return RedirectToAction(MVC.Admin.News.List());
+                }
+                catch (Exception ex)
+                {
 
+                    TempData[_alert] = new Alert("Wystąpił Błąd podczas dodawania artykułu", AlertState.Danger);
+                    logger.Error(ex);
+                    return RedirectToAction(MVC.Admin.News.List());
+                }
 
             }
 
@@ -139,7 +143,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 ArticlesService.Delete(id, User.Identity.GetUserId());
 
-                TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
+                TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success, Url.Action(MVC.Admin.News.Restore(id)));
                 return RedirectToAction(MVC.Admin.News.List());
             }
             catch (Exception)
@@ -158,8 +162,26 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Restore()
+        public virtual ActionResult Restore(long id)
+        {
+            try
+            {
+                ArticlesService.Restore(id);
+
+                TempData[_alert] = new Alert("Pomyślnie Przywrócono", AlertState.Success);
+                return RedirectToAction(MVC.Admin.News.List());
+            }
+            catch (Exception ex)
+            {
+                TempData[_alert] = new Alert("Wystąpił Błąd podczas przywracania", AlertState.Danger);
+                logger.Error(ex);
+                return RedirectToAction(MVC.Admin.News.List());
+            }
+        }
+        #endregion
+
         #region Categories
-        [MenuItem(Title = "Kategorie", Action = "Categories")]
         public virtual ActionResult Categories()
         {
             return RedirectToAction(MVC.Admin.Categories.List());
