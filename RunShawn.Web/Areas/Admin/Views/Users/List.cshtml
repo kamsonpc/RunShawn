@@ -19,10 +19,8 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.UserName).Titled("Login");
-        columns.Add(model => model.FirstName).Titled("Imię");
-        columns.Add(model => model.LastName).Titled("Nazwisko");
-        columns.Add(model => model.Email).Titled("Email");
+        columns.Add(model => model.FullName).Titled("Imię i Nazwisko");
+        columns.Add(model => model.Scores).Titled("Punkty").AppendCss("points");
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
     (
         Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Users.Edit(model.Id))
@@ -37,6 +35,13 @@
         .SetState(ButtonState.Danger)
         .SetSize(ButtonSize.Sm)
         .ToHtmlString()
+        +
+        Html.Bootstrap().LinkButton("Punkty").SetId(model.Id)
+        .AddCss("edit-button")
+        .SetIcon(Icon.Refresh)
+        .SetState(ButtonState.Success)
+        .SetSize(ButtonSize.Sm)
+        .ToHtmlString()
     )
 
     );
@@ -46,3 +51,36 @@
         .Sortable()
         .Pageable()
 )
+
+<div class="modal" id="scores-edit-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edycja punktów</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body" id="form-add">
+                    @using (var form = Html.Bootstrap().Form(MVC.Admin.Users.SetScores()).SetId("change-scores-form").Begin())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label for="count">Liczba punktów</label>
+                            <input type="number" id="count" name="count" />
+                            @Html.Hidden("userId")
+                         </div>
+                        @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        ScoresController.editScore();
+        ScoresController.editScoreSubmit();
+    });
+</script>

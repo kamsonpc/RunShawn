@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using FluentBootstrap;
+﻿using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
@@ -17,6 +10,13 @@ using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
@@ -242,5 +242,26 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        #region SetScores()
+        public virtual ActionResult AddScores(string userId, int count)
+        {
+            UsersService.SetScores(userId, count);
+            return RedirectToAction(MVC.Admin.Users.List());
+        }
+
+        public virtual ActionResult RemoveScores(string userId, int count)
+        {
+            UsersService.SetScores(userId, count, false);
+            return RedirectToAction(MVC.Admin.Users.List());
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        public virtual JsonResult SetScores(string userId, int count)
+        {
+            UsersService.ChangeScores(userId, count);
+            return Json(true);
+        }
+        #endregion
     }
 }

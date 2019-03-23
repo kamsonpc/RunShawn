@@ -95,5 +95,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_011_Settings_Menu.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_012_Scores.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

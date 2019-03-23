@@ -6,7 +6,6 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    [MenuItem(CssIcon = AwesomeHelper.database, Title = "Dashboard", Action = "Dashboard")]
     public partial class DashboardController : BaseController
     {
         #region Index()

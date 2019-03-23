@@ -172,6 +172,7 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string MenuSettingsController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/MenuSettingsController.min.js") ? Url("MenuSettingsController.min.js") : Url("MenuSettingsController.js");
+            public static readonly string ScoresController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ScoresController.min.js") ? Url("ScoresController.min.js") : Url("ScoresController.js");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -560,6 +561,7 @@ namespace Links
                 public static class Assets
                 {
                     public static readonly string MenuSettingsController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/MenuSettingsController.js"); 
+                    public static readonly string ScoresController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/ScoresController.js"); 
                 }
             }
             public static partial class datepicker 

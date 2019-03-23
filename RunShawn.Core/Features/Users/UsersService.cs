@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using RunShawn.Core.Features.Users.Model;
+﻿using RunShawn.Core.Features.Users.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
+using System.Collections.Generic;
 
 namespace RunShawn.Core.Features.Users
 {
@@ -75,6 +75,60 @@ namespace RunShawn.Core.Features.Users
 
         }
 
+        #endregion
+
+
+        #region SetScores()
+        public static void SetScores(string id, long scores, bool adding = true)
+        {
+            var db = Database.Open();
+            User user = db.AspNetUsers.FindById(id);
+
+            if (user.Scores == null)
+            {
+                user.Scores = 0;
+            }
+
+            if (adding)
+            {
+                scores += user.Scores.Value;
+            }
+            else
+            {
+                scores -= user.Scores.Value;
+                if (scores < 0)
+                {
+                    scores = 0;
+                }
+            }
+
+            var sql = @"
+                       UPDATE  AspNetUsers 
+                       SET 
+                            Scores = @scores
+                       WHERE 
+                            Id = @id";
+
+            var rows = db.Execute(sql,
+                new
+                {
+                    id,
+                    scores
+                });
+
+        }
+        #endregion
+
+        #region SetScores()
+        public static void ChangeScores(string id, long scores)
+        {
+            var db = Database.Open();
+
+            User user = db.AspNetUsers.FindById(id);
+            user.Scores = scores;
+            db.AspNetUsers.UpdateById(user);
+
+        }
         #endregion
 
         #region Delete()

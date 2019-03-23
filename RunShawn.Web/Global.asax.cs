@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using RunShawn.Web.App_Start;
+using Swashbuckle.Application;
+using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -8,6 +11,7 @@ namespace RunShawn.Web
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
