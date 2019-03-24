@@ -76,6 +76,9 @@
   <ItemGroup>
     <Compile Include="Behaviors\IAuditable.cs" />
     <Compile Include="Behaviors\IService.cs" />
+    <Compile Include="Features\Activity\ActivityService.cs" />
+    <Compile Include="Features\Activity\Models\Location.cs" />
+    <Compile Include="Features\Activity\Models\UserActivity.cs" />
     <Compile Include="Features\Competition\CompetitorsService.cs" />
     <Compile Include="Features\Competition\Models\Competitor.cs" />
     <Compile Include="Features\News\Categories\CategoriesService.cs" />

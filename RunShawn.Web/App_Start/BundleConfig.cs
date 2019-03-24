@@ -32,7 +32,7 @@ namespace RunShawn.Web
                 "~/Scripts/tooltip/jquery.darktooltip.js",
                 "~/Scripts/summernote/summernote-lite.js",
                 "~/Scripts/summernote/summernote-init.js",
-                "~/Scripts/Controllers/*Controller.js"));
+                "~/Scripts/controllers/*Controller.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/nprogress/nprogress.css",
