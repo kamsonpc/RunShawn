@@ -3,8 +3,8 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-        <mvcSiteMapNode title="Dashboard" area="Admin" controller="Dashboard" action="Dashboard" icon="fas fa-tachometer-alt" >
-          <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List" icon="fas fa-users-cog" >
+        <mvcSiteMapNode title="Dashboard" area="Admin" controller="Dashboard" action="Dashboard" icon="fas fa-tachometer-alt" roles="Administrator">
+          <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List" icon="fas fa-users-cog" roles="Administrator">
                   <mvcSiteMapNode title="Dodaj" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
                   <mvcSiteMapNode title="Edytuj" area="Admin" controller="Users" action="Edit" visibility="SiteMapPathHelper,!*"  preservedRouteParameters="id"></mvcSiteMapNode>
           </mvcSiteMapNode>

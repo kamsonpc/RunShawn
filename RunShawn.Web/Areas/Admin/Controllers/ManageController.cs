@@ -3,19 +3,15 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Account;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Models;
-using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public partial class ManageController : Controller
     {
         private const string _avatar = "Avatar";
