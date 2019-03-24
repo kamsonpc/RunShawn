@@ -19,7 +19,7 @@
 
         $(document).ready(function () {
             $('.input-validation-error').siblings('.form-group').addClass('has-error');
-            $('.field-validation-error').addClass('text-danger');   
+            $('.field-validation-error').addClass('text-danger');
         });
     </script>
 </head>
@@ -62,7 +62,7 @@
                 <div class="logout">
                     @if (Request.IsAuthenticated)
                     {
-                        using (Html.BeginForm(MVC.Admin.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
+                        using (Html.BeginForm(MVC.Admin.Account.LogOff(), FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @Html.AntiForgeryToken()
                             <button class="rs-btn-default rs-btn-blue">
@@ -145,13 +145,13 @@
 
         </aside>
         <section id="page-container">
-             @{ 
-                 var alert = TempData["Alert"] as Alert;
-                 if(alert != null)
-                 {
+            @{
+                var alert = TempData["Alert"] as Alert;
+                if (alert != null)
+                {
                     Html.RenderPartial(MVC.Shared.Views._Alert, alert);
-                 }
-             }
+                }
+            }
             <div class="breadcrumbs-container">
                 @Html.MvcSiteMap().SiteMapPath()
             </div>
@@ -161,9 +161,10 @@
     <footer class="main-footer">HealthBack © @DateTime.Now.Year Wszelkie prawa zastrzeżone.</footer>
 </body>
 
-
 <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
-
+@Scripts.Render("~/bundles/validate")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/datepicker")
 
 
 </html>
