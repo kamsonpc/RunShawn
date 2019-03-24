@@ -13,11 +13,8 @@
 
 				</mvcSiteMapNode>
 
-          <!--<mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List" icon="fas fa-newspaper" >
-            <mvcSiteMapNode title="Dodaj" area="Admin" controller="News" action="Create" ></mvcSiteMapNode>
-            <mvcSiteMapNode title="Edytuj" area="Admin" controller="News" action="Edit"  visibility="SiteMapPathHelper,!*" preservedRouteParameters="id"></mvcSiteMapNode>
-            <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
-          </mvcSiteMapNode>-->
+          <mvcSiteMapNode title="Dashboard" area="Customer" controller="Dashboard" action="Index" icon="fas fa-newspaper" ></mvcSiteMapNode>
+            <mvcSiteMapNode title="Nagrody" area="Customer" controller="Dashboard" action="Rewards" icon="fas fa-newspaper" ></mvcSiteMapNode>
           
          <!-- <mvcSiteMapNode title="Strony" area="Admin" controller="Pages"  icon="fas fa-file-alt" action="List" >
             <mvcSiteMapNode title="Dodaj" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
