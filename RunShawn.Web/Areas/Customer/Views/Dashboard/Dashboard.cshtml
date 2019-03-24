@@ -1,41 +1,19 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-<header>
-    <h3>Ostatnie osiągnięcia</h3>
-</header>
-<div class="achievements-container">
-    <div class="single-achievement">
-        <div class="icon-container"><i class="fab fa-accessible-icon"></i></div>
-        <div class="info">
-            <h3>Bieganie</h3>
-            <h2>Nowicjusz</h2>
-            <h4>15 grudzień 2018</h4>
-        </div>
+
+<div class="statistics-container">
+    <div class="single-statistics">
+        <span class="count_top"><i class="fa fa-user"></i> Twoje punkty</span>
+        <div class="count">@Html.Action(MVC.Admin.Users.GetScores())</div>
     </div>
-    <div class="single-achievement">
-        <div class="icon-container"><i class="fas fa-running"></i></div>
-        <div class="info">
-            <h3>Bieganie</h3>
-            <h2>Sportowiec</h2>
-            <h4>14 stycznia 2019</h4>
-        </div>
+    <div class="single-statistics">
+        <span class="count_top"><i class="fas fa-trophy"></i> Twoje osiągnięcia</span>
+        <div class="count">4</div>
     </div>
-    <div class="single-achievement">
-        <div class="icon-container"><i class="fas fa-dumbbell"></i></div>
-        <div class="info">
-            <h3>Bieganie</h3>
-            <h2>Weteran</h2>
-            <h4>20 lutego 2019</h4>
-        </div>
-    </div>
-    <div class="single-achievement">
-        <div class="icon-container"><i class="fas fa-award"></i></div>
-        <div class="info">
-            <h3>Bieganie</h3>
-            <h2>Mistrz</h2>
-            <h4>24 mar 2019</h4>
-        </div>
+    <div class="single-statistics">
+        <span class="count_top"><i class="fas fa-award"></i> Osiągnięcia do zdobycia</span>
+        <div class="count">1</div>
     </div>
 </div>
 <header>

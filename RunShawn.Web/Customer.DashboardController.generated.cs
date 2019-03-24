@@ -77,6 +77,7 @@ namespace RunShawn.Web.Areas.Customer.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Rewards = "Rewards";
+            public readonly string Achievments = "Achievments";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +85,7 @@ namespace RunShawn.Web.Areas.Customer.Controllers
         {
             public const string Index = "Index";
             public const string Rewards = "Rewards";
+            public const string Achievments = "Achievments";
         }
 
 
@@ -97,9 +99,11 @@ namespace RunShawn.Web.Areas.Customer.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Achievements = "Achievements";
                 public readonly string Dashboard = "Dashboard";
                 public readonly string Rewards = "Rewards";
             }
+            public readonly string Achievements = "~/Areas/Customer/Views/Dashboard/Achievements.cshtml";
             public readonly string Dashboard = "~/Areas/Customer/Views/Dashboard/Dashboard.cshtml";
             public readonly string Rewards = "~/Areas/Customer/Views/Dashboard/Rewards.cshtml";
         }
@@ -129,6 +133,17 @@ namespace RunShawn.Web.Areas.Customer.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Rewards);
             RewardsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AchievmentsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Achievments()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Achievments);
+            AchievmentsOverride(callInfo);
             return callInfo;
         }
 

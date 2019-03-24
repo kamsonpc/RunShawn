@@ -372,14 +372,24 @@ button
 .achievements-container{
     display: flex;
     flex-grow: 1;
+    flex-wrap: wrap;
     .single-achievement{
         background: #F5F5F5;
         display: flex;
-        width: 30%;
+        width: 24%;
         margin: 5px;
         border-radius: 4px;
         padding: 5px;
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+        transition: all .4s;
+        cursor: pointer;
+        opacity: .9;
+        &.disabled{
+            opacity: .5;
+            &:hover{
+                box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+            }
+        }
         .info{
             display: flex;
             justify-content: center;
@@ -411,11 +421,34 @@ button
         .info{
             padding: 5px;
         }
-        &:nth-child(4) {
-            margin-right: 0;
+        &:nth-child(4n+1) {
+            margin-left: 0;
         }
         &:nth-child(1) {
             margin-left: 0;
+        }
+        &:hover{
+            box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
+            opacity: 1;
+        }
+    }
+}
+
+.statistics-container{
+    display: flex;  
+    .single-statistics{
+        border-right: 2px solid #777777;
+        padding: 0px 40px;
+        .count_top{
+            font-size: 13px;
+            
+        }
+        .count{
+            font-size: 40px;
+            font-weight: 600;
+        }
+        &:last-child{
+            border-right: 0;
         }
     }
 }

@@ -19,5 +19,13 @@ namespace RunShawn.Web.Areas.Customer.Controllers
             return View(MVC.Customer.Dashboard.Views.Rewards);
         }
         #endregion
+
+        #region Achievements()
+        public virtual ActionResult Achievments()
+        {
+            return View(MVC.Customer.Dashboard.Views.Achievements);
+        }
+        #endregion
+
     }
 }
