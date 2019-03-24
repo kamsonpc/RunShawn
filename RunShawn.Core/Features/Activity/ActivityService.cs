@@ -7,31 +7,38 @@ namespace RunShawn.Core.Features.Activity
 {
     public static class ActivityService
     {
-        public static void BoostPoints(string userId, long locationId)
+        public static void BoostPoints(string login, long locationId)
         {
             var db = Database.Open();
             LocationObject location = db.Activity.Locations.FindById(locationId);
-            User user = db.dbo.AspNetUsers.FindById(userId);
+            User user = db.dbo.AspNetUsers.Find(db.dbo.AspNetUsers.Username == login);
             UserActivity userActivity = db.Activity.UsersActivity
-                                          .Find(
-                                                db.Activity.UsersActivity.UserId == userId,
-                                                db.Activity.UsersActivity.Location == locationId,
-                                                db.Activity.UsersActivity.StartDate.Date == DateTime.Now.Date
-                                            );
+                                                   .Find(
+                                                        db.Activity.UsersActivity.UserId == user.Id &&
+                                                        db.Activity.UsersActivity.LocationId == locationId &&
+                                                        db.Activity.UsersActivity.StartDate == DateTime.Now.Date &&
+                                                        db.Activity.UsersActivity.EndDate == null
+                                                    );
 
             if (userActivity == null)
             {
                 db.Activity.UsersActivity.Insert(new UserActivity
                 {
-                    StartDate = DateTime.Now,
+                    StartDate = DateTime.Now.Date,
                     LocationId = locationId,
-                    UserId = userId
+                    UserId = user.Id
                 });
             }
             else
             {
+                if (userActivity.EndDate != null)
+                {
+                    return;
+                }
                 user.Scores += location.Boost;
-
+                userActivity.EndDate = DateTime.Now.Date;
+                db.Activity.UsersActivity.UpdateById(userActivity);
+                db.dbo.AspNetUsers.UpdateById(user);
             }
         }
 
