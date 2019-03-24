@@ -52,7 +52,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region List()
-        [MenuItem(Title = "Lista", Action = "List")]
         public virtual ActionResult List()
         {
             var model = UsersService.GetAll()
@@ -63,7 +62,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region Create()
-        [MenuItem(Title = "Dodaj Użytkownika", Action = "Create")]
         public virtual ActionResult Create()
         {
             var roles = RolesService.GetAll()
@@ -258,6 +256,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region SetScores()
+        [AllowAnonymous]
         public virtual ActionResult AddScores(string userId, int count)
         {
             UsersService.SetScores(userId, count);

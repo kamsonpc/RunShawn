@@ -1,6 +1,5 @@
 ﻿using FluentBootstrap;
 using Microsoft.AspNet.Identity;
-using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.Pages;
 using RunShawn.Core.Features.Pages.Model;
 using RunShawn.Web.Areas.Admin.Models.Pages;
@@ -10,12 +9,11 @@ using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Extentions.Icons;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     [MenuItem(CssIcon = AwesomeHelper.file, Title = "Strony", Action = "List", IsClickable = false)]
     public partial class PagesController : BaseController
     {

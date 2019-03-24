@@ -92,7 +92,58 @@
         </section>
     </header>
     <main id="dashboard-main">
-            @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
+        <aside id="side-bar" class="side-bar">
+            @if (User.IsInRole("Administrator"))
+            {
+                <ul>
+                    <li class="category-header">
+                        <a href="/RunShawn/Admin/Dashboard/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="category-header ">
+                        <a href="/RunShawn/Admin/Users/List"><i class="fas fa-users-cog"></i> Użytkownicy </a>
+                    </li>
+                    <ol>
+                        <li><a href="/RunShawn/Admin/Users/Create"> Dodaj</a></li>
+                    </ol>
+                </ul>
+                <ul>
+                    <li class="category-header ">
+                        <a href="/RunShawn/Admin/Settings"><i class="fas fa-trophy"></i> Osiągnięcia </a>
+                    </li>
+                    <ol>
+                        <li><a href="/RunShawn/Admin/Menu/Edit"> Dodaj</a></li>
+                        <li><a href="/RunShawn/Admin/Menu/Edit"> Edytuj</a></li>
+                    </ol>
+                </ul>
+                <ul>
+                    <li class="category-header ">
+                        <a href="/RunShawn/Admin/Settings"><i class="far fa-money-bill-alt"></i> Produkty </a>
+                    </li>
+                    <ol>
+                        <li><a href="/RunShawn/Admin/Menu/Edit"> Dodaj</a></li>
+                        <li><a href="/RunShawn/Admin/Menu/Edit"> Edytuj</a></li>
+                    </ol>
+                </ul>
+            }
+            @if (User.IsInRole("Customer"))
+            {
+                <ul>
+                    <li class="category-header ">
+                        <a href="/RunShawn/Customer/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="category-header ">
+                        <a href="/RunShawn/Customer/Dashboard/Rewards"><i class="far fa-money-bill-alt"></i> Produkty </a>
+                    </li>
+                </ul>
+
+            }
+
+        </aside>
         <section id="page-container">
              @{ 
                  var alert = TempData["Alert"] as Alert;

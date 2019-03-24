@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public partial class NewsController : BaseController
     {
         #region Index()

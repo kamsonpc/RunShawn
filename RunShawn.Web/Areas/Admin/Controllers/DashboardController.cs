@@ -1,11 +1,9 @@
-﻿using RunShawn.Web.Attributes;
-using RunShawn.Web.Extentions.Contoller;
-using RunShawn.Web.Extentions.Icons;
+﻿using RunShawn.Web.Extentions.Contoller;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public partial class DashboardController : BaseController
     {
         #region Index()
