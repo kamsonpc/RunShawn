@@ -38,12 +38,27 @@
             <h4>24 mar 2019</h4>
         </div>
     </div>
-    <div class="single-achievement disabled">
-        <div class="icon-container"><i class="fas fa-award"></i></div>
-        <div class="info">
-            <h3>Bieganie</h3>
-            <h2>Nałogowiec</h2>
-            <h4></h4>
+    @if (Int64.Parse(Html.Action(MVC.Admin.Users.GetScores()).ToString()) >= 6000)
+    {
+
+        <div class="single-achievement">
+            <div class="icon-container"><i class="fas fa-award"></i></div>
+            <div class="info">
+                <h3>Bieganie</h3>
+                <h2>Nałogowiec</h2>
+                <h4></h4>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="single-achievement disabled">
+            <div class="icon-container"><i class="fas fa-award"></i></div>
+            <div class="info">
+                <h3>Bieganie</h3>
+                <h2>Nałogowiec</h2>
+                <h4></h4>
+            </div>
+        </div>
+    }
 </div>
