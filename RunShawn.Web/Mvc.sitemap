@@ -13,22 +13,30 @@
 
 				</mvcSiteMapNode>
 
-          <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List" icon="fas fa-newspaper" >
+          <!--<mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List" icon="fas fa-newspaper" >
             <mvcSiteMapNode title="Dodaj" area="Admin" controller="News" action="Create" ></mvcSiteMapNode>
             <mvcSiteMapNode title="Edytuj" area="Admin" controller="News" action="Edit"  visibility="SiteMapPathHelper,!*" preservedRouteParameters="id"></mvcSiteMapNode>
             <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
-
-            </mvcSiteMapNode>
+          </mvcSiteMapNode>-->
           
-            <mvcSiteMapNode title="Strony" area="Admin" controller="Pages"  icon="fas fa-file-alt" action="List" >
+         <!-- <mvcSiteMapNode title="Strony" area="Admin" controller="Pages"  icon="fas fa-file-alt" action="List" >
             <mvcSiteMapNode title="Dodaj" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
             <mvcSiteMapNode title="Edytuj" area="Admin" controller="Pages" visibility="SiteMapPathHelper,!*" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+          </mvcSiteMapNode>-->
 
-            </mvcSiteMapNode>
 
-
-          <mvcSiteMapNode title="Ustawienia" area="Admin" controller="Settings" action="Index"  icon="fas fa-cogs" >
+         <!-- <mvcSiteMapNode title="Ustawienia" area="Admin" controller="Settings" action="Index"  icon="fas fa-cogs" >
             <mvcSiteMapNode title="Menu" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+          </mvcSiteMapNode>-->
+
+          <mvcSiteMapNode title="Osiągnięcia" area="Admin" controller="Settings" action="Index"  icon="fas fa-trophy" >
+            <mvcSiteMapNode title="Dodaj" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Edytuj" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+          </mvcSiteMapNode>
+          
+          <mvcSiteMapNode title="Produkty" area="Admin" controller="Settings" action="Index"  icon="far fa-money-bill-alt" >
+            <mvcSiteMapNode title="Dodaj" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+            <mvcSiteMapNode title="Edytuj" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
           </mvcSiteMapNode>
 
         </mvcSiteMapNode>
