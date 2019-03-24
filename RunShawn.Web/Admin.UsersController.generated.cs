@@ -108,6 +108,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string GetAvatar = "GetAvatar";
+            public readonly string GetScores = "GetScores";
             public readonly string AddScores = "AddScores";
             public readonly string RemoveScores = "RemoveScores";
             public readonly string SetScores = "SetScores";
@@ -122,6 +123,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string Edit = "Edit";
             public const string Delete = "Delete";
             public const string GetAvatar = "GetAvatar";
+            public const string GetScores = "GetScores";
             public const string AddScores = "AddScores";
             public const string RemoveScores = "RemoveScores";
             public const string SetScores = "SetScores";
@@ -294,6 +296,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetAvatar);
             GetAvatarOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetScoresOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetScores()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetScores);
+            GetScoresOverride(callInfo);
             return callInfo;
         }
 

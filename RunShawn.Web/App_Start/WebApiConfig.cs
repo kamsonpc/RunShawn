@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using RunShawn.Web.Handlers;
+using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace RunShawn.Web.App_Start
 {
@@ -13,6 +15,10 @@ namespace RunShawn.Web.App_Start
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+            config.MessageHandlers.Add(new PreflightRequestsHandler());
         }
     }
 }

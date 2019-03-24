@@ -11,6 +11,10 @@ namespace RunShawn.Web.Extentions
         SuperUser = 30,
 
         [Description("Manager")]
-        Manager = 20
+        Manager = 20,
+
+
+        [Description("Customer")]
+        Customer = 40
     }
 }

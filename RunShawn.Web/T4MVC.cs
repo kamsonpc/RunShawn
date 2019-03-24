@@ -29,6 +29,8 @@ public static partial class MVC
 {
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
+    static readonly CustomerClass s_Customer = new CustomerClass();
+    public static CustomerClass Customer { get { return s_Customer; } }
     static readonly DefaultClass s_Default = new DefaultClass();
     public static DefaultClass Default { get { return s_Default; } }
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
@@ -52,6 +54,13 @@ namespace T4MVC
         public RunShawn.Web.Areas.Admin.Controllers.SettingsController Settings = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_SettingsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class CustomerClass
+    {
+        public readonly string Name = "Customer";
+        public RunShawn.Web.Areas.Customer.Controllers.DashboardController Dashboard = new RunShawn.Web.Areas.Customer.Controllers.T4MVC_DashboardController();
+        public T4MVC.Customer.SharedController Shared = new T4MVC.Customer.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class DefaultClass

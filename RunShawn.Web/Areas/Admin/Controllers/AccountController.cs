@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Account;
 using RunShawn.Web.Models;
-using System;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;

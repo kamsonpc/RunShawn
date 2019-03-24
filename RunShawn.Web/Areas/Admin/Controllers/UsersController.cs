@@ -20,7 +20,7 @@ using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    [Authorize()]
+    [Authorize(Roles = "Administrator")]
     [MenuItem(CssIcon = AwesomeHelper.users, Title = "Użytkownicy", Action = "#", IsClickable = false)]
     public partial class UsersController : BaseController
     {
@@ -202,6 +202,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region GetAvatar()
+        [AllowAnonymous]
         public virtual FileContentResult GetAvatar()
         {
 
@@ -239,6 +240,22 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             }
 
+        }
+        #endregion
+
+        #region 
+        [AllowAnonymous]
+        public virtual ActionResult GetScores()
+        {
+            var user = UsersService.GetById(User.Identity.GetUserId());
+            if (user.Scores.HasValue)
+            {
+                return Content(user.Scores.Value.ToString());
+            }
+            else
+            {
+                return Content("0");
+            }
         }
         #endregion
 

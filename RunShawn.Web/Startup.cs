@@ -72,6 +72,15 @@ namespace RunShawn.Web
                 roleManager.Create(role);
             }
 
+            if (!roleManager.RoleExists(RoleTypes.Customer.ToString()))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = RoleTypes.Customer.ToString()
+                };
+                roleManager.Create(role);
+            }
+
         }
     }
 }

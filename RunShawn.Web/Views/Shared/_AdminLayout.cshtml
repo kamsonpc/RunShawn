@@ -33,6 +33,10 @@
                 {
                     <li><a href="#">@User.Identity.Name</a></li>
                 }
+                @if (User.IsInRole("Customer"))
+                {
+                    <li><a href="#">Punkty: @Html.Action(MVC.Admin.Users.GetScores())</a></li>
+                }
             </ul>
         </nav>
         <section class="user-panel">
