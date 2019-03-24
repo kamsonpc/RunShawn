@@ -21,6 +21,13 @@ namespace RunShawn.Core.Features.Users
         }
         #endregion
 
+        #region GetById()
+        public static User GetByUsername(string username)
+        {
+            return Database.Open().AspNetUsers.Find(Database.Open().AspNetUsers.UserName == username);
+        }
+        #endregion
+
         #region Update()
         public static User Update(User model)
         {
