@@ -1,7 +1,46 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-
+<header>
+    <h3>Ostatnie osiągnięcia</h3>
+</header>
+<div class="achievements-container">
+    <div class="single-achievement">
+        <div class="icon-container"><i class="fab fa-accessible-icon"></i></div>
+        <div class="info">
+            <h3>Bieganie</h3>
+            <h2>Nowicjusz</h2>
+            <h4>15 grudzień 2018</h4>
+        </div>
+    </div>
+    <div class="single-achievement">
+        <div class="icon-container"><i class="fas fa-running"></i></div>
+        <div class="info">
+            <h3>Bieganie</h3>
+            <h2>Sportowiec</h2>
+            <h4>14 stycznia 2019</h4>
+        </div>
+    </div>
+    <div class="single-achievement">
+        <div class="icon-container"><i class="fas fa-dumbbell"></i></div>
+        <div class="info">
+            <h3>Bieganie</h3>
+            <h2>Weteran</h2>
+            <h4>20 lutego 2019</h4>
+        </div>
+    </div>
+    <div class="single-achievement">
+        <div class="icon-container"><i class="fas fa-award"></i></div>
+        <div class="info">
+            <h3>Bieganie</h3>
+            <h2>Mistrz</h2>
+            <h4>24 mar 2019</h4>
+        </div>
+    </div>
+</div>
+<header>
+    <h3>Statystyki</h3>
+</header>
 <div class="single-chart-container"><div class="single-chart"><canvas id="line-chart-customer"></canvas></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
@@ -13,29 +52,19 @@
         data: {
             labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
             datasets: [{
-                data: [0, 80, 85, 60, 70, 80, 90, 100, 98, 89, 91, 99],
-                label: "Basen",
+                data: [0, 5, 15, 20, 20,20, 21, 19, 18, 18,22, 20],
+                label: "Bieganie",
                 borderColor: "#3e95cd",
                 fill: false
             }, {
-                data: [0, 50, 35, 40, 30, 50, 60, 70, 69, 65, 70, 99],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 label: "Siłownia",
                 borderColor: "#8e5ea2",
                 fill: false
             }, {
-                data: [0, 20, 15, 30, 20, 35, 70, 80, 80, 70, 60, 20],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 label: "Jazda na rowerze",
                 borderColor: "#3cba9f",
-                fill: false
-            }, {
-                data: [0, 10, 25, 40, 35, 50, 40, 60, 48, 50, 55, 90],
-                label: "Zajęcia fitness",
-                borderColor: "#e8c3b9",
-                fill: false
-            }, {
-                data: [0, 5, 8, 12, 20, 25, 20, 20, 24, 23, 20, 20],
-                label: "Nordic Walking",
-                borderColor: "#c45850",
                 fill: false
             }
             ]
@@ -43,7 +72,7 @@
         options: {
             title: {
                 display: true,
-                text: 'Aktywność pracowników w ciągu roku'
+                text: 'Twoja aktywność w    ciągu roku'
             }
         }
     });
