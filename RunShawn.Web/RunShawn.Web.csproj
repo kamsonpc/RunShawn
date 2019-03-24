@@ -374,6 +374,7 @@
     <Content Include="Content\images\article-images\article-background7.png" />
     <Content Include="Content\images\article-images\article-background8.png" />
     <Content Include="Content\images\article-images\article-background9.png" />
+    <Content Include="Content\images\awards\1.png" />
     <Content Include="Content\images\background.png" />
     <Content Include="Content\images\empty-photo.png" />
     <Content Include="Content\images\user.png" />
@@ -552,6 +553,7 @@
     <Content Include="Scripts\nprogress\nprogress.js" />
     <Content Include="Scripts\summernote\summernote-init.js" />
     <Content Include="Scripts\summernote\summernote-lite.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Scripts\validate\jquery.validate.js" />
     <Content Include="Scripts\validate\jquery.validate.min.js" />
     <Content Include="Scripts\validate\jquery.validate.unobtrusive.js" />
