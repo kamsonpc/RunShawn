@@ -76,12 +76,14 @@ namespace RunShawn.Web.Areas.Customer.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string Rewards = "Rewards";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string Rewards = "Rewards";
         }
 
 
@@ -96,8 +98,10 @@ namespace RunShawn.Web.Areas.Customer.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Dashboard = "Dashboard";
+                public readonly string Rewards = "Rewards";
             }
             public readonly string Dashboard = "~/Areas/Customer/Views/Dashboard/Dashboard.cshtml";
+            public readonly string Rewards = "~/Areas/Customer/Views/Dashboard/Rewards.cshtml";
         }
     }
 
@@ -114,6 +118,17 @@ namespace RunShawn.Web.Areas.Customer.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RewardsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Rewards()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Rewards);
+            RewardsOverride(callInfo);
             return callInfo;
         }
 

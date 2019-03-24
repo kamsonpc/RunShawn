@@ -8,7 +8,6 @@ using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
-using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +20,6 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    [MenuItem(CssIcon = AwesomeHelper.users, Title = "Użytkownicy", Action = "#", IsClickable = false)]
     public partial class UsersController : BaseController
     {
         #region InjectUserManager
@@ -243,7 +241,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
-        #region 
+        #region GetScores()
         [AllowAnonymous]
         public virtual ActionResult GetScores()
         {

@@ -495,6 +495,7 @@
     <Content Include="Areas\Customer\Views\web.config" />
     <Content Include="Areas\Customer\Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Customer\Views\Dashboard\Rewards.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
