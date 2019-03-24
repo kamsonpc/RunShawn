@@ -222,6 +222,7 @@ button
             background-color: $element-bcolor;
             height: $element-height;
             line-height: $element-height;
+            transition: all .4s;
             i{
                 padding: 0 25px;
                 color: #485361;
@@ -358,12 +359,63 @@ button
             cursor: pointer;
         }
         .button:hover{
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             background-color: #143268;
             color: #ffffff;
         }
         &>div{
             margin: 5px;
+        }
+    }
+}
+
+.achievements-container{
+    display: flex;
+    flex-grow: 1;
+    .single-achievement{
+        background: #F5F5F5;
+        display: flex;
+        width: 30%;
+        margin: 5px;
+        border-radius: 4px;
+        padding: 5px;
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+        .info{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        *{
+            margin: 0;
+        }
+        .icon-container{
+            display: flex;
+            align-items: center;
+        }
+        h2{
+            font-size: 25px;
+            margin-top: 5px;
+        }
+        h3{
+            color:#879BB0;
+            font-size: 12px;
+        }
+        h4{
+            font-size: 14px;
+            color:#879BB0;
+        }
+        i{
+            font-size: 87px;
+            padding: 20px;
+        }
+        .info{
+            padding: 5px;
+        }
+        &:nth-child(4) {
+            margin-right: 0;
+        }
+        &:nth-child(1) {
+            margin-left: 0;
         }
     }
 }
