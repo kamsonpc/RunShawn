@@ -61,26 +61,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="modal-body" id="form-add">
-                    @using (var form = Html.Bootstrap().Form(MVC.Admin.Users.SetScores()).SetId("change-scores-form").Begin())
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-group">
-                            <label for="count">Liczba punktów</label>
-                            <input type="number" id="count" name="count" />
-                            @Html.Hidden("userId")
-                         </div>
-                        @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
-                    }
-                </div>
-            </div>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        ScoresController.editScore();
-        ScoresController.editScoreSubmit();
-    });
 </script>

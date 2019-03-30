@@ -68,24 +68,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult AddScores()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddScores);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult RemoveScores()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveScores);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.JsonResult SetScores()
-        {
-            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SetScores);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UsersController Actions { get { return MVC.Admin.Users; } }
@@ -108,9 +90,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string GetAvatar = "GetAvatar";
-            public readonly string AddScores = "AddScores";
-            public readonly string RemoveScores = "RemoveScores";
-            public readonly string SetScores = "SetScores";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -122,9 +101,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public const string Edit = "Edit";
             public const string Delete = "Delete";
             public const string GetAvatar = "GetAvatar";
-            public const string AddScores = "AddScores";
-            public const string RemoveScores = "RemoveScores";
-            public const string SetScores = "SetScores";
         }
 
 
@@ -152,33 +128,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public class ActionParamsClass_Delete
         {
             public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_AddScores s_params_AddScores = new ActionParamsClass_AddScores();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_AddScores AddScoresParams { get { return s_params_AddScores; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_AddScores
-        {
-            public readonly string userId = "userId";
-            public readonly string count = "count";
-        }
-        static readonly ActionParamsClass_RemoveScores s_params_RemoveScores = new ActionParamsClass_RemoveScores();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_RemoveScores RemoveScoresParams { get { return s_params_RemoveScores; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_RemoveScores
-        {
-            public readonly string userId = "userId";
-            public readonly string count = "count";
-        }
-        static readonly ActionParamsClass_SetScores s_params_SetScores = new ActionParamsClass_SetScores();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_SetScores SetScoresParams { get { return s_params_SetScores; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_SetScores
-        {
-            public readonly string userId = "userId";
-            public readonly string count = "count";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -294,45 +243,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetAvatar);
             GetAvatarOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void AddScoresOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string userId, int count);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult AddScores(string userId, int count)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddScores);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userId", userId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "count", count);
-            AddScoresOverride(callInfo, userId, count);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void RemoveScoresOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string userId, int count);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult RemoveScores(string userId, int count)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveScores);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userId", userId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "count", count);
-            RemoveScoresOverride(callInfo, userId, count);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void SetScoresOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, string userId, int count);
-
-        [NonAction]
-        public override System.Web.Mvc.JsonResult SetScores(string userId, int count)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SetScores);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userId", userId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "count", count);
-            SetScoresOverride(callInfo, userId, count);
             return callInfo;
         }
 

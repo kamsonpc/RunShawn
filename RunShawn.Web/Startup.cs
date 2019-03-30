@@ -13,8 +13,8 @@ namespace RunShawn.Web
 {
     public partial class Startup
     {
-        private string _email = "admin@runshawn.com";
-        private string _password = "zaq1@WSX";
+        private readonly string _email = "admin@runshawn.com";
+        private readonly string _password = "zaq1@WSX";
 
         public void Configuration(IAppBuilder app)
         {
@@ -35,13 +35,12 @@ namespace RunShawn.Web
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-
-            if (!roleManager.RoleExists(RoleTypes.Administrator.ToString()))
+            if (!roleManager.RoleExists(nameof(RoleTypes.Administrator)))
             {
 
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                var role = new IdentityRole
                 {
-                    Name = RoleTypes.Administrator.ToString()
+                    Name = nameof(RoleTypes.Administrator)
                 };
                 roleManager.Create(role);
 
@@ -58,16 +57,15 @@ namespace RunShawn.Web
 
                 if (chkUser.Succeeded)
                 {
-                    var result = UserManager.AddToRole(user.Id, RoleTypes.Administrator.ToString());
-
+                    var result = UserManager.AddToRole(user.Id, nameof(RoleTypes.Administrator));
                 }
             }
 
-            if (!roleManager.RoleExists(RoleTypes.SuperUser.ToString()))
+            if (!roleManager.RoleExists(nameof(RoleTypes.SuperUser)))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                var role = new IdentityRole
                 {
-                    Name = RoleTypes.SuperUser.ToString()
+                    Name = nameof(RoleTypes.SuperUser)
                 };
                 roleManager.Create(role);
             }

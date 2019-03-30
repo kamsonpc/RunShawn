@@ -8,7 +8,6 @@ using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
-using RunShawn.Web.Extentions.Icons;
 using RunShawn.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -21,9 +20,9 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize()]
-    [MenuItem(CssIcon = AwesomeHelper.users, Title = "Użytkownicy", Action = "#", IsClickable = false)]
     public partial class UsersController : BaseController
     {
+        public IUsersService _usersService { get; internal set; }
         #region InjectUserManager
         private ApplicationUserManager _userManager;
 
@@ -35,9 +34,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region Ctor
-        public UsersController()
+        public UsersController(IUsersService usersService)
         {
-
+            _usersService = usersService;
         }
 
         public UsersController(ApplicationUserManager userManager)
@@ -54,10 +53,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #endregion
 
         #region List()
-        [MenuItem(Title = "Lista", Action = "List")]
         public virtual ActionResult List()
         {
-            var model = UsersService.GetAll()
+            var model = _usersService.GetAll()
                                     .MapTo<List<UserListViewModel>>();
 
             return View(MVC.Admin.Users.Views.List, model);
@@ -135,7 +133,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     })
                                     .ToList();
 
-            var model = UsersService.GetById(id)
+            var model = _usersService.GetById(id)
                                      .MapTo<UserEditViewModel>();
 
             model.RoleId = RolesService.GetByUser(id);
@@ -153,7 +151,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 try
                 {
                     var user = model.MapTo<User>();
-                    UsersService.Update(user);
+                    _usersService.Update(user);
 
                     if (!string.IsNullOrEmpty(user.Id))
                     {
@@ -169,15 +167,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 }
             }
 
-            var roles = RolesService.GetAll()
+            model.Roles = RolesService.GetAll()
                                    .Select(x => new SelectListItem
                                    {
                                        Value = x.Id,
                                        Text = x.Name
                                    })
                                    .ToList();
-
-            model.Roles = roles;
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Edit, model);
         }
@@ -188,7 +184,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             try
             {
-                UsersService.Delete(id);
+                _usersService.Delete(id);
 
                 TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
                 return RedirectToAction(MVC.Admin.Users.List());
@@ -207,7 +203,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             String userId = User.Identity.GetUserId();
 
-            var user = UsersService.GetById(userId);
+            var user = _usersService.GetById(userId);
 
             var avatar = user.Avatar;
             if (avatar != null && avatar.Length > 0)
@@ -242,26 +238,5 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
         #endregion
 
-        #region SetScores()
-        public virtual ActionResult AddScores(string userId, int count)
-        {
-            UsersService.SetScores(userId, count);
-            return RedirectToAction(MVC.Admin.Users.List());
-        }
-
-        public virtual ActionResult RemoveScores(string userId, int count)
-        {
-            UsersService.SetScores(userId, count, false);
-            return RedirectToAction(MVC.Admin.Users.List());
-        }
-
-        [HttpPost]
-        [AjaxOnly]
-        public virtual JsonResult SetScores(string userId, int count)
-        {
-            UsersService.ChangeScores(userId, count);
-            return Json(true);
-        }
-        #endregion
     }
 }

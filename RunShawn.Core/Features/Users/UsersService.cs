@@ -5,27 +5,28 @@ using System.Collections.Generic;
 
 namespace RunShawn.Core.Features.Users
 {
-    public class UsersService
+    public class UsersService : IUsersService
     {
         #region GetAll()
-        public static List<User> GetAll()
+        public List<User> GetAll()
         {
             return Database.Open().AspNetUsers.All();
         }
         #endregion
 
         #region GetById()
-        public static User GetById(string id)
+        public User GetById(string id)
         {
             return Database.Open().AspNetUsers.FindById(id);
         }
         #endregion
 
         #region Update()
-        public static User Update(User model)
+        public User Update(User model)
         {
             Database db = Database.Open();
-            var sql = @"
+
+            const string sql = @"
                        UPDATE  AspNetUsers 
                        SET 
                             UserName = @username,
@@ -56,7 +57,7 @@ namespace RunShawn.Core.Features.Users
         #endregion
 
         #region SetAvatar
-        public static void SetAvatar(string id, byte[] avatar)
+        public void SetAvatar(string id, byte[] avatar)
         {
             Database db = Database.Open();
             var sql = @"
@@ -77,62 +78,8 @@ namespace RunShawn.Core.Features.Users
 
         #endregion
 
-
-        #region SetScores()
-        public static void SetScores(string id, long scores, bool adding = true)
-        {
-            var db = Database.Open();
-            User user = db.AspNetUsers.FindById(id);
-
-            if (user.Scores == null)
-            {
-                user.Scores = 0;
-            }
-
-            if (adding)
-            {
-                scores += user.Scores.Value;
-            }
-            else
-            {
-                scores -= user.Scores.Value;
-                if (scores < 0)
-                {
-                    scores = 0;
-                }
-            }
-
-            var sql = @"
-                       UPDATE  AspNetUsers 
-                       SET 
-                            Scores = @scores
-                       WHERE 
-                            Id = @id";
-
-            var rows = db.Execute(sql,
-                new
-                {
-                    id,
-                    scores
-                });
-
-        }
-        #endregion
-
-        #region SetScores()
-        public static void ChangeScores(string id, long scores)
-        {
-            var db = Database.Open();
-
-            User user = db.AspNetUsers.FindById(id);
-            user.Scores = scores;
-            db.AspNetUsers.UpdateById(user);
-
-        }
-        #endregion
-
         #region Delete()
-        public static void Delete(string id)
+        public void Delete(string id)
         {
             Database.Open().AspNetUsers.DeleteById(id);
         }

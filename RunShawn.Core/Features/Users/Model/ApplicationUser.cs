@@ -18,7 +18,5 @@ namespace RunShawn.Core.Features.Users.Model
         public bool LockoutEnabled { get; set; }
         public byte[] Avatar { get; set; }
         public int AccessFailedCount { get; set; }
-        public long? Scores { get; set; }
-
     }
 }

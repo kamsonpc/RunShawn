@@ -95,6 +95,7 @@
     <Compile Include="Features\Settings\Menu\Model\MenuItem.cs" />
     <Compile Include="Features\Settings\Menu\Model\MenuItemView.cs" />
     <Compile Include="Features\Users\Model\ApplicationUser.cs" />
+    <Compile Include="Features\Users\IUsersService.cs" />
     <Compile Include="Features\Users\UsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

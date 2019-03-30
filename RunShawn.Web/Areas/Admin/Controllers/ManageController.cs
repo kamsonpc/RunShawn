@@ -3,12 +3,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Account;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Models;
-using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,15 +17,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         private const string _avatar = "Avatar";
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IUsersService _usersService;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersService usersService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _usersService = usersService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -338,7 +336,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
                 }
-                UsersService.SetAvatar(User.Identity.GetUserId(), imageData);
+                _usersService.SetAvatar(User.Identity.GetUserId(), imageData);
             }
 
 

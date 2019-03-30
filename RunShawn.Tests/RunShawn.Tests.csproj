@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Users\Users.cs" />
     <Compile Include="Features\Categories\Categories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
