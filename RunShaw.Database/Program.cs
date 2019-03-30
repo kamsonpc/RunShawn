@@ -9,7 +9,7 @@ namespace RunShaw.Database
         private static int Main(string[] args)
         {
             var connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=RunShaw;User ID=admin;Password=admin";
-
+            //var connectionString = "Data Source =.\\SQLEXPRESS; Initial Catalog = RunShaw; Persist Security Info = True; User ID = admin; Password = admin";
 
             var upgrader =
                 DeployChanges.To
