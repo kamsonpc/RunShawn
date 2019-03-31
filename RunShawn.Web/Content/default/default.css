@@ -61,7 +61,7 @@ a:hover, a:focus {
   padding: 0;
   margin: 0;
   border: 0;
-  background-color: #292b2c;
+  background-color: #651fff;
   z-index: 1000;
   height: 85px;
   color: #ffffff;
@@ -89,7 +89,7 @@ a:hover, a:focus {
 }
 
 .page-header .page-nav {
-  background: #292b2c;
+  background: #651fff;
   border-radius: 0 3px 3px;
 }
 
@@ -212,7 +212,7 @@ main {
   padding: 20px 10px;
   text-align: center;
   font-size: 15px;
-  background: #292b2c;
+  background: #651fff;
 }
 
 @media (min-width: 769px) {
