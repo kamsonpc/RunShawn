@@ -2,9 +2,7 @@
 
 namespace RunShawn.Web.Attributes
 {
-
     public class AuthorizeCustom : AuthorizeAttribute
     {
-
     }
 }

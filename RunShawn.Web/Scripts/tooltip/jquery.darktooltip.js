@@ -6,7 +6,6 @@
  */
 
 (function($) {
-
 	function DarkTooltip(element, options){
 		this.bearer = element;
 		this.options = options;
@@ -15,7 +14,6 @@
 	}
 
 	DarkTooltip.prototype = {
-
 		show: function(){
 			var dt = this;
 			if(this.options.modal){
@@ -261,5 +259,4 @@
 		autoLeft: true,
 		onClose: function(){}
 	};
-
 })(jQuery);

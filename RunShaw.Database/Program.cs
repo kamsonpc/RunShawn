@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DbUp;
+using System;
 using System.Reflection;
-using DbUp;
 
 namespace RunShaw.Database
 {
@@ -9,7 +9,6 @@ namespace RunShaw.Database
         private static int Main(string[] args)
         {
             var connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=RunShaw;User ID=admin;Password=admin";
-
 
             var upgrader =
                 DeployChanges.To
@@ -36,4 +35,3 @@ namespace RunShaw.Database
         }
     }
 }
-

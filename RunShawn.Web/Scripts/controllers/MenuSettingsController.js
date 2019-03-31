@@ -9,7 +9,7 @@
         var sortableListOptions = {
             placeholderCss: { 'background-color': "#cccccc" }
         };
-               
+
         this.editor.setForm($('#add-menu-item'));
         this.editor.setUpdateButton($('#btnUpdate'));
         this.loadData();
@@ -23,7 +23,6 @@
                 $(function () {
                     list.setData(data);
                 });
-
             }
         });
     },
@@ -46,7 +45,7 @@
         });
     },
     addNewMenuItem: function () {
-         var ctrl = this; 
+         var ctrl = this;
         $("#add-menu-item").submit(function (e) {
             var form = $(this);
             var url = form.attr('action');

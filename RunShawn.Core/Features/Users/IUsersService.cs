@@ -6,23 +6,33 @@ namespace RunShawn.Core.Features.Users
     public interface IUsersService
     {
         #region GetAll()
+
         List<User> GetAll();
-        #endregion
+
+        #endregion GetAll()
 
         #region GetById()
+
         User GetById(string id);
-        #endregion
+
+        #endregion GetById()
 
         #region Update()
+
         User Update(User model);
-        #endregion
+
+        #endregion Update()
 
         #region SetAvatar
+
         void SetAvatar(string id, byte[] avatar);
-        #endregion
+
+        #endregion SetAvatar
 
         #region Delete()
+
         void Delete(string id);
-        #endregion
+
+        #endregion Delete()
     }
 }

@@ -27,7 +27,7 @@
         .SetIcon(Icon.Edit)
         .SetState(ButtonState.Warning)
         .SetSize(ButtonSize.Sm)
-        .ToHtmlString() 
+        .ToHtmlString()
         +
         Html.Bootstrap().LinkButton("Usuń", MVC.Admin.Users.Delete(model.Id))
         .AddCss("btn-remove")

@@ -10,14 +10,16 @@ namespace RunShawn.Core.Features.News.Categories
     public class CategoriesService : IService
     {
         #region GetById()
+
         public static Category GetById(long id)
         {
             return (Category)Database.Open().News.Categories.FindById(id);
-
         }
-        #endregion
+
+        #endregion GetById()
 
         #region GetCategoriesAndSubcategories()
+
         public static List<Category> GetCategoriesAndSubcategories(long? exceptId = null)
         {
             var db = Database.Open();
@@ -46,13 +48,13 @@ namespace RunShawn.Core.Features.News.Categories
 
             return categoriesAndSubcategories;
         }
-        #endregion
+
+        #endregion GetCategoriesAndSubcategories()
 
         #region Create()
+
         public static Category Create(Category category, string userId)
         {
-
-
             var random = new Random();
             category.Color = string.Format("#{0:x6}", random.Next(0x1000000));
 
@@ -62,9 +64,11 @@ namespace RunShawn.Core.Features.News.Categories
             Database.Open().News.Categories.Insert(category);
             return category;
         }
-        #endregion
+
+        #endregion Create()
 
         #region Update()
+
         public static Category Update(Category category, string userId)
         {
             var entity = GetById(category.Id);
@@ -77,32 +81,35 @@ namespace RunShawn.Core.Features.News.Categories
             Database.Open().News.Categories.UpdateById(category);
             return category;
         }
-        #endregion
+
+        #endregion Update()
 
         #region Delete()
+
         public static void Delete(long id)
         {
             Database db = Database.Open();
-            var sql = @"
+            const string sql = @"
                        UPDATE
                            News.Categories
-                       SET 
-                           ParentId = NULL 
-                       WHERE 
+                       SET
+                           ParentId = NULL
+                       WHERE
                             ParentId = @Id";
 
             db.Execute(sql, new { Id = id });
 
             Database.Open().News.Categories.DeleteById(id);
         }
-        #endregion
+
+        #endregion Delete()
 
         #region GetSubTree()
+
         private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items, string depthstring)
         {
             depthstring = $"-{depthstring}";
-            var subCats = allCats.Where(c => c.ParentId == parent.Id).ToList();
-            foreach (var cat in subCats)
+            foreach (var cat in allCats.Where(c => c.ParentId == parent.Id).ToList())
             {
                 items.Add(new Category
                 {
@@ -113,6 +120,7 @@ namespace RunShawn.Core.Features.News.Categories
                 GetSubTree(allCats, cat, items, depthstring);
             }
         }
-        #endregion
+
+        #endregion GetSubTree()
     }
 }

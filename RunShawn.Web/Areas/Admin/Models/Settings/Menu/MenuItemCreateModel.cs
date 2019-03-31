@@ -8,6 +8,7 @@ namespace RunShawn.Web.Areas.Admin.Models.Settings.Menu
     {
         public long Id { get; set; }
         public long? ParentId { get; set; }
+
         public long PageId
         {
             get
@@ -17,6 +18,7 @@ namespace RunShawn.Web.Areas.Admin.Models.Settings.Menu
                 return id;
             }
         }
+
         public string Icon { get; set; }
 
         [Display(Name = "Tekst")]
@@ -24,6 +26,5 @@ namespace RunShawn.Web.Areas.Admin.Models.Settings.Menu
 
         [Display(Name = "Adres Url")]
         public string Url { get; set; }
-
     }
 }

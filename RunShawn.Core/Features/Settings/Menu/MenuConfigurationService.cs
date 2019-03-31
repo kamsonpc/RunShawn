@@ -1,16 +1,14 @@
 ﻿using RunShawn.Core.Features.Settings.Menu.Model;
 using Simple.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RunShawn.Core.Features.Settings.Menu
 {
     public class MenuConfigurationService
     {
         #region GetAll()
+
         public static List<MenuItem> GetAll()
         {
             var db = Database.Open();
@@ -18,9 +16,11 @@ namespace RunShawn.Core.Features.Settings.Menu
 
             return menuItems.ToList();
         }
-        #endregion
+
+        #endregion GetAll()
 
         #region GetById()
+
         //public static Page GetById(long id)
         //{
         //    var db = Database.Open();
@@ -31,16 +31,18 @@ namespace RunShawn.Core.Features.Settings.Menu
         //    return entity;
 
         //}
-        #endregion
+
+        #endregion GetById()
 
         #region Create()
+
         public static MenuItem Create(MenuItem entity)
         {
             var db = Database.Open();
             db.Settings.Menu.Insert(entity);
             return entity;
         }
-        #endregion
 
+        #endregion Create()
     }
 }

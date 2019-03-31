@@ -1,5 +1,4 @@
-﻿
-@using RunShawn.Web.Models
+﻿@using RunShawn.Web.Models
 @model List<Menu>
 
     @foreach (Menu menu in Model)
@@ -10,7 +9,7 @@
 
         if(currentController == menu.Name)
         {
-         <text>active</text>   
+         <text>active</text>
         }
     } ">
 
@@ -36,7 +35,7 @@
 
             @foreach (SubMenu subMenu in menu.SubMenus)
             {
-                <li> 
+                <li>
                     <a href="@Url.Content(subMenu.Url)">
                         @subMenu.Name
                     </a>

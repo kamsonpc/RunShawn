@@ -325,7 +325,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 byte[] imageData = null;
                 if (Request.Files.Count > 0)
                 {
@@ -339,10 +338,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 _usersService.SetAvatar(User.Identity.GetUserId(), imageData);
             }
 
-
             return RedirectToAction(MVC.Admin.Manage.SetAvatar());
         }
-
 
         protected override void Dispose(bool disposing)
         {
@@ -356,6 +353,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         #region Helpers
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -400,6 +398,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             Error
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

@@ -37,11 +37,9 @@ namespace RunShawn.Web.Areas.Admin.Models
                                             .Ignore(x => x.Roles)
                                             .Ignore(x => x.RoleId);
 
-
             CreateMap<Category, CategoryListViewModel>();
             CreateMap<CategoryViewModel, Category>();
             CreateMap<Category, CategoryViewModel>();
-
 
             CreateMap<ArticleViewModel, Article>();
             CreateMap<Article, ArticleViewModel>();
@@ -55,9 +53,7 @@ namespace RunShawn.Web.Areas.Admin.Models
             CreateMap<MenuItem, MenuItemViewModel>();
             CreateMap<MenuItemCreateModel, MenuItem>();
 
-
             CreateMap<MenuItemViewModel, MenuItem>();
-
         }
     }
 }

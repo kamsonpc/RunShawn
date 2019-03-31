@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using MvcSiteMapProvider.Loader;
+using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.Users;
 using RunShawn.Web.DI.Autofac.Modules;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ namespace RunShawn.Web.App_Start
     public static class AutofacConfig
     {
         #region InitInjection()
+
         public static void InitInjection()
         {
             var builder = new ContainerBuilder();
@@ -23,16 +25,21 @@ namespace RunShawn.Web.App_Start
             RegisterDepenecies(builder);
             SetUpReSetResolversor(builder);
         }
-        #endregion
+
+        #endregion InitInjection()
 
         #region RegisterDepenecies()
+
         private static void RegisterDepenecies(ContainerBuilder builder)
         {
             builder.RegisterType<UsersService>().As<IUsersService>();
+            builder.RegisterType<ArticlesService>().As<IArticlesService>();
         }
-        #endregion
+
+        #endregion RegisterDepenecies()
 
         #region SetUpReSetResolversor()
+
         private static void SetUpReSetResolversor(ContainerBuilder builder)
         {
             var container = builder.Build();
@@ -41,6 +48,7 @@ namespace RunShawn.Web.App_Start
 
             MvcSiteMapProvider.SiteMaps.Loader = container.Resolve<ISiteMapLoader>();
         }
-        #endregion
+
+        #endregion SetUpReSetResolversor()
     }
 }

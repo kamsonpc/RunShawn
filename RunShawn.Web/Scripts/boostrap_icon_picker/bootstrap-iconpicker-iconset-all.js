@@ -15,7 +15,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: '',
         iconClassFix: 'el-icon-',
@@ -333,7 +332,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_elusiveicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -344,7 +342,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'flag-icon',
         iconClassFix: 'flag-icon-',
@@ -614,7 +611,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_flagicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -625,7 +621,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'fa',
         iconClassFix: 'fa-',
@@ -6937,7 +6932,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_fontawesome_4 = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -6948,7 +6942,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: '',
         iconClassFix: '',
@@ -10950,7 +10943,6 @@
     data.icons = data.allVersions[0].icons;
 
     $.iconset_fontawesome_5 = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -10959,7 +10951,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'glyphicon',
         iconClassFix: 'glyphicon-',
@@ -11178,7 +11169,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_glyphicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -11189,7 +11179,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: '',
         iconClassFix: 'ion-',
@@ -12549,7 +12538,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_ionicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -12559,7 +12547,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: '',
         iconClassFix: 'map-icon-',
@@ -12753,7 +12740,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_mapicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -12764,7 +12750,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'zmdi',
         iconClassFix: 'zmdi-',
@@ -17910,7 +17895,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_materialdesign = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -17922,7 +17906,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'octicon',
         iconClassFix: 'octicon-',
@@ -23090,7 +23073,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_octicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -23101,7 +23083,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'typcn',
         iconClassFix: 'typcn-',
@@ -26130,7 +26111,6 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_typicon = data;
-
 })(jQuery);
 
 /*!========================================================================
@@ -26140,7 +26120,6 @@
  * ======================================================================== */
 
 ;(function($){
-
     var data = {
         iconClass: 'wi',
         iconClassFix: 'wi-',
@@ -26509,5 +26488,4 @@
     data.icons = data.allVersions[l-1].icons;
 
     $.iconset_weathericon = data;
-
 })(jQuery);

@@ -22,31 +22,35 @@ namespace RunShawn.Core.Features.News.News.Model
         public DateTime? DeletedDate { get; set; }
 
         #region FeaturedImage
+
         public string FeaturedImage
         {
             get
             {
-                if(string.IsNullOrEmpty(this.Content))
+                if (string.IsNullOrEmpty(Content))
                 {
                     return string.Empty;
                 }
-                return Regex.Match(this.Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1]?.Value;
+                return Regex.Match(Content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1]?.Value;
             }
         }
-        #endregion
+
+        #endregion FeaturedImage
 
         #region Description
+
         public string Description
         {
             get
             {
-                if (string.IsNullOrEmpty(this.Content))
+                if (string.IsNullOrEmpty(Content))
                 {
                     return string.Empty;
                 }
-                return Regex.Match(this.Content, @"<p>\s*(.+?)\s*</p>", RegexOptions.IgnoreCase).Groups[1]?.Value;
+                return Regex.Match(Content, @"<p>\s*(.+?)\s*</p>", RegexOptions.IgnoreCase).Groups[1]?.Value;
             }
         }
-        #endregion
+
+        #endregion Description
     }
 }

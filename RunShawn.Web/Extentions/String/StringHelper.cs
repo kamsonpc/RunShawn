@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace RunShawn.Web.Extentions
 {
     public static class StringHelper
     {
         #region toUrlSlug()
+
         public static string ToUrlSlug(this string value)
         {
             value = value.ToLowerInvariant();
@@ -21,6 +18,7 @@ namespace RunShawn.Web.Extentions
 
             return value;
         }
-        #endregion
+
+        #endregion toUrlSlug()
     }
 }

@@ -5,6 +5,5 @@ namespace RunShawn.Tests.Features.Categories
     [TestFixture]
     public class Categories
     {
-
     }
 }

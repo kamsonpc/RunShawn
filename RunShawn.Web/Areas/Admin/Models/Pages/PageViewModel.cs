@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Models.Pages
@@ -22,6 +18,5 @@ namespace RunShawn.Web.Areas.Admin.Models.Pages
         [AllowHtml]
         [Required]
         public string Content { get; set; }
-
     }
 }

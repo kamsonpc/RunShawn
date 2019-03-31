@@ -15,7 +15,7 @@ h1{
     margin: 0;
 }
 
-.container 
+.container
 {
     position: relative;
     .row
@@ -47,7 +47,7 @@ h1{
         }
         .time-letter {
             font-size: 0.4em;
-        } 
+        }
     }
 }
 
@@ -60,7 +60,7 @@ a:hover, a:focus {
     padding: 0;
 }
 .page-header {
-    position: absolute; 
+    position: absolute;
     width: 100%;
     top: 0;
     padding: 0;
@@ -104,7 +104,7 @@ a:hover, a:focus {
                 a {
                     color: $theme-font-color;
                     position: relative;
-                    padding-bottom: 10px; 
+                    padding-bottom: 10px;
                     &,
                     &:after,
                     &:before {
@@ -141,7 +141,7 @@ a:hover, a:focus {
                 & {
                     width: 17px;
                     height: 17px;
-                    position: relative; 
+                    position: relative;
                     -webkit-transform: rotate(0deg);
                     -moz-transform: rotate(0deg);
                     -o-transform: rotate(0deg);
@@ -177,7 +177,7 @@ a:hover, a:focus {
                 -o-transform-origin: left center;
                 transform-origin: left center;
                 }
-                
+
                 & span:nth-child(2) {
                 top: 6px;
                 -webkit-transform-origin: left center;
@@ -185,7 +185,7 @@ a:hover, a:focus {
                 -o-transform-origin: left center;
                 transform-origin: left center;
                 }
-                
+
                 & span:nth-child(3) {
                 top: 12px;
                 -webkit-transform-origin: left center;
@@ -193,19 +193,19 @@ a:hover, a:focus {
                 -o-transform-origin: left center;
                 transform-origin: left center;
                 }
-                
+
                 &.open span:nth-child(1) {
                 -webkit-transform: rotate(45deg);
                 -moz-transform: rotate(45deg);
                 -o-transform: rotate(45deg);
                 transform: rotate(45deg);
                 }
-                
+
                 &.open span:nth-child(2) {
                 width: 0%;
                 opacity: 0;
                 }
-                
+
                 &.open span:nth-child(3) {
                 -webkit-transform: rotate(-45deg);
                 -moz-transform: rotate(-45deg);
@@ -241,7 +241,7 @@ main{
         left: 0;
         right: 0;
         border-bottom: none;
-        .page-logo { 
+        .page-logo {
             margin-left: 10px;
             text-align: left;
             img {

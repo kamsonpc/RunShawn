@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using MvcPaging;
+﻿using MvcPaging;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Default.Models.News;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Default.Controllers
 {
@@ -15,19 +15,31 @@ namespace RunShawn.Web.Areas.Default.Controllers
     {
         private const int _defaultPageSize = 10;
 
+        #region Dependecies
+
+        private IArticlesService _articlesService { get; }
+
+        public NewsController(IArticlesService articlesService)
+        {
+            _articlesService = articlesService;
+        }
+        #endregion
 
         #region Index()
+
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Default.News.List(null));
         }
-        #endregion
+
+        #endregion Index()
 
         #region List()
+
         public virtual ActionResult List(int? pageIndex)
         {
             pageIndex = pageIndex.HasValue ? pageIndex.Value - 1 : 0;
-            var allArticles = ArticlesService.GetAll(true)
+            var allArticles = _articlesService.GetAll(true)
                                        .MapTo<List<ArticleListItemViewModel>>();
 
             var featuredArticles = allArticles.Where(x => x.Featured == true).ToList();
@@ -42,20 +54,22 @@ namespace RunShawn.Web.Areas.Default.Controllers
 
             return View(MVC.Default.News.Views.List, model);
         }
-        #endregion
+
+        #endregion List()
 
         #region Details()
+
         public virtual ActionResult Details(long id)
         {
             Article entity = null;
             var link = Url.Action(MVC.Default.News.Details(id));
-            if (User.IsInRole(RoleTypes.Administrator.ToString()) || User.IsInRole(RoleTypes.SuperUser.ToString()))
+            if (User.IsInRole(RoleTypes.Administrator.ToString()) || User.IsInRole(nameof(RoleTypes.SuperUser)))
             {
-                entity = ArticlesService.GetByIdForDetails(id);
+                entity = _articlesService.GetByIdForDetails(id);
             }
             else
             {
-                entity = ArticlesService.GetByIdForDetails(id, true);
+                entity = _articlesService.GetByIdForDetails(id, true);
             }
 
             if (entity == null)
@@ -65,9 +79,9 @@ namespace RunShawn.Web.Areas.Default.Controllers
             var model = entity.MapTo<ArticleViewModel>();
             model.Content = HttpUtility.HtmlDecode(model.Content);
 
-
             return View(MVC.Default.News.Views.Details, model);
         }
-        #endregion
+
+        #endregion Details()
     }
 }

@@ -21,13 +21,16 @@ namespace RunShawn.Web.Extentions.Summernote
             var tag = new TagBuilder("textarea");
             tag.Attributes.Add("name", fullName);
             if (value != null)
+            {
                 tag.InnerHtml = value.ToString();
+            }
 
             tag.AddCssClass("wygwsig");
 
-
             if (!string.IsNullOrEmpty(fieldName))
+            {
                 tag.MergeAttributes(htmlHelper.GetUnobtrusiveValidationAttributes(fieldName));
+            }
 
             var html = tag.ToString(TagRenderMode.Normal);
 

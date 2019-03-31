@@ -16,14 +16,27 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize]
     public partial class CategoriesController : BaseController
     {
+        #region Dependencies
+        private readonly IArticlesService _articlesService;
+
+        public CategoriesController(IArticlesService articlesService)
+        {
+            _articlesService = articlesService;
+        }
+
+        #endregion
+
         #region Index()
+
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Admin.Categories.List());
         }
-        #endregion
+
+        #endregion Index()
 
         #region List()
+
         public virtual ActionResult List()
         {
             return View(MVC.Admin.Categories.Views.List);
@@ -36,9 +49,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return PartialView(MVC.Admin.Categories.Views._List, categories);
         }
-        #endregion
+
+        #endregion List()
 
         #region Create()
+
         [HttpGet]
         [AjaxOnly]
         public virtual ActionResult Create()
@@ -58,9 +73,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return PartialView(MVC.Admin.Categories.Views._Create, model);
         }
-        #endregion
+
+        #endregion Create()
 
         #region Create()
+
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
@@ -76,21 +93,21 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
-                                              .Select(x => new SelectListItem
-                                              {
-                                                  Value = x.Id.ToString(),
-                                                  Text = x.Title
-                                              })
-                                              .ToList();
-            model.Categories = categories;
+            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
+                                                .Select(x => new SelectListItem
+                                                {
+                                                    Value = x.Id.ToString(),
+                                                    Text = x.Title
+                                                })
+                                                .ToList();
 
             return PartialView(MVC.Admin.Categories.Views._Create, model);
         }
-        #endregion
 
+        #endregion Create()
 
         #region Edit()
+
         [HttpGet]
         public virtual ActionResult Edit(long id)
         {
@@ -109,9 +126,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return PartialView(MVC.Admin.Categories.Views._Edit, model);
         }
-        #endregion
+
+        #endregion Edit()
 
         #region Edit()
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual ActionResult Edit(CategoryViewModel model)
@@ -137,13 +156,15 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return PartialView(MVC.Admin.Categories.Views._Edit, model);
         }
-        #endregion
+
+        #endregion Edit()
 
         #region Delete()
+
         [AjaxOnly]
         public virtual JsonResult Delete(long id)
         {
-            var articles = ArticlesService.GetByCategory(id);
+            var articles = _articlesService.GetByCategory(id);
             if (articles != null)
             {
                 return Json(new
@@ -159,9 +180,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 status = CategoryDeleteErrors.NoError
             }, JsonRequestBehavior.AllowGet);
         }
-        #endregion
+
+        #endregion Delete()
 
         #region ChangeArticlesCategory()
+
         [HttpGet]
         [AjaxOnly]
         public virtual ActionResult ChangeArticlesCategory(long categoryId)
@@ -182,21 +205,24 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return PartialView(MVC.Admin.Categories.Views._MoveArticles, model);
         }
-        #endregion
+
+        #endregion ChangeArticlesCategory()
 
         #region ChangeArticlesCategory()
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual ActionResult ChangeArticlesCategory(ArticlesMoveViewModel model)
         {
             if (ModelState.IsValid)
             {
-                ArticlesService.Move(model.CurrentCategoryId, model.NewCategoryId);
+                _articlesService.Move(model.CurrentCategoryId, model.NewCategoryId);
                 CategoriesService.Delete(model.CurrentCategoryId);
             }
 
             return RedirectToAction(MVC.Admin.Categories.GenerateList());
         }
-        #endregion
+
+        #endregion ChangeArticlesCategory()
     }
 }

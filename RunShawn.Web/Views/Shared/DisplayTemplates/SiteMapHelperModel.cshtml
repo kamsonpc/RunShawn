@@ -3,8 +3,8 @@
 @using MvcSiteMapProvider.Web.Html.Models
 
 <ol class="breadcrumb">
-    @foreach (var node in Model.Nodes) { 
-        <li>@Html.DisplayFor(m => node) 
+    @foreach (var node in Model.Nodes) {
+        <li>@Html.DisplayFor(m => node)
             @if (node.Children.Any()) {
                 @Html.DisplayFor(m => node.Children)
             }

@@ -19,7 +19,7 @@
 
         $(document).ready(function () {
             $('.input-validation-error').siblings('.form-group').addClass('has-error');
-            $('.field-validation-error').addClass('text-danger');   
+            $('.field-validation-error').addClass('text-danger');
         });
     </script>
 </head>
@@ -90,7 +90,7 @@
     <main id="dashboard-main">
             @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
         <section id="page-container">
-             @{ 
+             @{
                  var alert = TempData["Alert"] as Alert;
                  if(alert != null)
                  {
@@ -106,7 +106,6 @@
     <footer class="main-footer">RunShawn © @DateTime.Now.Year Wszelkie prawa zastrzeżone.</footer>
 </body>
 
-
 <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
 <script>
     [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
@@ -117,4 +116,3 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/datepicker")
 </html>
-

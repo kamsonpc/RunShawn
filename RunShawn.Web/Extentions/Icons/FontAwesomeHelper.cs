@@ -3,6 +3,7 @@
     public class AwesomeHelper
     {
         #region FontAwesome
+
         public const string adjust = "fa fa-fw fa-adjust";
         public const string adn = "fa fa-fw fa-adn";
         public const string align_center = "fa fa-fw fa-align-center";
@@ -554,8 +555,7 @@
         public const string youtube = "fa fa-fw fa-youtube";
         public const string youtube_play = "fa fa-fw fa-youtube-play";
         public const string youtube_square = "fa fa-fw fa-youtube-square";
-        #endregion
+
+        #endregion FontAwesome
     }
-
-
 }

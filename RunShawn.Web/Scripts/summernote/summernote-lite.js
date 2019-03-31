@@ -8113,6 +8113,5 @@
           }
       }
   });
-
 })));
 //# sourceMappingURL=summernote-lite.js.map

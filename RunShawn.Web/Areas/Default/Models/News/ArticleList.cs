@@ -1,8 +1,5 @@
-﻿using System;
+﻿using MvcPaging;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MvcPaging;
 
 namespace RunShawn.Web.Areas.Default.Models.News
 {

@@ -7,50 +7,52 @@ using System.Linq;
 
 namespace RunShawn.Core.Features.News.News
 {
-    public class ArticlesService
+    public class ArticlesService : IArticlesService
     {
         #region GetById()
-        public static Article GetById(long id)
+
+        public Article GetById(long id)
         {
             var db = Database.Open();
-            Article entity = db.News.News.All().Where(db.News.News.DeletedDate == null)
-                                         .Where(db.News.News.Id == id)
-                                         .SingleOrDefault();
-            return entity;
-
+            return (Article)db.News.News.All()
+                              .Where(db.News.News.DeletedDate == null)
+                              .Where(db.News.News.Id == id)
+                              .SingleOrDefault();
         }
-        #endregion
+
+        #endregion GetById()
 
         #region GetByIdForDetails()
-        public static Article GetByIdForDetails(long id, bool onlyPublished = false)
+
+        public Article GetByIdForDetails(long id, bool onlyPublished = false)
         {
             var db = Database.Open();
             var query = db.News.News.All()
-                                .Where(db.News.News.DeletedDate == null)
-                                .Where(db.News.News.Id == id);
-
+                               .Where(db.News.News.DeletedDate == null)
+                               .Where(db.News.News.Id == id);
 
             if (onlyPublished)
             {
                 query = query.Where(db.News.News.PublishDate <= DateTime.Now);
             }
 
-            Article article = query.SingleOrDefault();
-
-            return article;
+            return (Article)query.SingleOrDefault();
         }
-        #endregion
+
+        #endregion GetByIdForDetails()
 
         #region GetByCategory()
-        public static List<Article> GetByCategory(long id)
+
+        public List<Article> GetByCategory(long id)
         {
-            List<Article> articles = Database.Open().News.News.FindByCategoryId(id);
-            return articles;
+            return (List<Article>)Database.Open().News.News.FindByCategoryId(id);
         }
-        #endregion
+
+        #endregion GetByCategory()
 
         #region Create()
-        public static Article Create(Article article, string userId)
+
+        public Article Create(Article article, string userId)
         {
             article.CreatedBy = userId;
             article.CreatedDate = DateTime.Now;
@@ -59,29 +61,32 @@ namespace RunShawn.Core.Features.News.News
             Database.Open().News.News.Insert(article);
             return article;
         }
-        #endregion
+
+        #endregion Create()
 
         #region GetAll()
-        public static List<ArticleListView> GetAll(bool onlyPublished = false)
+
+        public List<ArticleListView> GetAll(bool onlyPublished = false)
         {
             var db = Database.Open();
-            List<ArticleListView> articles = db.News.NewsListView.FindAll(db.News.NewsListView.DeletedDate == null);
+            List<ArticleListView> articles = db.News.NewsListView
+                                               .FindAll(db.News.NewsListView.DeletedDate == null);
 
             if (onlyPublished)
             {
                 articles.Where(x => x.PublishDate <= DateTime.Now);
             }
 
-            return articles
-                           .ToList();
+            return articles.ToList();
         }
-        #endregion
+
+        #endregion GetAll()
 
         #region Update()
-        public static Article Update(Article article, string userId)
+
+        public Article Update(Article article, string userId)
         {
-            var db = Database.Open();
-            db.News.News.UpdateById(
+            Database.Open().News.News.UpdateById(
                 Id: article.Id,
                 Title: article.Title,
                 Content: article.Content,
@@ -93,35 +98,33 @@ namespace RunShawn.Core.Features.News.News
 
             return article;
         }
-        #endregion
+
+        #endregion Update()
 
         #region Feature()
-        public static void Feature(long id)
+
+        public void Feature(long id)
         {
             var db = Database.Open();
             Article articleToFeature = db.News.News.FindById(id);
-            if (articleToFeature.Featured)
-            {
-                articleToFeature.Featured = false;
-            }
-            else
-            {
-                articleToFeature.Featured = true;
-            }
+            articleToFeature.Featured = !articleToFeature.Featured;
+
             db.News.News.UpdateById(articleToFeature);
         }
-        #endregion
+
+        #endregion Feature()
 
         #region MoveArticles()
-        public static void Move(long currentCategoryId, long newCategoryId)
+
+        public void Move(long currentCategoryId, long newCategoryId)
         {
             Database db = Database.Open();
-            var sql = @"
+            const string sql = @"
                        UPDATE
                            News.News
-                       SET 
-                           CategoryId = @NewCategoryId 
-                       WHERE 
+                       SET
+                           CategoryId = @NewCategoryId
+                       WHERE
                             CategoryId = @CurrentCategoryId";
 
             db.Execute(sql, new
@@ -130,10 +133,12 @@ namespace RunShawn.Core.Features.News.News
                 NewCategoryId = newCategoryId
             });
         }
-        #endregion
+
+        #endregion MoveArticles()
 
         #region Restore()
-        public static void Restore(long id)
+
+        public void Restore(long id)
         {
             Database.Open().News.News.UpdateById
             (
@@ -142,10 +147,12 @@ namespace RunShawn.Core.Features.News.News
                 DeletedDate: null
             );
         }
-        #endregion
+
+        #endregion Restore()
 
         #region Delete()
-        public static void Delete(long id, string userId)
+
+        public void Delete(long id, string userId)
         {
             Database.Open().News.News.UpdateById
             (
@@ -154,6 +161,7 @@ namespace RunShawn.Core.Features.News.News
                 DeletedDate: DateTime.Now
             );
         }
-        #endregion
+
+        #endregion Delete()
     }
 }

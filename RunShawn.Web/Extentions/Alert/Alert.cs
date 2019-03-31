@@ -5,19 +5,21 @@ namespace RunShawn.Web.Extentions
     public class Alert
     {
         #region Ctor
+
         public Alert(string text, AlertState alertState)
         {
-            this.Text = text;
-            this.AlertState = alertState;
+            Text = text;
+            AlertState = alertState;
         }
 
         public Alert(string text, AlertState alertState, string restoreLink)
         {
-            this.Text = text;
-            this.AlertState = alertState;
-            this.RestoreLink = restoreLink;
+            Text = text;
+            AlertState = alertState;
+            RestoreLink = restoreLink;
         }
-        #endregion
+
+        #endregion Ctor
 
         public string RestoreLink { get; set; }
         public string Text { get; set; }

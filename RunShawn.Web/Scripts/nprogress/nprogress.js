@@ -2,7 +2,6 @@
  * @license MIT */
 
 ;(function(root, factory) {
-
   if (typeof define === 'function' && define.amd) {
     define(factory);
   } else if (typeof exports === 'object') {
@@ -10,7 +9,6 @@
   } else {
     root.NProgress = factory();
   }
-
 })(this, function() {
   var NProgress = {};
 
@@ -213,7 +211,6 @@
 
       return this;
     };
-
   })();
 
   /**
@@ -316,7 +313,6 @@
   function toBarPerc(n) {
     return (-1 + n) * 100;
   }
-
 
   /**
    * (Internal) returns the correct CSS for changing the bar's
@@ -479,7 +475,6 @@
   return NProgress;
 });
 
-
 NProgress.configure({
     easing: 'ease',
     minimum: 0.6,
@@ -488,7 +483,6 @@ NProgress.configure({
 });
 
 $(function () {
-
     $(document).bind('ajaxSend', function (event, xhr, settings) {
         NProgress.start();
     });

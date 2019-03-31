@@ -8,35 +8,40 @@ namespace RunShawn.Core.Features.Users
     public class UsersService : IUsersService
     {
         #region GetAll()
+
         public List<User> GetAll()
         {
             return Database.Open().AspNetUsers.All();
         }
-        #endregion
+
+        #endregion GetAll()
 
         #region GetById()
+
         public User GetById(string id)
         {
             return Database.Open().AspNetUsers.FindById(id);
         }
-        #endregion
+
+        #endregion GetById()
 
         #region Update()
+
         public User Update(User model)
         {
             Database db = Database.Open();
 
             const string sql = @"
-                       UPDATE  AspNetUsers 
-                       SET 
+                       UPDATE  AspNetUsers
+                       SET
                             UserName = @username,
                             FirstName = @firstname,
                             LastName = @lastname,
                             Email = @email,
                             PhoneNumber = @phoneNumber,
                             LockoutEnabled = @lockoutEnabled,
-                            LockoutEndDateUtc = @lockoutEndDateUtc     
-                       WHERE 
+                            LockoutEndDateUtc = @lockoutEndDateUtc
+                       WHERE
                             Id = @id";
 
             var rows = db.Execute(sql,
@@ -54,17 +59,19 @@ namespace RunShawn.Core.Features.Users
 
             return model;
         }
-        #endregion
+
+        #endregion Update()
 
         #region SetAvatar
+
         public void SetAvatar(string id, byte[] avatar)
         {
             Database db = Database.Open();
             var sql = @"
-                       UPDATE  AspNetUsers 
-                       SET 
+                       UPDATE  AspNetUsers
+                       SET
                             Avatar = @avatar
-                       WHERE 
+                       WHERE
                             Id = @id";
 
             var rows = db.Execute(sql,
@@ -73,16 +80,17 @@ namespace RunShawn.Core.Features.Users
                     id,
                     avatar
                 });
-
         }
 
-        #endregion
+        #endregion SetAvatar
 
         #region Delete()
+
         public void Delete(string id)
         {
             Database.Open().AspNetUsers.DeleteById(id);
         }
-        #endregion
+
+        #endregion Delete()
     }
 }

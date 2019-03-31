@@ -16,29 +16,36 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class MenuController : BaseController
     {
         #region Index()
+
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Admin.Pages.Edit());
         }
-        #endregion
+
+        #endregion Index()
 
         #region Edit()
+
         public virtual ActionResult Edit()
         {
             return View(MVC.Admin.Settings.Views.Menu.Edit);
         }
-        #endregion
+
+        #endregion Edit()
 
         #region SaveMenuSettings()
+
         [HttpPost]
         [AjaxOnly]
         public virtual JsonResult SaveMenuSettings(List<MenuNestedItem> model)
         {
             return Json(true);
         }
-        #endregion
+
+        #endregion SaveMenuSettings()
 
         #region GetMenuTree()
+
         [AjaxOnly]
         public virtual JsonNetActionResult GetMenuTree()
         {
@@ -60,9 +67,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return new JsonNetActionResult(nestedList);
         }
-        #endregion
+
+        #endregion GetMenuTree()
 
         #region GetNestedMenu()
+
         private static List<MenuNestedItem> GetNestedMenu(List<MenuItemViewModel> flatObjects, long? parentId)
         {
             List<MenuNestedItem> nestedMenuList = new List<MenuNestedItem>();
@@ -80,15 +89,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return nestedMenuList.ToList();
         }
-        #endregion
+
+        #endregion GetNestedMenu()
 
         #region Create()
+
         [HttpPost]
         public virtual JsonResult Create(MenuItemCreateModel model)
         {
             MenuConfigurationService.Create(model.MapTo<MenuItem>());
             return Json(true);
         }
-        #endregion
+
+        #endregion Create()
     }
 }

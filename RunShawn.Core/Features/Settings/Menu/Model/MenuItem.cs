@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RunShawn.Core.Features.Settings.Menu.Model
+﻿namespace RunShawn.Core.Features.Settings.Menu.Model
 {
     public class MenuItem
     {

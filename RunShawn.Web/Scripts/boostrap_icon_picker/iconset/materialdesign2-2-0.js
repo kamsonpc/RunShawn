@@ -6,7 +6,6 @@
  * ======================================================================== */
 
 ;(function($){
-
 $.iconset_materialdesign = {
         iconClass: '',
         iconClassFix: '',

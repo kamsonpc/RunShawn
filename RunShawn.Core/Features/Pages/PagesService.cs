@@ -1,6 +1,5 @@
 ﻿using RunShawn.Core.Features.Pages.Model;
 using Simple.Data;
-using Simple.Data.RawSql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +11,7 @@ namespace RunShawn.Core.Features.Pages
     public static class PagesService
     {
         #region GetAll()
+
         public static List<PageListView> GetAll(bool onlyActive = false)
         {
             var db = Database.Open();
@@ -24,9 +24,11 @@ namespace RunShawn.Core.Features.Pages
 
             return pages.ToList();
         }
-        #endregion
+
+        #endregion GetAll()
 
         #region GetById()
+
         public static Page GetById(long id)
         {
             var db = Database.Open();
@@ -35,11 +37,12 @@ namespace RunShawn.Core.Features.Pages
                                         .Where(db.Pages.Pages.Id == id)
                                         .SingleOrDefault();
             return entity;
-
         }
-        #endregion
+
+        #endregion GetById()
 
         #region GetByUrlSlug()
+
         public static Page GetBySlug(string urlSlug)
         {
             var db = Database.Open();
@@ -48,11 +51,12 @@ namespace RunShawn.Core.Features.Pages
                                         .Where(db.Pages.Pages.UrlSlug == urlSlug)
                                         .SingleOrDefault();
             return entity;
-
         }
-        #endregion
+
+        #endregion GetByUrlSlug()
 
         #region Create()
+
         public static Page Create(Page page, string userId)
         {
             var db = Database.Open();
@@ -61,7 +65,6 @@ namespace RunShawn.Core.Features.Pages
             int count = db.Pages.Pages.All().Where(db.Pages.Pages.UrlSlug == urlSlug).Count();
             urlSlug = UpdateSlug(count, urlSlug);
 
-
             page.CreatedBy = userId;
             page.CreatedDate = DateTime.Now;
             page.UrlSlug = urlSlug;
@@ -69,9 +72,11 @@ namespace RunShawn.Core.Features.Pages
             db.Pages.Pages.Insert(page);
             return page;
         }
-        #endregion
+
+        #endregion Create()
 
         #region Update()
+
         public static Page Update(Page page, string userId)
         {
             var db = Database.Open();
@@ -91,14 +96,15 @@ namespace RunShawn.Core.Features.Pages
             page.ModifiedBy = userId;
             page.UrlSlug = urlSlug;
 
-
             db.Pages.Pages.UpdateById(page);
 
             return page;
         }
-        #endregion
+
+        #endregion Update()
 
         #region Delete()
+
         public static void Delete(long id, string userId)
         {
             var db = Database.Open();
@@ -108,9 +114,11 @@ namespace RunShawn.Core.Features.Pages
 
             db.Pages.Pages.UpdateById(pageToDelete);
         }
-        #endregion
+
+        #endregion Delete()
 
         #region toUrlSlug()
+
         private static string ToUrlSlug(this string value)
         {
             value = value.ToLowerInvariant();
@@ -122,9 +130,11 @@ namespace RunShawn.Core.Features.Pages
 
             return value;
         }
-        #endregion
+
+        #endregion toUrlSlug()
 
         #region UpdateSlug()
+
         private static string UpdateSlug(int count, string urlSlug)
         {
             if (count > 0)
@@ -133,6 +143,7 @@ namespace RunShawn.Core.Features.Pages
             }
             return urlSlug;
         }
-        #endregion
+
+        #endregion UpdateSlug()
     }
 }

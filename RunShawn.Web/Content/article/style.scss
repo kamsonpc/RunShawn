@@ -2,12 +2,12 @@ $font-color: #ffffff;
 .slider-container
 {
     padding-left: 10px;
-    padding-right: 10px; 
+    padding-right: 10px;
 }
 
 .huge-box-container
 {
-    width: 100%; 
+    width: 100%;
 }
 
 .huge-box
@@ -25,7 +25,7 @@ $font-color: #ffffff;
     {
         background-size: contain;
         background-position: center;
-        background-color: #ffffff;  
+        background-color: #ffffff;
     }
     .box-header
     {
@@ -39,7 +39,7 @@ $font-color: #ffffff;
             width: 100%;
             h1
             {
-                color: $font-color; 
+                color: $font-color;
                 font-size: 40px;
             }
             p{
@@ -99,13 +99,13 @@ $font-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    
+
     .box-header
     {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding-bottom: 20px; 
+        padding-bottom: 20px;
         background-size: cover;
         background-repeat: no-repeat;
         height: 253px;
@@ -113,7 +113,7 @@ $font-color: #ffffff;
         {
             background-size: contain;
             background-position: center;
-            background-color: #ffffff; 
+            background-color: #ffffff;
         }
         .article-category
         {
@@ -162,8 +162,6 @@ $font-color: #ffffff;
     }
 }
 
-
-
 .nature
 {
     .article-category
@@ -178,7 +176,6 @@ $font-color: #ffffff;
 
 .people
 {
-
     .article-category
     {
         background: #1a54e7;
@@ -189,8 +186,8 @@ $font-color: #ffffff;
     }
 }
 
-.tech 
-{   
+.tech
+{
     .article-category
     {
         background: #000000;
@@ -202,7 +199,7 @@ $font-color: #ffffff;
 }
 
 .trips
-{   
+{
     .article-category
     {
         background: #d90445;
@@ -213,8 +210,8 @@ $font-color: #ffffff;
     }
 }
 @media (min-width: 769px) {
-    .huge-box 
-    {       
+    .huge-box
+    {
         .box-header{
             padding: 120px 0;
             height: 400px;
@@ -224,7 +221,7 @@ $font-color: #ffffff;
         }
         .box-footer .article-info
         {
-            display: block; 
+            display: block;
         }
     }
 }

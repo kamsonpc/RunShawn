@@ -4,7 +4,6 @@
  * @version 1.0.0
  * */
 (function ($){
-    
     /**
      * @desc jQuery plugin to sort html list also the tree structures
      * @version 1.4.0
@@ -256,7 +255,6 @@
             state.doc
                 .on( 'mousemove touchmove', dragging )
                 .on( 'mouseup touchend touchcancel', endDrag );
-
         }
 
         /**
@@ -331,7 +329,6 @@
                 showHint( e, state );
 
                 setCElPos( e, state );
-
             }
         }
 
@@ -406,7 +403,6 @@
                         setting.complete( cEl.el );
                         state.isDragged = false;
                     }
-
                 } );
 
             scrollStop( state );
@@ -414,8 +410,6 @@
             state.doc
                 .unbind( "mousemove touchmove", dragging )
                 .unbind( "mouseup touchend touchcancel", endDrag );
-
-
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -437,7 +431,6 @@
             {
                 state.doc.trigger( 'mousemove' );
             }, 50 );
-
         }
 
         /**
@@ -453,7 +446,6 @@
             {
                 state.doc.trigger( 'mousemove' );
             }, 50 );
-
         }
 
         /**
@@ -524,7 +516,6 @@
                 'top': e.pageY - cEl.xyOffsetDiff.Y - cEl.mT,
                 'left': e.pageX - cEl.xyOffsetDiff.X - cEl.mL
             } )
-
         }
 
         /**
@@ -583,7 +574,6 @@
             {
                 return el;
             }
-
         }
 
         //////// End of current element handlers //////////////////////////////////////////////////////
@@ -680,13 +670,11 @@
                 {
                     open( oEl ); // TODO:animation??? .children('ul,ol').css('display', 'block');
                 }
-
             }
 
             hint.css( 'display', 'block' );
             // Ensures posible formating of elements. Second call is in the endDrag method.
             state.isAllowed = setting.isAllowed( state.cEl.el, hint, hint.parents( 'li' ).first() );
-
         }
 
         /**
@@ -741,13 +729,11 @@
                     return;
                 }
                 oEl.before( hint );
-
             }
 
             hint.css( 'display', 'block' );
             // Ensures posible formating of elements. Second call is in the endDrag method.
             state.isAllowed = setting.isAllowed( state.cEl.el, hint, hint.parents( 'li' ).first() );
-
         }
 
         /**
@@ -801,13 +787,11 @@
                 {
                     open( oEl ); // TODO: animation???
                 }
-
             }
 
             hint.css( 'display', 'block' );
             // Ensures posible formating of elements. Second call is in the endDrag method.
             state.isAllowed = setting.isAllowed( state.cEl.el, hint, hint.parents( 'li' ).first() );
-
         }
 
         /**
@@ -851,7 +835,6 @@
                 {
                     open( oEl ); // TODO: animation???
                 }
-
             }
             // Hint outside the oEl
             else
@@ -863,13 +846,11 @@
                     return;
                 }
                 oEl.after( hint );
-
             }
 
             hint.css( 'display', 'block' );
             // Ensures posible formating of elements. Second call is in the endDrag method.
             state.isAllowed = setting.isAllowed( state.cEl.el, hint, hint.parents( 'li' ).first() );
-
         }
 
         //////// End of show hint handlers ////////////////////////////////////////////////////
@@ -923,7 +904,6 @@
             {
                 opener.css( 'background-image', 'url(' + setting.opener.open + ')' );
             }
-
         }
 
         /////// Enf of open/close handlers //////////////////////////////////////////////
@@ -941,7 +921,6 @@
             cElStyle.left = '0';
             cElStyle.position = 'relative';
             cElStyle.width = 'auto';
-
         }
 
         /**
@@ -960,9 +939,7 @@
                     }
                 }
             );
-
         }
-
     };
 
     /** END PLUGIN sortableLists */
@@ -995,7 +972,7 @@
             opener.addClass(setting.opener.open).removeClass(setting.opener.close);
         }
     };
-    
+
     /**
      * @author David Ticona Saravia
      * @desc Get the json from html list
@@ -1019,7 +996,7 @@
     /**
      * @description Update the buttons at the nested list (the main <ul>).
      * the buttons are: up, down, item in, item out
-     * @param {int} depth 
+     * @param {int} depth
      */
     $.fn.updateButtons = function (depth){
         var level = (typeof depth === 'undefined') ? 0 : depth;
@@ -1036,13 +1013,13 @@
             if ($ul.length > 0) {
                 $ul.updateButtons(level + 1);
             }
-        }); 
+        });
         $(this).children('li:first').hideButtons(removefirst);
         $(this).children('li:last').hideButtons(removelast);
     };
     /**
      * @description Hide the buttons at the item <li>
-     * @param {Array} buttons 
+     * @param {Array} buttons
      */
     $.fn.hideButtons = function(buttons){
         for(var i = 0; i<buttons.length; i++){
@@ -1063,8 +1040,8 @@ function MenuEditor(idSelector, options) {
         labelRemove: '<i class="fas fa-trash-alt clickable"></i>',
         textConfirmDelete: 'This item will be deleted. Are you sure?',
         iconPicker: { cols: 4, rows: 4, footer: false, iconset: "fontawesome5" },
-        listOptions: { 
-            hintCss: { border: '1px dashed #13981D'}, 
+        listOptions: {
+            hintCss: { border: '1px dashed #13981D'},
             opener: {
                 as: 'html',
                 close: '<i class="fas fa-minus"></i>',
@@ -1224,7 +1201,7 @@ function MenuEditor(idSelector, options) {
             var isParent = (typeof (v.children) !== "undefined") && ($.isArray(v.children));
             var itemObject = {text: "", href: "", icon: "empty", target: "_self", title: ""};
             var temp = $.extend({}, v);
-            if (isParent){ 
+            if (isParent){
                 delete temp['children'];
             }
             $.extend(itemObject, temp);
@@ -1306,7 +1283,7 @@ function MenuEditor(idSelector, options) {
         $cEl.find('span.txt').first().text($cEl.data('text'));
         resetForm();
     };
-   
+
     this.add = function(){
         var data = {};
         $form.find('.item-menu').each(function(){
@@ -1352,7 +1329,7 @@ function MenuEditor(idSelector, options) {
 /* STATIC METHOD */
 /**
  * Update the buttons on the list. Only the buttons 'Up', 'Down', 'In', 'Out'
- * @param {jQuery} $mainList The unorder list 
+ * @param {jQuery} $mainList The unorder list
  **/
 MenuEditor.updateButtons = function($mainList){
     $mainList.find('.btnMove').show();

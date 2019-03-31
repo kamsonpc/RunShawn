@@ -1,6 +1,5 @@
-using System.Web.Mvc;
 using Autofac;
-using MvcSiteMapProvider.Web.Mvc;
+using System.Web.Mvc;
 
 namespace RunShawn.Web.DI.Autofac.Modules
 {

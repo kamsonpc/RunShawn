@@ -82,6 +82,7 @@
     <Compile Include="Features\News\Categories\IService.cs" />
     <Compile Include="Features\News\Categories\Model\Category.cs" />
     <Compile Include="Features\News\Categories\Model\CategoryAndSubcategory.cs" />
+    <Compile Include="Features\News\News\IArticleService.cs" />
     <Compile Include="Features\News\News\Model\Article.cs" />
     <Compile Include="Features\News\News\ArticleService.cs" />
     <Compile Include="Features\News\News\Model\ArticleListView.cs" />

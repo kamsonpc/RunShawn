@@ -16,6 +16,5 @@ namespace RunShawn.Web.Areas.Default.Models.News
         public string CreatedByName { get; set; }
         public string FeaturedImage { get; set; }
         public bool Featured { get; set; }
-
     }
 }

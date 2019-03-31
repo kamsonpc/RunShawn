@@ -7,6 +7,7 @@ namespace RunShawn.Web.Extentions
     public static class EnumHelper
     {
         #region GetDescription()
+
         public static string GetDescription<T>(this T enumerationValue)
         where T : struct
         {
@@ -28,6 +29,7 @@ namespace RunShawn.Web.Extentions
             }
             return enumerationValue.ToString();
         }
-        #endregion
+
+        #endregion GetDescription()
     }
 }

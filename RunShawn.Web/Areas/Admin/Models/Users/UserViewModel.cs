@@ -32,6 +32,7 @@ namespace RunShawn.Web.Areas.Admin.Models.Users
 
         [Display(Name = "Rola")]
         public string RoleId { get; set; }
+
         public List<SelectListItem> Roles { get; set; }
 
         [Required]

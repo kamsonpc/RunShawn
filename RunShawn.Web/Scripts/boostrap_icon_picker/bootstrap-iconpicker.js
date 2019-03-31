@@ -13,7 +13,6 @@
     // ICONPICKER PUBLIC CLASS DEFINITION
     // ==============================
     var Iconpicker = function (element, options) {
-
       if (typeof $.fn.popover === 'undefined' || typeof $.fn.popover.Constructor.VERSION === 'undefined') {
         throw new TypeError('Bootstrap iconpicker require Bootstrap popover');
       }
@@ -21,7 +20,6 @@
       this.$element = $(element);
       this.options  = $.extend({}, Iconpicker.DEFAULTS, this.$element.data());
       this.options  = $.extend({}, this.options, options);
-
     };
 
     // ICONPICKER VERSION
@@ -515,7 +513,6 @@
                     data.switchPage(op.icon);
                     data.bindEvents();
                 }
-
             }
         });
     };
@@ -546,5 +543,4 @@
     });
 
     $('button[role="iconpicker"],div[role="iconpicker"]').iconpicker();
-
 })(jQuery);

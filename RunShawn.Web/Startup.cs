@@ -9,6 +9,7 @@ using RunShawn.Web.Extentions;
 using RunShawn.Web.Models;
 
 [assembly: OwinStartupAttribute(typeof(RunShawn.Web.Startup))]
+
 namespace RunShawn.Web
 {
     public partial class Startup
@@ -37,13 +38,11 @@ namespace RunShawn.Web
 
             if (!roleManager.RoleExists(nameof(RoleTypes.Administrator)))
             {
-
                 var role = new IdentityRole
                 {
                     Name = nameof(RoleTypes.Administrator)
                 };
                 roleManager.Create(role);
-
 
                 var user = new ApplicationUser
                 {
@@ -69,7 +68,6 @@ namespace RunShawn.Web
                 };
                 roleManager.Create(role);
             }
-
         }
     }
 }

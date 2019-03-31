@@ -7,6 +7,7 @@ namespace RunShawn.Web.Extentions
     public static class MapperExtentions
     {
         #region MapTo()
+
         /// <summary>
         /// Map shortcut.
         /// </summary>
@@ -14,9 +15,11 @@ namespace RunShawn.Web.Extentions
         {
             return (TDest)AutoMapper.Mapper.Map(src, src.GetType(), typeof(TDest));
         }
-        #endregion
+
+        #endregion MapTo()
 
         #region Ignore
+
         /// <summary>
         /// Maps properties as ignored.
         /// </summary>
@@ -28,11 +31,13 @@ namespace RunShawn.Web.Extentions
 
             return map;
         }
-        #endregion
+
+        #endregion Ignore
 
         #region MapProperty
+
         /// <summary>
-        /// Sets mapping from source property to destination property. Convenient extension method. 
+        /// Sets mapping from source property to destination property. Convenient extension method.
         /// </summary>
         public static IMappingExpression<TSource, TDestination> MapProperty<TSource, TDestination, TProperty>(
             this IMappingExpression<TSource, TDestination> map,
@@ -43,6 +48,7 @@ namespace RunShawn.Web.Extentions
 
             return map;
         }
-        #endregion
+
+        #endregion MapProperty
     }
 }

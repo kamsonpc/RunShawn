@@ -3,6 +3,7 @@
 namespace RunShawn.Web.Attributes
 {
     #region MenuItemAttribute
+
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class MenuItemAttribute : Attribute
     {
@@ -10,6 +11,7 @@ namespace RunShawn.Web.Attributes
         {
             IsClickable = true;
         }
+
         public bool IsClickable { get; set; }
         public string Title { get; set; }
         public string Action { get; set; }
@@ -17,5 +19,6 @@ namespace RunShawn.Web.Attributes
         public int Order { get; set; }
         public Type ParentController { get; set; }
     }
-    #endregion
+
+    #endregion MenuItemAttribute
 }

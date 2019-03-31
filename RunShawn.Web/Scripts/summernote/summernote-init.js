@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
     $('.wygwsig').summernote({
-        height: 300, 
+        height: 300,
     });
 });

@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web;
 
 namespace RunShawn.Web.Extentions
 {
     public static class UrlUtil
     {
         #region GetBaseUrl()
+
         public static string GetBaseUrl()
         {
             var request = HttpContext.Current.Request;
@@ -19,14 +18,17 @@ namespace RunShawn.Web.Extentions
 
             return baseUrl;
         }
-        #endregion
+
+        #endregion GetBaseUrl()
 
         #region GetPageUrl()
+
         public static string GetPageUrl(string slug)
         {
             var baseUrl = GetBaseUrl();
             return $"{baseUrl}/Pages/{slug}";
         }
-        #endregion
+
+        #endregion GetPageUrl()
     }
 }

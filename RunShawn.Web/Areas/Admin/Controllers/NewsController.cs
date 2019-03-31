@@ -16,24 +16,39 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize]
     public partial class NewsController : BaseController
     {
+        #region Dependecies
+
+        private readonly IArticlesService _articlesService;
+
+        public NewsController(IArticlesService articlesService)
+        {
+            _articlesService = articlesService;
+        }
+        #endregion
+
         #region Index()
+
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Admin.News.List());
         }
-        #endregion
+
+        #endregion Index()
 
         #region List()
+
         public virtual ActionResult List()
         {
-            var model = ArticlesService.GetAll()
+            var model = _articlesService.GetAll()
                               .MapTo<List<ArticleListViewModel>>();
 
             return View(MVC.Admin.News.Views.List, model);
         }
-        #endregion
+
+        #endregion List()
 
         #region Create()
+
         public virtual ActionResult Create()
         {
             var categories = CategoriesService.GetCategoriesAndSubcategories()
@@ -62,36 +77,35 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 {
                     var article = model.MapTo<Article>();
 
-                    ArticlesService.Create(article, User.Identity.GetUserId());
+                    _articlesService.Create(article, User.Identity.GetUserId());
 
                     TempData[_alert] = new Alert($"Dodano Artykuł {article.Title}", AlertState.Success);
                     return RedirectToAction(MVC.Admin.News.List());
                 }
                 catch (Exception ex)
                 {
-
                     TempData[_alert] = new Alert("Wystąpił Błąd podczas dodawania artykułu", AlertState.Danger);
                     logger.Error(ex);
                     return RedirectToAction(MVC.Admin.News.List());
                 }
-
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
-                                             .Select(x => new SelectListItem
-                                             {
-                                                 Value = x.Id.ToString(),
-                                                 Text = x.Title
-                                             })
-                                             .ToList();
-            model.Categories = categories;
+            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
+                                                .Select(x => new SelectListItem
+                                                {
+                                                    Value = x.Id.ToString(),
+                                                    Text = x.Title
+                                                })
+                                                .ToList();
 
             return View(MVC.Admin.News.Views.Create, model);
         }
-        #endregion
+
+        #endregion Create()
 
         #region Edit()
+
         public virtual ActionResult Edit(long id)
         {
             var categories = CategoriesService.GetCategoriesAndSubcategories()
@@ -102,7 +116,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               })
                                               .ToList();
 
-            var model = ArticlesService.GetById(id).MapTo<ArticleViewModel>();
+            var model = _articlesService.GetById(id).MapTo<ArticleViewModel>();
             model.Categories = categories;
 
             return View(MVC.Admin.News.Views.Edit, model);
@@ -116,32 +130,33 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 var article = model.MapTo<Article>();
 
-                ArticlesService.Update(article, User.Identity.GetUserId());
+                _articlesService.Update(article, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert($"Zaktualizowano Artykuł {article.Title}", AlertState.Success);
                 return RedirectToAction(MVC.Admin.News.List());
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
                                              .Select(x => new SelectListItem
                                              {
                                                  Value = x.Id.ToString(),
                                                  Text = x.Title
                                              })
                                              .ToList();
-            model.Categories = categories;
 
             return View(MVC.Admin.News.Views.Edit, model);
         }
-        #endregion
+
+        #endregion Edit()
 
         #region Delete()
+
         public virtual ActionResult Delete(long id)
         {
             try
             {
-                ArticlesService.Delete(id, User.Identity.GetUserId());
+                _articlesService.Delete(id, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success, Url.Action(MVC.Admin.News.Restore(id)));
                 return RedirectToAction(MVC.Admin.News.List());
@@ -152,22 +167,26 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 return RedirectToAction(MVC.Admin.News.List());
             }
         }
-        #endregion
+
+        #endregion Delete()
 
         #region Feature()
+
         public virtual ActionResult Feature(long id)
         {
-            ArticlesService.Feature(id);
+            _articlesService.Feature(id);
             return RedirectToAction(MVC.Admin.News.List());
         }
-        #endregion
+
+        #endregion Feature()
 
         #region Restore()
+
         public virtual ActionResult Restore(long id)
         {
             try
             {
-                ArticlesService.Restore(id);
+                _articlesService.Restore(id);
 
                 TempData[_alert] = new Alert("Pomyślnie Przywrócono", AlertState.Success);
                 return RedirectToAction(MVC.Admin.News.List());
@@ -179,13 +198,16 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 return RedirectToAction(MVC.Admin.News.List());
             }
         }
-        #endregion
+
+        #endregion Restore()
 
         #region Categories
+
         public virtual ActionResult Categories()
         {
             return RedirectToAction(MVC.Admin.Categories.List());
         }
-        #endregion
+
+        #endregion Categories
     }
 }

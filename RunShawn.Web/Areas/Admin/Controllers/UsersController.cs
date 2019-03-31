@@ -5,7 +5,6 @@ using RunShawn.Core.Features.Roles.Model;
 using RunShawn.Core.Features.Users;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.Users;
-using RunShawn.Web.Attributes;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using RunShawn.Web.Models;
@@ -23,7 +22,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class UsersController : BaseController
     {
         public IUsersService _usersService { get; internal set; }
+
         #region InjectUserManager
+
         private ApplicationUserManager _userManager;
 
         public ApplicationUserManager UserManager
@@ -31,9 +32,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             private set => _userManager = value;
         }
-        #endregion
+
+        #endregion InjectUserManager
 
         #region Ctor
+
         public UsersController(IUsersService usersService)
         {
             _usersService = usersService;
@@ -43,16 +46,20 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             _userManager = userManager;
         }
-        #endregion
+
+        #endregion Ctor
 
         #region Index()
+
         public virtual ActionResult Index()
         {
             return RedirectToAction(MVC.Admin.Users.List());
         }
-        #endregion
+
+        #endregion Index()
 
         #region List()
+
         public virtual ActionResult List()
         {
             var model = _usersService.GetAll()
@@ -60,10 +67,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
             return View(MVC.Admin.Users.Views.List, model);
         }
-        #endregion
+
+        #endregion List()
 
         #region Create()
-        [MenuItem(Title = "Dodaj Użytkownika", Action = "Create")]
+
         public virtual ActionResult Create()
         {
             var roles = RolesService.GetAll()
@@ -74,16 +82,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     })
                                     .ToList();
 
-
             var model = new UserViewModel
             {
                 Roles = roles
             };
+
             return View(MVC.Admin.Users.Views.Create, model);
         }
-        #endregion
+
+        #endregion Create()
 
         #region CreatePost()
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual async Task<ActionResult> Create(UserViewModel model)
@@ -120,9 +130,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Create, model);
         }
-        #endregion
+
+        #endregion CreatePost()
 
         #region Edit()
+
         public virtual ActionResult Edit(string id)
         {
             var roles = RolesService.GetAll()
@@ -177,9 +189,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Edit, model);
         }
-        #endregion
+
+        #endregion Edit()
 
         #region Delete()
+
         public virtual ActionResult Delete(string id)
         {
             try
@@ -195,26 +209,23 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 return RedirectToAction(MVC.Admin.Users.List());
             }
         }
-        #endregion
+
+        #endregion Delete()
 
         #region GetAvatar()
+
         public virtual FileContentResult GetAvatar()
         {
-
-            String userId = User.Identity.GetUserId();
+            string userId = User.Identity.GetUserId();
 
             var user = _usersService.GetById(userId);
 
             var avatar = user.Avatar;
-            if (avatar != null && avatar.Length > 0)
-            {
-                return new FileContentResult(user.Avatar, "image/jpeg");
-            }
-            else
+            if (avatar?.Length <= 0)
             {
                 try
                 {
-                    string fileName = HttpContext.Server.MapPath(@"~/Content/images/user.png");
+                    string fileName = HttpContext.Server.MapPath("~/Content/images/user.png");
 
                     byte[] imageData = null;
                     FileInfo fileInfo = new FileInfo(fileName);
@@ -226,17 +237,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                     imageData = br.ReadBytes((int)imageFileLength);
 
                     return new FileContentResult(imageData, "image/jpeg");
-
                 }
                 catch (FileNotFoundException)
                 {
                     return new FileContentResult(new byte[1], "image/jpeg");
                 }
-
             }
-
+            else
+            {
+                return new FileContentResult(user.Avatar, "image/jpeg");
+            }
         }
-        #endregion
 
+        #endregion GetAvatar()
     }
 }

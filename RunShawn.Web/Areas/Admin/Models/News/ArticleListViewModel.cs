@@ -1,5 +1,5 @@
-﻿using System;
-using RunShawn.Web.Extentions.Icons;
+﻿using RunShawn.Web.Extentions.Icons;
+using System;
 
 namespace RunShawn.Web.Areas.Admin.Models.News
 {
@@ -25,7 +25,6 @@ namespace RunShawn.Web.Areas.Admin.Models.News
                 {
                     return AwesomeHelper.star_o;
                 }
-
             }
         }
     }

@@ -18,5 +18,4 @@
 	};
 
 	$.fn.datepicker.deprecated('This filename doesn\'t follow the convention, use bootstrap-datepicker.en-CA.js instead.');
-
 }(jQuery));
