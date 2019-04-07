@@ -16,5 +16,10 @@ namespace RunShawn.Web.App_Start
             });
 
         }
+
+        public static void Reset()
+        {
+            Mapper.Reset();
+        }
     }
 }

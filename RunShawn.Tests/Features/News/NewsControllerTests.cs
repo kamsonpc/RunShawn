@@ -1,8 +1,9 @@
 ﻿using Moq;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
-using RunShawn.Web.App_Start;
+using RunShawn.Tests.Helpers;
 using RunShawn.Web.Areas.Admin.Controllers;
+using RunShawn.Web.Areas.Admin.Models.News;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -11,23 +12,11 @@ using Assert = Xunit.Assert;
 
 namespace RunShawn.Tests.Features.News
 {
-    public class NewsControllerTests
+    public class NewsControllerTests : TestsBase
     {
-
-        public NewsControllerTests()
-        {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            AutoMapperConfiguration.Configure();
-        }
-
         [Fact]
-        public void List_View_Return_List()
+        public void Index_Redirect_To_List()
         {
-
             //Arrange
             var mockRepo = new Mock<IArticlesService>();
             mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
@@ -43,9 +32,7 @@ namespace RunShawn.Tests.Features.News
         [Fact]
         public void List_View_Result_IsNot_Null()
         {
-
             //Arrange
-
             var mockRepo = new Mock<IArticlesService>();
             mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
             var controller = new NewsController(mockRepo.Object);
@@ -60,24 +47,23 @@ namespace RunShawn.Tests.Features.News
         [Fact]
         public void List_View_Result_CountIsOne()
         {
-
             //Arrange
-
             var mockRepo = new Mock<IArticlesService>();
-            mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
+            mockRepo.Setup(repo => repo.GetAll(false)).Returns(GetTestArticles());
             var controller = new NewsController(mockRepo.Object);
 
             //Act
             var result = controller.List() as ViewResult;
-            var items = result.ViewData;
 
             //Asert
-            Assert.Equal(1, items.Count);
+            Assert.NotNull(result);
+            Assert.NotNull(result.Model);
+            Assert.Single((List<ArticleListViewModel>)result.Model);
         }
 
         private List<ArticleListView> GetTestArticles()
         {
-            var articles = new List<ArticleListView>
+            return new List<ArticleListView>
             {
                 new ArticleListView()
                 {
@@ -90,7 +76,6 @@ namespace RunShawn.Tests.Features.News
                     CreatedByName = "admin"
                 }
             };
-            return articles;
         }
     }
 }

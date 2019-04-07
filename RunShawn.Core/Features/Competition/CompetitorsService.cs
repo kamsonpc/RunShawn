@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RunShawn.Core.Features.Competition
 {
-    public class CompetitorsService
+    public static class CompetitorsService
     {
         #region GetAll()
 

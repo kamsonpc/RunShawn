@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace RunShawn.Core.Features.Settings.Menu
 {
-    public class MenuConfigurationService
+    public static class MenuConfigurationService
     {
         #region GetAll()
 
