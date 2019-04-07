@@ -86,7 +86,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-
             return View(MVC.Admin.Pages.Views.Edit, model);
         }
 

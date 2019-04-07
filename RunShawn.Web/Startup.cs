@@ -22,11 +22,7 @@ namespace RunShawn.Web
             ConfigureAuth(app);
             CreateRolesandUsers();
 
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile<AdminMapProfile>();
-                cfg.AddProfile<DefaultMapProfile>();
-            });
+
         }
 
         private void CreateRolesandUsers()

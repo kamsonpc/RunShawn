@@ -1,4 +1,5 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.News;
@@ -39,8 +40,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = _articlesService.GetAll()
-                              .MapTo<List<ArticleListViewModel>>();
+            var model = Mapper.Map<List<ArticleListViewModel>>(_articlesService.GetAll());
 
             return View(MVC.Admin.News.Views.List, model);
         }

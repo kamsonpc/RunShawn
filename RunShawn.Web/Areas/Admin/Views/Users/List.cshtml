@@ -20,7 +20,6 @@
     .Build(columns =>
     {
         columns.Add(model => model.FullName).Titled("Imię i Nazwisko");
-        columns.Add(model => model.Scores).Titled("Punkty").AppendCss("points");
         columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
     (
         Html.Bootstrap().LinkButton("Edytuj", MVC.Admin.Users.Edit(model.Id))
