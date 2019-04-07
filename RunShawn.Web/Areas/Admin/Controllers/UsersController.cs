@@ -7,6 +7,7 @@ using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Linq;
 using RunShawn.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -74,13 +75,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Create()
         {
-            var roles = RolesService.GetAll()
-                                    .Select(x => new SelectListItem
-                                    {
-                                        Value = x.Id,
-                                        Text = x.Name
-                                    })
-                                    .ToList();
+            var roles = RolesService.GetAll().ToSelectList(x => x.Name, y => y.Id);
 
             var model = new UserViewModel
             {

@@ -120,7 +120,8 @@
   <ItemGroup>
     <Compile Include="Features\News\NewsControllerTests.cs" />
     <Compile Include="Features\Users\UsersControllerTests.cs" />
-    <Compile Include="Helpers\TestBase.cs" />
+    <Compile Include="Helpers\ExtentionsTests.cs" />
+    <Compile Include="TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

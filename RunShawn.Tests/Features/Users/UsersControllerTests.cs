@@ -1,6 +1,5 @@
 ﻿using Moq;
 using RunShawn.Core.Features.Users;
-using RunShawn.Tests.Helpers;
 using RunShawn.Web.Areas.Admin.Controllers;
 using System.Web.Mvc;
 using Xunit;
@@ -8,7 +7,7 @@ using Assert = Xunit.Assert;
 
 namespace RunShawn.Tests.Features.Users
 {
-    public class UsersControllerTests : TestsBase
+    public class UsersControllerTests : ControllerTestBase
     {
         [Fact]
         public void Index_should_redirect_to_list()

@@ -1,7 +1,6 @@
 ﻿using Moq;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
-using RunShawn.Tests.Helpers;
 using RunShawn.Web.Areas.Admin.Controllers;
 using RunShawn.Web.Areas.Admin.Models.News;
 using System;
@@ -12,7 +11,7 @@ using Assert = Xunit.Assert;
 
 namespace RunShawn.Tests.Features.News
 {
-    public class NewsControllerTests : TestsBase
+    public class NewsControllerTests : ControllerTestBase
     {
         [Fact]
         public void Index_Redirect_To_List()

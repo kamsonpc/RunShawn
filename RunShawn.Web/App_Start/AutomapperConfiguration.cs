@@ -4,22 +4,34 @@ using RunShawn.Web.Areas.Default.Models;
 
 namespace RunShawn.Web.App_Start
 {
-    public class AutoMapperConfiguration
+    public static class AutoMapperConfiguration
     {
+        public static object thislock = new object();
+        private static bool _initialized = false;
+
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            lock (thislock)
             {
-                x.AddProfile<AdminMapProfile>();
-                x.AddProfile<DefaultMapProfile>();
-
-            });
-
+                if (!_initialized)
+                {
+                    Mapper.Initialize(x =>
+                    {
+                        x.AddProfile<AdminMapProfile>();
+                        x.AddProfile<DefaultMapProfile>();
+                    });
+                    _initialized = true;
+                }
+            }
         }
 
         public static void Reset()
         {
-            Mapper.Reset();
+            lock (thislock)
+            {
+                Mapper.Reset();
+                _initialized = false;
+            }
         }
     }
 }
