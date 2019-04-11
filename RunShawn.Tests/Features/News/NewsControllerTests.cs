@@ -28,23 +28,9 @@ namespace RunShawn.Tests.Features.News
             Assert.Equal(MVC.Admin.News.Views.List, result.ViewName);
         }
 
+
         [Fact]
         public void List_View_Result_IsNot_Null()
-        {
-            //Arrange
-            var mockRepo = new Mock<IArticlesService>();
-            mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
-            var controller = new NewsController(mockRepo.Object);
-
-            //Act
-            var result = controller.List() as ViewResult;
-
-            //Asert
-            Assert.NotNull(result.ViewData);
-        }
-
-        [Fact]
-        public void List_View_Result_CountIsOne()
         {
             //Arrange
             var mockRepo = new Mock<IArticlesService>();

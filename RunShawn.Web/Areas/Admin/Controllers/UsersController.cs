@@ -64,7 +64,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public virtual ActionResult List()
         {
             var model = _usersService.GetAll()
-                                    .MapTo<List<UserListViewModel>>();
+                                     .MapTo<List<UserListViewModel>>();
 
             return View(MVC.Admin.Users.Views.List, model);
         }
@@ -75,7 +75,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Create()
         {
-            var roles = RolesService.GetAll().ToSelectList(x => x.Name, y => y.Id);
+            var roles = RolesService.GetAll()
+                                    .ToSelectList(x => x.Name, y => y.Id);
 
             var model = new UserViewModel
             {

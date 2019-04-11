@@ -335,6 +335,7 @@
     <Compile Include="Extentions\Icons\FontAwesomeHelper.cs" />
     <Compile Include="Extentions\Linq\LinqExtentions.cs" />
     <Compile Include="Extentions\Mapper\MapperExtentions.cs" />
+    <Compile Include="Extentions\Roles\RoleHelper.cs" />
     <Compile Include="Extentions\Roles\RoleTypes.cs" />
     <Compile Include="Extentions\String\StringHelper.cs" />
     <Compile Include="Extentions\Summernote\SummerNoteHelper.cs" />

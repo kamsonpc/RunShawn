@@ -9,6 +9,7 @@ namespace RunShawn.Web.App_Start
         public static object thislock = new object();
         private static bool _initialized = false;
 
+        #region Configure()
         public static void Configure()
         {
             lock (thislock)
@@ -24,7 +25,9 @@ namespace RunShawn.Web.App_Start
                 }
             }
         }
+        #endregion
 
+        #region Reset()
         public static void Reset()
         {
             lock (thislock)
@@ -33,5 +36,6 @@ namespace RunShawn.Web.App_Start
                 _initialized = false;
             }
         }
+        #endregion
     }
 }

@@ -49,6 +49,9 @@
     <Reference Include="FSharp.Data.SqlProvider, Version=1.1.54.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLProvider.1.1.54\lib\net451\FSharp.Data.SqlProvider.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
@@ -62,10 +65,15 @@
       <HintPath>..\packages\Simple.Data.SqlServer.0.19.0.0\lib\net40\Simple.Data.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Behaviors\IAuditable.cs" />
     <Compile Include="Behaviors\IService.cs" />
     <Compile Include="Features\Competition\CompetitorsService.cs" />
@@ -89,8 +98,11 @@
     <Compile Include="Features\Pages\Model\PageListView.cs" />
     <Compile Include="Features\Pages\PagesService.cs" />
     <Compile Include="Features\Pages\Model\Page.cs" />
+    <Compile Include="Features\Roles\Model\Permission.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
+    <Compile Include="Features\Roles\Repository\PermissionsRepository.cs" />
+    <Compile Include="Features\Roles\Repository\IPermissionsRepository.cs" />
     <Compile Include="Features\Roles\RolesService.cs" />
     <Compile Include="Features\Settings\Menu\MenuConfigurationService.cs" />
     <Compile Include="Features\Settings\Menu\Model\MenuItem.cs" />

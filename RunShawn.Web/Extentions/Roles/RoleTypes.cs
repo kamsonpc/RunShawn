@@ -10,6 +10,9 @@ namespace RunShawn.Web.Extentions
         [Description("SuperUser")]
         SuperUser = 30,
 
+        [Description("UserManager")]
+        UserManager = 40,
+
         [Description("Manager")]
         Manager = 20
     }

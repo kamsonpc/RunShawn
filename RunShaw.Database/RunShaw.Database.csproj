@@ -92,5 +92,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_010_PagesView.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_011_Permissions.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
