@@ -95,5 +95,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script_011_Permissions.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_012_GetPermissions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script_013_Permissions_DefaultValue.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

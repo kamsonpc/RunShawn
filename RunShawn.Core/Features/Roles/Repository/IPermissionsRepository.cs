@@ -12,5 +12,7 @@ namespace RunShawn.Core.Features.Roles.Repository
         Permission Add(Permission permission);
 
         void Delete(string Id);
+
+        List<int> GetPermissionsByRole(string id);
     }
 }

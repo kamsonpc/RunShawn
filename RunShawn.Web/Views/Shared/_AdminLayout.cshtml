@@ -26,7 +26,7 @@
 <body>
 
     <header class="dashboard-header">
-        <div class="page-logo"><a href="@Url.Action(MVC.Admin.Dashboard.Index())"> <i class="fas fa-heart"></i> HealthBack</a></div>
+        <div class="page-logo"><a href="@Url.Action(MVC.Admin.Dashboard.Index())"> <i class="fas fa-business-time"></i> Demo</a></div>
         <nav class="dashboard-nav">
             <ul class="navigation-menu">
                 @if (User.Identity.IsAuthenticated)
@@ -103,91 +103,13 @@
             @RenderBody()
         </section>
     </main>
-    <footer class="main-footer">HealthBack © @DateTime.Now.Year Wszelkie prawa zastrzeżone.</footer>
+    <footer class="main-footer">Demo © @DateTime.Now.Year Wszelkie prawa zastrzeżone.</footer>
 </body>
 
 <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="~/Scripts/utils.js"></script>
 
-<script>
-new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-        labels: ["Basen", "Siłownia", "Jazda na rowerze", "Zajęcia fitness", "Nordic Walking"],
-        datasets: [{
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
-        }]
-    },
-    options: {
-        title: {
-        display: true,
-        text: 'Popularność aktywności wśród pracowników'
-        }
-    }
-});
-
-new Chart(document.getElementById("bar-chart-horizontal"), {
-    type: 'horizontalBar',
-    data: {
-    labels: ["Andrzej Nowicki", "Patrycja Tomaszewska", "Marcelina Grabowska", "Martyna Kwiatkowska", "Zuzanna Kowalska"],
-    datasets: [
-        {
-        label: "Punkty",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [	2556,1567,1245,906,887]
-        }
-    ]
-    },
-    options: {
-    legend: { display: false },
-    title: {
-        display: true,
-        text: 'Najbardziej aktywni pracownicy w tym miesiącu'
-    }
-    }
-});
-new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: {
-        labels: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad', 'Grudzień'],
-        datasets: [{ 
-            data: [0, 80, 85, 60, 70, 80, 90, 100, 98, 89, 91, 99],
-            label: "Basen",
-            borderColor: "#3e95cd",
-            fill: false
-        }, { 
-            data: [0, 50, 35, 40, 30, 50, 60, 70, 69, 65, 70, 99],
-            label: "Siłownia",
-            borderColor: "#8e5ea2",
-            fill: false
-        }, { 
-            data: [0, 20, 15, 30, 20, 35, 70, 80, 80, 70, 60, 20],
-            label: "Jazda na rowerze",
-            borderColor: "#3cba9f",
-            fill: false
-        }, { 
-            data: [0, 10, 25, 40, 35, 50, 40, 60, 48, 50, 55, 90],
-            label: "Zajęcia fitness",
-            borderColor: "#e8c3b9",
-            fill: false
-        }, { 
-            data: [0, 5, 8, 12, 20, 25, 20, 20, 24, 23, 20, 20],
-            label: "Nordic Walking",
-            borderColor: "#c45850",
-            fill: false
-        }
-        ]
-    },
-    options: {
-        title: {
-        display: true,
-        text: 'Aktywność pracowników w ciągu roku'
-        }
-    }
-    });
 </script>
     @Scripts.Render("~/bundles/validate")
     @Scripts.Render("~/bundles/bootstrap")

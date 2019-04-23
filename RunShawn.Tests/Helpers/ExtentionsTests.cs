@@ -1,4 +1,5 @@
-﻿using RunShawn.Web.Extentions.Linq;
+﻿using RunShawn.Core.Helpers;
+using RunShawn.Web.Extentions.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Xunit;
@@ -41,6 +42,16 @@ namespace RunShawn.Tests.Helpers
             Assert.Equal(expected[2].Value, result[2].Value);
         }
 
+        [Fact]
+        public void Recursive_Strong()
+        {
+            var result = Helper.Strong(3);
+            var result2 = Helper.Strong(5);
+
+            Assert.Equal(6, result);
+            Assert.Equal(120, result2);
+        }
+
         private List<TestListItem> GetExampleList()
         {
             return new List<TestListItem>
@@ -73,5 +84,4 @@ namespace RunShawn.Tests.Helpers
             public bool Active { get; set; }
         }
     }
-
 }

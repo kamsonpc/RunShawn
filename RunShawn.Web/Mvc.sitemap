@@ -3,28 +3,28 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-        <mvcSiteMapNode title="Dashboard" area="Admin" controller="Dashboard" action="Dashboard" icon="fas fa-tachometer-alt">
-          <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List" icon="fas fa-users-cog">
-                  <mvcSiteMapNode title="Dodaj" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
-                  <mvcSiteMapNode title="Edytuj" area="Admin" controller="Users" action="Edit" visibility="SiteMapPathHelper,!*"  preservedRouteParameters="id"></mvcSiteMapNode>
-          </mvcSiteMapNode>
-			<mvcSiteMapNode title="Ustawienia Konta" area="Admin" controller="Manage" action="Index" visibility="SiteMapPathHelper,!*">
-				<mvcSiteMapNode title="Avatar" area="Admin" controller="Manage" action="SetAvatar" visibility="SiteMapPathHelper,!*" ></mvcSiteMapNode>
-				</mvcSiteMapNode>
+  <mvcSiteMapNode title="Dashboard" area="Admin" controller="Dashboard" action="Dashboard" icon="fas fa-tachometer-alt">
+    <mvcSiteMapNode title="Użytkownicy" area="Admin" controller="Users" action="List" icon="fas fa-users-cog">
+      <mvcSiteMapNode title="Dodaj" area="Admin" controller="Users" action="Create"></mvcSiteMapNode>
+      <mvcSiteMapNode title="Edytuj" area="Admin" controller="Users" action="Edit" visibility="SiteMapPathHelper,!*"  preservedRouteParameters="id"></mvcSiteMapNode>
+    </mvcSiteMapNode>
 
-          <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List" icon="fas fa-newspaper">
-            <mvcSiteMapNode title="Dodaj" area="Admin" controller="News" action="Create" ></mvcSiteMapNode>
-            <mvcSiteMapNode title="Edytuj" area="Admin" controller="News" action="Edit"  visibility="SiteMapPathHelper,!*" preservedRouteParameters="id"></mvcSiteMapNode>
-            <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
-            </mvcSiteMapNode>
+    <mvcSiteMapNode title="Aktualności" area="Admin" controller="News" action="List" icon="fas fa-newspaper">
+      <mvcSiteMapNode title="Dodaj" area="Admin" controller="News" action="Create" ></mvcSiteMapNode>
+      <mvcSiteMapNode title="Edytuj" area="Admin" controller="News" action="Edit"  visibility="SiteMapPathHelper,!*" preservedRouteParameters="id"></mvcSiteMapNode>
+      <mvcSiteMapNode title="Kategorie" area="Admin" controller="Categories" action="List"></mvcSiteMapNode>
+    </mvcSiteMapNode>
 
-            <mvcSiteMapNode title="Strony" area="Admin" controller="Pages"  icon="fas fa-file-alt" action="List">
-            <mvcSiteMapNode title="Dodaj" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
-            <mvcSiteMapNode title="Edytuj" area="Admin" controller="Pages" visibility="SiteMapPathHelper,!*" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
-            </mvcSiteMapNode>
+    <mvcSiteMapNode title="Strony" area="Admin" controller="Pages"  icon="fas fa-file-alt" action="List">
+      <mvcSiteMapNode title="Dodaj" area="Admin" controller="Pages" action="Create"></mvcSiteMapNode>
+      <mvcSiteMapNode title="Edytuj" area="Admin" controller="Pages" visibility="SiteMapPathHelper,!*" action="Edit" preservedRouteParameters="id"></mvcSiteMapNode>
+    </mvcSiteMapNode>
 
-          <mvcSiteMapNode title="Ustawienia" area="Admin" controller="Settings" action="Index"  icon="fas fa-cogs">
-            <mvcSiteMapNode title="Menu" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
-          </mvcSiteMapNode>
-        </mvcSiteMapNode>
+    <mvcSiteMapNode title="Ustawienia" area="Admin" controller="Settings" action="Index"  icon="fas fa-cogs">
+      <mvcSiteMapNode title="Menu" area="Admin" controller="Menu" action="Edit"></mvcSiteMapNode>
+      <mvcSiteMapNode title="Konto" area="Admin" controller="Manage" action="Index" visibility="SiteMapPathHelper,!*">
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Avatar" area="Admin" controller="Manage" action="SetAvatar" visibility="SiteMapPathHelper,!*" ></mvcSiteMapNode>
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
 </mvcSiteMap>

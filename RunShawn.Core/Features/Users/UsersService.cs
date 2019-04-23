@@ -66,7 +66,7 @@ namespace RunShawn.Core.Features.Users
         public void SetAvatar(string id, byte[] avatar)
         {
             Database db = Database.Open();
-            var sql = @"
+            const string sql = @"
                        UPDATE  AspNetUsers
                        SET
                             Avatar = @avatar

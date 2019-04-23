@@ -36,7 +36,6 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-
         #endregion Delete()
 
         #region GetAll()
@@ -67,6 +66,25 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
+        #endregion
+
+        #region GetPermissionsByUser()
+        public List<int> GetPermissionsByRole(string id)
+        {
+            try
+            {
+                return Database.Open().Permissions.GetByRole(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+        }
+        #endregion
+
+        #region ClearPermissions()
+
         #endregion
     }
 }

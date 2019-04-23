@@ -7,7 +7,7 @@ namespace RunShawn.Web.Extentions.Linq
 {
     public static class LinqExtentions
     {
-        public static List<SelectListItem> ToSelectList<T>(this List<T> Items, Func<T, string> getKey, Func<T, string> getValue, string selectedValue = "", string noSelection = "", bool search = false)
+        public static List<SelectListItem> ToSelectList<T>(this IEnumerable<T> Items, Func<T, string> getKey, Func<T, string> getValue, string selectedValue = "", string noSelection = "", bool search = false)
         {
             List<SelectListItem> items = new List<SelectListItem>();
 

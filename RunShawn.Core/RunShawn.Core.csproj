@@ -98,6 +98,7 @@
     <Compile Include="Features\Pages\Model\PageListView.cs" />
     <Compile Include="Features\Pages\PagesService.cs" />
     <Compile Include="Features\Pages\Model\Page.cs" />
+    <Compile Include="Features\Roles\CorePermissions.cs" />
     <Compile Include="Features\Roles\Model\Permission.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Features\Users\Model\ApplicationUser.cs" />
     <Compile Include="Features\Users\IUsersService.cs" />
     <Compile Include="Features\Users\UsersService.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
