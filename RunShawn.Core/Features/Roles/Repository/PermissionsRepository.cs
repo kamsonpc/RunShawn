@@ -83,8 +83,34 @@ namespace RunShawn.Core.Features.Roles.Repository
         }
         #endregion
 
-        #region ClearPermissions()
+        #region InsertMany()
+        public void InsertMany(List<Permission> permissions)
+        {
+            try
+            {
+                Database.Open().Permissions.Permissions.Insert(permissions);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+        }
+        #endregion
 
+        #region DeleteAll()
+        public void DeleteAll()
+        {
+            try
+            {
+                Database.Open().Permissions.Permissions.DeleteAll();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+        }
         #endregion
     }
 }

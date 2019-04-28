@@ -28,9 +28,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class CategoriesController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CategoriesController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected CategoriesController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

@@ -28,9 +28,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class NewsController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public NewsController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected NewsController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

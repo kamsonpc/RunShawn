@@ -1,8 +1,14 @@
 ﻿namespace RunShawn.Core.Features.Roles
 {
-    public enum CorePermissions
+    public enum GeneralPermissions
     {
-        NewsManagment = 1,
-        Settings = 2,
+        NewsManagment = 10,
+        Settings = 20,
+
+        #region Role
+        RoleAdd = 30,
+        RoleDelete = 40,
+        RoleUpdate = 50,
+        #endregion
     }
 }

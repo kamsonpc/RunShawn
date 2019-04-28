@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Core.Helpers.Enums
 {
-    public static class EnumHelper
+    public static class EnumUtil
     {
         #region GetDescription()
-
         public static string GetDescription<T>(this T enumerationValue)
         where T : struct
         {
@@ -31,5 +32,19 @@ namespace RunShawn.Web.Extentions
         }
 
         #endregion GetDescription()
+
+        #region Dictionary()
+        public static Dictionary<int, string> ToDictionary<T>() where T : struct
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("Type must be an enum");
+            }
+
+            return Enum.GetValues(typeof(T))
+                .Cast<T>()
+                .ToDictionary(t => (int)(object)t, t => t.ToString());
+        }
+        #endregion
     }
 }

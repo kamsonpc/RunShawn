@@ -1,11 +1,11 @@
-﻿using AutoMapper;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
-using RunShawn.Web.Areas.Admin.Models;
-using RunShawn.Web.Areas.Default.Models;
-using RunShawn.Web.Extentions;
+using RunShawn.Core.Features.Roles;
+using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Services;
+using RunShawn.Core.Helpers.Enums;
 using RunShawn.Web.Models;
 
 [assembly: OwinStartupAttribute(typeof(RunShawn.Web.Startup))]
@@ -20,49 +20,57 @@ namespace RunShawn.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            CreateRolesandUsers();
-
-
+            InitializePermissions();
+            CreateDefaultUsers();
         }
 
-        private void CreateRolesandUsers()
+        private void CreateDefaultUsers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            //if (!roleManager.RoleExists(nameof(RoleTypes.Administrator)))
+            //{
+            //    var role = new IdentityRole
+            //    {
+            //        Name = nameof(RoleTypes.Administrator)
+            //    };
+            //    roleManager.Create(role);
 
-            if (!roleManager.RoleExists(nameof(RoleTypes.Administrator)))
+            //    var user = new ApplicationUser
+            //    {
+            //        UserName = _email,
+            //        Email = _email
+            //    };
+
+            //    string userPWD = _password;
+
+            //    var chkUser = UserManager.Create(user, userPWD);
+
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result = UserManager.AddToRole(user.Id, nameof(RoleTypes.Administrator));
+            //    }
+            //}
+
+            //if (!roleManager.RoleExists(nameof(RoleTypes.SuperUser)))
+            //{
+            //    var role = new IdentityRole
+            //    {
+            //        Name = nameof(RoleTypes.SuperUser)
+            //    };
+            //    roleManager.Create(role);
+            //}
+        }
+
+        private void InitializePermissions()
+        {
+            var roleService = new RolesService(new PermissionsRepository(), new RolesRepository());
+            var permissions = roleService.GeneratePermissions(EnumUtil.ToDictionary<GeneralPermissions>());
+            if (roleService.IsNeedRebuildPermissions(permissions))
             {
-                var role = new IdentityRole
-                {
-                    Name = nameof(RoleTypes.Administrator)
-                };
-                roleManager.Create(role);
-
-                var user = new ApplicationUser
-                {
-                    UserName = _email,
-                    Email = _email
-                };
-
-                string userPWD = _password;
-
-                var chkUser = UserManager.Create(user, userPWD);
-
-                if (chkUser.Succeeded)
-                {
-                    var result = UserManager.AddToRole(user.Id, nameof(RoleTypes.Administrator));
-                }
-            }
-
-            if (!roleManager.RoleExists(nameof(RoleTypes.SuperUser)))
-            {
-                var role = new IdentityRole
-                {
-                    Name = nameof(RoleTypes.SuperUser)
-                };
-                roleManager.Create(role);
+                roleService.BuildPermissions(permissions);
             }
         }
     }

@@ -48,6 +48,7 @@ namespace T4MVC
         public RunShawn.Web.Areas.Admin.Controllers.ManageController Manage = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_ManageController();
         public RunShawn.Web.Areas.Admin.Controllers.NewsController News = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Areas.Admin.Controllers.PagesController Pages = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_PagesController();
+        public RunShawn.Web.Areas.Admin.Controllers.RolesController Roles = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_RolesController();
         public RunShawn.Web.Areas.Admin.Controllers.MenuController Menu = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_MenuController();
         public RunShawn.Web.Areas.Admin.Controllers.SettingsController Settings = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_SettingsController();
         public RunShawn.Web.Areas.Admin.Controllers.UsersController Users = new RunShawn.Web.Areas.Admin.Controllers.T4MVC_UsersController();
@@ -328,6 +329,7 @@ namespace Links
             public static readonly string tooltipCustom_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tooltipCustom.min.js") ? Url("tooltipCustom.min.js") : Url("tooltipCustom.js");
         }
     
+        public static readonly string utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/utils.min.js") ? Url("utils.min.js") : Url("utils.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class validate {
             public const string UrlPath = "~/Scripts/validate";
@@ -438,6 +440,14 @@ namespace Links
                 public static readonly string article_background7_png = Url("article-background7.png");
                 public static readonly string article_background8_png = Url("article-background8.png");
                 public static readonly string article_background9_png = Url("article-background9.png");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class awards {
+                public const string UrlPath = "~/Content/images/awards";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string _1_png = Url("1.png");
             }
         
             public static readonly string background_png = Url("background.png");
@@ -723,6 +733,7 @@ namespace Links
                 public static readonly string menu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/menu.js"); 
                 public static readonly string modernizr_2_8_3_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/modernizr-2.8.3.js"); 
                 public static readonly string sidebar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/sidebar.js"); 
+                public static readonly string utils_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/utils.js"); 
             }
         }
         public static partial class Content 
@@ -773,6 +784,12 @@ namespace Links
             public static partial class images 
             {
                 public static partial class article_images 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class awards 
                 {
                     public static class Assets
                     {

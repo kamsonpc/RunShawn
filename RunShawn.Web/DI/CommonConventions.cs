@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace RunShawn.Web.DI
 {
-    internal class CommonConventions
+    internal static class CommonConventions
     {
         /// <summary>
         /// Registers all single types in a set of assemblies that meet the following criteria:

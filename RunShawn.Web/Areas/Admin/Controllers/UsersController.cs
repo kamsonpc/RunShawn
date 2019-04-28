@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
+using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Users;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.Users;
@@ -23,6 +24,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class UsersController : BaseController
     {
         public IUsersService _usersService { get; internal set; }
+        public IRolesRepository _rolesRepository { get; internal set; }
 
         #region InjectUserManager
 
@@ -38,9 +40,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         #region Ctor
 
-        public UsersController(IUsersService usersService)
+        public UsersController(IUsersService usersService, IRolesRepository rolesRepository)
         {
             _usersService = usersService;
+            _rolesRepository = rolesRepository;
         }
 
         public UsersController(ApplicationUserManager userManager)
@@ -75,7 +78,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Create()
         {
-            var roles = RolesService.GetAll()
+            var roles = _rolesRepository.GetAll()
                                     .ToSelectList(x => x.Name, y => y.Id);
 
             var model = new UserViewModel
@@ -99,10 +102,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 var user = model.MapTo<ApplicationUser>();
                 try
                 {
-                    await UserManager.CreateAsync(user, model.Password);
+                    await UserManager.CreateAsync(user, model.Password).ConfigureAwait(false);
                     if (!string.IsNullOrEmpty(model.RoleId) && !string.IsNullOrEmpty(user.Id))
                     {
-                        RolesService.SetRole(user.Id, model.RoleId);
+                        _rolesRepository.SetRole(new UserRole { UserId = user.Id, RoleId = model.RoleId });
                     }
 
                     TempData[_alert] = new Alert($"Dodano Użytkownika {user.UserName}", AlertState.Success);
@@ -114,14 +117,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 }
             }
 
-            var roles = RolesService.GetAll()
+            model.Roles = _rolesRepository.GetAll()
                                    .Select(x => new SelectListItem
                                    {
                                        Value = x.Id,
                                        Text = x.Name
                                    })
                                    .ToList();
-            model.Roles = roles;
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
             return View(MVC.Admin.Users.Views.Create, model);
@@ -133,7 +135,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Edit(string id)
         {
-            var roles = RolesService.GetAll()
+            var roles = _rolesRepository.GetAll()
                                     .Select(x => new SelectListItem
                                     {
                                         Value = x.Id,
@@ -144,7 +146,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             var model = _usersService.GetById(id)
                                      .MapTo<UserEditViewModel>();
 
-            model.RoleId = RolesService.GetByUser(id);
+            model.RoleId = _rolesRepository.GetByUser(id);
             model.Roles = roles;
 
             return View(MVC.Admin.Users.Views.Edit, model);
@@ -163,7 +165,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
                     if (!string.IsNullOrEmpty(user.Id))
                     {
-                        RolesService.ChangeRole(user.Id, model.RoleId);
+                        _rolesRepository.ChangeRole(new UserRole
+                        { UserId = user.Id, RoleId = model.RoleId });
                     }
 
                     TempData[_alert] = new Alert($"Zaktualizowano Użytkownika {user.UserName}", AlertState.Success);
@@ -175,7 +178,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 }
             }
 
-            model.Roles = RolesService.GetAll()
+            model.Roles = _rolesRepository.GetAll()
                                    .Select(x => new SelectListItem
                                    {
                                        Value = x.Id,

@@ -102,16 +102,22 @@
     <Compile Include="Features\Roles\Model\Permission.cs" />
     <Compile Include="Features\Roles\Model\Role.cs" />
     <Compile Include="Features\Roles\Model\UserRoles.cs" />
+    <Compile Include="Features\Roles\Repository\IRolesRepository.cs" />
     <Compile Include="Features\Roles\Repository\PermissionsRepository.cs" />
     <Compile Include="Features\Roles\Repository\IPermissionsRepository.cs" />
-    <Compile Include="Features\Roles\RolesService.cs" />
+    <Compile Include="Features\Roles\Repository\RolesRepository.cs" />
+    <Compile Include="Features\Roles\Services\IRolesService.cs" />
+    <Compile Include="Features\Roles\Services\RolesService.cs" />
     <Compile Include="Features\Settings\Menu\MenuConfigurationService.cs" />
     <Compile Include="Features\Settings\Menu\Model\MenuItem.cs" />
     <Compile Include="Features\Settings\Menu\Model\MenuItemView.cs" />
     <Compile Include="Features\Users\Model\ApplicationUser.cs" />
     <Compile Include="Features\Users\IUsersService.cs" />
     <Compile Include="Features\Users\UsersService.cs" />
+    <Compile Include="Helpers\Enums\EnumUtil.cs" />
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\Model\IKeyValue.cs" />
+    <Compile Include="Helpers\Model\KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

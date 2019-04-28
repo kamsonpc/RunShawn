@@ -1,4 +1,5 @@
 ﻿using Moq;
+using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Users;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Controllers;
@@ -17,7 +18,8 @@ namespace RunShawn.Tests.Features.Users
         {
             //Arrange
             var mockRepo = new Mock<IUsersService>();
-            var controller = new UsersController(mockRepo.Object);
+            var mockRolesRepo = new Mock<IRolesRepository>();
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
 
             //Act
             var result = (RedirectToRouteResult)controller.Index();
@@ -33,8 +35,9 @@ namespace RunShawn.Tests.Features.Users
         {
             //Arrange
             var mockRepo = new Mock<IUsersService>();
+            var mockRolesRepo = new Mock<IRolesRepository>();
             mockRepo.Setup(repo => repo.GetAll()).Returns(GetTestUsers());
-            var controller = new UsersController(mockRepo.Object);
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
 
             //Act
             var result = controller.List() as ViewResult;

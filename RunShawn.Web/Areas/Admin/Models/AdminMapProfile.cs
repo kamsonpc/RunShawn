@@ -2,9 +2,11 @@
 using RunShawn.Core.Features.News.Categories.Model;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Core.Features.Pages.Model;
+using RunShawn.Core.Features.Roles.Model;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.News;
 using RunShawn.Web.Areas.Admin.Models.Pages;
+using RunShawn.Web.Areas.Admin.Models.Roles;
 using RunShawn.Web.Areas.Admin.Models.Settings.Menu;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using RunShawn.Web.Extentions;
@@ -54,6 +56,8 @@ namespace RunShawn.Web.Areas.Admin.Models
             CreateMap<MenuItemCreateModel, MenuItem>();
 
             CreateMap<MenuItemViewModel, MenuItem>();
+
+            CreateMap<RoleListViewModel, Role>();
         }
     }
 }

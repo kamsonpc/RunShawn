@@ -119,7 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\News\NewsControllerTests.cs" />
+    <Compile Include="Features\Users\Roles\RolesTests.cs" />
     <Compile Include="Features\Users\UsersControllerTests.cs" />
+    <Compile Include="Helpers\EnumExtensionsTests.cs" />
     <Compile Include="Helpers\ExtentionsTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,12 +23,12 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace RunShawn.Web.Areas.Default.Controllers
+namespace RunShawn.Web.Areas.Admin.Controllers
 {
-    public partial class NewsController
+    public partial class RolesController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected NewsController(Dummy d) { }
+        protected RolesController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -56,27 +56,15 @@ namespace RunShawn.Web.Areas.Default.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult List()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Details()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public NewsController Actions { get { return MVC.Default.News; } }
+        public RolesController Actions { get { return MVC.Admin.Roles; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Default";
+        public readonly string Area = "Admin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "News";
+        public readonly string Name = "Roles";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "News";
+        public const string NameConst = "Roles";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -86,7 +74,6 @@ namespace RunShawn.Web.Areas.Default.Controllers
         {
             public readonly string Index = "Index";
             public readonly string List = "List";
-            public readonly string Details = "Details";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -94,26 +81,9 @@ namespace RunShawn.Web.Areas.Default.Controllers
         {
             public const string Index = "Index";
             public const string List = "List";
-            public const string Details = "Details";
         }
 
 
-        static readonly ActionParamsClass_List s_params_List = new ActionParamsClass_List();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_List ListParams { get { return s_params_List; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_List
-        {
-            public readonly string pageIndex = "pageIndex";
-        }
-        static readonly ActionParamsClass_Details s_params_Details = new ActionParamsClass_Details();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Details DetailsParams { get { return s_params_Details; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Details
-        {
-            public readonly string id = "id";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -124,20 +94,14 @@ namespace RunShawn.Web.Areas.Default.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _FeaturedList = "_FeaturedList";
-                public readonly string Details = "Details";
-                public readonly string List = "List";
             }
-            public readonly string _FeaturedList = "~/Areas/Default/Views/News/_FeaturedList.cshtml";
-            public readonly string Details = "~/Areas/Default/Views/News/Details.cshtml";
-            public readonly string List = "~/Areas/Default/Views/News/List.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_NewsController : RunShawn.Web.Areas.Default.Controllers.NewsController
+    public partial class T4MVC_RolesController : RunShawn.Web.Areas.Admin.Controllers.RolesController
     {
-        public T4MVC_NewsController() : base(Dummy.Instance) { }
+        public T4MVC_RolesController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -151,26 +115,13 @@ namespace RunShawn.Web.Areas.Default.Controllers
         }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? pageIndex);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List(int? pageIndex)
+        public override System.Web.Mvc.ActionResult List()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageIndex", pageIndex);
-            ListOverride(callInfo, pageIndex);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Details(long id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DetailsOverride(callInfo, id);
+            ListOverride(callInfo);
             return callInfo;
         }
 

@@ -256,6 +256,9 @@
     <Compile Include="Admin.PagesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.RolesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.SettingsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -282,6 +285,7 @@
     <Compile Include="Areas\Admin\Controllers\Settings\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AdminMapProfile.cs" />
     <Compile Include="Areas\Admin\Models\News\ArticleListViewModel.cs" />
@@ -291,6 +295,7 @@
     <Compile Include="Areas\Admin\Models\News\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Pages\PageListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Pages\PageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Roles\RoleListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Settings\Menu\MenuItemCreateModel.cs" />
     <Compile Include="Areas\Admin\Models\Settings\Menu\MenuItemViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Settings\Menu\MenuNestedItem.cs" />
@@ -330,7 +335,6 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Default\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
-    <Compile Include="Extentions\Enum\EnumHelper.cs" />
     <Compile Include="Extentions\Grid\GridExtentions.cs" />
     <Compile Include="Extentions\Icons\FontAwesomeHelper.cs" />
     <Compile Include="Extentions\Linq\LinqExtentions.cs" />
@@ -464,6 +468,7 @@
     <Content Include="Areas\Admin\Views\Settings\Menu\Edit.cshtml" />
     <Content Include="Areas\Default\Views\Pages\Page.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\Menu\_CreateForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\List.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
