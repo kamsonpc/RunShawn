@@ -14,7 +14,7 @@ namespace RunShawn.Web
         {
             Database.SetInitializer<ApplicationDbContext>(null);
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            AutoMapperConfiguration.Configure();
+            //  AutoMapperConfiguration.Configure();
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

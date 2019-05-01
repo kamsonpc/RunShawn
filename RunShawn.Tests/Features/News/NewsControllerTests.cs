@@ -1,8 +1,9 @@
-﻿using Moq;
+﻿using AutoMapper;
+using Moq;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Admin.Controllers;
-using RunShawn.Web.Areas.Admin.Models.News;
+using RunShawn.Web.Areas.Default.Models.News;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -19,7 +20,10 @@ namespace RunShawn.Tests.Features.News
             //Arrange
             var mockRepo = new Mock<IArticlesService>();
             mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
-            var controller = new NewsController(mockRepo.Object);
+
+            var mockMapper = new Mock<IMapper>();
+
+            var controller = new NewsController(mockRepo.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;
@@ -35,7 +39,11 @@ namespace RunShawn.Tests.Features.News
             //Arrange
             var mockRepo = new Mock<IArticlesService>();
             mockRepo.Setup(repo => repo.GetAll(false)).Returns(GetTestArticles());
-            var controller = new NewsController(mockRepo.Object);
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<List<ArticleListItemViewModel>>(It.IsAny<List<ArticleListView>>())).Returns(GetTestArticlesList());
+
+            var controller = new NewsController(mockRepo.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;
@@ -43,7 +51,6 @@ namespace RunShawn.Tests.Features.News
             //Asert
             Assert.NotNull(result);
             Assert.NotNull(result.Model);
-            Assert.Single((List<ArticleListViewModel>)result.Model);
         }
 
         private List<ArticleListView> GetTestArticles()
@@ -54,6 +61,22 @@ namespace RunShawn.Tests.Features.News
                 {
                     Id = 1,
                     CreatedDate = DateTime.Now,
+                    Title = "Testowy Artykuł",
+                    PublishDate = DateTime.Now,
+                    CategoryTitle = "abc",
+                    Featured = true,
+                    CreatedByName = "admin"
+                }
+            };
+        }
+
+        private List<ArticleListItemViewModel> GetTestArticlesList()
+        {
+            return new List<ArticleListItemViewModel>
+            {
+                new ArticleListItemViewModel()
+                {
+                    Id = 1,
                     Title = "Testowy Artykuł",
                     PublishDate = DateTime.Now,
                     CategoryTitle = "abc",

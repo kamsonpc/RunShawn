@@ -1,4 +1,5 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
@@ -26,6 +27,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         public IUsersService _usersService { get; internal set; }
         public IRolesRepository _rolesRepository { get; internal set; }
 
+        public IMapper _mapper { get; internal set; }
+
         #region InjectUserManager
 
         private ApplicationUserManager _userManager;
@@ -40,10 +43,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         #region Ctor
 
-        public UsersController(IUsersService usersService, IRolesRepository rolesRepository)
+        public UsersController(IUsersService usersService, IRolesRepository rolesRepository, IMapper mapper)
         {
             _usersService = usersService;
             _rolesRepository = rolesRepository;
+            _mapper = mapper;
         }
 
         public UsersController(ApplicationUserManager userManager)
@@ -66,8 +70,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = _usersService.GetAll()
-                                     .MapTo<List<UserListViewModel>>();
+            var data = _usersService.GetAll();
+            var model = _mapper.Map<List<UserListViewModel>>(data);
 
             return View(MVC.Admin.Users.Views.List, model);
         }
@@ -99,7 +103,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = model.MapTo<ApplicationUser>();
+                var user = _mapper.Map<ApplicationUser>(model);
+
                 try
                 {
                     await UserManager.CreateAsync(user, model.Password).ConfigureAwait(false);

@@ -39,6 +39,7 @@ namespace RunShawn.Web.App_Start
             builder.RegisterType<PermissionsRepository>().As<IPermissionsRepository>();
             builder.RegisterType<RolesRepository>().As<IRolesRepository>();
             builder.RegisterType<RolesService>().As<IRolesService>();
+            builder.RegisterInstance(AutoMapperConfiguration.GetConfig());
         }
 
         #endregion RegisterDepenecies()

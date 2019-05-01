@@ -20,9 +20,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         #region Dependecies
 
         private readonly IArticlesService _articlesService;
+        private readonly IMapper _mapper;
 
-        public NewsController(IArticlesService articlesService)
+        public NewsController(IArticlesService articlesService, IMapper mapper)
         {
+            _mapper = mapper;
             _articlesService = articlesService;
         }
         #endregion
@@ -40,7 +42,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = Mapper.Map<List<ArticleListViewModel>>(_articlesService.GetAll());
+            var model = _mapper.Map<List<ArticleListViewModel>>(_articlesService.GetAll());
 
             return View(MVC.Admin.News.Views.List, model);
         }

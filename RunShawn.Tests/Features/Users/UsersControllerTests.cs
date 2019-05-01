@@ -1,8 +1,10 @@
-﻿using Moq;
+﻿using AutoMapper;
+using Moq;
 using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Users;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Controllers;
+using RunShawn.Web.Areas.Admin.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -19,7 +21,8 @@ namespace RunShawn.Tests.Features.Users
             //Arrange
             var mockRepo = new Mock<IUsersService>();
             var mockRolesRepo = new Mock<IRolesRepository>();
-            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
+            var mockMapper = new Mock<IMapper>();
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object, mockMapper.Object);
 
             //Act
             var result = (RedirectToRouteResult)controller.Index();
@@ -35,9 +38,15 @@ namespace RunShawn.Tests.Features.Users
         {
             //Arrange
             var mockRepo = new Mock<IUsersService>();
+
             var mockRolesRepo = new Mock<IRolesRepository>();
+
             mockRepo.Setup(repo => repo.GetAll()).Returns(GetTestUsers());
-            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<List<UserListViewModel>>(It.IsAny<List<User>>())).Returns(GetTestsUserList);
+
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;
@@ -65,6 +74,26 @@ namespace RunShawn.Tests.Features.Users
                     LastName = "Testowy2",
                     Email = "email2@gmail.com",
                 }
+            };
+        }
+
+        private List<UserListViewModel> GetTestsUserList()
+        {
+            return new List<UserListViewModel>
+            {
+                new UserListViewModel
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FirstName = "User",
+                    LastName = "Testowy"
+                },
+
+                 new UserListViewModel
+                 {
+                    Id = Guid.NewGuid().ToString(),
+                    FirstName = "User",
+                    LastName = "Testowy2"
+                 }
             };
         }
     }

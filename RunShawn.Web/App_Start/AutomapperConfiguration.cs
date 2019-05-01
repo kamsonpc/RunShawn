@@ -6,35 +6,16 @@ namespace RunShawn.Web.App_Start
 {
     public static class AutoMapperConfiguration
     {
-        public static object thislock = new object();
-        private static bool _initialized = false;
-
-        #region Configure()
-        public static void Configure()
+        #region GetConfig()
+        public static IMapper GetConfig()
         {
-            lock (thislock)
-            {
-                if (!_initialized)
-                {
-                    Mapper.Initialize(x =>
-                    {
-                        x.AddProfile<AdminMapProfile>();
-                        x.AddProfile<DefaultMapProfile>();
-                    });
-                    _initialized = true;
-                }
-            }
-        }
-        #endregion
+            var config = new MapperConfiguration(x =>
+             {
+                 x.AddProfile<AdminMapProfile>();
+                 x.AddProfile<DefaultMapProfile>();
+             });
 
-        #region Reset()
-        public static void Reset()
-        {
-            lock (thislock)
-            {
-                Mapper.Reset();
-                _initialized = false;
-            }
+            return config.CreateMapper();
         }
         #endregion
     }

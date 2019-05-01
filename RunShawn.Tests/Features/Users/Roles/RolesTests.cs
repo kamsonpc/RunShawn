@@ -39,6 +39,24 @@ namespace RunShawn.Tests.Features.Users.Roles
 
             var service = new RolesService(mockPermRepo.Object, mockRolesRepo.Object);
 
+            var permissionsDirectory = GeneratePermissionDictionary();
+            var permissions = service.GeneratePermissions(permissionsDirectory);
+            var isRebuildIsNeed = service.IsNeedRebuildPermissions(permissions);
+
+            Assert.True(isRebuildIsNeed);
+        }
+
+        [Fact]
+        public void IsRebuildPermissionsNeed_when_dbtable_empty_returns_true()
+        {
+            var mockRolesRepo = new Mock<IRolesRepository>();
+            var mockPermData = new List<Permission>();
+
+            var mockPermRepo = new Mock<IPermissionsRepository>();
+            mockPermRepo.Setup(repo => repo.GetAll()).Returns(mockPermData);
+
+            var service = new RolesService(mockPermRepo.Object, mockRolesRepo.Object);
+
             var expected = GeneratePermissionsList();
 
             var permissionsDirectory = GeneratePermissionDictionary();

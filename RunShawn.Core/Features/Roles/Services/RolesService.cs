@@ -50,12 +50,15 @@ namespace RunShawn.Core.Features.Roles.Services
         public bool IsNeedRebuildPermissions(List<Permission> permissions)
         {
             var permissionsInDb = _permissionsRepository.GetAll();
+            if (!permissionsInDb.Any())
+                return true;
+
             permissionsInDb = permissionsInDb.Select(x => new Permission { Title = x.Title, Value = x.Value }).ToList();
             permissions = permissions.Select(x => new Permission { Title = x.Title, Value = x.Value }).ToList();
 
             var diff = permissionsInDb.Except(permissions);
 
-            return diff.Count() > 0;
+            return diff.Any();
         }
         #endregion
     }

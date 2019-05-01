@@ -1,4 +1,5 @@
-﻿using MvcPaging;
+﻿using AutoMapper;
+using MvcPaging;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Default.Models.News;
@@ -6,22 +7,22 @@ using RunShawn.Web.Extentions;
 using RunShawn.Web.Extentions.Contoller;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Default.Controllers
 {
     public partial class NewsController : BaseController
     {
-        private const int _defaultPageSize = 10;
-
         #region Dependecies
 
         private IArticlesService _articlesService { get; }
 
-        public NewsController(IArticlesService articlesService)
+        private IMapper _mapper { get; }
+
+        public NewsController(IArticlesService articlesService, IMapper mapper)
         {
             _articlesService = articlesService;
+            _mapper = mapper;
         }
         #endregion
 
@@ -39,11 +40,12 @@ namespace RunShawn.Web.Areas.Default.Controllers
         public virtual ActionResult List(int? pageIndex)
         {
             pageIndex = pageIndex.HasValue ? pageIndex.Value - 1 : 0;
-            var allArticles = _articlesService.GetAll(true)
-                                       .MapTo<List<ArticleListItemViewModel>>();
 
-            var featuredArticles = allArticles.Where(x => x.Featured == true).ToList();
-            var articles = allArticles.Where(x => x.Featured == false)
+            var articlesFromDb = _articlesService.GetAll(true);
+            var allArticles = _mapper.Map<List<ArticleListItemViewModel>>(articlesFromDb);
+
+            var featuredArticles = allArticles.Where(x => x.Featured).ToList();
+            var articles = allArticles.Where(x => !x.Featured)
                                       .ToPagedList(pageIndex.Value, _defaultPageSize);
 
             var model = new ArticleList
@@ -61,23 +63,21 @@ namespace RunShawn.Web.Areas.Default.Controllers
 
         public virtual ActionResult Details(long id)
         {
-            Article entity = null;
-            var link = Url.Action(MVC.Default.News.Details(id));
+            Article article;
             if (User.IsInRole(RoleTypes.Administrator.ToString()) || User.IsInRole(nameof(RoleTypes.SuperUser)))
             {
-                entity = _articlesService.GetByIdForDetails(id);
+                article = _articlesService.GetByIdForDetails(id);
             }
             else
             {
-                entity = _articlesService.GetByIdForDetails(id, true);
+                article = _articlesService.GetByIdForDetails(id, true);
             }
 
-            if (entity == null)
+            if (article == null)
             {
                 return HttpNotFound();
             }
-            var model = entity.MapTo<ArticleViewModel>();
-            model.Content = HttpUtility.HtmlDecode(model.Content);
+            var model = _mapper.Map<ArticleViewModel>(article);
 
             return View(MVC.Default.News.Views.Details, model);
         }
