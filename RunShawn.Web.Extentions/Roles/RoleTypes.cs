@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Web.Extentions.Roles
 {
     public enum RoleTypes
     {

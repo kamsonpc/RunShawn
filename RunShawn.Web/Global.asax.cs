@@ -1,5 +1,5 @@
 ﻿using RunShawn.Web.App_Start;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
 using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Web.Mvc;
 
-namespace RunShawn.Web.Actions.Results
+namespace RunShawn.Web.Extentions.Actions.Results
 {
     public class JsonNetActionResult : ActionResult
     {

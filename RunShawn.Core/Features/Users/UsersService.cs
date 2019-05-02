@@ -8,6 +8,7 @@ namespace RunShawn.Core.Features.Users
     public class UsersService : IUsersService
     {
         #region GetAll()
+
         public List<User> GetAll()
         {
             return Database.Open().AspNetUsers.All();

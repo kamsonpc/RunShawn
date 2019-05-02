@@ -14,7 +14,7 @@
  * http://elusiveicons.com/
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: '',
         iconClassFix: 'el-icon-',
@@ -329,7 +329,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_elusiveicon = data;
 })(jQuery);
@@ -341,7 +341,7 @@
  * CDN: https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/[VERSION]/css/flag-icon.min.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'flag-icon',
         iconClassFix: 'flag-icon-',
@@ -608,7 +608,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_flagicon = data;
 })(jQuery);
@@ -620,7 +620,7 @@
  * CDN: https://maxcdn.bootstrapcdn.com/font-awesome/[VERSION]/css/font-awesome.min.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'fa',
         iconClassFix: 'fa-',
@@ -1531,7 +1531,7 @@
                     'youtube',
                     'youtube-play',
                     'youtube-square'
-                    ]
+                ]
             },
             {
                 version: '4.2.0',
@@ -6929,7 +6929,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_fontawesome_4 = data;
 })(jQuery);
@@ -6941,7 +6941,7 @@
  * CDN: https://use.fontawesome.com/releases/[VERSION]/css/all.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: '',
         iconClassFix: '',
@@ -10950,7 +10950,7 @@
  * Versions: 3.3.7
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'glyphicon',
         iconClassFix: 'glyphicon-',
@@ -11166,7 +11166,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_glyphicon = data;
 })(jQuery);
@@ -11178,7 +11178,7 @@
  * CDN: http://code.ionicframework.com/ionicons/[VERSION]/css/ionicons.min.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: '',
         iconClassFix: 'ion-',
@@ -12535,7 +12535,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_ionicon = data;
 })(jQuery);
@@ -12546,7 +12546,7 @@
  * https://github.com/scottdejonge/Map-Icons
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: '',
         iconClassFix: 'map-icon-',
@@ -12737,7 +12737,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_mapicon = data;
 })(jQuery);
@@ -12749,7 +12749,7 @@
  * CDN: https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/[VERSION]/css/material-design-iconic-font.min.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'zmdi',
         iconClassFix: 'zmdi-',
@@ -17892,7 +17892,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_materialdesign = data;
 })(jQuery);
@@ -17905,7 +17905,7 @@
  * CDN: https://cdnjs.cloudflare.com/ajax/libs/octicons/3.x.x/octicons.min.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'octicon',
         iconClassFix: 'octicon-',
@@ -23070,7 +23070,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_octicon = data;
 })(jQuery);
@@ -23082,7 +23082,7 @@
  * CDN: https://cdnjs.cloudflare.com/ajax/libs/typicons/[VERSION]/typicons.css
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'typcn',
         iconClassFix: 'typcn-',
@@ -26108,7 +26108,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_typicon = data;
 })(jQuery);
@@ -26119,7 +26119,7 @@
  * http://erikflowers.github.io/weather-icons/
  * ======================================================================== */
 
-;(function($){
+; (function ($) {
     var data = {
         iconClass: 'wi',
         iconClassFix: 'wi-',
@@ -26485,7 +26485,7 @@
     };
 
     var l = data.allVersions.length;
-    data.icons = data.allVersions[l-1].icons;
+    data.icons = data.allVersions[l - 1].icons;
 
     $.iconset_weathericon = data;
 })(jQuery);

@@ -1,10 +1,11 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.Pages;
 using RunShawn.Core.Features.Pages.Model;
 using RunShawn.Web.Areas.Admin.Models.Pages;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -14,6 +15,14 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize]
     public partial class PagesController : BaseController
     {
+        #region Depenecies
+        private readonly IMapper _mapper;
+        public PagesController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+        #endregion
+
         #region Index()
 
         public virtual ActionResult Index()
@@ -27,8 +36,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = PagesService.GetAll()
-                              .MapTo<List<PageListViewModel>>();
+            var pages = PagesService.GetAll();
+            var model = _mapper.Map<List<PageListViewModel>>(pages);
 
             return View(MVC.Admin.Pages.Views.List, model);
         }
@@ -48,7 +57,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var page = model.MapTo<Page>();
+                var page = _mapper.Map<Page>(model);
 
                 PagesService.Create(page, User.Identity.GetUserId());
 
@@ -67,7 +76,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Edit(long id)
         {
-            var model = PagesService.GetById(id).MapTo<PageViewModel>();
+            var page = PagesService.GetById(id);
+            var model = _mapper.Map<PageViewModel>(page);
             return View(MVC.Admin.Pages.Views.Edit, model);
         }
 
@@ -77,7 +87,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var page = model.MapTo<Page>();
+                var page = _mapper.Map<Page>(model);
 
                 PagesService.Update(page, User.Identity.GetUserId());
 

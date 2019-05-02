@@ -7,6 +7,7 @@ namespace RunShawn.Web.App_Start
     public static class AutoMapperConfiguration
     {
         #region GetConfig()
+
         public static IMapper GetConfig()
         {
             var config = new MapperConfiguration(x =>
@@ -17,6 +18,7 @@ namespace RunShawn.Web.App_Start
 
             return config.CreateMapper();
         }
-        #endregion
+
+        #endregion GetConfig()
     }
 }

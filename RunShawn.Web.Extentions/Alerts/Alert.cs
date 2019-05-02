@@ -1,6 +1,6 @@
-﻿using FluentBootstrap;
+using FluentBootstrap;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Web.Extentions.Alerts
 {
     public class Alert
     {

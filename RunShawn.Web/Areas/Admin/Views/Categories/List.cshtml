@@ -4,11 +4,11 @@
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
-    <text>Kategorie</text>
+<text>Kategorie</text>
 }
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
-    @group.Button("Dodaj").SetId("btn-add").SetIcon(Icon.Plus).SetState(ButtonState.Success)
+@group.Button("Dodaj").SetId("btn-add").SetIcon(Icon.Plus).SetState(ButtonState.Success)
 }
 <div id="categories-list">
     @Html.Action(MVC.Admin.Categories.GenerateList())

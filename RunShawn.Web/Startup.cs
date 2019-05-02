@@ -6,8 +6,8 @@ using RunShawn.Core.Features.Roles;
 using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Roles.Services;
 using RunShawn.Core.Helpers.Enums;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
+using RunShawn.Web.Extentions.Roles;
 
 [assembly: OwinStartupAttribute(typeof(RunShawn.Web.Startup))]
 

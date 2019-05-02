@@ -9,8 +9,8 @@ using RunShawn.Web.Areas.Admin.Models.Pages;
 using RunShawn.Web.Areas.Admin.Models.Roles;
 using RunShawn.Web.Areas.Admin.Models.Settings.Menu;
 using RunShawn.Web.Areas.Admin.Models.Users;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
+using RunShawn.Web.Extentions.Mapper;
 using System.Web.UI.WebControls;
 
 namespace RunShawn.Web.Areas.Admin.Models

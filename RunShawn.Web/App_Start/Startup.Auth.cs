@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
 using System;
 
 namespace RunShawn.Web

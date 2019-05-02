@@ -32,7 +32,7 @@
             <ul class="navigation-menu">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li><a href="#">@User.Identity.Name</a></li>
+                <li><a href="#">@User.Identity.Name</a></li>
                 }
             </ul>
         </nav>
@@ -47,11 +47,11 @@
                     <ul>
                         @if (User.IsInRole(RoleTypes.Administrator.ToString()))
                         {
-                            <li class="name"><a href="#">@RoleTypes.Administrator.GetDescription()</a></li>
+                        <li class="name"><a href="#">@RoleTypes.Administrator.GetDescription()</a></li>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="group"><a href="#">@User.Identity.Name</a></li>
+                        <li class="group"><a href="#">@User.Identity.Name</a></li>
                         }
                         <li class="rs-btn-default rs-btn-blue"><a href="@Url.Action(MVC.Admin.Manage.Index())">Ustawienia Konta</a></li>
                     </ul>
@@ -61,10 +61,10 @@
                     {
                         using (Html.BeginForm(MVC.Admin.Account.LogOff(), FormMethod.Post, new { id = "logoutForm"}))
                         {
-                            @Html.AntiForgeryToken()
-                            <button class="rs-btn-default rs-btn-blue">
-                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj się</a>
-                            </button>
+                    @Html.AntiForgeryToken()
+                    <button class="rs-btn-default rs-btn-blue">
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj się</a>
+                    </button>
                         }
                     }
                 </div>
@@ -89,15 +89,15 @@
         </section>
     </header>
     <main id="dashboard-main">
-            @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
+        @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
         <section id="page-container">
-             @{
+            @{
                  var alert = TempData["Alert"] as Alert;
                  if(alert != null)
                  {
                     Html.RenderPartial(MVC.Shared.Views._Alert, alert);
                  }
-             }
+            }
             <div class="breadcrumbs-container">
                 @Html.MvcSiteMap().SiteMapPath()
             </div>
@@ -110,10 +110,8 @@
 <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="~/Scripts/utils.js"></script>
-
 </script>
-    @Scripts.Render("~/bundles/validate")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/datepicker")
+@Scripts.Render("~/bundles/validate")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/datepicker")
 </html>
-

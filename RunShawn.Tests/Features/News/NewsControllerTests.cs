@@ -3,7 +3,7 @@ using Moq;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Admin.Controllers;
-using RunShawn.Web.Areas.Default.Models.News;
+using RunShawn.Web.Areas.Admin.Models.News;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -32,7 +32,6 @@ namespace RunShawn.Tests.Features.News
             Assert.Equal(MVC.Admin.News.Views.List, result.ViewName);
         }
 
-
         [Fact]
         public void List_View_Result_IsNot_Null()
         {
@@ -41,7 +40,7 @@ namespace RunShawn.Tests.Features.News
             mockRepo.Setup(repo => repo.GetAll(false)).Returns(GetTestArticles());
 
             var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<List<ArticleListItemViewModel>>(It.IsAny<List<ArticleListView>>())).Returns(GetTestArticlesList());
+            mockMapper.Setup(m => m.Map<List<ArticleListViewModel>>(It.IsAny<List<ArticleListView>>())).Returns(GetTestArticlesList());
 
             var controller = new NewsController(mockRepo.Object, mockMapper.Object);
 
@@ -70,11 +69,11 @@ namespace RunShawn.Tests.Features.News
             };
         }
 
-        private List<ArticleListItemViewModel> GetTestArticlesList()
+        private List<ArticleListViewModel> GetTestArticlesList()
         {
-            return new List<ArticleListItemViewModel>
+            return new List<ArticleListViewModel>
             {
-                new ArticleListItemViewModel()
+                new ArticleListViewModel()
                 {
                     Id = 1,
                     Title = "Testowy Artykuł",

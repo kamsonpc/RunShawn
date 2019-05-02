@@ -5,8 +5,8 @@ using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Admin.Models.News;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             _mapper = mapper;
             _articlesService = articlesService;
         }
-        #endregion
+
+        #endregion Dependecies
 
         #region Index()
 
@@ -42,7 +43,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = _mapper.Map<List<ArticleListViewModel>>(_articlesService.GetAll());
+            var articlesFromDb = _articlesService.GetAll();
+            var model = _mapper.Map<List<ArticleListViewModel>>(articlesFromDb);
 
             return View(MVC.Admin.News.Views.List, model);
         }
@@ -77,7 +79,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    var article = model.MapTo<Article>();
+                    var article = _mapper.Map<Article>(model);
 
                     _articlesService.Create(article, User.Identity.GetUserId());
 
@@ -118,7 +120,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               })
                                               .ToList();
 
-            var model = _articlesService.GetById(id).MapTo<ArticleViewModel>();
+            var article = _articlesService.GetById(id);
+            var model = _mapper.Map<ArticleViewModel>(article);
             model.Categories = categories;
 
             return View(MVC.Admin.News.Views.Edit, model);
@@ -130,7 +133,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var article = model.MapTo<Article>();
+                var article =_mapper.Map<Article>(model);
 
                 _articlesService.Update(article, User.Identity.GetUserId());
 

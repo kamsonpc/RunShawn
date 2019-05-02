@@ -9,6 +9,7 @@ namespace RunShawn.Core.Features.Roles.Repository
     public class PermissionsRepository : BaseRepository, IPermissionsRepository
     {
         #region Add()
+
         public Permission Add(Permission permission)
         {
             try
@@ -21,9 +22,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion Add()
 
         #region Delete()
+
         public void Delete(string Id)
         {
             try
@@ -36,9 +39,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
+
         #endregion Delete()
 
         #region GetAll()
+
         public List<Permission> GetAll()
         {
             try
@@ -51,9 +56,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion GetAll()
 
         #region GetById()
+
         public Permission GetById(string id)
         {
             try
@@ -66,9 +73,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion GetById()
 
         #region GetPermissionsByUser()
+
         public List<int> GetPermissionsByRole(string id)
         {
             try
@@ -81,9 +90,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion GetPermissionsByUser()
 
         #region InsertMany()
+
         public void InsertMany(List<Permission> permissions)
         {
             try
@@ -96,9 +107,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion InsertMany()
 
         #region DeleteAll()
+
         public void DeleteAll()
         {
             try
@@ -111,6 +124,7 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion DeleteAll()
     }
 }

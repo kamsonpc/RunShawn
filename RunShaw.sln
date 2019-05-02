@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShaw.Database", "RunShaw.Database\RunShaw.Database.csproj", "{0D83756A-C668-4D80-8180-557B4A6912AE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Web", "RunShawn.Web\RunShawn.Web.csproj", "{0A5E4F07-BF8E-4B11-A79C-AED985966D44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Tests", "RunShawn.Tests\RunShawn.Tests.csproj", "{332B9FEB-9C11-48D3-93D4-69E3BD9AFA5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunShawn.Web.Extentions", "RunShawn.Web.Extentions\RunShawn.Web.Extentions.csproj", "{408856D7-6A6E-48C8-BB3A-70C85AD83CDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{332B9FEB-9C11-48D3-93D4-69E3BD9AFA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{332B9FEB-9C11-48D3-93D4-69E3BD9AFA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{332B9FEB-9C11-48D3-93D4-69E3BD9AFA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408856D7-6A6E-48C8-BB3A-70C85AD83CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408856D7-6A6E-48C8-BB3A-70C85AD83CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408856D7-6A6E-48C8-BB3A-70C85AD83CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408856D7-6A6E-48C8-BB3A-70C85AD83CDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

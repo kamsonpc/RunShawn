@@ -1,7 +1,7 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.RegularExpressions;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Web.Extentions.Strings
 {
     public static class StringHelper
     {

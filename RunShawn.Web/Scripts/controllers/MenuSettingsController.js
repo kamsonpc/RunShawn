@@ -45,7 +45,7 @@
         });
     },
     addNewMenuItem: function () {
-         var ctrl = this;
+        var ctrl = this;
         $("#add-menu-item").submit(function (e) {
             var form = $(this);
             var url = form.attr('action');

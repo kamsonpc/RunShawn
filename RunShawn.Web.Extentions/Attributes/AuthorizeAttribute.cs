@@ -1,9 +1,9 @@
-﻿using RunShawn.Web.Extentions;
+using RunShawn.Web.Extentions.Roles;
 using System;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RunShawn.Web.Attributes
+namespace RunShawn.Web.Extentions.Attributes
 {
     public class AuthorizedRoleAttribute : AuthorizeAttribute
     {
@@ -18,7 +18,7 @@ namespace RunShawn.Web.Attributes
 
         #region AuthorizeCore
 
-        protected override bool AuthorizeCore(HttpContextBase piHttpContext)
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             return Role == RoleTypes.Administrator.ToString();
         }
@@ -27,9 +27,9 @@ namespace RunShawn.Web.Attributes
 
         #region HandleUnauthorizedRequest()
 
-        protected override void HandleUnauthorizedRequest(AuthorizationContext piFilterContext)
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            base.HandleUnauthorizedRequest(piFilterContext);
+            base.HandleUnauthorizedRequest(filterContext);
         }
 
         #endregion HandleUnauthorizedRequest()

@@ -7,11 +7,11 @@
 
 @using (Html.Bootstrap().Heading2().Begin())
 {
-    <text>Użytkownicy</text>
+<text>Użytkownicy</text>
 }
 @using (var group = Html.Bootstrap().ButtonGroup().Begin())
 {
-    @group.LinkButton("Dodaj", MVC.Admin.Users.Create()).SetIcon(Icon.Plus).SetState(ButtonState.Success)
+@group.LinkButton("Dodaj", MVC.Admin.Users.Create()).SetIcon(Icon.Plus).SetState(ButtonState.Success)
 }
 
 @(

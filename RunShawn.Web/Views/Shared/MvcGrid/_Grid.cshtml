@@ -12,28 +12,28 @@
                     String sortableClass = column.Sort.IsEnabled == true && Model.FilterMode != GridFilterMode.HeaderRow ? "sortable" : null;
                     String filterableClass = column.Filter.IsEnabled == true && Model.FilterMode != GridFilterMode.FilterRow ? "filterable" : null;
 
-                    <th class="@filterableClass @sortableClass @column.CssClasses"
-                        data-name="@column.Name"
-                        data-filter="@column.Filter.IsEnabled"
-                        data-filter-name="@column.Filter.Name"
-                        data-filter-multi="@column.Filter.IsMulti"
-                        data-filter-default-method="@column.Filter.DefaultMethod"
-                        data-filter-first-method="@(column.Filter.First != null ? column.Filter.First.Method : "")"
-                        data-filter-first-value="@(column.Filter.First != null ? column.Filter.First.Value : "")"
-                        data-filter-operator="@column.Filter.Operator"
-                        data-filter-second-method="@(column.Filter.Second != null ? column.Filter.Second.Method : "")"
-                        data-filter-second-value="@(column.Filter.Second != null ? column.Filter.Second.Value : "")"
-                        data-sort="@column.Sort.IsEnabled"
-                        data-sort-order="@column.Sort.Order.ToString().ToLower()"
-                        data-sort-first="@column.Sort.FirstOrder">
-                        @if (column.Filter.IsEnabled == true && Model.FilterMode != GridFilterMode.FilterRow)
+                <th class="@filterableClass @sortableClass @column.CssClasses"
+                    data-name="@column.Name"
+                    data-filter="@column.Filter.IsEnabled"
+                    data-filter-name="@column.Filter.Name"
+                    data-filter-multi="@column.Filter.IsMulti"
+                    data-filter-default-method="@column.Filter.DefaultMethod"
+                    data-filter-first-method="@(column.Filter.First != null ? column.Filter.First.Method : "")"
+                    data-filter-first-value="@(column.Filter.First != null ? column.Filter.First.Value : "")"
+                    data-filter-operator="@column.Filter.Operator"
+                    data-filter-second-method="@(column.Filter.Second != null ? column.Filter.Second.Method : "")"
+                    data-filter-second-value="@(column.Filter.Second != null ? column.Filter.Second.Value : "")"
+                    data-sort="@column.Sort.IsEnabled"
+                    data-sort-order="@column.Sort.Order.ToString().ToLower()"
+                    data-sort-first="@column.Sort.FirstOrder">
+                    @if (column.Filter.IsEnabled == true && Model.FilterMode != GridFilterMode.FilterRow)
                         {
                             String filterApplied = (column.Filter.First ?? column.Filter.Second) != null ? "applied" : "";
 
                             if (Model.FilterMode == GridFilterMode.HeaderRow)
                             {
-                                <div>
-                                    @{
+                    <div>
+                        @{
                                         String title = (column.Title as String) ?? "";
                                         Int32 size = title.Length > 0 ? title.Length : 20;
                                         String value = column.Filter.First != null ? column.Filter.First.Value : "";
@@ -47,74 +47,74 @@
                                                 break;
                                             }
                                         }
-                                    }
+                        }
 
-                                    <input class="mvc-grid-value" value="@value" size="@size" placeholder="@column.Title" />
-                                </div>
+                        <input class="mvc-grid-value" value="@value" size="@size" placeholder="@column.Title" />
+                    </div>
                             }
                             else
                             {
-                                <span class="mvc-grid-header-title @column.Sort.Order.ToString().ToLower()">@column.Title</span>
+                    <span class="mvc-grid-header-title @column.Sort.Order.ToString().ToLower()">@column.Title</span>
                             }
 
-                            <select class="mvc-grid-options">
-                                @foreach (SelectListItem option in column.Filter.Options)
+                    <select class="mvc-grid-options">
+                        @foreach (SelectListItem option in column.Filter.Options)
                                 {
-                                    <option value="@option.Value">@option.Text</option>
+                        <option value="@option.Value">@option.Text</option>
                                 }
-                            </select>
+                    </select>
 
-                            <button type="button" class="mvc-grid-filter @filterApplied"></button>
+                    <button type="button" class="mvc-grid-filter @filterApplied"></button>
                         }
                         else
                         {
-                            <span class="mvc-grid-header-title @column.Sort.Order.ToString().ToLower()">@column.Title</span>
+                    <span class="mvc-grid-header-title @column.Sort.Order.ToString().ToLower()">@column.Title</span>
                         }
-                    </th>
+                </th>
                 }
             </tr>
             @if (Model.FilterMode == GridFilterMode.FilterRow)
             {
-                <tr class="mvc-grid-row-filters">
-                    @foreach (IGridColumn column in Model.Columns)
+            <tr class="mvc-grid-row-filters">
+                @foreach (IGridColumn column in Model.Columns)
                     {
                         if (column.Filter.IsEnabled == true)
                         {
-                            <th class="filterable @column.CssClasses">
-                                @{ String filterApplied = (column.Filter.First ?? column.Filter.Second) != null ? "applied" : ""; }
+                <th class="filterable @column.CssClasses">
+                    @{ String filterApplied = (column.Filter.First ?? column.Filter.Second) != null ? "applied" : ""; }
 
-                                <div>
-                                    @if (column.Filter.Options.Any())
+                    <div>
+                        @if (column.Filter.Options.Any())
                                     {
-                                        <select class="mvc-grid-value">
-                                            @foreach (SelectListItem option in column.Filter.Options)
+                        <select class="mvc-grid-value">
+                            @foreach (SelectListItem option in column.Filter.Options)
                                             {
                                                 if (column.Filter.First != null && column.Filter.First.Value == option.Value)
                                                 {
-                                                    <option value="@option.Value" selected>@option.Text</option>
+                            <option value="@option.Value" selected>@option.Text</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@option.Value">@option.Text</option>
+                            <option value="@option.Value">@option.Text</option>
                                                 }
                                             }
-                                        </select>
+                        </select>
                                     }
                                     else
                                     {
-                                        <input class="mvc-grid-value" value="@(column.Filter.First != null ? column.Filter.First.Value : "")" />
+                        <input class="mvc-grid-value" value="@(column.Filter.First != null ? column.Filter.First.Value : "")" />
                                     }
 
-                                    <button type="button" class="mvc-grid-filter @filterApplied"></button>
-                                </div>
-                            </th>
+                        <button type="button" class="mvc-grid-filter @filterApplied"></button>
+                    </div>
+                </th>
                         }
                         else
                         {
-                            <th class="@column.CssClasses"></th>
+                <th class="@column.CssClasses"></th>
                         }
                     }
-                </tr>
+            </tr>
             }
         </thead>
         <tbody>
@@ -122,31 +122,31 @@
             {
                 foreach (IGridRow<Object> row in Model.Rows)
                 {
-                    <tr class="@row.CssClasses"@row.Attributes>
-                        @foreach (IGridColumn column in Model.Columns)
+            <tr class="@row.CssClasses" @row.Attributes>
+                @foreach (IGridColumn column in Model.Columns)
                         {
-                            <td class="@column.CssClasses">@column.ValueFor(row)</td>
+                <td class="@column.CssClasses">@column.ValueFor(row)</td>
                         }
-                    </tr>
+            </tr>
                 }
             }
             else if (Model.EmptyText != null)
             {
-                <tr class="mvc-grid-empty-row">
-                    <td colspan="@Model.Columns.Count()">
-                        @Model.EmptyText
-                    </td>
-                </tr>
+            <tr class="mvc-grid-empty-row">
+                <td colspan="@Model.Columns.Count()">
+                    @Model.EmptyText
+                </td>
+            </tr>
             }
         </tbody>
         @if (Model.FooterPartialViewName != null)
         {
-            <tfoot>
-                @Html.Partial(Model.FooterPartialViewName, Model)
-            </tfoot>
+        <tfoot>
+            @Html.Partial(Model.FooterPartialViewName, Model)
+        </tfoot>
         }
-    </table>
-    @if (Model.Pager != null)
+        </table>
+        @if (Model.Pager != null)
     {
         @Html.Partial(Model.Pager.PartialViewName, Model.Pager)
     }

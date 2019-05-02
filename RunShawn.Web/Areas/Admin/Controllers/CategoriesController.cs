@@ -1,12 +1,13 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.Categories.Model;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Web.Areas.Admin.Models.News;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Attributes;
+using RunShawn.Web.Extentions.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -17,14 +18,17 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class CategoriesController : BaseController
     {
         #region Dependencies
-        private readonly IArticlesService _articlesService;
 
-        public CategoriesController(IArticlesService articlesService)
+        private readonly IArticlesService _articlesService;
+        private readonly IMapper _mapper;
+
+        public CategoriesController(IArticlesService articlesService, IMapper mapper)
         {
             _articlesService = articlesService;
+            _mapper = mapper;
         }
 
-        #endregion
+        #endregion Dependencies
 
         #region Index()
 
@@ -44,10 +48,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult GenerateList()
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
-                                              .MapTo<List<CategoryListViewModel>>();
+            var categories = CategoriesService.GetCategoriesAndSubcategories();
+            var model = _mapper.Map<List<CategoryListViewModel>>(categories);
 
-            return PartialView(MVC.Admin.Categories.Views._List, categories);
+            return PartialView(MVC.Admin.Categories.Views._List, model);
         }
 
         #endregion List()
@@ -85,7 +89,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = model.MapTo<Category>();
+                var category = _mapper.Map<Category>(model);
 
                 CategoriesService.Create(category, User.Identity.GetUserId());
 
@@ -119,8 +123,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               })
                                               .ToList();
 
-            var model = CategoriesService.GetById(id)
-                                         .MapTo<CategoryViewModel>();
+            var category = CategoriesService.GetById(id);
+            var model = _mapper.Map<CategoryViewModel>(category);
 
             model.Categories = categories;
 
@@ -137,7 +141,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = model.MapTo<Category>();
+                var category = _mapper.Map<Category>(model);
 
                 CategoriesService.Update(category, User.Identity.GetUserId());
 
@@ -145,14 +149,13 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
                                                   Text = x.Title
                                               })
                                               .ToList();
-            model.Categories = categories;
 
             return PartialView(MVC.Admin.Categories.Views._Edit, model);
         }

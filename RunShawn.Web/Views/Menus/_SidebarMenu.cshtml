@@ -1,7 +1,7 @@
 ﻿@using RunShawn.Web.Models
 @model List<Menu>
 
-    @foreach (Menu menu in Model)
+@foreach (Menu menu in Model)
     {
 <ul>
     <li class="category-header @{
@@ -31,17 +31,17 @@
     </li>
     @if (menu.SubMenus.Any())
     {
-        <ol>
+    <ol>
 
-            @foreach (SubMenu subMenu in menu.SubMenus)
+        @foreach (SubMenu subMenu in menu.SubMenus)
             {
-                <li>
-                    <a href="@Url.Content(subMenu.Url)">
-                        @subMenu.Name
-                    </a>
-                </li>
+        <li>
+            <a href="@Url.Content(subMenu.Url)">
+                @subMenu.Name
+            </a>
+        </li>
             }
-        </ol>
+    </ol>
     }
 </ul>
     }

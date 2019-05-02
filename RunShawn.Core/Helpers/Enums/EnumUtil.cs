@@ -9,6 +9,7 @@ namespace RunShawn.Core.Helpers.Enums
     public static class EnumUtil
     {
         #region GetDescription()
+
         public static string GetDescription<T>(this T enumerationValue)
         where T : struct
         {
@@ -34,6 +35,7 @@ namespace RunShawn.Core.Helpers.Enums
         #endregion GetDescription()
 
         #region Dictionary()
+
         public static Dictionary<int, string> ToDictionary<T>() where T : struct
         {
             if (!typeof(T).IsEnum)
@@ -45,6 +47,7 @@ namespace RunShawn.Core.Helpers.Enums
                 .Cast<T>()
                 .ToDictionary(t => (int)(object)t, t => t.ToString());
         }
-        #endregion
+
+        #endregion Dictionary()
     }
 }

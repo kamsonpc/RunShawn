@@ -16,10 +16,10 @@
     min-width: 60px;
 }
 
-.iconpicker input.search-control {
-    margin-bottom: 6px;
-    margin-top: 6px;
-}
+    .iconpicker input.search-control {
+        margin-bottom: 6px;
+        margin-top: 6px;
+    }
 
 div.iconpicker.left .table-icons {
     margin-right: auto;
@@ -51,10 +51,10 @@ div.iconpicker.right .table-icons {
 }
 
 .iconpicker-popover {
-  z-index: 1050 !important;
+    z-index: 1050 !important;
 }
 
-.iconpicker-popover .search-control {
-    margin-bottom: 6px;
-    margin-top: 6px;
-}
+    .iconpicker-popover .search-control {
+        margin-bottom: 6px;
+        margin-top: 6px;
+    }

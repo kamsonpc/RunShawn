@@ -1,6 +1,6 @@
-﻿using System.Web.Mvc;
+using System.Web.Mvc;
 
-namespace RunShawn.Web.Attributes
+namespace RunShawn.Web.Extentions.Attributes
 {
     public class AjaxOnlyAttribute : ActionMethodSelectorAttribute
     {

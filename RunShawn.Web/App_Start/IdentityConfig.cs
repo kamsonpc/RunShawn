@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -82,6 +82,7 @@ namespace RunShawn.Web
             }
             return manager;
         }
+
     }
 
     // Configure the application sign-in manager which is used in this application.

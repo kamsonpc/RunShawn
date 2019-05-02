@@ -1,8 +1,8 @@
-﻿using RunShawn.Core.Features.Roles.Repository;
+﻿using AutoMapper;
+using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Users;
 using RunShawn.Web.Areas.Admin.Models.Roles;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Controllers;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -11,13 +11,20 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize()]
     public partial class RolesController : BaseController
     {
-        public IRolesRepository _rolesRepository { get; internal set; }
 
-        #region Ctor
+        #region Dependecies
+        private readonly IUsersService _usersService;
+        private readonly IRolesRepository _rolesRepository;
+        private readonly IMapper _mapper;
 
-        public RolesController(IUsersService usersService, IRolesRepository rolesRepository)
+        public RolesController(
+            IUsersService usersService,
+            IRolesRepository rolesRepository,
+            IMapper mapper)
         {
+            _usersService = usersService;
             _rolesRepository = rolesRepository;
+            _mapper = mapper;
         }
 
         #endregion Ctor
@@ -35,8 +42,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = _rolesRepository.GetAll()
-                                     .MapTo<List<RoleListViewModel>>();
+            var roles = _rolesRepository.GetAll();
+            var model = _mapper.Map<List<RoleListViewModel>>(roles);
 
             return View(MVC.Admin.Users.Views.List, model);
         }

@@ -7,11 +7,11 @@
 
 <h2>Ustawiena Menu</h2>
 
-        <div class="col-md-8">
-                <ul id="myEditor" class="sortableLists list-group"></ul>
-                <button class="btn btn-success" id="save">Zapisz</button>
-            </div>
-         @Html.Partial(MVC.Admin.Settings.Views.Menu._CreateForm)
+<div class="col-md-8">
+    <ul id="myEditor" class="sortableLists list-group"></ul>
+    <button class="btn btn-success" id="save">Zapisz</button>
+</div>
+@Html.Partial(MVC.Admin.Settings.Views.Menu._CreateForm)
 
 @Html.Bootstrap().Button("Zapisz").SetState(ButtonState.Primary).SetId("save")
 <script>

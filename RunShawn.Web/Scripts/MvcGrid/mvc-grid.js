@@ -200,7 +200,7 @@ var MvcGrid = (function () {
         },
         startLoading: function (success, error) {
             var grid = this;
-            var query = (grid.query.toString() ? grid.query + '&': '?') + '_=' + Date.now();
+            var query = (grid.query.toString() ? grid.query + '&' : '?') + '_=' + Date.now();
 
             grid.stopLoading();
             if (grid.loadingDelay != null && !grid.element.querySelector('.mvc-grid-loader')) {
@@ -723,16 +723,16 @@ var MvcGridFilter = (function () {
 
             return '<div class="popup-arrow"></div>' +
                 '<div class="popup-content">' +
+                '<div class="popup-filter">' +
+                this.renderFilter('first') +
+                '</div>' +
+                (this.mode == 'ExcelRow' && this.isMulti
+                    ? this.renderOperator() +
                     '<div class="popup-filter">' +
-                        this.renderFilter('first') +
-                    '</div>' +
-                    (this.mode == 'ExcelRow' && this.isMulti
-                        ? this.renderOperator() +
-                        '<div class="popup-filter">' +
-                            this.renderFilter('second') +
-                        '</div>'
-                        : '') +
-                    this.renderActions() +
+                    this.renderFilter('second') +
+                    '</div>'
+                    : '') +
+                this.renderActions() +
                 '</div>';
         },
         renderFilter: function (name) {
@@ -740,35 +740,35 @@ var MvcGridFilter = (function () {
             var lang = this.lang[this.column.filter.name] || {};
 
             return '<div class="popup-group">' +
-                       '<select class="mvc-grid-method" data-filter="' + name + '">' +
-                           this.methods.map(function (method) {
-                               return '<option value="' + method + '">' + (lang[method] || '') + '</option>';
-                           }).join('') +
-                       '</select>' +
-                   '</div>' +
-                   '<div class="popup-group">' + (hasOptions
-                       ? '<select class="mvc-grid-value" data-filter="' + name + '">' +
-                           this.column.filter.options.innerHTML +
-                       '</select>'
-                       : '<input class="mvc-grid-value" data-filter="' + name + '">') +
-                   '</div>';
+                '<select class="mvc-grid-method" data-filter="' + name + '">' +
+                this.methods.map(function (method) {
+                    return '<option value="' + method + '">' + (lang[method] || '') + '</option>';
+                }).join('') +
+                '</select>' +
+                '</div>' +
+                '<div class="popup-group">' + (hasOptions
+                    ? '<select class="mvc-grid-value" data-filter="' + name + '">' +
+                    this.column.filter.options.innerHTML +
+                    '</select>'
+                    : '<input class="mvc-grid-value" data-filter="' + name + '">') +
+                '</div>';
         },
         renderOperator: function () {
             return '<div class="popup-operator">' +
-                       '<div class="popup-group">' +
-                           '<select class="mvc-grid-operator">' +
-                               '<option value="">' + this.lang.operator.select + '</option>' +
-                               '<option value="and">' + this.lang.operator.and + '</option>' +
-                               '<option value="or">' + this.lang.operator.or + '</option>' +
-                           '</select>' +
-                       '</div>' +
-                   '</div>';
+                '<div class="popup-group">' +
+                '<select class="mvc-grid-operator">' +
+                '<option value="">' + this.lang.operator.select + '</option>' +
+                '<option value="and">' + this.lang.operator.and + '</option>' +
+                '<option value="or">' + this.lang.operator.or + '</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>';
         },
         renderActions: function () {
             return '<div class="popup-actions">' +
-                       '<button type="button" class="mvc-grid-apply" type="button">' + this.lang.filter.apply + '</button>' +
-                       '<button type="button" class="mvc-grid-cancel" type="button">' + this.lang.filter.remove + '</button>' +
-                   '</div>';
+                '<button type="button" class="mvc-grid-apply" type="button">' + this.lang.filter.apply + '</button>' +
+                '<button type="button" class="mvc-grid-cancel" type="button">' + this.lang.filter.remove + '</button>' +
+                '</div>';
         },
 
         apply: function () {

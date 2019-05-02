@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace RunShawn.Web.Attributes
+namespace RunShawn.Web.Extentions.Attributes
 {
     #region MenuItemAttribute
 

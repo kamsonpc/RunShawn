@@ -175,12 +175,12 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void GetMenuTreeOverride(T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult callInfo);
+        partial void GetMenuTreeOverride(T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult callInfo);
 
         [NonAction]
-        public override RunShawn.Web.Actions.Results.JsonNetActionResult GetMenuTree()
+        public override RunShawn.Web.Extentions.Actions.Results.JsonNetActionResult GetMenuTree()
         {
-            var callInfo = new T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult(Area, Name, ActionNames.GetMenuTree);
+            var callInfo = new T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult(Area, Name, ActionNames.GetMenuTree);
             GetMenuTreeOverride(callInfo);
             return callInfo;
         }

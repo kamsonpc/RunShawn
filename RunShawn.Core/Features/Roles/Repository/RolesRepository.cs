@@ -18,13 +18,16 @@ namespace RunShawn.Core.Features.Roles.Repository
         #endregion GetAll()
 
         #region GetByUser()
+
         public string GetByUser(string userId)
         {
             return Database.Open().AspNetUserRoles.FindByUserId(userId)?.RoleId;
         }
+
         #endregion GetByUser()
 
         #region Add()
+
         public Role Add(Role role)
         {
             try
@@ -37,9 +40,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion Add()
 
         #region Update()
+
         public Role Update(Role role)
         {
             try
@@ -52,9 +57,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion Update()
 
         #region Delete()
+
         public void Delete(string id)
         {
             try
@@ -67,9 +74,11 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
+
         #endregion Delete()
 
         #region SetRole()
+
         public void SetRole(UserRole userRole)
         {
             Database.Open().AspNetUserRoles.Insert(userRole);
@@ -78,6 +87,7 @@ namespace RunShawn.Core.Features.Roles.Repository
         #endregion SetRole()
 
         #region ChangeRole()
+
         public void ChangeRole(UserRole userRole)
         {
             Database.Open().AspNetUserRoles.DeleteByUserId(userRole.UserId);
@@ -90,6 +100,7 @@ namespace RunShawn.Core.Features.Roles.Repository
         #endregion ChangeRole()
 
         #region DeleteAllUserRolesConnection()
+
         public void DeleteAllUserRolesConnection()
         {
             try
@@ -102,6 +113,7 @@ namespace RunShawn.Core.Features.Roles.Repository
                 throw;
             }
         }
-        #endregion
+
+        #endregion DeleteAllUserRolesConnection()
     }
 }

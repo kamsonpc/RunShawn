@@ -7,10 +7,10 @@ using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Users;
 using RunShawn.Core.Features.Users.Model;
 using RunShawn.Web.Areas.Admin.Models.Users;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Areas.General.Models;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Controllers;
 using RunShawn.Web.Extentions.Linq;
-using RunShawn.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,10 +24,14 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize()]
     public partial class UsersController : BaseController
     {
+        #region Depenecies
+
         public IUsersService _usersService { get; internal set; }
         public IRolesRepository _rolesRepository { get; internal set; }
 
         public IMapper _mapper { get; internal set; }
+
+        #endregion Depenecies
 
         #region InjectUserManager
 
@@ -148,8 +152,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     })
                                     .ToList();
 
-            var model = _usersService.GetById(id)
-                                     .MapTo<UserEditViewModel>();
+            var user = _usersService.GetById(id);
+            var model = _mapper.Map<UserEditViewModel>(user);
 
             model.RoleId = _rolesRepository.GetByUser(id);
             model.Roles = roles;
@@ -165,7 +169,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    var user = model.MapTo<User>();
+                    var user = _mapper.Map<User>(model);
                     _usersService.Update(user);
 
                     if (!string.IsNullOrEmpty(user.Id))

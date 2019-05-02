@@ -1,8 +1,8 @@
-﻿using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Users;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RunShawn.Web.Attributes
+namespace RunShawn.Web.Extentions.Attributes
 {
     public class AuthorizeUserAttribute : AuthorizeAttribute
     {

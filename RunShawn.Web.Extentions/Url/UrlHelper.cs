@@ -1,6 +1,6 @@
-﻿using System.Web;
+using System.Web;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Web.Extentions.Url
 {
     public static class UrlUtil
     {

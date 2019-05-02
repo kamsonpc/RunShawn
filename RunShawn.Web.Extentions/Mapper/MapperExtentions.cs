@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using System;
 using System.Linq.Expressions;
 
-namespace RunShawn.Web.Extentions
+namespace RunShawn.Web.Extentions.Mapper
 {
     public static class MapperExtentions
     {

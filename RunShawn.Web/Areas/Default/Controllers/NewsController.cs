@@ -3,8 +3,8 @@ using MvcPaging;
 using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
 using RunShawn.Web.Areas.Default.Models.News;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Controllers;
+using RunShawn.Web.Extentions.Roles;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -24,7 +24,8 @@ namespace RunShawn.Web.Areas.Default.Controllers
             _articlesService = articlesService;
             _mapper = mapper;
         }
-        #endregion
+
+        #endregion Dependecies
 
         #region Index()
 

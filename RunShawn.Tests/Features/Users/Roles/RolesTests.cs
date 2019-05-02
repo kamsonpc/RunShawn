@@ -80,12 +80,10 @@ namespace RunShawn.Tests.Features.Users.Roles
 
         private Dictionary<int, string> GeneratePermissionDictionary()
         {
-
             return new Dictionary<int, string>
             {
                 { 10, "CanEdit" }
             };
-
         }
     }
 }
