@@ -1,14 +1,58 @@
 ﻿using DbUp;
 using System;
+using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace RunShaw.Database
 {
-    internal static class Program
+    public static class DbUpdater
     {
+        private static readonly string configFilePath = "ConnectionsStrings.config";
+
+        private static string ReadConnectionStringConfig()
+        {
+            if (!File.Exists(configFilePath))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ConnectionsString.config Not Found");
+                Console.ResetColor();
+                throw new Exception("ConnectionsString.config Not Found");
+            }
+
+            string text = File.ReadAllText(configFilePath);
+            return GetConnectionString(text);
+        }
+
+        public static string GetConnectionString(string text)
+        {
+            Match serverMatch = Regex.Match(text, @"Data Source=([A-Za-z0-9_.\\]+)", RegexOptions.IgnoreCase);
+            Match databaseMatch = Regex.Match(text, @"Initial Catalog=([A-Za-z0-9_]+)", RegexOptions.IgnoreCase);
+            Match passwordMatch = Regex.Match(text, @"Password=([A-Za-z0-9_]+)", RegexOptions.IgnoreCase);
+            Match loginMatch = Regex.Match(text, @"User ID=([A-Za-z0-9_]+)", RegexOptions.IgnoreCase);
+
+            if (serverMatch.Success && databaseMatch.Success && passwordMatch.Success && loginMatch.Success)
+            {
+                String server = serverMatch.Groups[1].Value;
+                String database = databaseMatch.Groups[1].Value;
+                String password = passwordMatch.Groups[1].Value;
+                String login = loginMatch.Groups[1].Value;
+
+                return $"Data Source={server};Initial Catalog={database};User ID={login};Password={password}";
+            }
+            return string.Empty;
+        }
+
         private static int Main(string[] args)
         {
-            var connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=RunShaw;User ID=admin;Password=admin";
+            string connectionString = ReadConnectionStringConfig();
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid ConnectionString");
+                Console.ResetColor();
+                throw new Exception("Invalid ConnectionString");
+            }
 
             var upgrader =
                 DeployChanges.To

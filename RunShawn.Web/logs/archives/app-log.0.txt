@@ -1,0 +1,26 @@
+2019-05-02 16:26:37.6966|ERROR|RunShawn.Core.Features.Roles.Repository.PermissionsRepository|System.Data.SqlClient.SqlException (0x80131904): Up造n像 limit czasu wykonywania. Limit up造n像 przed uko鎍zeniem operacji lub serwer nie odpowiada.
+The statement has been terminated. ---> System.ComponentModel.Win32Exception (0x80004005): Up造n像 limit czasu operacji oczekiwania
+   w System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   w System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   w System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   w System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   w System.Data.SqlClient.SqlBulkCopy.RunParser(BulkCopySimpleResultSet bulkCopyHandler)
+   w System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinuedOnSuccess(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   w System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinued(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   w System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsync(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   w System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestContinuedAsync(BulkCopySimpleResultSet internalResults, CancellationToken cts, TaskCompletionSource`1 source)
+   w System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   w System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   w System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   w System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   w Simple.Data.SqlServer.SqlBulkInserter.Insert(AdoAdapter adapter, String tableName, IEnumerable`1 data, IDbTransaction transaction, Func`3 onError, Boolean resultRequired)
+   w Simple.Data.Ado.AdoAdapterInserter.InsertMany(String tableName, IEnumerable`1 data, Func`3 onError, Boolean resultRequired)
+   w Simple.Data.Commands.InsertCommand.DoInsert(InvokeMemberBinder binder, Object[] args, DataStrategy dataStrategy, String tableName)
+   w Simple.Data.Commands.InsertCommand.Execute(DataStrategy dataStrategy, DynamicTable table, InvokeMemberBinder binder, Object[] args)
+   w Simple.Data.DynamicTable.TryInvokeMember(InvokeMemberBinder binder, Object[] args, Object& result)
+   w Simple.Data.ObjectReference.TryInvokeMember(InvokeMemberBinder binder, Object[] args, Object& result)
+   w CallSite.Target(Closure , CallSite , Object , List`1 )
+   w System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   w RunShawn.Core.Features.Roles.Repository.PermissionsRepository.InsertMany(List`1 permissions) w C:\projekty\RunShawn\RunShawn.Core\Features\Roles\Repository\PermissionsRepository.cs:wiersz 102
+ClientConnectionId:0624d609-ff07-4e30-9eb6-2af95c863e75
+Error Number:-2,State:0,Class:11

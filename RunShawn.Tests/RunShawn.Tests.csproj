@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbUpdate\DbUpdaterTests.cs" />
     <Compile Include="Features\News\NewsControllerTests.cs" />
     <Compile Include="Features\Users\Roles\RolesTests.cs" />
     <Compile Include="Features\Users\UsersControllerTests.cs" />
@@ -131,6 +132,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RunShaw.Database\RunShaw.Database.csproj">
+      <Project>{0D83756A-C668-4D80-8180-557B4A6912AE}</Project>
+      <Name>RunShaw.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RunShawn.Core\RunShawn.Core.csproj">
       <Project>{22E4AB47-2CEC-4B25-9BEF-11167629471F}</Project>
       <Name>RunShawn.Core</Name>

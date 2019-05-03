@@ -354,6 +354,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConnectionsStrings.config" />
     <Content Include="Content\article\style.css" />
     <Content Include="Content\boostrap_icon_picker\bootstrap-iconpicker.css" />
     <Content Include="Content\boostrap_icon_picker\bootstrap-iconpicker.min.css" />
@@ -700,6 +701,14 @@
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>"$(ProjectDir)..\RunShaw.Database\bin\Debug\RunShaw.Database.exe"</PreBuildEvent>
+    <PreBuildEvent>
+
+
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)..\RunShaw.Database\bin\Debug" "$(ProjectDir)bin" /Y /I  /S
+$(ProjectDir)bin\RunShaw.Database.exe
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

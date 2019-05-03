@@ -10,10 +10,17 @@
 #region T4MVC
 
 using System;
-using System.CodeDom.Compiler;
 using System.Diagnostics;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 
@@ -24,6 +31,8 @@ public static partial class MVC
     public static AdminClass Admin { get { return s_Admin; } }
     static readonly DefaultClass s_Default = new DefaultClass();
     public static DefaultClass Default { get { return s_Default; } }
+    static readonly GeneralClass s_General = new GeneralClass();
+    public static GeneralClass General { get { return s_General; } }
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
     public static T4MVC.MenusController Menus = new T4MVC.MenusController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -56,6 +65,11 @@ namespace T4MVC
         public RunShawn.Web.Controllers.PagesController Pages = new RunShawn.Web.Controllers.T4MVC_PagesController();
         public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
     }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class GeneralClass
+    {
+        public readonly string Name = "General";
+    }
 }
 
 #pragma warning disable 0436
@@ -73,13 +87,13 @@ namespace T4MVC
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
 {
-    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null) : base()
+    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
-
+     
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
-
+    
     public string Controller { get; set; }
     public string Action { get; set; }
     public string Protocol { get; set; }
@@ -88,11 +102,11 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
 {
-    public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null) : base()
+    public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
-
+    
     public string Controller { get; set; }
     public string Action { get; set; }
     public string Protocol { get; set; }
@@ -101,11 +115,11 @@ internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResu
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult : RunShawn.Web.Extentions.Actions.Results.JsonNetActionResult, IT4MVCActionResult
 {
-    public T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult(string area, string controller, string action, string protocol = null) : base(default(object))
+    public T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult(string area, string controller, string action, string protocol = null): base(default(object))
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
-
+    
     public string Controller { get; set; }
     public string Action { get; set; }
     public string Protocol { get; set; }
@@ -114,11 +128,11 @@ internal partial class T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActi
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
 {
-    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null) : base(new byte[0], " ")
+    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
-
+    
     public string Controller { get; set; }
     public string Action { get; set; }
     public string Protocol { get; set; }
@@ -130,14 +144,12 @@ internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.F
 namespace Links
 {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Scripts
-    {
+    public static class Scripts {
         public const string UrlPath = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class boostrap_icon_picker
-        {
+        public static class boostrap_icon_picker {
             public const string UrlPath = "~/Scripts/boostrap_icon_picker";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -147,8 +159,7 @@ namespace Links
             public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-iconpicker.min.js") ? Url("bootstrap-iconpicker.min.js") : Url("bootstrap-iconpicker.js");
             public static readonly string bootstrap_iconpicker_min_js = Url("bootstrap-iconpicker.min.js");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class iconset
-            {
+            public static class iconset {
                 public const string UrlPath = "~/Scripts/boostrap_icon_picker/iconset";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -158,32 +169,29 @@ namespace Links
                 public static readonly string ionicon2_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ionicon2-0-1.min.js") ? Url("ionicon2-0-1.min.js") : Url("ionicon2-0-1.js");
                 public static readonly string materialdesign2_2_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/materialdesign2-2-0.min.js") ? Url("materialdesign2-2-0.min.js") : Url("materialdesign2-2-0.js");
             }
-
+        
         }
-
+    
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class controllers
-        {
+        public static class controllers {
             public const string UrlPath = "~/Scripts/controllers";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string MenuSettingsController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/MenuSettingsController.min.js") ? Url("MenuSettingsController.min.js") : Url("MenuSettingsController.js");
             public static readonly string ScoresController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ScoresController.min.js") ? Url("ScoresController.min.js") : Url("ScoresController.js");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class datepicker
-        {
+        public static class datepicker {
             public const string UrlPath = "~/Scripts/datepicker";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string bootstrap_datepicker_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker-init.min.js") ? Url("bootstrap-datepicker-init.min.js") : Url("bootstrap-datepicker-init.js");
             public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class locales
-            {
+            public static class locales {
                 public const string UrlPath = "~/Scripts/datepicker/locales";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -270,9 +278,9 @@ namespace Links
                 public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-CN.min.js") ? Url("bootstrap-datepicker.zh-CN.min.js") : Url("bootstrap-datepicker.zh-CN.js");
                 public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.zh-TW.min.js") ? Url("bootstrap-datepicker.zh-TW.min.js") : Url("bootstrap-datepicker.zh-TW.js");
             }
-
+        
         }
-
+    
         public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-2.1.3.intellisense.min.js") ? Url("jquery-2.1.3.intellisense.min.js") : Url("jquery-2.1.3.intellisense.js");
         public static readonly string jquery_3_3_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.intellisense.min.js") ? Url("jquery-3.3.1.intellisense.min.js") : Url("jquery-3.3.1.intellisense.js");
         public static readonly string jquery_3_3_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.3.1.min.js") ? Url("jquery-3.3.1.min.js") : Url("jquery-3.3.1.js");
@@ -282,61 +290,55 @@ namespace Links
         public static readonly string jquery_3_3_1_slim_min_js = Url("jquery-3.3.1.slim.min.js");
         public static readonly string jquery_3_3_1_slim_min_map = Url("jquery-3.3.1.slim.min.map");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class jquery_menu_editor
-        {
+        public static class jquery_menu_editor {
             public const string UrlPath = "~/Scripts/jquery_menu_editor";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string jquery_menu_editor_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-menu-editor.min.js") ? Url("jquery-menu-editor.min.js") : Url("jquery-menu-editor.js");
             public static readonly string jquery_menu_editor_min_js = Url("jquery-menu-editor.min.js");
         }
-
+    
         public static readonly string menu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/menu.min.js") ? Url("menu.min.js") : Url("menu.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class MvcGrid
-        {
+        public static class MvcGrid {
             public const string UrlPath = "~/Scripts/MvcGrid";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string mvc_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.js") ? Url("mvc-grid.min.js") : Url("mvc-grid.js");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class nprogress
-        {
+        public static class nprogress {
             public const string UrlPath = "~/Scripts/nprogress";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string nprogress_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress-init.min.js") ? Url("nprogress-init.min.js") : Url("nprogress-init.js");
             public static readonly string nprogress_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.js") ? Url("nprogress.min.js") : Url("nprogress.js");
         }
-
+    
         public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class summernote
-        {
+        public static class summernote {
             public const string UrlPath = "~/Scripts/summernote";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string summernote_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-init.min.js") ? Url("summernote-init.min.js") : Url("summernote-init.js");
             public static readonly string summernote_lite_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-lite.min.js") ? Url("summernote-lite.min.js") : Url("summernote-lite.js");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class tooltip
-        {
+        public static class tooltip {
             public const string UrlPath = "~/Scripts/tooltip";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string jquery_darktooltip_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.darktooltip.min.js") ? Url("jquery.darktooltip.min.js") : Url("jquery.darktooltip.js");
             public static readonly string tooltipCustom_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tooltipCustom.min.js") ? Url("tooltipCustom.min.js") : Url("tooltipCustom.js");
         }
-
+    
         public static readonly string utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/utils.min.js") ? Url("utils.min.js") : Url("utils.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class validate
-        {
+        public static class validate {
             public const string UrlPath = "~/Scripts/validate";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -347,18 +349,16 @@ namespace Links
             public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
             public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         }
-
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Content
-    {
+    public static class Content {
         public const string UrlPath = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class article
-        {
+        public static class article {
             public const string UrlPath = "~/Content/article";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -366,17 +366,16 @@ namespace Links
             public static readonly string style_css_map = Url("style.css.map");
             public static readonly string style_scss = Url("style.scss");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class boostrap_icon_picker
-        {
+        public static class boostrap_icon_picker {
             public const string UrlPath = "~/Content/boostrap_icon_picker";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string bootstrap_iconpicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-iconpicker.min.css") ? Url("bootstrap-iconpicker.min.css") : Url("bootstrap-iconpicker.css");
             public static readonly string bootstrap_iconpicker_min_css = Url("bootstrap-iconpicker.min.css");
         }
-
+    
         public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
         public static readonly string bootstrap_datepicker3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datepicker3.min.css") ? Url("bootstrap-datepicker3.min.css") : Url("bootstrap-datepicker3.css");
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
@@ -388,8 +387,7 @@ namespace Links
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class dashboard
-        {
+        public static class dashboard {
             public const string UrlPath = "~/Content/dashboard";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -397,10 +395,9 @@ namespace Links
             public static readonly string dashboard_css_map = Url("dashboard.css.map");
             public static readonly string dashboard_scss = Url("dashboard.scss");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class datepicker
-        {
+        public static class datepicker {
             public const string UrlPath = "~/Content/datepicker";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -408,10 +405,9 @@ namespace Links
             public static readonly string bootstrap_datepicker_min_css = Url("bootstrap-datepicker.min.css");
             public static readonly string datepicker_less = Url("datepicker.less");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class @default
-        {
+        public static class @default {
             public const string UrlPath = "~/Content/default";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -419,10 +415,9 @@ namespace Links
             public static readonly string default_css_map = Url("default.css.map");
             public static readonly string default_scss = Url("default.scss");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class fonts
-        {
+        public static class fonts {
             public const string UrlPath = "~/Content/fonts";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -432,16 +427,14 @@ namespace Links
             public static readonly string glyphicons_halflings_regular_woff = Url("glyphicons-halflings-regular.woff");
             public static readonly string glyphicons_halflings_regular_woff2 = Url("glyphicons-halflings-regular.woff2");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class images
-        {
+        public static class images {
             public const string UrlPath = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class article_images
-            {
+            public static class article_images {
                 public const string UrlPath = "~/Content/images/article-images";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -455,24 +448,22 @@ namespace Links
                 public static readonly string article_background8_png = Url("article-background8.png");
                 public static readonly string article_background9_png = Url("article-background9.png");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class awards
-            {
+            public static class awards {
                 public const string UrlPath = "~/Content/images/awards";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
                 public static readonly string _1_png = Url("1.png");
             }
-
+        
             public static readonly string background_png = Url("background.png");
             public static readonly string empty_photo_png = Url("empty-photo.png");
             public static readonly string user_png = Url("user.png");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class login
-        {
+        public static class login {
             public const string UrlPath = "~/Content/login";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -480,10 +471,9 @@ namespace Links
             public static readonly string login_form_css_map = Url("login_form.css.map");
             public static readonly string login_form_scss = Url("login_form.scss");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class modal
-        {
+        public static class modal {
             public const string UrlPath = "~/Content/modal";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -491,37 +481,33 @@ namespace Links
             public static readonly string modal_css_map = Url("modal.css.map");
             public static readonly string modal_scss = Url("modal.scss");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class MvcGrid
-        {
+        public static class MvcGrid {
             public const string UrlPath = "~/Content/MvcGrid";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class Fonts
-            {
+            public static class Fonts {
                 public const string UrlPath = "~/Content/MvcGrid/Fonts";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
                 public static readonly string GridGlyphs_woff = Url("GridGlyphs.woff");
             }
-
+        
             public static readonly string mvc_grid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/mvc-grid.min.css") ? Url("mvc-grid.min.css") : Url("mvc-grid.css");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class nprogress
-        {
+        public static class nprogress {
             public const string UrlPath = "~/Content/nprogress";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string nprogress_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/nprogress.min.css") ? Url("nprogress.min.css") : Url("nprogress.css");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class site
-        {
+        public static class site {
             public const string UrlPath = "~/Content/site";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -529,17 +515,15 @@ namespace Links
             public static readonly string site_css_map = Url("site.css.map");
             public static readonly string site_scss = Url("site.scss");
         }
-
+    
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class summernote
-        {
+        public static class summernote {
             public const string UrlPath = "~/Content/summernote";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class font
-            {
+            public static class font {
                 public const string UrlPath = "~/Content/summernote/font";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
@@ -547,229 +531,228 @@ namespace Links
                 public static readonly string summernote_ttf = Url("summernote.ttf");
                 public static readonly string summernote_woff = Url("summernote.woff");
             }
-
+        
             public static readonly string summernote_lite_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/summernote-lite.min.css") ? Url("summernote-lite.min.css") : Url("summernote-lite.css");
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class tooltip
-        {
+        public static class tooltip {
             public const string UrlPath = "~/Content/tooltip";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string darktooltip_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/darktooltip.min.css") ? Url("darktooltip.min.css") : Url("darktooltip.css");
         }
-
+    
     }
 
-
+    
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
-        public static partial class Scripts
+        public static partial class Scripts 
         {
-            public static partial class boostrap_icon_picker
+            public static partial class boostrap_icon_picker 
             {
-                public static partial class iconset
+                public static partial class iconset 
                 {
                     public static class Assets
                     {
-                        public static readonly string fontawesome5_3_1_pro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1-pro.js");
-                        public static readonly string fontawesome5_3_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.js");
-                        public static readonly string fontawesome5_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.min.js");
-                        public static readonly string ionicon2_0_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/ionicon2-0-1.js");
-                        public static readonly string materialdesign2_2_0_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/materialdesign2-2-0.js");
+                        public static readonly string fontawesome5_3_1_pro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1-pro.js"); 
+                        public static readonly string fontawesome5_3_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.js"); 
+                        public static readonly string fontawesome5_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/fontawesome5-3-1.min.js"); 
+                        public static readonly string ionicon2_0_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/ionicon2-0-1.js"); 
+                        public static readonly string materialdesign2_2_0_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/iconset/materialdesign2-2-0.js"); 
                     }
                 }
                 public static class Assets
                 {
-                    public static readonly string bootstrap_iconpicker_iconset_all_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.js");
-                    public static readonly string bootstrap_iconpicker_iconset_all_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.min.js");
-                    public static readonly string bootstrap_iconpicker_bundle_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.bundle.min.js");
-                    public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.js");
-                    public static readonly string bootstrap_iconpicker_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.min.js");
+                    public static readonly string bootstrap_iconpicker_iconset_all_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.js"); 
+                    public static readonly string bootstrap_iconpicker_iconset_all_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker-iconset-all.min.js"); 
+                    public static readonly string bootstrap_iconpicker_bundle_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.bundle.min.js"); 
+                    public static readonly string bootstrap_iconpicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.js"); 
+                    public static readonly string bootstrap_iconpicker_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/boostrap_icon_picker/bootstrap-iconpicker.min.js"); 
                 }
             }
-            public static partial class controllers
+            public static partial class controllers 
             {
                 public static class Assets
                 {
-                    public static readonly string MenuSettingsController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/MenuSettingsController.js");
-                    public static readonly string ScoresController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/ScoresController.js");
+                    public static readonly string MenuSettingsController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/MenuSettingsController.js"); 
+                    public static readonly string ScoresController_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/controllers/ScoresController.js"); 
                 }
             }
-            public static partial class datepicker
+            public static partial class datepicker 
             {
-                public static partial class locales
+                public static partial class locales 
                 {
                     public static class Assets
                     {
-                        public static readonly string bootstrap_datepicker_en_CA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker-en-CA.js");
-                        public static readonly string bootstrap_datepicker_ar_tn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar-tn.js");
-                        public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar.js");
-                        public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.az.js");
-                        public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bg.js");
-                        public static readonly string bootstrap_datepicker_bn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bn.js");
-                        public static readonly string bootstrap_datepicker_br_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.br.js");
-                        public static readonly string bootstrap_datepicker_bs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bs.js");
-                        public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ca.js");
-                        public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cs.js");
-                        public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cy.js");
-                        public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.da.js");
-                        public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.de.js");
-                        public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.el.js");
-                        public static readonly string bootstrap_datepicker_en_AU_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-AU.js");
-                        public static readonly string bootstrap_datepicker_en_CA_js_ = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-CA.js");
-                        public static readonly string bootstrap_datepicker_en_GB_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-GB.js");
-                        public static readonly string bootstrap_datepicker_en_IE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-IE.js");
-                        public static readonly string bootstrap_datepicker_en_NZ_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-NZ.js");
-                        public static readonly string bootstrap_datepicker_en_ZA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-ZA.js");
-                        public static readonly string bootstrap_datepicker_eo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eo.js");
-                        public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.es.js");
-                        public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.et.js");
-                        public static readonly string bootstrap_datepicker_eu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eu.js");
-                        public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fa.js");
-                        public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fi.js");
-                        public static readonly string bootstrap_datepicker_fo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fo.js");
-                        public static readonly string bootstrap_datepicker_fr_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr-CH.js");
-                        public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr.js");
-                        public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.gl.js");
-                        public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.he.js");
-                        public static readonly string bootstrap_datepicker_hi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hi.js");
-                        public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hr.js");
-                        public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hu.js");
-                        public static readonly string bootstrap_datepicker_hy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hy.js");
-                        public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.id.js");
-                        public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.is.js");
-                        public static readonly string bootstrap_datepicker_it_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it-CH.js");
-                        public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it.js");
-                        public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ja.js");
-                        public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ka.js");
-                        public static readonly string bootstrap_datepicker_kh_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kh.js");
-                        public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kk.js");
-                        public static readonly string bootstrap_datepicker_km_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.km.js");
-                        public static readonly string bootstrap_datepicker_ko_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ko.js");
-                        public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kr.js");
-                        public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lt.js");
-                        public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lv.js");
-                        public static readonly string bootstrap_datepicker_me_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.me.js");
-                        public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mk.js");
-                        public static readonly string bootstrap_datepicker_mn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mn.js");
-                        public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ms.js");
-                        public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl-BE.js");
-                        public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl.js");
-                        public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.no.js");
-                        public static readonly string bootstrap_datepicker_oc_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.oc.js");
-                        public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pl.js");
-                        public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt-BR.js");
-                        public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt.js");
-                        public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ro.js");
-                        public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs-latin.js");
-                        public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs.js");
-                        public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ru.js");
-                        public static readonly string bootstrap_datepicker_si_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.si.js");
-                        public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sk.js");
-                        public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sl.js");
-                        public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sq.js");
-                        public static readonly string bootstrap_datepicker_sr_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr-latin.js");
-                        public static readonly string bootstrap_datepicker_sr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr.js");
-                        public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sv.js");
-                        public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sw.js");
-                        public static readonly string bootstrap_datepicker_ta_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ta.js");
-                        public static readonly string bootstrap_datepicker_tg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tg.js");
-                        public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.th.js");
-                        public static readonly string bootstrap_datepicker_tk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tk.js");
-                        public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tr.js");
-                        public static readonly string bootstrap_datepicker_uk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uk.js");
-                        public static readonly string bootstrap_datepicker_uz_cyrl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-cyrl.js");
-                        public static readonly string bootstrap_datepicker_uz_latn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-latn.js");
-                        public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.vi.js");
-                        public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-CN.js");
-                        public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-TW.js");
+                        public static readonly string bootstrap_datepicker_en_CA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker-en-CA.js"); 
+                        public static readonly string bootstrap_datepicker_ar_tn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar-tn.js"); 
+                        public static readonly string bootstrap_datepicker_ar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ar.js"); 
+                        public static readonly string bootstrap_datepicker_az_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.az.js"); 
+                        public static readonly string bootstrap_datepicker_bg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bg.js"); 
+                        public static readonly string bootstrap_datepicker_bn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bn.js"); 
+                        public static readonly string bootstrap_datepicker_br_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.br.js"); 
+                        public static readonly string bootstrap_datepicker_bs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.bs.js"); 
+                        public static readonly string bootstrap_datepicker_ca_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ca.js"); 
+                        public static readonly string bootstrap_datepicker_cs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cs.js"); 
+                        public static readonly string bootstrap_datepicker_cy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.cy.js"); 
+                        public static readonly string bootstrap_datepicker_da_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.da.js"); 
+                        public static readonly string bootstrap_datepicker_de_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.de.js"); 
+                        public static readonly string bootstrap_datepicker_el_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.el.js"); 
+                        public static readonly string bootstrap_datepicker_en_AU_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-AU.js"); 
+                        public static readonly string bootstrap_datepicker_en_CA_js_ = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-CA.js"); 
+                        public static readonly string bootstrap_datepicker_en_GB_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-GB.js"); 
+                        public static readonly string bootstrap_datepicker_en_IE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-IE.js"); 
+                        public static readonly string bootstrap_datepicker_en_NZ_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-NZ.js"); 
+                        public static readonly string bootstrap_datepicker_en_ZA_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.en-ZA.js"); 
+                        public static readonly string bootstrap_datepicker_eo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eo.js"); 
+                        public static readonly string bootstrap_datepicker_es_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.es.js"); 
+                        public static readonly string bootstrap_datepicker_et_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.et.js"); 
+                        public static readonly string bootstrap_datepicker_eu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.eu.js"); 
+                        public static readonly string bootstrap_datepicker_fa_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fa.js"); 
+                        public static readonly string bootstrap_datepicker_fi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fi.js"); 
+                        public static readonly string bootstrap_datepicker_fo_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fo.js"); 
+                        public static readonly string bootstrap_datepicker_fr_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr-CH.js"); 
+                        public static readonly string bootstrap_datepicker_fr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.fr.js"); 
+                        public static readonly string bootstrap_datepicker_gl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.gl.js"); 
+                        public static readonly string bootstrap_datepicker_he_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.he.js"); 
+                        public static readonly string bootstrap_datepicker_hi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hi.js"); 
+                        public static readonly string bootstrap_datepicker_hr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hr.js"); 
+                        public static readonly string bootstrap_datepicker_hu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hu.js"); 
+                        public static readonly string bootstrap_datepicker_hy_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.hy.js"); 
+                        public static readonly string bootstrap_datepicker_id_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.id.js"); 
+                        public static readonly string bootstrap_datepicker_is_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.is.js"); 
+                        public static readonly string bootstrap_datepicker_it_CH_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it-CH.js"); 
+                        public static readonly string bootstrap_datepicker_it_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.it.js"); 
+                        public static readonly string bootstrap_datepicker_ja_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ja.js"); 
+                        public static readonly string bootstrap_datepicker_ka_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ka.js"); 
+                        public static readonly string bootstrap_datepicker_kh_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kh.js"); 
+                        public static readonly string bootstrap_datepicker_kk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kk.js"); 
+                        public static readonly string bootstrap_datepicker_km_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.km.js"); 
+                        public static readonly string bootstrap_datepicker_ko_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ko.js"); 
+                        public static readonly string bootstrap_datepicker_kr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.kr.js"); 
+                        public static readonly string bootstrap_datepicker_lt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lt.js"); 
+                        public static readonly string bootstrap_datepicker_lv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.lv.js"); 
+                        public static readonly string bootstrap_datepicker_me_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.me.js"); 
+                        public static readonly string bootstrap_datepicker_mk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mk.js"); 
+                        public static readonly string bootstrap_datepicker_mn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.mn.js"); 
+                        public static readonly string bootstrap_datepicker_ms_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ms.js"); 
+                        public static readonly string bootstrap_datepicker_nl_BE_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl-BE.js"); 
+                        public static readonly string bootstrap_datepicker_nl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.nl.js"); 
+                        public static readonly string bootstrap_datepicker_no_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.no.js"); 
+                        public static readonly string bootstrap_datepicker_oc_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.oc.js"); 
+                        public static readonly string bootstrap_datepicker_pl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pl.js"); 
+                        public static readonly string bootstrap_datepicker_pt_BR_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt-BR.js"); 
+                        public static readonly string bootstrap_datepicker_pt_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.pt.js"); 
+                        public static readonly string bootstrap_datepicker_ro_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ro.js"); 
+                        public static readonly string bootstrap_datepicker_rs_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs-latin.js"); 
+                        public static readonly string bootstrap_datepicker_rs_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.rs.js"); 
+                        public static readonly string bootstrap_datepicker_ru_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ru.js"); 
+                        public static readonly string bootstrap_datepicker_si_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.si.js"); 
+                        public static readonly string bootstrap_datepicker_sk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sk.js"); 
+                        public static readonly string bootstrap_datepicker_sl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sl.js"); 
+                        public static readonly string bootstrap_datepicker_sq_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sq.js"); 
+                        public static readonly string bootstrap_datepicker_sr_latin_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr-latin.js"); 
+                        public static readonly string bootstrap_datepicker_sr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sr.js"); 
+                        public static readonly string bootstrap_datepicker_sv_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sv.js"); 
+                        public static readonly string bootstrap_datepicker_sw_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.sw.js"); 
+                        public static readonly string bootstrap_datepicker_ta_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.ta.js"); 
+                        public static readonly string bootstrap_datepicker_tg_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tg.js"); 
+                        public static readonly string bootstrap_datepicker_th_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.th.js"); 
+                        public static readonly string bootstrap_datepicker_tk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tk.js"); 
+                        public static readonly string bootstrap_datepicker_tr_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.tr.js"); 
+                        public static readonly string bootstrap_datepicker_uk_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uk.js"); 
+                        public static readonly string bootstrap_datepicker_uz_cyrl_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-cyrl.js"); 
+                        public static readonly string bootstrap_datepicker_uz_latn_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.uz-latn.js"); 
+                        public static readonly string bootstrap_datepicker_vi_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.vi.js"); 
+                        public static readonly string bootstrap_datepicker_zh_CN_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-CN.js"); 
+                        public static readonly string bootstrap_datepicker_zh_TW_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/locales/bootstrap-datepicker.zh-TW.js"); 
                     }
                 }
                 public static class Assets
                 {
-                    public static readonly string bootstrap_datepicker_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker-init.js");
-                    public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker.js");
+                    public static readonly string bootstrap_datepicker_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker-init.js"); 
+                    public static readonly string bootstrap_datepicker_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/datepicker/bootstrap-datepicker.js"); 
                 }
             }
-            public static partial class jquery_menu_editor
+            public static partial class jquery_menu_editor 
             {
                 public static class Assets
                 {
-                    public static readonly string jquery_menu_editor_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.js");
-                    public static readonly string jquery_menu_editor_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.min.js");
+                    public static readonly string jquery_menu_editor_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.js"); 
+                    public static readonly string jquery_menu_editor_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery_menu_editor/jquery-menu-editor.min.js"); 
                 }
             }
-            public static partial class MvcGrid
+            public static partial class MvcGrid 
             {
                 public static class Assets
                 {
-                    public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js");
+                    public static readonly string mvc_grid_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/MvcGrid/mvc-grid.js"); 
                 }
             }
-            public static partial class nprogress
+            public static partial class nprogress 
             {
                 public static class Assets
                 {
-                    public static readonly string nprogress_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress-init.js");
-                    public static readonly string nprogress_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress.js");
+                    public static readonly string nprogress_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress-init.js"); 
+                    public static readonly string nprogress_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/nprogress/nprogress.js"); 
                 }
             }
-            public static partial class summernote
+            public static partial class summernote 
             {
                 public static class Assets
                 {
-                    public static readonly string summernote_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-init.js");
-                    public static readonly string summernote_lite_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-lite.js");
+                    public static readonly string summernote_init_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-init.js"); 
+                    public static readonly string summernote_lite_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/summernote/summernote-lite.js"); 
                 }
             }
-            public static partial class tooltip
+            public static partial class tooltip 
             {
                 public static class Assets
                 {
-                    public static readonly string jquery_darktooltip_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/jquery.darktooltip.js");
-                    public static readonly string tooltipCustom_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/tooltipCustom.js");
+                    public static readonly string jquery_darktooltip_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/jquery.darktooltip.js"); 
+                    public static readonly string tooltipCustom_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/tooltip/tooltipCustom.js"); 
                 }
             }
-            public static partial class validate
+            public static partial class validate 
             {
                 public static class Assets
                 {
-                    public static readonly string bootstrap_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/bootstrap-validate.js");
-                    public static readonly string jquery_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.js");
-                    public static readonly string jquery_validate_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.min.js");
-                    public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.js");
-                    public static readonly string jquery_validate_unobtrusive_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.min.js");
+                    public static readonly string bootstrap_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/bootstrap-validate.js"); 
+                    public static readonly string jquery_validate_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.js"); 
+                    public static readonly string jquery_validate_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.min.js"); 
+                    public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.js"); 
+                    public static readonly string jquery_validate_unobtrusive_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/validate/jquery.validate.unobtrusive.min.js"); 
                 }
             }
             public static class Assets
             {
-                public static readonly string bootstrap_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.js");
-                public static readonly string bootstrap_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.min.js");
-                public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-2.1.3.intellisense.js");
-                public static readonly string jquery_3_3_1_intellisense_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.intellisense.js");
-                public static readonly string jquery_3_3_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.js");
-                public static readonly string jquery_3_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.min.js");
-                public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.js");
-                public static readonly string jquery_3_3_1_slim_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.min.js");
-                public static readonly string menu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/menu.js");
-                public static readonly string modernizr_2_8_3_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/modernizr-2.8.3.js");
-                public static readonly string sidebar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/sidebar.js");
-                public static readonly string utils_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/utils.js");
+                public static readonly string bootstrap_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.js"); 
+                public static readonly string bootstrap_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/bootstrap.min.js"); 
+                public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-2.1.3.intellisense.js"); 
+                public static readonly string jquery_3_3_1_intellisense_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.intellisense.js"); 
+                public static readonly string jquery_3_3_1_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.js"); 
+                public static readonly string jquery_3_3_1_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.min.js"); 
+                public static readonly string jquery_3_3_1_slim_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.js"); 
+                public static readonly string jquery_3_3_1_slim_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-3.3.1.slim.min.js"); 
+                public static readonly string menu_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/menu.js"); 
+                public static readonly string modernizr_2_8_3_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/modernizr-2.8.3.js"); 
+                public static readonly string sidebar_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/sidebar.js"); 
+                public static readonly string utils_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/utils.js"); 
             }
         }
-        public static partial class Content
+        public static partial class Content 
         {
-            public static partial class article
+            public static partial class article 
             {
                 public static class Assets
                 {
                     public static readonly string style_css = T4MVCHelpers.ProcessAssetPath("~/Content/article/style.css");
                 }
             }
-            public static partial class boostrap_icon_picker
+            public static partial class boostrap_icon_picker 
             {
                 public static class Assets
                 {
@@ -777,14 +760,14 @@ namespace Links
                     public static readonly string bootstrap_iconpicker_min_css = T4MVCHelpers.ProcessAssetPath("~/Content/boostrap_icon_picker/bootstrap-iconpicker.min.css");
                 }
             }
-            public static partial class dashboard
+            public static partial class dashboard 
             {
                 public static class Assets
                 {
                     public static readonly string dashboard_css = T4MVCHelpers.ProcessAssetPath("~/Content/dashboard/dashboard.css");
                 }
             }
-            public static partial class datepicker
+            public static partial class datepicker 
             {
                 public static class Assets
                 {
@@ -792,28 +775,28 @@ namespace Links
                     public static readonly string bootstrap_datepicker_min_css = T4MVCHelpers.ProcessAssetPath("~/Content/datepicker/bootstrap-datepicker.min.css");
                 }
             }
-            public static partial class @default
+            public static partial class @default 
             {
                 public static class Assets
                 {
                     public static readonly string default_css = T4MVCHelpers.ProcessAssetPath("~/Content/default/default.css");
                 }
             }
-            public static partial class fonts
+            public static partial class fonts 
             {
                 public static class Assets
                 {
                 }
             }
-            public static partial class images
+            public static partial class images 
             {
-                public static partial class article_images
+                public static partial class article_images 
                 {
                     public static class Assets
                     {
                     }
                 }
-                public static partial class awards
+                public static partial class awards 
                 {
                     public static class Assets
                     {
@@ -823,23 +806,23 @@ namespace Links
                 {
                 }
             }
-            public static partial class login
+            public static partial class login 
             {
                 public static class Assets
                 {
                     public static readonly string login_form_css = T4MVCHelpers.ProcessAssetPath("~/Content/login/login_form.css");
                 }
             }
-            public static partial class modal
+            public static partial class modal 
             {
                 public static class Assets
                 {
                     public static readonly string modal_css = T4MVCHelpers.ProcessAssetPath("~/Content/modal/modal.css");
                 }
             }
-            public static partial class MvcGrid
+            public static partial class MvcGrid 
             {
-                public static partial class Fonts
+                public static partial class Fonts 
                 {
                     public static class Assets
                     {
@@ -850,23 +833,23 @@ namespace Links
                     public static readonly string mvc_grid_css = T4MVCHelpers.ProcessAssetPath("~/Content/MvcGrid/mvc-grid.css");
                 }
             }
-            public static partial class nprogress
+            public static partial class nprogress 
             {
                 public static class Assets
                 {
                     public static readonly string nprogress_css = T4MVCHelpers.ProcessAssetPath("~/Content/nprogress/nprogress.css");
                 }
             }
-            public static partial class site
+            public static partial class site 
             {
                 public static class Assets
                 {
                     public static readonly string site_css = T4MVCHelpers.ProcessAssetPath("~/Content/site/site.css");
                 }
             }
-            public static partial class summernote
+            public static partial class summernote 
             {
-                public static partial class font
+                public static partial class font 
                 {
                     public static class Assets
                     {
@@ -877,7 +860,7 @@ namespace Links
                     public static readonly string summernote_lite_css = T4MVCHelpers.ProcessAssetPath("~/Content/summernote/summernote-lite.css");
                 }
             }
-            public static partial class tooltip
+            public static partial class tooltip 
             {
                 public static class Assets
                 {
@@ -899,22 +882,19 @@ namespace Links
 }
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal static class T4MVCHelpers
-{
+internal static class T4MVCHelpers {
     // You can change the ProcessVirtualPath method to modify the path that gets returned to the client.
     // e.g. you can prepend a domain, or append a query string:
     //      return "http://localhost" + path + "?foo=bar";
-    private static string ProcessVirtualPathDefault(string virtualPath)
-    {
+    private static string ProcessVirtualPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and must first be made absolute
         string path = VirtualPathUtility.ToAbsolute(virtualPath);
-
+        
         // Add your own modifications here before returning the path
         return path;
     }
 
-    private static string ProcessAssetPathDefault(string virtualPath)
-    {
+    private static string ProcessAssetPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and should retain this prefix
         return virtualPath;
     }
@@ -927,9 +907,8 @@ internal static class T4MVCHelpers
     public static Func<string, string> TimestampString = System.Web.Mvc.T4Extensions.TimestampString;
 
     // Logic to determine if the app is running in production or dev environment
-    public static bool IsProduction()
-    {
-        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled);
+    public static bool IsProduction() { 
+        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled); 
     }
 }
 

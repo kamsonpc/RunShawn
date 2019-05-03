@@ -28,9 +28,6 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class MenuController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public MenuController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected MenuController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
