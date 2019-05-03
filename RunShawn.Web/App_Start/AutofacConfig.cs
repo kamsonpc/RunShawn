@@ -2,6 +2,8 @@
 using Autofac.Integration.Mvc;
 using MvcSiteMapProvider.Loader;
 using RunShawn.Core.Features.News.News;
+using RunShawn.Core.Features.Pages.Repositories;
+using RunShawn.Core.Features.Pages.Services;
 using RunShawn.Core.Features.Roles.Repository;
 using RunShawn.Core.Features.Roles.Services;
 using RunShawn.Core.Features.Users;
@@ -39,7 +41,12 @@ namespace RunShawn.Web.App_Start
             builder.RegisterType<PermissionsRepository>().As<IPermissionsRepository>();
             builder.RegisterType<RolesRepository>().As<IRolesRepository>();
             builder.RegisterType<RolesService>().As<IRolesService>();
+            builder.RegisterType<PageService>().As<IPagesService>();
+            builder.RegisterType<PagesRepository>().As<IPagesRepository>();
+
+            #region Tools
             builder.RegisterInstance(AutoMapperConfiguration.GetConfig());
+            #endregion
         }
 
         #endregion RegisterDepenecies()
