@@ -8,16 +8,16 @@ namespace RunShaw.Database
 {
     public static class DbUpdater
     {
-        private static readonly string configFilePath = "ConnectionsStrings.config";
+        private static readonly string configFilePath = Environment.CurrentDirectory + "\\..\\ConnectionsStrings.config";
 
         private static string ReadConnectionStringConfig()
         {
             if (!File.Exists(configFilePath))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("ConnectionsString.config Not Found");
+                Console.WriteLine($"ConnectionsString.config in {configFilePath} Not Found");
                 Console.ResetColor();
-                throw new Exception("ConnectionsString.config Not Found");
+                throw new Exception($"ConnectionsString.config in {configFilePath} Not Found");
             }
 
             string text = File.ReadAllText(configFilePath);

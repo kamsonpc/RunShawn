@@ -702,9 +702,7 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>
-
-
-</PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)..\RunShaw.Database\bin\Debug" "$(ProjectDir)bin" /Y /I  /S

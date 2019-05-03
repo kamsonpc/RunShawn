@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using RunShawn.Core.Features.Pages;
+using RunShawn.Core.Features.Pages.Repositories;
 using RunShawn.Web.Areas.Default.Models.Pages;
 using RunShawn.Web.Extentions.Roles;
 using System.Web.Mvc;
@@ -11,10 +11,12 @@ namespace RunShawn.Web.Controllers
     {
         #region Dependencies
         private readonly IMapper _mapper;
+        private readonly IPagesRepository _pagesRepository;
 
-        public PagesController(IMapper mapper)
+        public PagesController(IMapper mapper, IPagesRepository pagesRepository)
         {
             _mapper = mapper;
+            _pagesRepository = pagesRepository;
         }
         #endregion
 
@@ -24,13 +26,13 @@ namespace RunShawn.Web.Controllers
         {
             slug = slug.ToLower();
 
-            var page = PagesService.GetBySlug(slug);
+            var page = _pagesRepository.GetBySlug(slug);
             if (page == null)
             {
                 return HttpNotFound();
             }
 
-            if (!page.Active && User.IsInRole(RoleTypes.Administrator.ToString()))
+            if (!page.Active && User.IsInRole(nameof(RoleTypes.Administrator)))
             {
                 return HttpNotFound();
             }

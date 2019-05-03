@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using FluentBootstrap;
 using Microsoft.AspNet.Identity;
-using RunShawn.Core.Features.Pages;
 using RunShawn.Core.Features.Pages.Model;
+using RunShawn.Core.Features.Pages.Repositories;
+using RunShawn.Core.Features.Pages.Services;
 using RunShawn.Web.Areas.Admin.Models.Pages;
 using RunShawn.Web.Extentions.Alerts;
 using RunShawn.Web.Extentions.Controllers;
@@ -15,11 +16,16 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize]
     public partial class PagesController : BaseController
     {
-        #region Depenecies
+        #region Dependencies
         private readonly IMapper _mapper;
-        public PagesController(IMapper mapper)
+        private readonly IPagesRepository _pagesRepository;
+        private readonly IPagesService _pageService;
+
+        public PagesController(IMapper mapper, IPagesRepository pagesRepository, IPagesService pageService)
         {
             _mapper = mapper;
+            _pagesRepository = pagesRepository;
+            _pageService = pageService;
         }
         #endregion
 
@@ -36,7 +42,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var pages = PagesService.GetAll();
+            var pages = _pagesRepository.GetAllInfo(true);
             var model = _mapper.Map<List<PageListViewModel>>(pages);
 
             return View(MVC.Admin.Pages.Views.List, model);
@@ -59,7 +65,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 var page = _mapper.Map<Page>(model);
 
-                PagesService.Create(page, User.Identity.GetUserId());
+                _pageService.Create(page, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert($"Dodano Stronę {page.Title}", AlertState.Success);
                 return RedirectToAction(MVC.Admin.Pages.List());
@@ -76,7 +82,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Edit(long id)
         {
-            var page = PagesService.GetById(id);
+            var page = _pagesRepository.GetById(id);
             var model = _mapper.Map<PageViewModel>(page);
             return View(MVC.Admin.Pages.Views.Edit, model);
         }
@@ -89,7 +95,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 var page = _mapper.Map<Page>(model);
 
-                PagesService.Update(page, User.Identity.GetUserId());
+                _pageService.Update(page, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert($"Zaktualizowano Stronę {page.Title}", AlertState.Success);
                 return RedirectToAction(MVC.Admin.Pages.List());
@@ -107,7 +113,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             try
             {
-                PagesService.Delete(id, User.Identity.GetUserId());
+                _pagesRepository.Delete(id, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
                 return RedirectToAction(MVC.Admin.Pages.List());
