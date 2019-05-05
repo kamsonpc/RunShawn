@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using MvcPaging;
-using RunShawn.Core.Features.News.News;
 using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.News.News.Repositories;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Default.Models.News;
 using RunShawn.Web.Extentions.Controllers;
 using RunShawn.Web.Extentions.Roles;
@@ -15,14 +16,16 @@ namespace RunShawn.Web.Areas.Default.Controllers
     {
         #region Dependecies
 
-        private IArticlesService _articlesService { get; }
-
         private IMapper _mapper { get; }
 
-        public NewsController(IArticlesService articlesService, IMapper mapper)
+        private readonly IArticlesRepository _articlesRepository;
+        private readonly IUsersRepository _usersRepository;
+
+        public NewsController(IUsersRepository usersRepository, IArticlesRepository articlesRepository, IMapper mapper)
         {
-            _articlesService = articlesService;
             _mapper = mapper;
+            _articlesRepository = articlesRepository;
+            _usersRepository = usersRepository;
         }
 
         #endregion Dependecies
@@ -42,7 +45,7 @@ namespace RunShawn.Web.Areas.Default.Controllers
         {
             pageIndex = pageIndex.HasValue ? pageIndex.Value - 1 : 0;
 
-            var articlesFromDb = _articlesService.GetAll(true);
+            var articlesFromDb = _articlesRepository.GetAll(true);
             var allArticles = _mapper.Map<List<ArticleListItemViewModel>>(articlesFromDb);
 
             var featuredArticles = allArticles.Where(x => x.Featured).ToList();
@@ -65,13 +68,13 @@ namespace RunShawn.Web.Areas.Default.Controllers
         public virtual ActionResult Details(long id)
         {
             Article article;
-            if (User.IsInRole(RoleTypes.Administrator.ToString()) || User.IsInRole(nameof(RoleTypes.SuperUser)))
+            if (User.IsInRole(nameof(RoleTypes.Administrator)) || User.IsInRole(nameof(RoleTypes.SuperUser)))
             {
-                article = _articlesService.GetByIdForDetails(id);
+                article = _articlesRepository.GetByIdForDetails(id);
             }
             else
             {
-                article = _articlesService.GetByIdForDetails(id, true);
+                article = _articlesRepository.GetByIdForDetails(id, true);
             }
 
             if (article == null)

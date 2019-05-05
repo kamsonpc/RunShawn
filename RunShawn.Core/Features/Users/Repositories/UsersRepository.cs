@@ -1,11 +1,11 @@
-﻿using RunShawn.Core.Features.Users.Model;
+using RunShawn.Core.Features.Users.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
 using System.Collections.Generic;
 
-namespace RunShawn.Core.Features.Users
+namespace RunShawn.Core.Features.Users.Repositories
 {
-    public class UsersService : IUsersService
+    public class UsersRepository : IUsersRepository
     {
         #region GetAll()
 
@@ -62,7 +62,7 @@ namespace RunShawn.Core.Features.Users
 
         #endregion Update()
 
-        #region SetAvatar
+        #region SetAvatar()
 
         public void SetAvatar(string id, byte[] avatar)
         {
@@ -74,12 +74,12 @@ namespace RunShawn.Core.Features.Users
                        WHERE
                             Id = @id";
 
-            var rows = db.Execute(sql,
-                new
-                {
-                    id,
-                    avatar
-                });
+            db.Execute(sql,
+            new
+            {
+                id,
+                avatar
+            });
         }
 
         #endregion SetAvatar

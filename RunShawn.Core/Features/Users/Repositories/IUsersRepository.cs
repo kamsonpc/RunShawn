@@ -1,9 +1,9 @@
-﻿using RunShawn.Core.Features.Users.Model;
+using RunShawn.Core.Features.Users.Model;
 using System.Collections.Generic;
 
-namespace RunShawn.Core.Features.Users
+namespace RunShawn.Core.Features.Users.Repositories
 {
-    public interface IUsersService
+    public interface IUsersRepository
     {
         #region GetAll()
 

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using RunShawn.Core.Features.Roles.Repository;
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Roles.Repositories;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Admin.Models.Roles;
 using RunShawn.Web.Extentions.Controllers;
 using System.Collections.Generic;
@@ -13,18 +13,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     {
 
         #region Dependecies
-        private readonly IUsersService _usersService;
         private readonly IRolesRepository _rolesRepository;
         private readonly IMapper _mapper;
+        private readonly IUsersRepository _usersRepository;
 
         public RolesController(
-            IUsersService usersService,
+            IUsersRepository usersRepository,
             IRolesRepository rolesRepository,
             IMapper mapper)
         {
-            _usersService = usersService;
             _rolesRepository = rolesRepository;
             _mapper = mapper;
+            _usersRepository = usersRepository;
         }
 
         #endregion Ctor

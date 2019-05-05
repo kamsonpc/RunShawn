@@ -1,4 +1,4 @@
-﻿namespace RunShawn.Core.Features.Roles
+namespace RunShawn.Core.Features.Roles.Permissions
 {
     public enum GeneralPermissions
     {

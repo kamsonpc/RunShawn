@@ -1,26 +1,33 @@
-﻿using RunShawn.Core.Features.News.Categories.Model;
+using RunShawn.Core.Features.News.Categories.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RunShawn.Core.Features.News.Categories
+namespace RunShawn.Core.Features.News.Categories.Repositories
 {
-    public class CategoriesService : IService
+    public class CategoriesRepository : ICategoriesRepository
     {
         #region GetById()
 
-        public static Category GetById(long id)
+        public Category GetById(long id)
         {
             return (Category)Database.Open().News.Categories.FindById(id);
         }
 
         #endregion GetById()
 
+        #region GetAll()
+        public List<Category> GetAll()
+        {
+            return (List<Category>)Database.Open().News.Categories.All();
+        }
+        #endregion GetAll()
+
         #region GetCategoriesAndSubcategories()
 
-        public static List<Category> GetCategoriesAndSubcategories(long? exceptId = null)
+        public List<Category> GetCategoriesAndSubcategories(long? exceptId = null)
         {
             var db = Database.Open();
 
@@ -53,7 +60,7 @@ namespace RunShawn.Core.Features.News.Categories
 
         #region Create()
 
-        public static Category Create(Category category, string userId)
+        public Category Create(Category category, string userId)
         {
             var random = new Random();
             category.Color = string.Format("#{0:x6}", random.Next(0x1000000));
@@ -69,7 +76,7 @@ namespace RunShawn.Core.Features.News.Categories
 
         #region Update()
 
-        public static Category Update(Category category, string userId)
+        public Category Update(Category category, string userId)
         {
             var entity = GetById(category.Id);
 
@@ -86,7 +93,7 @@ namespace RunShawn.Core.Features.News.Categories
 
         #region Delete()
 
-        public static void Delete(long id)
+        public void Delete(long id)
         {
             Database db = Database.Open();
             const string sql = @"
@@ -106,7 +113,7 @@ namespace RunShawn.Core.Features.News.Categories
 
         #region GetSubTree()
 
-        private static void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items, string depthstring)
+        private void GetSubTree(IList<Category> allCats, Category parent, IList<Category> items, string depthstring)
         {
             depthstring = $"-{depthstring}";
             foreach (var cat in allCats.Where(c => c.ParentId == parent.Id).ToList())

@@ -1,4 +1,4 @@
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Users.Repositories;
 using System.Web;
 using System.Web.Mvc;
 
@@ -7,11 +7,11 @@ namespace RunShawn.Web.Extentions.Attributes
     public class AuthorizeUserAttribute : AuthorizeAttribute
     {
         public string AccessLevel { get; set; }
-        private readonly IUsersService _usersService;
+        private readonly IUsersRepository _usersRepository;
 
-        public AuthorizeUserAttribute(IUsersService usersService)
+        public AuthorizeUserAttribute(IUsersRepository usersRepository)
         {
-            _usersService = usersService;
+            _usersRepository = usersRepository;
         }
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Moq;
-using RunShawn.Core.Features.News.News;
+using RunShawn.Core.Features.News.Categories.Repositories;
 using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.News.News.Repositories;
 using RunShawn.Web.Areas.Admin.Controllers;
 using RunShawn.Web.Areas.Admin.Models.News;
 using System;
@@ -18,12 +19,12 @@ namespace RunShawn.Tests.Features.News
         public void Index_Redirect_To_List()
         {
             //Arrange
-            var mockRepo = new Mock<IArticlesService>();
+            var mockRepo = new Mock<IArticlesRepository>();
             mockRepo.Setup(repo => repo.GetAll(true)).Returns(GetTestArticles());
 
             var mockMapper = new Mock<IMapper>();
-
-            var controller = new NewsController(mockRepo.Object, mockMapper.Object);
+            var mockCategory = new Mock<ICategoriesRepository>();
+            var controller = new NewsController(mockRepo.Object, mockCategory.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;
@@ -36,13 +37,14 @@ namespace RunShawn.Tests.Features.News
         public void List_View_Result_IsNot_Null()
         {
             //Arrange
-            var mockRepo = new Mock<IArticlesService>();
+            var mockRepo = new Mock<IArticlesRepository>();
             mockRepo.Setup(repo => repo.GetAll(false)).Returns(GetTestArticles());
+            var mockCategories = new Mock<ICategoriesRepository>();
 
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<List<ArticleListViewModel>>(It.IsAny<List<ArticleListView>>())).Returns(GetTestArticlesList());
 
-            var controller = new NewsController(mockRepo.Object, mockMapper.Object);
+            var controller = new NewsController(mockRepo.Object, mockCategories.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;

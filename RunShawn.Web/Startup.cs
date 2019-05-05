@@ -2,8 +2,8 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
-using RunShawn.Core.Features.Roles;
-using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Permissions;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Roles.Services;
 using RunShawn.Core.Helpers.Enums;
 using RunShawn.Web.Areas.General.Models;

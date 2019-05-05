@@ -1,6 +1,6 @@
 ﻿using Moq;
 using RunShawn.Core.Features.Roles.Model;
-using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Roles.Services;
 using System;
 using System.Collections.Generic;

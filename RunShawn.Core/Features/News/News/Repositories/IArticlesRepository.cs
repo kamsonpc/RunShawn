@@ -1,9 +1,9 @@
-﻿using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.News.News.Model;
 using System.Collections.Generic;
 
-namespace RunShawn.Core.Features.News.News
+namespace RunShawn.Core.Features.News.News.Repositories
 {
-    public interface IArticlesService
+    public interface IArticlesRepository
     {
         #region GetById()
 

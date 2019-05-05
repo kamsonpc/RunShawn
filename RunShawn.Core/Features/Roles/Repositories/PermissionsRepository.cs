@@ -1,10 +1,10 @@
-﻿using RunShawn.Core.Base;
+using RunShawn.Core.Base;
 using RunShawn.Core.Features.Roles.Model;
 using Simple.Data;
 using System;
 using System.Collections.Generic;
 
-namespace RunShawn.Core.Features.Roles.Repository
+namespace RunShawn.Core.Features.Roles.Repositories
 {
     public class PermissionsRepository : BaseRepository, IPermissionsRepository
     {

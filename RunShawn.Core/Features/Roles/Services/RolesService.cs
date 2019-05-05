@@ -1,5 +1,5 @@
 ﻿using RunShawn.Core.Features.Roles.Model;
-using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

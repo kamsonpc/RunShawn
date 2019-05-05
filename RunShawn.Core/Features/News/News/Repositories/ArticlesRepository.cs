@@ -1,13 +1,13 @@
-﻿using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.News.News.Model;
 using Simple.Data;
 using Simple.Data.RawSql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RunShawn.Core.Features.News.News
+namespace RunShawn.Core.Features.News.News.Repositories
 {
-    public class ArticlesService : IArticlesService
+    public class ArticlesRepository : IArticlesRepository
     {
         #region GetById()
 

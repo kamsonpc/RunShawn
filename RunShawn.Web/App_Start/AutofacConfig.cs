@@ -1,12 +1,12 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using MvcSiteMapProvider.Loader;
-using RunShawn.Core.Features.News.News;
+using RunShawn.Core.Features.News.News.Repositories;
 using RunShawn.Core.Features.Pages.Repositories;
 using RunShawn.Core.Features.Pages.Services;
-using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Roles.Services;
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.DI.Autofac.Modules;
 using System.Web.Mvc;
 
@@ -36,8 +36,8 @@ namespace RunShawn.Web.App_Start
 
         private static void RegisterDepenecies(ContainerBuilder builder)
         {
-            builder.RegisterType<UsersService>().As<IUsersService>();
-            builder.RegisterType<ArticlesService>().As<IArticlesService>();
+            builder.RegisterType<UsersRepository>().As<IUsersRepository>();
+            builder.RegisterType<ArticlesRepository>().As<IArticlesRepository>();
             builder.RegisterType<PermissionsRepository>().As<IPermissionsRepository>();
             builder.RegisterType<RolesRepository>().As<IRolesRepository>();
             builder.RegisterType<RolesService>().As<IRolesService>();

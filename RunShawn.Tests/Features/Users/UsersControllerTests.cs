@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Moq;
-using RunShawn.Core.Features.Roles.Repository;
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Users.Model;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Admin.Controllers;
 using RunShawn.Web.Areas.Admin.Models.Users;
 using System;
@@ -19,7 +19,7 @@ namespace RunShawn.Tests.Features.Users
         public void Index_should_redirect_to_list()
         {
             //Arrange
-            var mockRepo = new Mock<IUsersService>();
+            var mockRepo = new Mock<IUsersRepository>();
             var mockRolesRepo = new Mock<IRolesRepository>();
             var mockMapper = new Mock<IMapper>();
             var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object, mockMapper.Object);
@@ -37,7 +37,7 @@ namespace RunShawn.Tests.Features.Users
         public void List_View_Result_IsNot_Null()
         {
             //Arrange
-            var mockRepo = new Mock<IUsersService>();
+            var mockRepo = new Mock<IUsersRepository>();
 
             var mockRolesRepo = new Mock<IRolesRepository>();
 

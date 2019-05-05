@@ -1,7 +1,7 @@
-﻿using RunShawn.Core.Features.Roles.Model;
+using RunShawn.Core.Features.Roles.Model;
 using System.Collections.Generic;
 
-namespace RunShawn.Core.Features.Roles.Repository
+namespace RunShawn.Core.Features.Roles.Repositories
 {
     public interface IPermissionsRepository
     {

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using FluentBootstrap;
 using Microsoft.AspNet.Identity;
-using RunShawn.Core.Features.News.Categories;
-using RunShawn.Core.Features.News.News;
+using RunShawn.Core.Features.News.Categories.Repositories;
 using RunShawn.Core.Features.News.News.Model;
+using RunShawn.Core.Features.News.News.Repositories;
 using RunShawn.Web.Areas.Admin.Models.News;
 using RunShawn.Web.Extentions.Alerts;
 using RunShawn.Web.Extentions.Controllers;
@@ -19,13 +19,15 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     {
         #region Dependecies
 
-        private readonly IArticlesService _articlesService;
         private readonly IMapper _mapper;
+        private readonly IArticlesRepository _articlesRepository;
+        private readonly ICategoriesRepository _categoriesRepository;
 
-        public NewsController(IArticlesService articlesService, IMapper mapper)
+        public NewsController(IArticlesRepository articlesRepository, ICategoriesRepository categoriesRepository, IMapper mapper)
         {
             _mapper = mapper;
-            _articlesService = articlesService;
+            _articlesRepository = articlesRepository;
+            _categoriesRepository = categoriesRepository;
         }
 
         #endregion Dependecies
@@ -43,7 +45,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var articlesFromDb = _articlesService.GetAll();
+            var articlesFromDb = _articlesRepository.GetAll();
             var model = _mapper.Map<List<ArticleListViewModel>>(articlesFromDb);
 
             return View(MVC.Admin.News.Views.List, model);
@@ -55,7 +57,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Create()
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -81,7 +83,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 {
                     var article = _mapper.Map<Article>(model);
 
-                    _articlesService.Create(article, User.Identity.GetUserId());
+                    _articlesRepository.Create(article, User.Identity.GetUserId());
 
                     TempData[_alert] = new Alert($"Dodano Artykuł {article.Title}", AlertState.Success);
                     return RedirectToAction(MVC.Admin.News.List());
@@ -95,7 +97,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                                 .Select(x => new SelectListItem
                                                 {
                                                     Value = x.Id.ToString(),
@@ -112,7 +114,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Edit(long id)
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -120,7 +122,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               })
                                               .ToList();
 
-            var article = _articlesService.GetById(id);
+            var article = _articlesRepository.GetById(id);
             var model = _mapper.Map<ArticleViewModel>(article);
             model.Categories = categories;
 
@@ -133,16 +135,16 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var article =_mapper.Map<Article>(model);
+                var article = _mapper.Map<Article>(model);
 
-                _articlesService.Update(article, User.Identity.GetUserId());
+                _articlesRepository.Update(article, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert($"Zaktualizowano Artykuł {article.Title}", AlertState.Success);
                 return RedirectToAction(MVC.Admin.News.List());
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                              .Select(x => new SelectListItem
                                              {
                                                  Value = x.Id.ToString(),
@@ -161,7 +163,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             try
             {
-                _articlesService.Delete(id, User.Identity.GetUserId());
+                _articlesRepository.Delete(id, User.Identity.GetUserId());
 
                 TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success, Url.Action(MVC.Admin.News.Restore(id)));
                 return RedirectToAction(MVC.Admin.News.List());
@@ -179,7 +181,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult Feature(long id)
         {
-            _articlesService.Feature(id);
+            _articlesRepository.Feature(id);
             return RedirectToAction(MVC.Admin.News.List());
         }
 
@@ -191,7 +193,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             try
             {
-                _articlesService.Restore(id);
+                _articlesRepository.Restore(id);
 
                 TempData[_alert] = new Alert("Pomyślnie Przywrócono", AlertState.Success);
                 return RedirectToAction(MVC.Admin.News.List());
