@@ -1,4 +1,4 @@
-﻿using RunShawn.Web.Extentions.Contoller;
+﻿using RunShawn.Web.Extentions.Controllers;
 using System.Web.Mvc;
 
 namespace RunShawn.Web.Areas.Admin.Controllers

@@ -7,18 +7,18 @@
 
 @using (var form = Html.Bootstrap().Form(MVC.Admin.Categories.Edit()).SetId("categories-edit-form").Begin())
 {
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x => x.Id)
-    <div class="form-group">
-        <div>
-            @Html.LabelFor(x => x.ParentId)
-        </div>
-        <div>
-            @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Value", "Text"), "Brak")
-        </div>
+@Html.AntiForgeryToken()
+@Html.HiddenFor(x => x.Id)
+<div class="form-group">
+    <div>
+        @Html.LabelFor(x => x.ParentId)
     </div>
-    @form.InputFor(x => x.Title).SetControlLabel("Tytuł")
-    @form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
+    <div>
+        @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Value", "Text"), "Brak")
+    </div>
+</div>
+@form.InputFor(x => x.Title).SetControlLabel("Tytuł")
+@form.Submit().SetState(ButtonState.Primary).SetSize(ButtonSize.Lg).SetText("Zapisz");
 }
 
 @section Scripts {

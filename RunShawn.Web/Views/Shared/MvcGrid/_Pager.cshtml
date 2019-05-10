@@ -12,67 +12,67 @@
     {
         if (currentPage > 1)
         {
-            <button type="button" data-page="1">&laquo;</button>
-            <button type="button" data-page="@(currentPage - 1)">&lsaquo;</button>
+    <button type="button" data-page="1">&laquo;</button>
+    <button type="button" data-page="@(currentPage - 1)">&lsaquo;</button>
         }
         else
         {
-            <button type="button" class="disabled" tabindex="-1">&laquo;</button>
-            <button type="button" class="disabled" tabindex="-1">&lsaquo;</button>
+    <button type="button" class="disabled" tabindex="-1">&laquo;</button>
+    <button type="button" class="disabled" tabindex="-1">&lsaquo;</button>
         }
         for (Int32 page = firstDisplayPage; page <= totalPages && page < firstDisplayPage + Model.PagesToDisplay; page++)
         {
             if (page == currentPage)
             {
-                <button type="button" class="active" data-page="@(page)">@(page)</button>
+    <button type="button" class="active" data-page="@(page)">@(page)</button>
             }
             else
             {
-                <button type="button" data-page="@(page)">@(page)</button>
+    <button type="button" data-page="@(page)">@(page)</button>
             }
         }
         if (currentPage < totalPages)
         {
-            <button type="button" data-page="@(currentPage + 1)">&rsaquo;</button>
-            <button type="button" data-page="@totalPages">&raquo;</button>
+    <button type="button" data-page="@(currentPage + 1)">&rsaquo;</button>
+    <button type="button" data-page="@totalPages">&raquo;</button>
         }
         else
         {
-            <button type="button" class="disabled" tabindex="-1">&rsaquo;</button>
-            <button type="button" class="disabled" tabindex="-1">&raquo;</button>
+    <button type="button" class="disabled" tabindex="-1">&rsaquo;</button>
+    <button type="button" class="disabled" tabindex="-1">&raquo;</button>
         }
         if (Model.ShowPageSizes)
         {
-            <div class="mvc-grid-page-sizes">
-                @if (Model.PageSizes.Count > 0)
+    <div class="mvc-grid-page-sizes">
+        @if (Model.PageSizes.Count > 0)
                 {
-                    <select class="mvc-grid-pager-rows">
-                        @foreach (KeyValuePair<Int32, String> size in Model.PageSizes)
+        <select class="mvc-grid-pager-rows">
+            @foreach (KeyValuePair<Int32, String> size in Model.PageSizes)
                         {
                             if (Model.RowsPerPage == size.Key)
                             {
-                                <option value="@size.Key" selected>@size.Value</option>
+            <option value="@size.Key" selected>@size.Value</option>
                             }
                             else
                             {
-                                <option value="@size.Key">@size.Value</option>
+            <option value="@size.Key">@size.Value</option>
                             }
                         }
-                    </select>
+        </select>
                 }
                 else
                 {
-                    <input class="mvc-grid-pager-rows" value="@Model.RowsPerPage" />
+        <input class="mvc-grid-pager-rows" value="@Model.RowsPerPage" />
                 }
-            </div>
+    </div>
         }
         else
         {
-            <input class="mvc-grid-pager-rows" type="hidden" value="@Model.RowsPerPage" />
+    <input class="mvc-grid-pager-rows" type="hidden" value="@Model.RowsPerPage" />
         }
     }
     else
     {
-        <input class="mvc-grid-pager-rows" type="hidden" value="@Model.RowsPerPage" />
+    <input class="mvc-grid-pager-rows" type="hidden" value="@Model.RowsPerPage" />
     }
 </div>

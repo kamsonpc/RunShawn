@@ -1,15 +1,16 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RunShawn.Core.Features.Roles.Model;
-using RunShawn.Core.Features.Roles.Repository;
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Users.Model;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Admin.Models.Users;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Areas.General.Models;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Controllers;
 using RunShawn.Web.Extentions.Linq;
-using RunShawn.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,12 +24,18 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     [Authorize()]
     public partial class UsersController : BaseController
     {
-        public IUsersService _usersService { get; internal set; }
+        #region Depenecies
+
         public IRolesRepository _rolesRepository { get; internal set; }
+
+        public IMapper _mapper { get; internal set; }
+
+        #endregion Depenecies
 
         #region InjectUserManager
 
         private ApplicationUserManager _userManager;
+        private readonly IUsersRepository _usersRepository;
 
         public ApplicationUserManager UserManager
         {
@@ -40,10 +47,11 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         #region Ctor
 
-        public UsersController(IUsersService usersService, IRolesRepository rolesRepository)
+        public UsersController(IUsersRepository usersRepository, IRolesRepository rolesRepository, IMapper mapper)
         {
-            _usersService = usersService;
             _rolesRepository = rolesRepository;
+            _mapper = mapper;
+            _usersRepository = usersRepository;
         }
 
         public UsersController(ApplicationUserManager userManager)
@@ -66,8 +74,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var model = _usersService.GetAll()
-                                     .MapTo<List<UserListViewModel>>();
+            var data = _usersRepository.GetAll();
+            var model = _mapper.Map<List<UserListViewModel>>(data);
 
             return View(MVC.Admin.Users.Views.List, model);
         }
@@ -99,7 +107,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = model.MapTo<ApplicationUser>();
+                var user = _mapper.Map<ApplicationUser>(model);
+
                 try
                 {
                     await UserManager.CreateAsync(user, model.Password).ConfigureAwait(false);
@@ -143,8 +152,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                     })
                                     .ToList();
 
-            var model = _usersService.GetById(id)
-                                     .MapTo<UserEditViewModel>();
+            var user = _usersRepository.GetById(id);
+            var model = _mapper.Map<UserEditViewModel>(user);
 
             model.RoleId = _rolesRepository.GetByUser(id);
             model.Roles = roles;
@@ -160,8 +169,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    var user = model.MapTo<User>();
-                    _usersService.Update(user);
+                    var user = _mapper.Map<User>(model);
+                    _usersRepository.Update(user);
 
                     if (!string.IsNullOrEmpty(user.Id))
                     {
@@ -197,7 +206,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             try
             {
-                _usersService.Delete(id);
+                _usersRepository.Delete(id);
 
                 TempData[_alert] = new Alert("Pomyślnie Usunięto", AlertState.Success);
                 return RedirectToAction(MVC.Admin.Users.List());
@@ -217,7 +226,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             string userId = User.Identity.GetUserId();
 
-            var user = _usersService.GetById(userId);
+            var user = _usersRepository.GetById(userId);
 
             var avatar = user.Avatar;
             if (avatar?.Length <= 0)

@@ -4,17 +4,17 @@
 @using MvcSiteMapProvider.Web.Html.Models
 
 <ol class="breadcrumb">
-@foreach (var node in Model) {
+    @foreach (var node in Model) {
     bool active = (node == Model.Last() ? true : false);
 
     <li class="@(active ? "active" : String.Empty)">
         @if (active)
         {
-            @node.Title
+        @node.Title
         }
         else
         {
-            <a href="@node.Url" title="@node.Title">@node.Title</a>
+        <a href="@node.Url" title="@node.Title">@node.Title</a>
 
         }
     </li>

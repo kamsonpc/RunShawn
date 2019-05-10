@@ -2,34 +2,34 @@
 
 @model IEnumerable<CategoryListViewModel>
 @(
-                Html
-                .Grid(Model)
-                .Build(columns =>
-                {
-                    columns.Add(model => model.Title).Titled("Tytuł");
+       Html
+       .Grid(Model)
+       .Build(columns =>
+       {
+           columns.Add(model => model.Title).Titled("Tytuł");
 
-                    columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
-             (
-                 Html.Bootstrap().Button("Edytuj")
-                 .SetIcon(Icon.Edit)
-                 .SetValue(model.Id)
-                 .AddCss("btn-edit")
-                 .SetState(ButtonState.Warning)
-                 .SetSize(ButtonSize.Sm)
-                 .ToHtmlString()
-                 +
-                 Html.Bootstrap().Button("Usuń")
-                 .AddCss("btn-remove")
-                 .SetValue(model.Id)
-                 .SetIcon(Icon.Remove)
-                 .SetState(ButtonState.Danger)
-                 .SetSize(ButtonSize.Sm)
-                 .ToHtmlString()
-             )
+           columns.Add().Titled("Akcje").Encoded(false).RenderedAs(model =>
+    (
+        Html.Bootstrap().Button("Edytuj")
+        .SetIcon(Icon.Edit)
+        .SetValue(model.Id)
+        .AddCss("btn-edit")
+        .SetState(ButtonState.Warning)
+        .SetSize(ButtonSize.Sm)
+        .ToHtmlString()
+        +
+        Html.Bootstrap().Button("Usuń")
+        .AddCss("btn-remove")
+        .SetValue(model.Id)
+        .SetIcon(Icon.Remove)
+        .SetState(ButtonState.Danger)
+        .SetSize(ButtonSize.Sm)
+        .ToHtmlString()
+    )
 
-             );
-                })
-                .Empty("Brak Wyników")
-                    .Filterable()
-                    .Sortable()
+    );
+       })
+       .Empty("Brak Wyników")
+           .Filterable()
+           .Sortable()
 )

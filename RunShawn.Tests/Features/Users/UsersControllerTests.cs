@@ -1,8 +1,10 @@
-﻿using Moq;
-using RunShawn.Core.Features.Roles.Repository;
-using RunShawn.Core.Features.Users;
+﻿using AutoMapper;
+using Moq;
+using RunShawn.Core.Features.Roles.Repositories;
 using RunShawn.Core.Features.Users.Model;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Admin.Controllers;
+using RunShawn.Web.Areas.Admin.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -17,9 +19,10 @@ namespace RunShawn.Tests.Features.Users
         public void Index_should_redirect_to_list()
         {
             //Arrange
-            var mockRepo = new Mock<IUsersService>();
+            var mockRepo = new Mock<IUsersRepository>();
             var mockRolesRepo = new Mock<IRolesRepository>();
-            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
+            var mockMapper = new Mock<IMapper>();
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object, mockMapper.Object);
 
             //Act
             var result = (RedirectToRouteResult)controller.Index();
@@ -34,10 +37,16 @@ namespace RunShawn.Tests.Features.Users
         public void List_View_Result_IsNot_Null()
         {
             //Arrange
-            var mockRepo = new Mock<IUsersService>();
+            var mockRepo = new Mock<IUsersRepository>();
+
             var mockRolesRepo = new Mock<IRolesRepository>();
+
             mockRepo.Setup(repo => repo.GetAll()).Returns(GetTestUsers());
-            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object);
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<List<UserListViewModel>>(It.IsAny<List<User>>())).Returns(GetTestsUserList);
+
+            var controller = new UsersController(mockRepo.Object, mockRolesRepo.Object, mockMapper.Object);
 
             //Act
             var result = controller.List() as ViewResult;
@@ -65,6 +74,26 @@ namespace RunShawn.Tests.Features.Users
                     LastName = "Testowy2",
                     Email = "email2@gmail.com",
                 }
+            };
+        }
+
+        private List<UserListViewModel> GetTestsUserList()
+        {
+            return new List<UserListViewModel>
+            {
+                new UserListViewModel
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FirstName = "User",
+                    LastName = "Testowy"
+                },
+
+                 new UserListViewModel
+                 {
+                    Id = Guid.NewGuid().ToString(),
+                    FirstName = "User",
+                    LastName = "Testowy2"
+                 }
             };
         }
     }

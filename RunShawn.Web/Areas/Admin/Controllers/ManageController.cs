@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using RunShawn.Core.Features.Users;
+using RunShawn.Core.Features.Users.Repositories;
 using RunShawn.Web.Areas.Admin.Models.Account;
 using System.IO;
 using System.Linq;
@@ -17,17 +17,16 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         private const string _avatar = "Avatar";
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly IUsersService _usersService;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersService usersService)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersRepository usersRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            _usersService = usersService;
+            _usersRepository = usersRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -335,7 +334,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
                 }
-                _usersService.SetAvatar(User.Identity.GetUserId(), imageData);
+                _usersRepository.SetAvatar(User.Identity.GetUserId(), imageData);
             }
 
             return RedirectToAction(MVC.Admin.Manage.SetAvatar());
@@ -356,6 +355,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
+        private readonly IUsersRepository _usersRepository;
 
         private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 

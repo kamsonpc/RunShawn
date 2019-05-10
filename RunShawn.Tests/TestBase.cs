@@ -1,20 +1,9 @@
-﻿using RunShawn.Web.App_Start;
-using System;
-
-namespace RunShawn.Tests
+﻿namespace RunShawn.Tests
 {
-    public abstract class ControllerTestBase : IDisposable
+    public abstract class ControllerTestBase
     {
         protected ControllerTestBase()
         {
-            AutoMapperConfiguration.Configure();
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-
-            AutoMapperConfiguration.Reset();
         }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RunShawn.Web.Areas.Admin.Models.Account;
-using RunShawn.Web.Models;
+using RunShawn.Web.Areas.General.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;

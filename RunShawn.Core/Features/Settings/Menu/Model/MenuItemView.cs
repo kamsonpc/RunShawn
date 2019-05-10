@@ -1,4 +1,4 @@
-﻿namespace RunShawn.Core.Features.Settings.Menu
+namespace RunShawn.Core.Features.Settings.Menu.Model
 {
     public class MenuItemView
     {

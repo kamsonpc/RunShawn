@@ -1,12 +1,13 @@
-﻿using FluentBootstrap;
+﻿using AutoMapper;
+using FluentBootstrap;
 using Microsoft.AspNet.Identity;
-using RunShawn.Core.Features.News.Categories;
 using RunShawn.Core.Features.News.Categories.Model;
-using RunShawn.Core.Features.News.News;
+using RunShawn.Core.Features.News.Categories.Repositories;
+using RunShawn.Core.Features.News.News.Repositories;
 using RunShawn.Web.Areas.Admin.Models.News;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Alerts;
+using RunShawn.Web.Extentions.Attributes;
+using RunShawn.Web.Extentions.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -17,14 +18,19 @@ namespace RunShawn.Web.Areas.Admin.Controllers
     public partial class CategoriesController : BaseController
     {
         #region Dependencies
-        private readonly IArticlesService _articlesService;
 
-        public CategoriesController(IArticlesService articlesService)
+        private readonly IMapper _mapper;
+        private readonly IArticlesRepository _articlesRepository;
+        private readonly ICategoriesRepository _categoriesRepository;
+
+        public CategoriesController(IArticlesRepository articlesRepository, IMapper mapper, ICategoriesRepository categoriesRepository)
         {
-            _articlesService = articlesService;
+            _mapper = mapper;
+            _articlesRepository = articlesRepository;
+            _categoriesRepository = categoriesRepository;
         }
 
-        #endregion
+        #endregion Dependencies
 
         #region Index()
 
@@ -44,10 +50,10 @@ namespace RunShawn.Web.Areas.Admin.Controllers
 
         public virtual ActionResult GenerateList()
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
-                                              .MapTo<List<CategoryListViewModel>>();
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories();
+            var model = _mapper.Map<List<CategoryListViewModel>>(categories);
 
-            return PartialView(MVC.Admin.Categories.Views._List, categories);
+            return PartialView(MVC.Admin.Categories.Views._List, model);
         }
 
         #endregion List()
@@ -58,7 +64,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [AjaxOnly]
         public virtual ActionResult Create()
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -85,15 +91,15 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = model.MapTo<Category>();
+                var category = _mapper.Map<Category>(model);
 
-                CategoriesService.Create(category, User.Identity.GetUserId());
+                _categoriesRepository.Create(category, User.Identity.GetUserId());
 
                 return RedirectToAction(MVC.Admin.Categories.GenerateList());
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            model.Categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                                 .Select(x => new SelectListItem
                                                 {
                                                     Value = x.Id.ToString(),
@@ -111,7 +117,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [HttpGet]
         public virtual ActionResult Edit(long id)
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories(id)
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories(id)
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -119,8 +125,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                                               })
                                               .ToList();
 
-            var model = CategoriesService.GetById(id)
-                                         .MapTo<CategoryViewModel>();
+            var category = _categoriesRepository.GetById(id);
+            var model = _mapper.Map<CategoryViewModel>(category);
 
             model.Categories = categories;
 
@@ -137,22 +143,21 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = model.MapTo<Category>();
+                var category = _mapper.Map<Category>(model);
 
-                CategoriesService.Update(category, User.Identity.GetUserId());
+                _categoriesRepository.Update(category, User.Identity.GetUserId());
 
                 return RedirectToAction(MVC.Admin.Categories.GenerateList());
             }
 
             TempData[_alert] = new Alert("Niepoprawny formularz", AlertState.Danger);
-            var categories = CategoriesService.GetCategoriesAndSubcategories()
+            model.Categories = _categoriesRepository.GetCategoriesAndSubcategories()
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
                                                   Text = x.Title
                                               })
                                               .ToList();
-            model.Categories = categories;
 
             return PartialView(MVC.Admin.Categories.Views._Edit, model);
         }
@@ -164,7 +169,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [AjaxOnly]
         public virtual JsonResult Delete(long id)
         {
-            var articles = _articlesService.GetByCategory(id);
+            var articles = _articlesRepository.GetByCategory(id);
             if (articles != null)
             {
                 return Json(new
@@ -173,7 +178,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
 
-            CategoriesService.Delete(id);
+            _categoriesRepository.Delete(id);
 
             return Json(new
             {
@@ -189,7 +194,7 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [AjaxOnly]
         public virtual ActionResult ChangeArticlesCategory(long categoryId)
         {
-            var categories = CategoriesService.GetCategoriesAndSubcategories(categoryId)
+            var categories = _categoriesRepository.GetCategoriesAndSubcategories(categoryId)
                                               .Select(x => new SelectListItem
                                               {
                                                   Value = x.Id.ToString(),
@@ -216,8 +221,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _articlesService.Move(model.CurrentCategoryId, model.NewCategoryId);
-                CategoriesService.Delete(model.CurrentCategoryId);
+                _articlesRepository.Move(model.CurrentCategoryId, model.NewCategoryId);
+                _categoriesRepository.Delete(model.CurrentCategoryId);
             }
 
             return RedirectToAction(MVC.Admin.Categories.GenerateList());

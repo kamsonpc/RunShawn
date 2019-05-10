@@ -2,7 +2,7 @@
  * Basque translation for bootstrap-datepicker
  * Arkaitz Etxeberria <kondi80@gmail.com>
  */
-;(function($){
+; (function ($) {
     $.fn.datepicker.dates['eu'] = {
         days: ['Igandea', 'Astelehena', 'Asteartea', 'Asteazkena', 'Osteguna', 'Ostirala', 'Larunbata'],
         daysShort: ['Ig', 'Al', 'Ar', 'Az', 'Og', 'Ol', 'Lr'],

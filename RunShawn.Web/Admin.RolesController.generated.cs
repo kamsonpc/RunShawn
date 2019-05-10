@@ -94,7 +94,9 @@ namespace RunShawn.Web.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string List = "List";
             }
+            public readonly string List = "~/Areas/Admin/Views/Roles/List.cshtml";
         }
     }
 

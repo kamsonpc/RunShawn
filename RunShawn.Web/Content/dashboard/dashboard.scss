@@ -1,5 +1,5 @@
 /* Main CSS */
-body{
+body {
     margin: 0;
     padding: 0;
     border: 0;
@@ -7,15 +7,13 @@ body{
     font-family: "Montserrat";
 }
 
-button
-{
+button {
     background-color: #00000000;
-    border:0;
+    border: 0;
 }
 
 /* Main CSS */
-.dashboard-header
-{
+.dashboard-header {
     box-shadow: 0px 2px 10px 0px rgba(0,0,0,.2);
     background-color: #ffffff;
     display: flex;
@@ -23,26 +21,26 @@ button
     align-items: center;
     padding-right: 68px;
     height: 63px;
-    .page-logo
-    {
+
+    .page-logo {
         position: absolute;
         left: 25px;
         cursor: pointer;
         font-size: 20px;
     }
-    .dashboard-nav
-    {
-        .navigation-menu
-        {
+
+    .dashboard-nav {
+        .navigation-menu {
             padding: 0;
             margin: 0;
             list-style-type: none;
             display: flex;
-            li{
+
+            li {
                 $border-color: #e8e8e8;
                 border-right: 1px solid $border-color;
-                a
-                {
+
+                a {
                     padding: 5px 15px;
                     color: #1254e0;
                     background: -webkit-linear-gradient( 4deg, rgb(142,84,233) 0%, rgb(71,118,230) 100%);
@@ -50,51 +48,53 @@ button
                     -webkit-text-fill-color: transparent;
                     cursor: context-menu;
                 }
-                &:first-child{
+
+                &:first-child {
                     border-left: 1px solid $border-color;
                 }
             }
         }
     }
-    .user-panel
-    {
+
+    .user-panel {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0 5px 0 5px;
-        i{
+
+        i {
             background: -webkit-linear-gradient( 4deg, rgb(142,84,233) 0%, rgb(71,118,230) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding: 10px;
-            &:hover
-            {
+
+            &:hover {
                 cursor: pointer;
             }
         }
-        .user-image
-        {
+
+        .user-image {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 10px 0 10px 10px;
-            img
-            {
+
+            img {
                 border-radius: 100%;
                 width: 36px;
                 height: 36px;
-                &:hover
-                {
+
+                &:hover {
                     cursor: pointer;
                 }
             }
-            &:hover img
-            {
+
+            &:hover img {
                 background-color: rgba(0,0,0,0.2);
             }
         }
-        .dropdown_list-user
-        {
+
+        .dropdown_list-user {
             position: absolute;
             top: 63px;
             right: 70px;
@@ -106,47 +106,50 @@ button
             border: 1px solid #ccc;
             border-color: rgba(0,0,0,.2);
             box-shadow: 0 2px 10px rgba(0,0,0,.2);
-            a{
-                color:#000000;
+
+            a {
+                color: #000000;
             }
-            .account-info
-            {
+
+            .account-info {
                 display: flex;
-                img
-                {
+
+                img {
                     border-radius: 100%;
                     max-width: 96px;
                     max-height: 96px;
                     margin-right: 20px;
                 }
-                ul{
+
+                ul {
                     margin: 0;
                     padding: 0;
                     list-style-type: none;
-                    li{
+
+                    li {
                         line-height: 2;
                         font-size: 13px;
                     }
-                    .name
-                    {
+
+                    .name {
                         font-weight: 700;
                         color: #000000;
                     }
-                    .group
-                    {
+
+                    .group {
                         color: #666666;
                     }
                 }
             }
-            .logout button
-            {
+
+            .logout button {
                 width: 100%;
                 padding: 10px;
                 margin-top: 10px;
             }
         }
-        .dropdown_list-notifications
-        {
+
+        .dropdown_list-notifications {
             position: absolute;
             top: 63px;
             right: 125px;
@@ -159,32 +162,29 @@ button
             border-color: rgba(0,0,0,.2);
             box-shadow: 0 2px 10px rgba(0,0,0,.2);
 
-            .dropdown_list-header
-            {
+            .dropdown_list-header {
                 text-align: center;
                 font-weight: bold;
                 padding: 10px 0 10px 0;
             }
 
-            .notifications
-            {
-                ul
-                {
+            .notifications {
+                ul {
                     list-style-type: none;
                     padding: 0;
                     margin: 0;
-                    li
-                    {
+
+                    li {
                         border: 1px solid #e8e8e8;
                         padding: 10px;
                         margin: 5px 0 5px 0;
                         cursor: pointer;
-                        .message
-                        {
+
+                        .message {
                             font-size: 14px;
                         }
-                        .date
-                        {
+
+                        .date {
                             font-size: 13px;
                             color: #878787;
                         }
@@ -194,55 +194,58 @@ button
         }
     }
 }
-.side-bar
-{
+
+.side-bar {
     min-width: 250px;
     max-width: 300px;
     width: 20%;
     min-height: calc(100vh - 108px);
     background: #3b4653;
-    a{
+
+    a {
         color: #ffffff;
         text-decoration: none;
-        &:hover{
-            text-decoration:none;
-            color:#ffffff;
+
+        &:hover {
+            text-decoration: none;
+            color: #ffffff;
         }
     }
-    ul
-    {
+
+    ul {
         $element-bcolor: #323c48;
         list-style-type: none;
         margin: 0;
         padding: 0;
         color: #ffffff;
-        .category-header
-        {
+
+        .category-header {
             $element-height: 57px;
             background-color: $element-bcolor;
             height: $element-height;
             line-height: $element-height;
-            i{
+
+            i {
                 padding: 0 25px;
                 color: #485361;
             }
-            &:hover, &.active
-            {
+
+            &:hover, &.active {
                 border-right: 3px solid #8359e9;
                 background-color: darken($element-bcolor,5%);
             }
         }
     }
-    ol
-    {
+
+    ol {
         list-style-type: none;
         padding-left: 25px;
         display: none;
-        li
-        {
+
+        li {
             line-height: 2.5;
-            &::before
-            {
+
+            &::before {
                 content: "\2022";
                 color: #8359e9;
                 font-weight: bold;
@@ -255,114 +258,123 @@ button
     }
 }
 
-.main-footer
-{
+.main-footer {
     text-align: center;
     padding: 10px 0;
     background: #282f39;
     color: #ffffff;
 }
 
-#dashboard-main
-{
+#dashboard-main {
     display: flex;
 }
 
-#page-container
-{
+#page-container {
     padding: 40px;
     width: 100%;
-    .btn-group
-    {
+
+    .btn-group {
         padding: 10px 10px 10px 0;
     }
 }
 
-#LockoutEnabled
-{
-    margin-left:10px;
+#LockoutEnabled {
+    margin-left: 10px;
 }
 
-.form-group
-{
-    select{
+.form-group {
+    select {
         padding-right: 20px;
         height: 37px;
     }
 }
 
-.charts{
+.charts {
     display: flex;
     justify-content: center;
-    div{ 
+
+    div {
         width: 50%;
         padding: 30px;
-        background-color:#f5f5f5;
+        background-color: #f5f5f5;
         border-radius: 3px;
         box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
     }
+
     div:nth-child(1) {
         margin: 10px 10px 10px 0;
     }
+
     div:nth-child(2) {
         margin: 10px 0 10px 10px;
     }
 }
-.single-chart-container{
+
+.single-chart-container {
     display: flex;
-    justify-content: center; 
-    .single-chart{
+    justify-content: center;
+
+    .single-chart {
         width: 100%;
         padding: 30px;
-        background-color:#F5F5F5;
+        background-color: #F5F5F5;
         border-radius: 3px;
         margin: 10px 0;
         box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
     }
 }
 
-.awards-container{
+.awards-container {
     display: flex;
-    flex-wrap: wrap;  
-    flex-grow: 1;   
-    .single-award{
-        width: 25%;     
-        margin-bottom: 15px;  
-        .image-container{
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+    .single-award {
+        width: 25%;
+        margin-bottom: 15px;
+
+        .image-container {
             background-color: #f5f5f5;
             padding: 40px;
             border-radius: 3px;
             height: 310px;
             display: flex;
             align-items: center;
-            img{
-                width: 100%; 
+
+            img {
+                width: 100%;
                 height: auto;
             }
         }
-        .header{
-            font-size: 20px;   
+
+        .header {
+            font-size: 20px;
         }
-        .poins, .button{
-            text-align: center; 
+
+        .poins, .button {
+            text-align: center;
             border: 1px solid #143268;
             color: #143268;
             border-radius: 0.25rem;
             padding: 5px 0;
-        } 
-        .poins{
+        }
+
+        .poins {
             background-color: #143268;
             color: #ffffff;
         }
-        .button{
+
+        .button {
             cursor: pointer;
         }
-        .button:hover{
+
+        .button:hover {
             transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
             background-color: #143268;
             color: #ffffff;
         }
-        &>div{
+
+        & > div {
             margin: 5px;
         }
     }

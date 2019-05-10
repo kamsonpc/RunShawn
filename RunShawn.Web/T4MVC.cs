@@ -31,6 +31,8 @@ public static partial class MVC
     public static AdminClass Admin { get { return s_Admin; } }
     static readonly DefaultClass s_Default = new DefaultClass();
     public static DefaultClass Default { get { return s_Default; } }
+    static readonly GeneralClass s_General = new GeneralClass();
+    public static GeneralClass General { get { return s_General; } }
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
     public static T4MVC.MenusController Menus = new T4MVC.MenusController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -62,6 +64,11 @@ namespace T4MVC
         public RunShawn.Web.Areas.Default.Controllers.NewsController News = new RunShawn.Web.Areas.Default.Controllers.T4MVC_NewsController();
         public RunShawn.Web.Controllers.PagesController Pages = new RunShawn.Web.Controllers.T4MVC_PagesController();
         public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class GeneralClass
+    {
+        public readonly string Name = "General";
     }
 }
 
@@ -106,9 +113,9 @@ internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResu
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal partial class T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult : RunShawn.Web.Actions.Results.JsonNetActionResult, IT4MVCActionResult
+internal partial class T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult : RunShawn.Web.Extentions.Actions.Results.JsonNetActionResult, IT4MVCActionResult
 {
-    public T4MVC_RunShawn_Web_Actions_Results_JsonNetActionResult(string area, string controller, string action, string protocol = null): base(default(object))
+    public T4MVC_RunShawn_Web_Extentions_Actions_Results_JsonNetActionResult(string area, string controller, string action, string protocol = null): base(default(object))
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }

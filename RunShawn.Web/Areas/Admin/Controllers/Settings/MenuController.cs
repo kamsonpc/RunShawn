@@ -1,10 +1,10 @@
-﻿using RunShawn.Core.Features.Settings.Menu;
+﻿using AutoMapper;
+using RunShawn.Core.Features.Settings.Menu;
 using RunShawn.Core.Features.Settings.Menu.Model;
-using RunShawn.Web.Actions.Results;
 using RunShawn.Web.Areas.Admin.Models.Settings.Menu;
-using RunShawn.Web.Attributes;
-using RunShawn.Web.Extentions;
-using RunShawn.Web.Extentions.Contoller;
+using RunShawn.Web.Extentions.Actions.Results;
+using RunShawn.Web.Extentions.Attributes;
+using RunShawn.Web.Extentions.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,9 +12,18 @@ using System.Web.Mvc;
 namespace RunShawn.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    [RoutePrefix(@"Settings/Menu")]
+    [RoutePrefix("Settings/Menu")]
     public partial class MenuController : BaseController
     {
+        #region Depenecies()
+        private readonly IMapper _mapper;
+
+        public MenuController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+        #endregion
+
         #region Index()
 
         public virtual ActionResult Index()
@@ -49,7 +58,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [AjaxOnly]
         public virtual JsonNetActionResult GetMenuTree()
         {
-            var menuItems = MenuConfigurationService.GetAll().MapTo<List<MenuItemViewModel>>();
+            var menuItemsFromDb = MenuConfigurationService.GetAll();
+            var menuItems = _mapper.Map<List<MenuItemViewModel>>(menuItemsFromDb);
 
             var nestedList = new List<MenuNestedItem>();
             var parentMenuItems = menuItems.Where(x => x.ParentId == null);
@@ -97,7 +107,8 @@ namespace RunShawn.Web.Areas.Admin.Controllers
         [HttpPost]
         public virtual JsonResult Create(MenuItemCreateModel model)
         {
-            MenuConfigurationService.Create(model.MapTo<MenuItem>());
+            var menuItem = _mapper.Map<MenuItem>(model);
+            MenuConfigurationService.Create(menuItem);
             return Json(true);
         }
 

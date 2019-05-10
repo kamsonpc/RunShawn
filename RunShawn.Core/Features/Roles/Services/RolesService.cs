@@ -1,5 +1,5 @@
 ﻿using RunShawn.Core.Features.Roles.Model;
-using RunShawn.Core.Features.Roles.Repository;
+using RunShawn.Core.Features.Roles.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ namespace RunShawn.Core.Features.Roles.Services
     public class RolesService : IRolesService
     {
         #region DI
+
         private readonly IPermissionsRepository _permissionsRepository;
         private readonly IRolesRepository _rolesRepository;
 
@@ -17,9 +18,11 @@ namespace RunShawn.Core.Features.Roles.Services
             _permissionsRepository = permissionsRepository;
             _rolesRepository = rolesRepository;
         }
-        #endregion
+
+        #endregion DI
 
         #region SetUpRoleInDb()
+
         public void BuildPermissions(List<Permission> permissions)
         {
             _permissionsRepository.DeleteAll();
@@ -27,9 +30,11 @@ namespace RunShawn.Core.Features.Roles.Services
 
             _permissionsRepository.InsertMany(permissions);
         }
-        #endregion
+
+        #endregion SetUpRoleInDb()
 
         #region GeneratePermissions()
+
         public List<Permission> GeneratePermissions(Dictionary<int, string> data)
         {
             var permissions = new List<Permission>();
@@ -44,19 +49,25 @@ namespace RunShawn.Core.Features.Roles.Services
             }
             return permissions;
         }
-        #endregion
+
+        #endregion GeneratePermissions()
 
         #region IsNeedRebuildPermissions
+
         public bool IsNeedRebuildPermissions(List<Permission> permissions)
         {
             var permissionsInDb = _permissionsRepository.GetAll();
+            if (!permissionsInDb.Any())
+                return true;
+
             permissionsInDb = permissionsInDb.Select(x => new Permission { Title = x.Title, Value = x.Value }).ToList();
             permissions = permissions.Select(x => new Permission { Title = x.Title, Value = x.Value }).ToList();
 
             var diff = permissionsInDb.Except(permissions);
 
-            return diff.Count() > 0;
+            return diff.Any();
         }
-        #endregion
+
+        #endregion IsNeedRebuildPermissions
     }
 }
