@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -371,8 +372,6 @@
     <Content Include="Content\article\style.css" />
     <Content Include="Content\boostrap_icon_picker\bootstrap-iconpicker.css" />
     <Content Include="Content\boostrap_icon_picker\bootstrap-iconpicker.min.css" />
-    <Content Include="Content\bootstrap-datepicker.css" />
-    <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -395,7 +394,7 @@
     <Content Include="Content\images\background.png" />
     <Content Include="Content\images\empty-photo.png" />
     <Content Include="Content\images\user.png" />
-    <Content Include="Content\login\login_form.css" />
+    <Content Include="Content\login\login.css" />
     <Content Include="Content\modal\modal.css" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
     <Content Include="Content\nprogress\nprogress.css" />
@@ -422,8 +421,6 @@
     <Content Include="Content\dashboard\dashboard.css.map" />
     <Content Include="Content\dashboard\dashboard.scss" />
     <Content Include="Areas\Admin\Views\Users\List.cshtml" />
-    <Content Include="Content\login\login_form.css.map" />
-    <Content Include="Content\login\login_form.scss" />
     <Content Include="Content\MvcGrid\Fonts\GridGlyphs.woff" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
@@ -469,9 +466,16 @@
     <Content Include="Areas\Default\Views\Pages\Page.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\Menu\_CreateForm.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\List.cshtml" />
+    <Content Include="Content\login\login.css.map" />
+    <Content Include="Content\login\login.scss" />
+    <None Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\controllers\ScoresController.js" />
